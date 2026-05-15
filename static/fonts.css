@@ -1,0 +1,82 @@
+@font-face {
+  font-family: "Font Awesome 7 Free";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("./font-awesome/FontAwesome-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Font Awesome 7 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("./font-awesome/FontAwesome-Solid.woff2") format("woff2");
+}
+
+/* Regular font */
+@font-face {
+  font-family: "Arimo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("./fonts/Arimo-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Arimo";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url("./fonts/Arimo-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Arimo";
+  font-style: italic;
+  font-weight: 400;
+  font-display: block;
+  src: url("./fonts/Arimo-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Arimo";
+  font-style: italic;
+  font-weight: 700;
+  font-display: block;
+  src: url("./fonts/Arimo-BoldItalic.woff2") format("woff2");
+}
+
+/* Monospace font */
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: monospace;
+  font-weight: 400;
+  font-display: block;
+  src: url("./fonts/JetBrainsMono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: monospace;
+  font-weight: 700;
+  font-display: block;
+  src: url("./fonts/JetBrainsMono-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: monospace italic;
+  font-weight: 400;
+  font-display: block;
+  src: url("./fonts/JetBrainsMono-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: monospace italic;
+  font-weight: 700;
+  font-display: block;
+  src: url("./fonts/JetBrainsMono-BoldItalic.woff2") format("woff2");
+}
+

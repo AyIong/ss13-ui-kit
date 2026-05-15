@@ -1,0 +1,15 @@
+<script type="text/javascript">
+  // biome-ignore lint/suspicious/noAssignInExpressions: i dont want to explain. just understand it must be.
+  var _Byond = (window.Byond = {
+    command: (command) => {
+      console.log("Byond.command", command);
+    },
+    winget: (command) => {
+      console.log("Byond.winget", command);
+      return Promise.resolve("FAKE VALUE");
+    },
+    winset: (command) => {
+      console.log("Byond.winset", command);
+    },
+  });
+</script>

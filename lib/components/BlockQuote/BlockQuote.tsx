@@ -1,0 +1,17 @@
+import { classes } from '@common/react';
+import { Box, type BoxProps } from '@components';
+
+/**
+ * ## BlockQuote
+ *
+ * Just a block quote, just like this example in markdown:
+ * > Here's an example of a block quote.
+ *
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-blockquote--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ */
+export function BlockQuote(props: BoxProps) {
+  const { className, ...rest } = props;
+
+  return <Box className={classes(['BlockQuote', className])} {...rest} />;
+}

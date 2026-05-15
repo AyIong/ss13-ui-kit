@@ -1,0 +1,12 @@
+@use "sass:meta";
+
+// CSS Variables
+@use "./base";
+@use "./colors";
+@use "./vars-components";
+
+// Core styles
+@include meta.load-css("./reset.scss");
+
+// Components
+@include meta.load-css("../lib/components/styles.scss");

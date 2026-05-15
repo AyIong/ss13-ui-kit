@@ -1,0 +1,19 @@
+{
+  "[javascript][typescript][javascriptreact][typescriptreact][css][json][jsonc][html]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[yaml][markdown][scss][github-actions-workflow]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "editor.rulers": [80],
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "js/ts.tsdk.path": "node_modules/typescript/lib"
+}
