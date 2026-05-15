@@ -16,10 +16,8 @@ export default defineConfig({
   },
   plugins: [pluginReact()],
   source: {
-    // FIX: Use a glob that explicitly excludes tests
-    // or point to your index if you were bundling.
     entry: {
-      index: ['./lib/**/*.{ts,tsx}', '!./lib/**/*.test.*'],
+      index: ['./lib/**/*.{ts,tsx}', '!./lib/**/*.test.ts', '!./lib/**/*.stories.tsx'],
     },
     tsconfigPath: './tsconfig.build.json',
   },

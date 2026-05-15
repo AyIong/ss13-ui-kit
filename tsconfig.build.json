@@ -7,5 +7,6 @@
     "rootDir": "lib"
   },
   "extends": "./tsconfig.json",
-  "include": ["lib", "global.d.ts"]
+  "include": ["lib", "global.d.ts"],
+  "exclude": ["lib/**/*.test.ts", "lib/**/*.stories.tsx"]
 }
