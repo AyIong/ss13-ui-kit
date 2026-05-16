@@ -13,5 +13,11 @@ import { Box, type BoxProps } from '@components';
 export function BlockQuote(props: BoxProps) {
   const { className, ...rest } = props;
 
-  return <Box className={classes(['BlockQuote', className])} {...rest} />;
+  return (
+    <Box
+      as="blockquote"
+      className={classes(['blockquote', className])}
+      {...rest}
+    />
+  );
 }

@@ -19,15 +19,15 @@
   // MARK: Border width
   --border-width-unit: #{fn.rem(1px)};
   /* 1px */
-  --border-width-tiny: var(--border-width-unit);
+  --border-width-1: var(--border-width-unit);
   /* 2px */
-  --border-width-small: calc(var(--border-width-unit) * 2);
+  --border-width-2: calc(var(--border-width-unit) * 2);
   /* 3px */
-  --border-width-medium: calc(var(--border-width-unit) * 3);
+  --border-width-3: calc(var(--border-width-unit) * 3);
   /* 4px */
-  --border-width-large: calc(var(--border-width-unit) * 4);
+  --border-width-4: calc(var(--border-width-unit) * 4);
   /* 6px */
-  --border-width-larger: calc(var(--border-width-unit) * 6);
+  --border-width-5: calc(var(--border-width-unit) * 6);
 
   // MARK: Border radius
   --border-radius-unit: #{fn.rem(2px)};
@@ -96,11 +96,11 @@
 
   // MARK: Color adjustment
   /* Color lightness multiplier. + for FG - for BG */
-  --adjust-color: 5;
-  /* Color lightness multiplier wneh hovered */
-  --adjust-hover: 10;
+  --adjust-color: 0.05;
+  /* Color lightness multiplier when hovered */
+  --adjust-hover: 0.1;
   /* Color lightness multiplier when active (clicked) */
-  --adjust-active: 7.5;
+  --adjust-active: 0.075;
 
   /* Cursors */
   --cursor-default: default;

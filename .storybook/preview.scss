@@ -1,8 +1,8 @@
 html,
 body {
-  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-base);
-  background-color: var(--color-base);
-  color: var(--color-text);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-base);
+  background-color: var(--bg-default);
+  color: var(--fg-default);
 }
 
 #storybook-root {

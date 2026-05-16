@@ -12,7 +12,12 @@ export default {
 type Story = StoryObj<StoryProps>;
 
 export const Default: Story = {
-  args: {
-    children: 'Quote Block',
+  render: () => {
+    return (
+      <>
+        <BlockQuote>Quote Block</BlockQuote>
+        <BlockQuote>The quick brown fox jumps over the lazy dog.</BlockQuote>
+      </>
+    );
   },
 };

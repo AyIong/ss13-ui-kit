@@ -58,3 +58,12 @@ th {
   vertical-align: baseline;
   text-align: left;
 }
+
+// Remove any default styles
+blockquote,
+input,
+textarea,
+button,
+fieldset {
+  all: unset;
+}
