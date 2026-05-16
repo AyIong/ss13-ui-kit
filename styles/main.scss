@@ -3,7 +3,6 @@
 // CSS Variables
 @use "./base";
 @use "./colors";
-@use "./vars-components";
 
 // Core styles
 @include meta.load-css("./reset.scss");
