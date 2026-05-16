@@ -18,6 +18,8 @@
 @use "sass:map";
 @use "sass:meta";
 
+@use "functions" as fn;
+
 :root {
   /* Background colors */
   --bg-default: hsl(0, 0%, 15%);
@@ -44,7 +46,7 @@
   --scrollbar-thumb: hsl(from var(--bg-default) h s calc(l + 9.25));
 
   /* Candystripe */
-  --candystripe-odd: hsla(0, 0%, 0%, 0.25);
+  --candystripe-odd: oklch(0 0 0 / 0.25);
   --candystripe-even: transparent;
 
   /* Base colors */
@@ -72,10 +74,10 @@
   --color-light-gray: var(--color-light-grey);
 
   /* Action colors */
-  --color-action: hsl(0, 0%, 50%);
-  --color-hover: hsl(from var(--color-action) h s l / 0.25);
-  --color-active: hsl(from var(--color-action) h s l / 0.3);
-  --color-selected: hsl(from var(--color-action) h s l / 0.4);
+  --color-action: oklch(0.5 0 0);
+  --color-hover: #{fn.oklch-from(color-action, $a: 0.25)};
+  --color-active: #{fn.oklch-from(color-action, $a: 0.3)};
+  --color-selected: #{fn.oklch-from(color-action, $a: 0.4)};
 
   /* Semantic colors */
   --primary-l: 0.5;
@@ -116,8 +118,9 @@
 
 // Mappings of color names
 $color-map: ();
-$_gen_map: (
-  /* Base colors */ "red": var(--color-red),
+$low-contrast-color-map: ("yellow", "white") !default;
+$base-colors: (
+  "red": var(--color-red),
   "orange": var(--color-orange),
   "yellow": var(--color-yellow),
   "olive": var(--color-olive),
@@ -128,20 +131,34 @@ $_gen_map: (
   "purple": var(--color-purple),
   "pink": var(--color-pink),
   "brown": var(--color-brown),
-  /* Additional colors */ "gold": var(--color-gold),
-  /* Grayscale colors */ "black": var(--color-black),
+);
+
+$additional-colors: (
+  "gold": var(--color-gold),
+);
+
+$grayscale-colors: (
+  "black": var(--color-black),
   "white": var(--color-white),
   "grey": var(--color-grey),
   "gray": var(--color-grey),
   "light-grey": var(--color-light-grey),
   "light-gray": var(--color-light-grey),
-  /* Semantic colors */ "primary": var(--color-primary),
+);
+
+$semantic-colors: (
+  "primary": var(--color-primary),
   "good": var(--color-good),
   "average": var(--color-average),
   "bad": var(--color-bad),
-  "label": var(--color-label)
+  "label": var(--color-label),
 );
-$low-contrast-color-map: ("yellow", "white") !default;
+
+$maps: ($base-colors, $additional-colors, $grayscale-colors, $semantic-colors);
+$_gen_map: ();
+@each $map in $maps {
+  $_gen_map: map.merge($_gen_map, $map);
+}
 
 // Color names for which to generate a color map
 $color-map-keys: map.keys($_gen_map) !default;

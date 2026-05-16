@@ -1,2 +1,2 @@
-export * from './BlockQuote';
-export * from './Box';
+export { BlockQuote } from './BlockQuote';
+export { Box, type BoxProps } from './Box';

@@ -1,14 +1,16 @@
+@use "../../../styles/functions" as fn;
+
 .blockquote {
+  --bq-color: #{fn.oklch-from(color-label, $l: var(--adjust-color))};
   --bq-border-w: var(--border-width-2);
   --bq-border-s: solid;
-  --bq-color: oklch(from var(--color-label) calc(l + var(--adjust-color)) c h);
 
   display: block;
-  padding-left: var(--space-m);
+  padding-left: var(--padding-m);
   color: var(--bq-color);
   border-left: var(--bq-border-w) var(--bq-border-s) var(--bq-color);
 
   &:not(:last-child) {
-    margin-bottom: var(--space-m);
+    margin-bottom: var(--margin-m);
   }
 }

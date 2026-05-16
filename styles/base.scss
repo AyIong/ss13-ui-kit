@@ -48,26 +48,47 @@
   /* Maximum border radius. Makes perfect circles */
   --border-radius-circular: 99999px;
 
-  // MARK: Spacing
-  --space-unit: #{fn.em(1px)};
+  // MARK: Margins
+  --margin-unit: #{fn.rem(1px)};
   /* 1px */
-  --space-xxs: var(--space-unit);
+  --margin-xxs: var(--margin-unit);
   /* 2px */
-  --space-xs: calc(var(--space-unit) * 2);
+  --margin-xs: calc(var(--margin-unit) * 2);
   /* 3px */
-  --space-s: calc(var(--space-unit) * 3);
+  --margin-s: calc(var(--margin-unit) * 3);
   /* 4px */
-  --space-sm: calc(var(--space-unit) * 4);
+  --margin-sm: calc(var(--margin-unit) * 4);
   /* 6px */
-  --space-m: calc(var(--space-unit) * 6);
+  --margin-m: calc(var(--margin-unit) * 6);
   /* 8px */
-  --space-ml: calc(var(--space-unit) * 8);
+  --margin-ml: calc(var(--margin-unit) * 8);
   /* 10px */
-  --space-l: calc(var(--space-unit) * 10);
+  --margin-l: calc(var(--margin-unit) * 10);
   /* 12px */
-  --space-xl: calc(var(--space-unit) * 12);
+  --margin-xl: calc(var(--margin-unit) * 12);
   /* 24px */
-  --space-xxl: calc(var(--space-unit) * 24);
+  --margin-xxl: calc(var(--margin-unit) * 24);
+
+  // MARK: Paddings
+  --padding-unit: #{fn.em(1px)};
+  /* 1px */
+  --padding-xxs: var(--padding-unit);
+  /* 2px */
+  --padding-xs: calc(var(--padding-unit) * 2);
+  /* 3px */
+  --padding-s: calc(var(--padding-unit) * 3);
+  /* 4px */
+  --padding-sm: calc(var(--padding-unit) * 4);
+  /* 6px */
+  --padding-m: calc(var(--padding-unit) * 6);
+  /* 8px */
+  --padding-ml: calc(var(--padding-unit) * 8);
+  /* 10px */
+  --padding-l: calc(var(--padding-unit) * 10);
+  /* 12px */
+  --padding-xl: calc(var(--padding-unit) * 12);
+  /* 24px */
+  --padding-xxl: calc(var(--padding-unit) * 24);
 
   // MARK: Transition times
   --transition-time-unit: 1s;
