@@ -1,6 +1,6 @@
 import { describe, it } from 'bun:test';
 import assert from 'node:assert';
-import { zip } from '../lib/common/collections.ts';
+import { zip } from '../collections.ts';
 
 const array1 = [1, 2, 3];
 const array2 = [4, 7, 8, 1];

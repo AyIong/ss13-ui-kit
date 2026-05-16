@@ -8,7 +8,7 @@ import {
   vecMultiply,
   vecNormalize,
   vecSubtract,
-} from '../lib/common/vector.ts';
+} from '../vector.ts';
 
 const vector1 = [1, 2, 3];
 const vector2 = [4, 7, 8, 1];

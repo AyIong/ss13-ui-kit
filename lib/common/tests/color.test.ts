@@ -1,6 +1,6 @@
 import { describe, it } from 'bun:test';
 import assert from 'node:assert';
-import { Color } from '../lib/common/color.ts';
+import { Color } from '../color.ts';
 
 describe('Color Conversion', () => {
   it('Color Conversion: Convert a hex color to a Color object and back', () => {

@@ -7,7 +7,7 @@ import {
   mock,
   spyOn,
 } from 'bun:test';
-import { captureExternalLinks } from '../lib/common/links.ts';
+import { captureExternalLinks } from '../links.ts';
 
 describe('captureExternalLinks', () => {
   let addEventListenerSpy: ReturnType<typeof spyOn>;
