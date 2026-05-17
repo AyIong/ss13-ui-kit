@@ -1,4 +1,3 @@
-import type { BooleanLike } from '@common/react';
 import type { BoxProps, IconProps } from '@components';
 import type { Placement } from '@floating-ui/react';
 import type { ReactNode } from 'react';
@@ -11,9 +10,9 @@ export type ButtonProps = Partial<{
   /** Makes the button circular, with fixed ratio size 1:1 */
   circular: boolean;
   /** Disables button and makes it semi-transparent */
-  disabled: BooleanLike;
+  disabled: boolean;
   /** Activates the button (gives it a green color) */
-  selected: BooleanLike;
+  selected: boolean;
   /** Adds an left side icon to the button */
   leadingIcon: IconProps;
   /** Adds an right side icon to the button */

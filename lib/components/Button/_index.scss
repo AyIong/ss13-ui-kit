@@ -4,7 +4,7 @@
 .button {
   --button-h: 18px;
   --button-bg: var(--color-primary);
-  --button-fg: var(--text-fixed-white);
+  --button-fg: var(--fg-fixed-white);
   --button-disabled-bg: var(
     --undefined
   ); // Allow downstreams to override disabled color
@@ -66,7 +66,7 @@
     aspect-ratio: 1 / 1;
     white-space: normal;
     text-align: center;
-    border-radius: var(--border-radius-6);
+    border-radius: var(--border-radius-c);
   }
 
   &.fluid {
