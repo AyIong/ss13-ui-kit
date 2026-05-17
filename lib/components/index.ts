@@ -1,2 +1,10 @@
+export { AnimatedNumber } from './AnimatedNumber';
 export { BlockQuote } from './BlockQuote';
-export { Box, type BoxProps } from './Box';
+export { Box } from './Box';
+export type { BoxProps } from './Box/types';
+export { Button } from './Button';
+export { Floating } from './Floating';
+export { Icon } from './Icon';
+export type { IconProps } from './Icon/types';
+export { Stack } from './Stack';
+export { Tooltip } from './Tooltip';

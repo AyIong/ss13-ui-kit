@@ -44,7 +44,7 @@ export type BoxInternalProps = Partial<{
   tw: string;
 }>;
 
-export type LiftedHTMLAttributes<TElement> = {
+type LiftedHTMLAttributes<TElement> = {
   /** Whether this element is draggable.
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/draggable
    */

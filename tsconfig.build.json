@@ -8,5 +8,5 @@
   },
   "extends": "./tsconfig.json",
   "include": ["lib", "global.d.ts"],
-  "exclude": ["lib/**/*.test.ts", "lib/**/*.stories.tsx"]
+  "exclude": ["lib/**/*.test.ts", "lib/**/*stories.tsx"]
 }

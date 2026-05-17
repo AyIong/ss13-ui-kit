@@ -17,7 +17,7 @@
       "@stories/*": [
         "./stories/*.ts",
         "./stories/*.tsx",
-        "./lib/components/*stories.tsx"
+        "./lib/components/*.stories.tsx"
       ]
     },
     "resolveJsonModule": true,

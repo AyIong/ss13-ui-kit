@@ -1,5 +1,5 @@
+import type { BoxProps } from '@components';
 import type { CSSProperties, DOMAttributes } from 'react';
-import type { BoxProps } from '../components/Box';
 import { CSS_COLORS } from './constants.ts';
 import { type BooleanLike, classes } from './react.ts';
 

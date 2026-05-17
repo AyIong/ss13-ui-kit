@@ -50,7 +50,7 @@
 /* Monospace font */
 @font-face {
   font-family: "JetBrains Mono";
-  font-style: monospace;
+  font-style: normal;
   font-weight: 400;
   font-display: block;
   src: url("./fonts/JetBrainsMono-Regular.woff2") format("woff2");
@@ -58,7 +58,7 @@
 
 @font-face {
   font-family: "JetBrains Mono";
-  font-style: monospace;
+  font-style: normal;
   font-weight: 700;
   font-display: block;
   src: url("./fonts/JetBrainsMono-Bold.woff2") format("woff2");
@@ -66,7 +66,7 @@
 
 @font-face {
   font-family: "JetBrains Mono";
-  font-style: monospace italic;
+  font-style: italic;
   font-weight: 400;
   font-display: block;
   src: url("./fonts/JetBrainsMono-Italic.woff2") format("woff2");
@@ -74,7 +74,7 @@
 
 @font-face {
   font-family: "JetBrains Mono";
-  font-style: monospace italic;
+  font-style: italic;
   font-weight: 700;
   font-display: block;
   src: url("./fonts/JetBrainsMono-BoldItalic.woff2") format("woff2");

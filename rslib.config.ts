@@ -17,7 +17,11 @@ export default defineConfig({
   plugins: [pluginReact()],
   source: {
     entry: {
-      index: ['./lib/**/*.{ts,tsx}', '!./lib/**/*.test.ts', '!./lib/**/*.stories.tsx'],
+      index: [
+        './lib/**/*.{ts,tsx}',
+        '!./lib/**/*.test.ts',
+        '!./lib/**/*stories.tsx',
+      ],
     },
     tsconfigPath: './tsconfig.build.json',
   },
