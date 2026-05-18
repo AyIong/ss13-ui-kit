@@ -1,11 +1,14 @@
 import { classes } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import type { IconProps, IconStackProps } from './types';
-
-const FA_OUTLINE_REGEX = /-o$/;
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { tgNanotrasen } from './custom';
+import type { IconNamesUnion, IconProps, IconStackProps } from './types';
 
 export function Icon(props: IconProps) {
-  const { name = '', size, spin, className, rotation, ...rest } = props;
+  const { name, regular, size, className, rotation, ...rest } = props;
 
   const customStyle = rest.style || {};
   if (size) {
@@ -17,36 +20,16 @@ export function Icon(props: IconProps) {
   rest.style = customStyle;
 
   const boxProps = computeBoxProps(rest);
-
-  let iconClass = '';
-  if (name.startsWith('tg-')) {
-    // tgfont icon
-    iconClass = name;
-  } else {
-    // font awesome icon
-    const faRegular = FA_OUTLINE_REGEX.test(name);
-    const faName = name.replace(FA_OUTLINE_REGEX, '');
-    const preprendFa = !faName.startsWith('fa-');
-
-    iconClass = faRegular ? 'far ' : 'fas ';
-    if (preprendFa) {
-      iconClass += 'fa-';
-    }
-    iconClass += faName;
-    if (spin) {
-      iconClass += ' fa-spin';
-    }
-  }
+  library.add(fas, far, tgNanotrasen);
 
   return (
-    <i
-      className={classes([
-        'icon',
-        iconClass,
-        className,
-        computeBoxClassName(rest),
-      ])}
+    <FontAwesomeIcon
+      className={classes(['icon', className, computeBoxClassName(rest)])}
+      // @ts-expect-error
+      icon={[regular ? 'far' : 'fas', name as IconNamesUnion]}
+      style={customStyle}
       {...boxProps}
+      {...rest}
     />
   );
 }
