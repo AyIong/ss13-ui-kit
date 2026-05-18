@@ -41,7 +41,7 @@ export function Icon(props: IconProps) {
   return (
     <i
       className={classes([
-        'Icon',
+        'icon',
         iconClass,
         className,
         computeBoxClassName(rest),
@@ -63,7 +63,7 @@ function IconStack(props: IconStackProps) {
   return (
     <span
       className={classes([
-        'IconStack',
+        'icon-stack',
         className,
         computeBoxClassName<HTMLSpanElement>(rest),
       ])}

@@ -1,0 +1,74 @@
+@use "../../../styles/functions" as fn;
+
+.titlebar {
+  --titlebar-background: var(--bg-secondary);
+  --titlebar-foreground: var(--fg-translucent-light);
+  --titlebar-shadow-color: var(--color-shadow);
+
+  user-select: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: fn.rem(32px);
+  gap: var(--margin-ml);
+  padding: 0 var(--padding-ml);
+  background-color: var(--titlebar-background);
+  box-shadow: 0 fn.rem(1px) fn.rem(6px) 0 var(--titlebar-shadow-color);
+  z-index: 101; // More than Dimmer
+
+  > .dragzone {
+    position: absolute;
+    inset: 0;
+  }
+
+  > .status-icon {
+    font-size: fn.rem(20px);
+    text-align: center;
+    transition: color var(--transition-time-slow);
+  }
+
+  > .title {
+    pointer-events: none;
+    display: inline-block;
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 1.2rem;
+    color: var(--titlebar-foreground);
+  }
+
+  > .buttons {
+    pointer-events: all;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    z-index: 102;
+  }
+
+  > .debug-button {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  > .close {
+    cursor: var(--cursor-pointer);
+    opacity: 0.5;
+    pointer-events: all;
+    align-content: center;
+    text-align: center;
+    font-size: fn.rem(16px);
+    height: 100%;
+    color: var(--color-text);
+    transition-property: background-color, opacity;
+    transition-duration: var(--transition-time-medium);
+    z-index: 102;
+
+    &:hover {
+      opacity: 1;
+      background-color: var(--button-background-danger);
+      transition-duration: 0s;
+    }
+  }
+}

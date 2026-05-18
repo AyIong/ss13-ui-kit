@@ -7,4 +7,5 @@ export { Floating } from './Floating';
 export { Icon } from './Icon';
 export type { IconProps } from './Icon/types';
 export { Stack } from './Stack';
+export { TitleBar } from './TitleBar';
 export { Tooltip } from './Tooltip';

@@ -23,22 +23,13 @@
 :root {
   /* Background colors */
   --bg-default: hsl(0, 0%, 15%);
-  --bg-section: hsla(0, 0%, 0%, 0.33);
 
-  --secondary-h: h;
-  --secondary-s: s;
-  --secondary-l-adjustment: 7.5;
-  --bg-secondary: hsl(
-    from var(--bg-default) var(--secondary-h) var(--secondary-s)
-      calc(l + var(--secondary-l-adjustment))
-  );
-
-  --base-gradient-spread: 2;
-  --bg-default-start: hsl(
-    from var(--bg-default) h s calc(l + var(--base-gradient-spread))
-  );
-  --bg-default-end: hsl(
-    from var(--bg-default) h s calc(l - var(--base-gradient-spread))
+  --bg-secondary-l-adjustment: 0.075;
+  --bg-secondary-c: c;
+  --bg-secondary-h: h;
+  --bg-secondary: oklch(
+    from var(--bg-default) calc(l + var(--bg-secondary-l-adjustment))
+      var(--bg-secondary-c) var(--bg-secondary-h)
   );
 
   /* Scrollbar */
@@ -92,8 +83,8 @@
 
   /* Text colors */
   --fg-default: var(--color-white);
-  --fg-translucent: oklch(from var(--text-default) l c h / 0.5);
-  --fg-translucent-light: oklch(from var(--text-default) l c h / 0.75);
+  --fg-translucent: oklch(from var(--fg-default) l c h / 0.5);
+  --fg-translucent-light: oklch(from var(--fg-default) l c h / 0.75);
   --fg-fixed-white: var(--color-white);
   --fg-fixed-black: var(--color-black);
 
@@ -114,6 +105,9 @@
       var(--border-primary-lightness) / var(--border-primary-alpha)
   );
   --color-border-secondary: hsl(from var(--color-border-primary) h s l / 1);
+
+  /* Shadow */
+  --color-shadow: oklch(0 0 0 / 0.666);
 }
 
 // Mappings of color names

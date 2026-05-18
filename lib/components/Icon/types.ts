@@ -15,6 +15,6 @@ export type IconProps = {
   Omit<BoxProps, 'children'>;
 
 export type IconStackProps = {
-    /** Works same as `Icon` size prop, but for all icons inside. */
-    size?: number;
-  } & BoxProps;
+  /** Works same as `Icon` size prop, but for all icons inside. */
+  size?: number;
+} & BoxProps;

@@ -56,14 +56,14 @@
   --margin-sm: calc(var(--margin-unit) * 4);
   /* 6px */
   --margin-m: calc(var(--margin-unit) * 6);
-  /* 8px */
-  --margin-ml: calc(var(--margin-unit) * 8);
-  /* 10px */
-  --margin-l: calc(var(--margin-unit) * 10);
+  /* 9px */
+  --margin-ml: calc(var(--margin-unit) * 9);
   /* 12px */
-  --margin-xl: calc(var(--margin-unit) * 12);
-  /* 24px */
-  --margin-xxl: calc(var(--margin-unit) * 24);
+  --margin-l: calc(var(--margin-unit) * 12);
+  /* 15px */
+  --margin-xl: calc(var(--margin-unit) * 15);
+  /* 21px */
+  --margin-xxl: calc(var(--margin-unit) * 21);
 
   // MARK: Paddings
   --padding-unit: #{fn.em(1px)};

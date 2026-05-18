@@ -33,10 +33,11 @@ export function Button(props: ButtonProps) {
       className={classes([
         'button',
         fluid && 'fluid',
-        color && color,
+        !!children && 'has-content',
         disabled && 'disabled',
         selected && 'selected',
         circular && 'circular',
+        color && color,
         className,
         computeBoxClassName(rest),
       ])}
@@ -61,9 +62,9 @@ export function Button(props: ButtonProps) {
       }}
       {...computeBoxProps(rest)}
     >
-      {leadingIcon && <Icon {...leadingIcon} />}
+      {leadingIcon && <Icon className="button-icon" {...leadingIcon} />}
       {children && <div className="content">{children}</div>}
-      {trailingIcon && <Icon {...trailingIcon} />}
+      {trailingIcon && <Icon className="button-icon" {...trailingIcon} />}
     </button>
   );
 

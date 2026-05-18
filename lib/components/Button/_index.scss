@@ -2,7 +2,8 @@
 @use "../../../styles/functions" as fn;
 
 .button {
-  --button-h: 18px;
+  --button-h: 20px;
+  --button-p: var(--padding-xs);
   --button-bg: var(--color-primary);
   --button-fg: var(--fg-fixed-white);
   --button-disabled-bg: var(
@@ -22,8 +23,9 @@
   align-items: center;
   white-space: nowrap;
   gap: var(--margin-m);
-  padding: var(--padding-xs) var(--padding-m);
+  padding: var(--button-p);
   margin: 0 var(--margin-xs) var(--margin-xs) 0;
+  min-height: var(--button-h);
   background-color: fn.oklch-from(button-bg, $l: -0.025);
   color: var(--button-fg);
   border-radius: var(--button-border-radius);
@@ -41,11 +43,14 @@
     transition-duration: 0s;
   }
 
-  .content {
+  > .content {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
-    min-height: var(--button-h);
+  }
+
+  &.has-content {
+    padding: var(--button-p) var(--padding-m);
   }
 }
 

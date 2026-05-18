@@ -98,7 +98,7 @@ export type StackItemProps = Partial<{
   }> &
   BoxProps;
 
-  export type StackDividerProps = StackItemProps &
+export type StackDividerProps = StackItemProps &
   Partial<{
     hidden: boolean;
   }>;
