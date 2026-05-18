@@ -1,12 +1,13 @@
 import type { BoxProps } from '@components';
-import type {  IconName } from '@fortawesome/fontawesome-svg-core';
-import type { AnimationProps, CSSVariables } from '@fortawesome/react-fontawesome';
+import type { IconName } from '@fortawesome/fontawesome-svg-core';
+import type {
+  AnimationProps,
+  CSSVariables,
+} from '@fortawesome/react-fontawesome';
 import type { CSSProperties } from 'react';
-
+import type { CustomIconName } from './icons';
 
 export type IconNamesUnion = IconName | CustomIconName;
-
-type CustomIconName = 'nanotrasen';
 
 export type IconProps = {
   /** Icon name. @see https://fontawesome.com/v7/search?o=r&m=free */
@@ -20,11 +21,11 @@ export type IconProps = {
   rotation: number;
   /** CSS styles and FontAwesome variables */
   style: CSSProperties & CSSVariables;
-}> & AnimationProps &
+}> &
+  AnimationProps &
   Omit<BoxProps, 'children'>;
 
 export type IconStackProps = {
   /** Works same as `Icon` size prop, but for all icons inside. */
   size?: number;
 } & BoxProps;
-

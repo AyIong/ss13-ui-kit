@@ -4,7 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { tgNanotrasen } from './custom';
+import { tgIcons } from './icons';
 import type { IconNamesUnion, IconProps, IconStackProps } from './types';
 
 export function Icon(props: IconProps) {
@@ -20,7 +20,7 @@ export function Icon(props: IconProps) {
   rest.style = customStyle;
 
   const boxProps = computeBoxProps(rest);
-  library.add(fas, far, tgNanotrasen);
+  library.add(fas, far, tgIcons);
 
   return (
     <FontAwesomeIcon
