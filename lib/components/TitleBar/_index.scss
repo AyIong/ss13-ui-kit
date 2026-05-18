@@ -4,18 +4,23 @@
   --titlebar-background: var(--bg-secondary);
   --titlebar-foreground: var(--fg-translucent-light);
   --titlebar-shadow-color: var(--color-shadow);
+  --titlebar-height: #{fn.rem(32px)};
 
   user-select: none;
   position: relative;
   display: flex;
   align-items: center;
   width: 100vw;
-  height: fn.rem(32px);
+  height: var(--titlebar-height);
   gap: var(--margin-ml);
   padding: 0 var(--padding-ml);
   background-color: var(--titlebar-background);
   box-shadow: 0 fn.rem(1px) fn.rem(6px) 0 var(--titlebar-shadow-color);
   z-index: 101; // More than Dimmer
+
+  &.closeable {
+    padding-right: 0;
+  }
 
   > .dragzone {
     position: absolute;
@@ -42,8 +47,8 @@
   > .buttons {
     pointer-events: all;
     overflow: hidden;
-    white-space: nowrap;
     display: inline-block;
+    white-space: nowrap;
     z-index: 102;
   }
 
@@ -53,22 +58,38 @@
   }
 
   > .close {
+    box-sizing: content-box;
     cursor: var(--cursor-pointer);
-    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     pointer-events: all;
-    align-content: center;
-    text-align: center;
-    font-size: fn.rem(16px);
     height: 100%;
-    color: var(--color-text);
-    transition-property: background-color, opacity;
-    transition-duration: var(--transition-time-medium);
+    width: var(--titlebar-height);
+    margin-left: calc(-1 * var(--margin-ml));
+    padding: 0 var(--padding-ml);
     z-index: 102;
 
+    .close-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+      width: 100%;
+      height: 65%;
+      border-radius: var(--border-radius-2);
+      transform: scale(1.25);
+      transition-property: background-color, opacity, transform;
+      transition-duration: var(--transition-time-medium);
+    }
+
     &:hover {
-      opacity: 1;
-      background-color: var(--button-background-danger);
-      transition-duration: 0s;
+      .close-icon {
+        opacity: 1;
+        background-color: var(--color-bad);
+        transform: scale(1);
+        transition-duration: 0s;
+      }
     }
   }
 }

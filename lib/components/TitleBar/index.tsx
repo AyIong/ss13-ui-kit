@@ -37,7 +37,10 @@ export function TitleBar(props: TitleBarProps) {
     title;
 
   return (
-    <div className={classes(['titlebar', className])} style={styles}>
+    <div
+      className={classes(['titlebar', canClose && 'closeable', className])}
+      style={styles}
+    >
       <div className="dragzone" onMouseDown={(event) => onDragStart?.(event)} />
       {status === undefined ? (
         <Icon className="status-icon" name="tools" opacity={0.5} />
@@ -60,7 +63,9 @@ export function TitleBar(props: TitleBarProps) {
       )}
       {!!canClose && (
         <div className="close" onClick={onClose}>
-          <Icon className="close icon" name="times" />
+          <div className="close-icon">
+            <Icon name="times" />
+          </div>
         </div>
       )}
     </div>
