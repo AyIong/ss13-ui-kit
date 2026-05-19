@@ -1,12 +1,8 @@
 @use "../../../styles/functions" as fn;
 
 .icon {
-  --fa-display: inline-flex;
   --fa-width: #{fn.em(16px)};
-
-  aspect-ratio: 1;
-  align-items: center;
-  justify-content: center;
+  font-size: 1rem;
 }
 
 .icon-stack {

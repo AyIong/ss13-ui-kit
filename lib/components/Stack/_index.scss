@@ -1,6 +1,6 @@
 .stack {
   display: flex;
-  gap: 0.5em;
+  gap: var(--space-m);
 
   &.inline {
     display: inline-flex;
