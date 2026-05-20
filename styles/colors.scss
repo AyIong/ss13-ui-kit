@@ -25,7 +25,7 @@
   --bg-default: oklch(0.22 0.0225 275);
 
   --bg-secondary-l-adjustment: 0.075;
-  --bg-secondary-c: c;
+  --bg-secondary-c: calc(c + 0.0125);
   --bg-secondary-h: h;
   --bg-secondary: oklch(
     from var(--bg-default) calc(l + var(--bg-secondary-l-adjustment))
