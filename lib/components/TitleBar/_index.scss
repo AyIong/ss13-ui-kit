@@ -3,19 +3,18 @@
 .titlebar {
   --titlebar-background: var(--bg-secondary);
   --titlebar-foreground: var(--fg-translucent-light);
-  --titlebar-shadow-color: var(--color-shadow);
   --titlebar-height: #{fn.rem(32px)};
 
   user-select: none;
   position: relative;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: var(--titlebar-height);
   gap: var(--space-ml);
   padding: 0 var(--space-ml);
   background-color: var(--titlebar-background);
-  box-shadow: 0 fn.rem(1px) fn.rem(6px) 0 var(--titlebar-shadow-color);
   z-index: 101; // More than Dimmer
 
   &.closeable {

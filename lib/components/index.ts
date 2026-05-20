@@ -6,6 +6,8 @@ export { Button } from './Button';
 export { Floating } from './Floating';
 export { Icon } from './Icon';
 export type { IconProps } from './Icon/types';
+export { Input } from './Input';
+export { Section } from './Section';
 export { Stack } from './Stack';
 export { TitleBar } from './TitleBar';
 export { Tooltip } from './Tooltip';

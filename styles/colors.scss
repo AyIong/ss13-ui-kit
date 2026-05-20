@@ -22,7 +22,7 @@
 
 :root {
   /* Background colors */
-  --bg-default: hsl(0, 0%, 15%);
+  --bg-default: oklch(0.22 0.0225 275);
 
   --bg-secondary-l-adjustment: 0.075;
   --bg-secondary-c: c;
@@ -33,8 +33,8 @@
   );
 
   /* Scrollbar */
-  --scrollbar-base: var(--bg-default);
-  --scrollbar-thumb: hsl(from var(--bg-default) h s calc(l + 9.25));
+  --scrollbar-base: transparent;
+  --scrollbar-thumb: var(--bg-secondary);
 
   /* Candystripe */
   --candystripe-odd: oklch(0 0 0 / 0.25);
@@ -107,7 +107,7 @@
   --color-border-secondary: hsl(from var(--color-border-primary) h s l / 1);
 
   /* Shadow */
-  --color-shadow: oklch(0 0 0 / 0.666);
+  --color-shadow: oklch(0 0 0 / 0.5);
 }
 
 // Mappings of color names

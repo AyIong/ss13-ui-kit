@@ -1,0 +1,82 @@
+@use "../../../styles/functions" as fn;
+
+.layout {
+  --layout-shadow-color: var(--color-shadow);
+  --layout-br: var(--border-radius-4);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: fn.rem(150px);
+  min-height: fn.rem(55px);
+  background-color: var(--bg-secondary);
+
+  &-decorations {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    margin: fn.rem(2px);
+    margin-top: 0;
+    background-color: var(--bg-default);
+    border-radius: var(--layout-br) var(--layout-br) 0 0;
+    box-shadow: inset 0 fn.rem(6px) fn.rem(3px) fn.rem(-3px)
+      var(--layout-shadow-color);
+  }
+
+  &-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    scrollbar-gutter: stable;
+
+    background-image: url("../../../assets/bg-nanotrasen.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70% 70%;
+  }
+
+  .resize-handler {
+    user-select: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+
+    &.x {
+      cursor: var(--cursor-e-resize);
+      width: var(--space-s);
+      height: 100%;
+    }
+
+    &.y {
+      cursor: var(--cursor-n-resize);
+      width: 100%;
+      height: var(--space-m);
+    }
+
+    &.both {
+      --size: calc(var(--space-m) * 2);
+
+      cursor: var(--cursor-se-resize);
+      width: var(--size);
+      height: var(--size);
+      transform: translate(25%, 25%);
+      z-index: 2;
+    }
+  }
+}
+
+.window {
+  &-content {
+    flex: 1;
+  }
+
+  &-padding {
+    height: 100%;
+    padding: var(--space-ml);
+    padding-right: 0;
+  }
+}

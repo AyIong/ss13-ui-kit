@@ -1,3 +1,5 @@
+@use "./functions" as fn;
+
 html,
 body {
   box-sizing: border-box;
@@ -5,7 +7,7 @@ body {
   margin: 0;
   font-size: var(--font-size, 12px);
   color: var(--color-text, hsl(0, 0%, 100%));
-  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-base);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-base);
 }
 
 html {
@@ -23,6 +25,12 @@ body {
 *:before,
 *:after {
   box-sizing: inherit;
+  /**
+   * In-game UI's are generally quite compact and never take up the entire screen.
+   * Default scrollbars takes up too much screen space.
+   * But thin scrollbar takes exactly `space-ml` width.
+   */
+  scrollbar-width: thin;
 }
 
 h1,

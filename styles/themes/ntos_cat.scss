@@ -31,7 +31,7 @@
     --input-color: hsl(from var(--color-kitty) h s calc(l - 10));
     --tooltip-background-lightness: 50;
 
-    .Layout__content {
+    .layout-content {
       background-image: url("ss13-ui-kit/assets/bg-cat.svg");
       background-size: 100%;
       background-repeat: no-repeat;

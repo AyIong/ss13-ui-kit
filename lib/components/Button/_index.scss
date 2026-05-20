@@ -24,7 +24,6 @@
   white-space: nowrap;
   gap: var(--space-m);
   padding: var(--button-p);
-  margin: 0 var(--space-xs) var(--space-xs) 0;
   min-height: var(--button-h);
   background-color: fn.oklch-from(button-bg, $l: -0.025);
   color: var(--button-fg);
