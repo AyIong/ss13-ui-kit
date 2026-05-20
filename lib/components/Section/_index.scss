@@ -25,15 +25,18 @@
     padding: var(--space-s);
     border-bottom: var(--border-width-2) solid var(--color-primary);
 
-    > .text {
+    > .left-side {
       flex: 1;
+      display: flex;
+      align-items: center;
       font-weight: bold;
       font-size: fn.rem(14px);
+      min-height: var(--button-height);
       margin-left: var(--space-s);
       color: var(--section-title-fg);
     }
 
-    > .buttons {
+    > .right-side {
       display: flex;
       gap: var(--space-s);
     }

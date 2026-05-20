@@ -2,7 +2,6 @@
 @use "../../../styles/functions" as fn;
 
 .button {
-  --button-h: #{fn.rem(20px)};
   --button-p: var(--space-xs);
   --button-bg: var(--color-primary);
   --button-fg: var(--fg-fixed-white);
@@ -24,7 +23,7 @@
   white-space: nowrap;
   gap: var(--space-m);
   padding: var(--button-p);
-  min-height: var(--button-h);
+  min-height: var(--button-height);
   background-color: fn.oklch-from(button-bg, $l: -0.025);
   color: var(--button-fg);
   border-radius: var(--button-border-radius);

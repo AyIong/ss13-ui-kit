@@ -76,8 +76,8 @@ export function Section(props: SectionProps) {
     >
       {hasTitle && (
         <div className="section-title">
-          <span className="text">{title}</span>
-          <div className="buttons">{buttons}</div>
+          <div className="left-side">{title}</div>
+          <div className="right-side">{buttons}</div>
         </div>
       )}
       <div className={classes(['section-content-wrapper'])}>

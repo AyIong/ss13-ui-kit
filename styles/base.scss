@@ -108,3 +108,8 @@
   --cursor-se-resize: se-resize;
   --cursor-e-resize: e-resize;
 }
+
+// MARK: Component specific
+:root {
+  --button-height: #{fn.rem(20px)};
+}
