@@ -3,15 +3,16 @@
 .section {
   --section-bg: #{fn.oklch-from(bg-secondary, $a: 50%)};
   --section-title-fg: var(--fg-default);
+  --section-shadow: 0 fn.rem(3px) fn.rem(3px) fn.rem(-1px) var(--color-shadow);
 
   overflow: hidden;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   background-color: var(--section-bg);
-  border: 1px solid hsl(0, 0%, 100%, 0.05);
+  border: fn.rem(1px) outset hsl(0, 0%, 100%, 0.05);
   border-radius: var(--border-radius-3);
-  box-shadow: 0 fn.rem(3px) fn.rem(3px) fn.rem(-1px) var(--color-shadow);
+  box-shadow: var(--section-shadow);
   scrollbar-color: fn.oklch-from(scrollbar-thumb, $l: 0.075) transparent;
 
   &.fill {
@@ -63,55 +64,6 @@
 
   &.fitted > &-content {
     padding: 0;
-  }
-}
-
-.Section--fill {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.Section--fill > .Section__rest {
-  flex-grow: 1;
-}
-
-.Section--fill > .Section__rest > .Section__content {
-  height: 100%;
-}
-
-.Section--fill.Section--scrollable > .Section__rest > .Section__content {
-  position: absolute;
-  inset: 0;
-}
-
-.Section--scrollable {
-  overflow-x: hidden;
-  overflow-y: hidden;
-
-  & > .Section__rest > .Section__content {
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-}
-
-.Section--scrollableHorizontal {
-  overflow-x: hidden;
-  overflow-y: hidden;
-
-  & > .Section__rest > .Section__content {
-    overflow-y: hidden;
-    overflow-x: auto;
-  }
-}
-
-.Section--scrollable.Section--scrollableHorizontal {
-  overflow-x: hidden;
-  overflow-y: hidden;
-
-  & > .Section__rest > .Section__content {
-    overflow-y: auto;
-    overflow-x: auto;
   }
 }
 
