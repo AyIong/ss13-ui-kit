@@ -18,8 +18,6 @@ export type SectionProps = Partial<{
   onScroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
   /** Shows or hides the scrollbar. */
   scrollable: boolean;
-  /** @deprecated Shows or hides the horizontal scrollbar. */
-  scrollableHorizontal: boolean;
   /** If true, filly the area except for -3rem */
   stretchContents: boolean;
   /** Title of the section. */

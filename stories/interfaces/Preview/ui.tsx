@@ -11,7 +11,7 @@ export function Preview() {
               fill
               scrollable
               title="Section title"
-              buttons={<Button>Button</Button>}
+              buttons={<Button leadingIcon={{ name: 'bug' }}>Button</Button>}
             >
               {Array.from({ length: 10 }, (_, i) => (
                 <div key={i}>Section content 1234567890</div>
