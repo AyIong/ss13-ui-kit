@@ -13,7 +13,9 @@ export function Preview() {
               title="Section title"
               buttons={<Button>Button</Button>}
             >
+              Section content Section content Section content Section content
               Section content <br />
+              Section content Section content Section content Section content
               Section content <br />
               Section content <br />
               Section content <br />
@@ -57,9 +59,10 @@ export function Preview() {
               Section content <br />
             </Section>
           </Stack.Item>
-          <Stack.Item>
+          <Stack.Item grow>
             <Section
               fill
+              scrollable
               title="Section title"
               buttons={<Button>Button</Button>}
             >

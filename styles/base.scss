@@ -113,3 +113,29 @@
 :root {
   --button-height: #{fn.rem(20px)};
 }
+
+// MARK: OverlayScrollbar
+[data-overlayscrollbars-contents] {
+  display: flex;
+  flex-direction: column;
+}
+
+.os-scrollbar {
+  --os-size: var(--space-m);
+  --os-padding-axis: var(--space-m);
+  --os-padding-perpendicular: #{fn.rem(1px)};
+
+  /* Scrollbar track */
+  --os-handle-border-radius: var(--border-radius-c);
+  --os-handle-bg: var(--bg-secondary);
+  --os-handle-bg-hover: #{fn.oklch-from(os-handle-bg, $l: var(--adjust-hover))};
+  --os-handle-bg-active: #{fn.oklch-from(
+      os-handle-bg,
+      $l: var(--adjust-active)
+    )};
+
+  --os-handle-interactive-area-offset: #{fn.rem(3px)};
+  --os-handle-perpendicular-size-hover: calc(
+    var(--os-size) + var(--os-handle-interactive-area-offset)
+  );
+}

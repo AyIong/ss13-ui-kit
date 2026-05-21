@@ -11,18 +11,6 @@
   min-height: fn.rem(55px);
   background-color: var(--bg-secondary);
 
-  &-decorations {
-    position: relative;
-    overflow: hidden;
-    flex: 1;
-    margin: fn.rem(2px);
-    margin-top: 0;
-    background-color: var(--bg-default);
-    border-radius: var(--layout-br) var(--layout-br) 0 0;
-    box-shadow: inset 0 fn.rem(6px) fn.rem(3px) fn.rem(-3px)
-      var(--layout-shadow-color);
-  }
-
   &-content {
     overflow-y: auto;
     overflow-x: hidden;
@@ -30,12 +18,22 @@
     inset: 0;
     display: flex;
     flex-direction: column;
-    scrollbar-gutter: stable;
-
     background-image: url("../../../assets/bg-nanotrasen.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 70% 70%;
+
+    &-wrapper {
+      position: relative;
+      overflow: hidden;
+      flex: 1;
+      margin: fn.rem(2px);
+      margin-top: 0;
+      background-color: var(--bg-default);
+      border-radius: var(--layout-br) var(--layout-br) 0 0;
+      box-shadow: inset 0 fn.rem(6px) fn.rem(3px) fn.rem(-3px)
+        var(--layout-shadow-color);
+    }
   }
 
   .resize-handler {
@@ -76,7 +74,6 @@
 
   &-padding {
     height: 100%;
-    padding: var(--space-ml);
-    padding-right: 0;
+    padding: var(--space-m);
   }
 }

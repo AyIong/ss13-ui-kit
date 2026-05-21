@@ -5,6 +5,7 @@
   --section-title-fg: var(--fg-default);
   --section-shadow: 0 #{fn.rem(3px)} #{fn.rem(3px)} #{fn.rem(-1px)}
     var(--color-shadow);
+  --section-scrollbar-color: #{fn.oklch-from(scrollbar-thumb, $l: 0.075)};
 
   overflow: hidden;
   box-sizing: border-box;
@@ -14,7 +15,6 @@
   border: fn.rem(1px) outset hsl(0, 0%, 100%, 0.05);
   border-radius: var(--border-radius-3);
   box-shadow: var(--section-shadow);
-  scrollbar-color: fn.oklch-from(scrollbar-thumb, $l: 0.075) transparent;
 
   &.fill {
     height: 100%;
@@ -59,7 +59,10 @@
 
     &.scrollable {
       position: absolute;
-      overflow-y: auto;
+
+      > .os-scrollbar {
+        --os-handle-bg: var(--section-scrollbar-color);
+      }
     }
   }
 

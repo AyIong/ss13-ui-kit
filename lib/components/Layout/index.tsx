@@ -6,6 +6,7 @@
 
 import { classes } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useEffect } from 'react';
 import type { BoxProps } from '../Box/types';
 import type { LayoutProps } from './types';
@@ -31,9 +32,18 @@ export function Layout(props: LayoutProps) {
 
 function LayoutContent(props: BoxProps) {
   const { className, children, ...rest } = props;
+
   return (
-    <div className="layout-decorations">
-      <div
+    <div className="layout-content-wrapper">
+      <OverlayScrollbarsComponent
+        defer
+        options={{
+          scrollbars: {
+            theme: '',
+            autoHide: 'leave',
+            autoHideSuspend: true,
+          },
+        }}
         className={classes([
           'layout-content',
           className,
@@ -42,7 +52,7 @@ function LayoutContent(props: BoxProps) {
         {...computeBoxProps(rest)}
       >
         {children}
-      </div>
+      </OverlayScrollbarsComponent>
     </div>
   );
 }
