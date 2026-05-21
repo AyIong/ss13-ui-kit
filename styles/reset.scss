@@ -5,7 +5,7 @@ body {
   box-sizing: border-box;
   height: 100%;
   margin: 0;
-  color: var(--color-text, hsl(0, 0%, 100%));
+  color: var(--fg-default, hsl(0, 0%, 100%));
 }
 
 html {
@@ -17,7 +17,7 @@ html {
 body {
   overflow: auto;
   position: relative;
-  font-family: var(--font-family, Verdana, Geneva, sans-serif);
+  font-family: var(--font-family, Arimo, Verdana, sans-serif);
 }
 
 *,

@@ -1,9 +1,12 @@
+$arimo-size-adjust: 110% !default;
+
 /* Regular font */
 @font-face {
   font-family: "Arimo";
   font-style: normal;
   font-weight: 400;
   font-display: block;
+  size-adjust: $arimo-size-adjust;
   src: url("./fonts/Arimo-Regular.woff2") format("woff2");
 }
 
@@ -12,6 +15,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: block;
+  size-adjust: $arimo-size-adjust;
   src: url("./fonts/Arimo-Bold.woff2") format("woff2");
 }
 
@@ -20,6 +24,7 @@
   font-style: italic;
   font-weight: 400;
   font-display: block;
+  size-adjust: $arimo-size-adjust;
   src: url("./fonts/Arimo-Italic.woff2") format("woff2");
 }
 
@@ -28,6 +33,7 @@
   font-style: italic;
   font-weight: 700;
   font-display: block;
+  size-adjust: $arimo-size-adjust;
   src: url("./fonts/Arimo-BoldItalic.woff2") format("woff2");
 }
 
@@ -63,4 +69,3 @@
   font-display: block;
   src: url("./fonts/JetBrainsMono-BoldItalic.woff2") format("woff2");
 }
-

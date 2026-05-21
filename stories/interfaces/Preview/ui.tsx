@@ -13,50 +13,9 @@ export function Preview() {
               title="Section title"
               buttons={<Button>Button</Button>}
             >
-              Section content Section content Section content Section content
-              Section content <br />
-              Section content Section content Section content Section content
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
-              Section content <br />
+              {Array.from({ length: 10 }, (_, i) => (
+                <div key={i}>Section content 1234567890</div>
+              ))}
             </Section>
           </Stack.Item>
           <Stack.Item grow>

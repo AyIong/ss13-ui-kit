@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/react';
 import { themes } from '../stories/themes';
 import previewTheme from './previewTheme.ts';
 
-import '../static/fonts.css';
+import '../static/fonts.scss';
 import '../styles/main.scss';
 import '../styles/storybook.scss';
 
