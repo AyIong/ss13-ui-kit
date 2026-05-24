@@ -1,7 +1,6 @@
 @use "../../../styles/functions" as fn;
 
 .icon {
-  --fa-width: #{fn.em(16px)};
   font-size: 1rem;
 }
 

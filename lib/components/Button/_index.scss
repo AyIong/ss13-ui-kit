@@ -2,51 +2,52 @@
 @use "../../../styles/functions" as fn;
 
 .button {
-  --button-bg: var(--color-primary);
-  --button-fg: var(--fg-fixed-white);
-  --button-disabled-bg: var(
-    --undefined
-  ); // Allow downstreams to override disabled color
+  --button-bg: var(--primary-color);
+  --button-bg-final: #{fn.oklch-from(button-bg, $l: -0.025)};
   --button-disabled-opacity: 0.5;
   --button-border-radius: var(--border-radius-2);
   --button-transition-duration: var(--transition-time-fast);
   --button-transition-property: background-color, color, opacity;
   --button-transition-timing-function: ease-out;
+  // Allow downstreams to override disabled color
+  --button-disabled-bg: var(--undefined);
 
   cursor: var(--cursor-pointer);
   user-select: none;
   box-sizing: border-box; // Include padding in size calculations
-  position: relative;
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
-  gap: var(--space-m);
-  padding: var(--space-xs);
+  padding: var(--space-xs) var(--space-s);
   min-height: var(--button-height);
-  line-height: 1;
-  background-color: fn.oklch-from(button-bg, $l: -0.025);
-  color: var(--button-fg);
+  background-color: var(--button-bg-final);
+  color: contrast-color(oklch(from var(--button-bg-final) calc(l - 0.1) c h));
   border-radius: var(--button-border-radius);
   transition-duration: var(--button-transition-duration);
   transition-property: var(--button-transition-property);
   transition-timing-function: var(--button-transition-timing-function);
 
-  &:hover:not(.disabled) {
-    background-color: fn.oklch-from(button-bg, $l: 0.1);
+  &:hover {
+    background-color: fn.oklch-from(button-bg-final, $l: var(--adjust-hover));
   }
 
-  &:active:not(.disabled) {
-    background-color: fn.oklch-from(button-bg, $l: 0.025);
+  &:active {
+    background-color: fn.oklch-from(
+      button-bg-final,
+      $l: calc(-1 * var(--adjust-active))
+    );
     transition-duration: 0s;
   }
 
   > .content {
     overflow: hidden;
     text-overflow: ellipsis;
+    margin: 0 var(--space-s);
   }
 
-  &.has-content {
-    padding: var(--space-xs) var(--space-m);
+  &.icon-only .icon {
+    // Decrease icon width to make button symmetrical
+    --fa-width: #{fn.em(14px)};
   }
 }
 
@@ -55,7 +56,7 @@
   &.disabled {
     --button-bg: var(--button-disabled-bg var(--button-bg));
 
-    cursor: var(--cursor-disabled) !important;
+    pointer-events: none;
     opacity: var(--button-disabled-opacity);
   }
 
@@ -82,12 +83,6 @@
   @each $color-name, $color-value in colors.$color-map {
     &.#{$color-name} {
       --button-bg: oklch(from #{$color-value} calc(l - 0.033) c h);
-
-      @each $color in colors.$low-contrast-color-map {
-        @if $color-name == $color {
-          --button-fg: var(--text-fixed-black);
-        }
-      }
     }
   }
 

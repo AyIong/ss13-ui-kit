@@ -1,8 +1,8 @@
 @use "../../../styles/functions" as fn;
 
 .titlebar {
-  --titlebar-background: var(--bg-secondary);
-  --titlebar-foreground: var(--fg-translucent-light);
+  --titlebar-background: var(--surface-color);
+  --titlebar-foreground: var(--text-color-translucent-light);
   --titlebar-height: #{fn.rem(32px)};
 
   user-select: none;
@@ -40,7 +40,6 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     font-size: 1.15rem;
-    font-family: Verdana;
     color: var(--titlebar-foreground);
   }
 

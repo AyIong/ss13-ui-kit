@@ -7,11 +7,10 @@
  * suit the needs of the components/ui's.
  *
  * The main goal is to standardize colors.
- * When adding new independent colors, you should add them here.
+ * When adding new raw colors, you should add them here.
  *
  * Overwriting these variables will have an extreme impact
  * on the global appearance of the entire TGUI, as they are used everywhere.
- * For finer customization of components, use vars-components.scss
  */
 
 @use "sass:color";
@@ -21,78 +20,63 @@
 @use "functions" as fn;
 
 :root {
-  /* Background colors */
-  --bg-default: oklch(0.22 0.0225 275);
+  /* Accent colors: Base colors used by default almost everywhere */
+  --primary-l: 0.525;
+  --primary-c: 0.125;
+  --primary-h: 265;
+  --primary-color: oklch(var(--primary-l) var(--primary-c) var(--primary-h));
 
-  --bg-secondary-l-adjustment: 0.075;
-  --bg-secondary-c: calc(c + 0.0125);
-  --bg-secondary-h: h;
-  --bg-secondary: oklch(
-    from var(--bg-default) calc(l + var(--bg-secondary-l-adjustment))
-      var(--bg-secondary-c) var(--bg-secondary-h)
+  --background-l: 0.25;
+  --background-c: 0.03;
+  --background-h: var(--primary-h);
+  --background-color: oklch(
+    var(--background-l) var(--background-c) var(--background-h)
   );
 
-  /* Scrollbar */
-  --scrollbar-base: transparent;
-  --scrollbar-thumb: var(--bg-secondary);
-
-  /* Candystripe */
-  --candystripe-odd: oklch(0 0 0 / 0.25);
-  --candystripe-even: transparent;
-
-  /* Base colors */
-  --color-red: oklch(0.625 0.225 25);
-  --color-orange: oklch(0.7 0.2 40);
-  --color-yellow: oklch(0.875 0.175 100);
-  --color-olive: oklch(0.7 0.18 120);
-  --color-green: oklch(0.65 0.175 150);
-  --color-teal: oklch(0.65 0.175 180);
-  --color-blue: oklch(0.6 0.2 230);
-  --color-violet: oklch(0.5 0.2 290);
-  --color-purple: oklch(0.575 0.25 315);
-  --color-pink: oklch(0.65 0.2 335);
-  --color-brown: oklch(0.6 0.1 55);
-
-  /* Additional colors */
-  --color-gold: oklch(0.75 0.16 80);
-
-  /* Grayscale colors */
-  --color-black: oklch(0 0 0);
-  --color-white: oklch(1 0 0);
-  --color-grey: oklch(0.5 0 0);
-  --color-light-grey: oklch(0.666 0 0);
-  --color-gray: var(--color-grey);
-  --color-light-gray: var(--color-light-grey);
-
-  /* Action colors */
-  --color-action: oklch(0.5 0 0);
-  --color-hover: #{fn.oklch-from(color-action, $a: 0.25)};
-  --color-active: #{fn.oklch-from(color-action, $a: 0.3)};
-  --color-selected: #{fn.oklch-from(color-action, $a: 0.4)};
-
-  /* Semantic colors */
-  --primary-l: 0.5;
-  --primary-c: 0.125;
-  --primary-h: 260;
-  --color-primary: oklch(var(--primary-l) var(--primary-c) var(--primary-h));
-
-  --color-good: oklch(0.6 0.15 135);
-  --color-average: oklch(0.65 0.16 65);
-  --color-bad: oklch(0.575 0.2 25);
-  --color-label: oklch(from var(--color-primary) 0.6 0.04 h);
+  --surface-l-adjust: 0.05;
+  --surface-l: calc(var(--background-l) + var(--surface-l-adjust));
+  --surface-c: var(--background-c);
+  --surface-h: var(--background-h);
+  --surface-color: oklch(
+    var(--surface-l) calc(var(--surface-c) + 0.005) var(--surface-h)
+  );
 
   /* Text colors */
-  --fg-default: oklch(0.95 0.0125 var(--primary-h));
-  --fg-translucent: oklch(from var(--fg-default) l c h / 0.5);
-  --fg-translucent-light: oklch(from var(--fg-default) l c h / 0.75);
-  --fg-fixed-white: var(--color-white);
-  --fg-fixed-black: var(--color-black);
+  --text-color: oklch(0.95 0.0125 var(--primary-h));
+  --text-color-translucent: oklch(from var(--text-color) l c h / 0.5);
+  --text-color-translucent-light: oklch(from var(--text-color) l c h / 0.75);
 
   /* Link colors */
   --color-hyperlink: hsl(220, 100%, 70%);
   --color-hyperlink-visited: hsl(260, 100%, 70%);
   --color-hyperlink-new: hsl(0, 100%, 70%);
   --color-hyperlink-new-visited: hsl(15, 100%, 70%);
+
+  /* Semantic colors: Indicates state */
+  --color-good: oklch(0.6 0.15 135);
+  --color-average: oklch(0.7 0.175 47);
+  --color-bad: oklch(0.575 0.2 25);
+  --color-label: oklch(from var(--color-primary) 0.6 0.04 h);
+  --candystripe-odd: oklch(0 0 0 / 0.25);
+  --candystripe-even: transparent;
+
+  /* Stable colors: Try to not change they hue at least */
+  --color-red: oklch(0.625 0.25 30);
+  --color-orange: oklch(0.8 0.17 73);
+  --color-yellow: oklch(0.9 0.18 100);
+  --color-olive: oklch(0.75 0.15 120);
+  --color-green: oklch(0.6 0.16 150);
+  --color-teal: oklch(0.6 0.1 185);
+  --color-blue: oklch(0.5 0.225 265);
+  --color-violet: oklch(0.55 0.225 290);
+  --color-purple: oklch(0.575 0.25 305);
+  --color-pink: oklch(0.725 0.15 10);
+  --color-brown: oklch(0.6 0.1 55);
+  --color-gold: oklch(0.825 0.1675 90);
+
+  /* Neutral colors: Almost without saturacy */
+  --color-neutral-: oklch(0.5 0 0);
+  --color-neutral-lighter: oklch(0.666 0 0);
 
   /* Border */
   --color-border: hsla(0, 0%, 100%, 0.1);
@@ -112,7 +96,6 @@
 
 // Mappings of color names
 $color-map: ();
-$low-contrast-color-map: ("yellow", "white") !default;
 $base-colors: (
   "red": var(--color-red),
   "orange": var(--color-orange),
@@ -125,19 +108,16 @@ $base-colors: (
   "purple": var(--color-purple),
   "pink": var(--color-pink),
   "brown": var(--color-brown),
-);
-
-$additional-colors: (
   "gold": var(--color-gold),
 );
 
 $grayscale-colors: (
-  "black": var(--color-black),
-  "white": var(--color-white),
-  "grey": var(--color-grey),
-  "gray": var(--color-grey),
-  "light-grey": var(--color-light-grey),
-  "light-gray": var(--color-light-grey),
+  "black": black,
+  "white": white,
+  "grey": var(--color-neutral),
+  "gray": var(--color-neutral),
+  "light-grey": var(--color-neutral-lighter),
+  "light-gray": var(--color-neutral-lighter),
 );
 
 $semantic-colors: (
@@ -148,7 +128,7 @@ $semantic-colors: (
   "label": var(--color-label),
 );
 
-$maps: ($base-colors, $additional-colors, $grayscale-colors, $semantic-colors);
+$maps: ($base-colors, $grayscale-colors, $semantic-colors);
 $_gen_map: ();
 @each $map in $maps {
   $_gen_map: map.merge($_gen_map, $map);

@@ -4,6 +4,7 @@
 // CSS Variables
 @use "./base";
 @use "./colors";
+@use "./components";
 
 // Core styles
 @include meta.load-css("./reset.scss");

@@ -57,7 +57,7 @@ export function TitleBar(props: TitleBarProps) {
         <Button
           className="debug-button"
           color="green"
-          leadingIcon={{ name: 'bug' }}
+          startIcon={{ name: 'bug' }}
           onClick={() => setKitchenSink?.((prev) => !prev)}
         />
       )}

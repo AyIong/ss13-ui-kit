@@ -21,8 +21,8 @@ export function Button(props: ButtonProps) {
     circular,
     disabled,
     selected,
-    leadingIcon,
-    trailingIcon,
+    startIcon,
+    endIcon,
     tooltip,
     onClick,
     ...rest
@@ -33,7 +33,7 @@ export function Button(props: ButtonProps) {
       className={classes([
         'button',
         fluid && 'fluid',
-        !!children && 'has-content',
+        !children && 'icon-only',
         disabled && 'disabled',
         selected && 'selected',
         circular && 'circular',
@@ -62,9 +62,9 @@ export function Button(props: ButtonProps) {
       }}
       {...computeBoxProps(rest)}
     >
-      {leadingIcon && <Icon className="button-icon" {...leadingIcon} />}
+      {startIcon && <Icon className="button-icon" {...startIcon} />}
       {children && <div className="content">{children}</div>}
-      {trailingIcon && <Icon className="button-icon" {...trailingIcon} />}
+      {endIcon && <Icon className="button-icon" {...endIcon} />}
     </button>
   );
 

@@ -5,31 +5,34 @@ export function Preview() {
   return (
     <Window>
       <Window.Content>
-        <Stack fill vertical>
-          <Stack.Item grow>
-            <Section
-              fill
-              scrollable
-              title="Section title"
-              buttons={<Button leadingIcon={{ name: 'bug' }}>Button</Button>}
-            >
-              {Array.from({ length: 10 }, (_, i) => (
-                <div key={i}>Section content 1234567890</div>
-              ))}
-            </Section>
-          </Stack.Item>
-          <Stack.Item grow>
-            <Section
-              fill
-              scrollable
-              title="Section title"
-              buttons={<Button>Button</Button>}
-            >
-              Section content
-            </Section>
-          </Stack.Item>
-        </Stack>
+        <Content />
       </Window.Content>
     </Window>
+  );
+}
+
+function Content() {
+  return (
+    <Stack fill vertical>
+      <Stack.Item>
+        <Section
+          title="Section title"
+          buttons={<Button startIcon={{ name: 'book' }}>Button</Button>}
+        >
+          {Array.from({ length: 10 }, (_, i) => (
+            <div key={i}>Section content 1234567890</div>
+          ))}
+          <Section title="Nested section">
+            Nested section content
+            <Section title="Nested section 2">Nested section content</Section>
+          </Section>
+        </Section>
+      </Stack.Item>
+      <Stack.Item>
+        <Section title="Section title" buttons={<Button>Button</Button>}>
+          Section content
+        </Section>
+      </Stack.Item>
+    </Stack>
   );
 }

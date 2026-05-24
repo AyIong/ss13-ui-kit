@@ -14,9 +14,9 @@ export type ButtonProps = Partial<{
   /** Activates the button (gives it a green color) */
   selected: boolean;
   /** Adds an left side icon to the button */
-  leadingIcon: IconProps;
+  startIcon: IconProps;
   /** Adds an right side icon to the button */
-  trailingIcon: IconProps;
+  endIcon: IconProps;
   /** A fancy, boxy tooltip, which appears when hovering over the button */
   tooltip: ButtonTooltip;
   /** Called when element is clicked */

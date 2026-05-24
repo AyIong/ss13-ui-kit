@@ -9,7 +9,7 @@
   flex-direction: column;
   min-width: fn.rem(150px);
   min-height: fn.rem(55px);
-  background-color: var(--bg-secondary);
+  background-color: var(--surface-color);
 
   &-content {
     overflow-y: auto;
@@ -29,7 +29,7 @@
       flex: 1;
       margin: fn.rem(2px);
       margin-top: 0;
-      background-color: var(--bg-default);
+      background-color: var(--background-color);
       border-radius: var(--layout-br) var(--layout-br) 0 0;
       box-shadow: inset 0 fn.rem(6px) fn.rem(3px) fn.rem(-3px)
         var(--layout-shadow-color);

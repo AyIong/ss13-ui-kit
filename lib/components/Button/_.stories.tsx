@@ -19,8 +19,8 @@ export const Default: Story = {
     circular: false,
     selected: false,
     disabled: false,
-    leadingIcon: { name: 'xmark' },
-    trailingIcon: { name: 'xmark' },
+    startIcon: { name: 'xmark' },
+    endIcon: { name: 'xmark' },
   },
   render: (args) => {
     return <Button {...args} />;
