@@ -1,12 +1,12 @@
 @use "../../../styles/functions" as fn;
 
 .section {
+  --section-padding: var(--space-m);
   --section-bg: #{fn.oklch-from(surface-color, $a: 50%)};
   --section-title-fg: var(--fg-default);
   --section-shadow: var(--shadow-small) var(--color-shadow);
-  --section-scrollbar-color: #{fn.oklch-from(scrollbar-thumb, $l: 0.075)};
-
-  --section-padding: var(--space-m);
+  // Allow to change it only for section
+  --section-scrollbar-color: var(--undefined);
 
   overflow: hidden;
   box-sizing: border-box;
@@ -33,7 +33,7 @@
       display: flex;
       align-items: center;
       font-weight: bold;
-      font-size: fn.rem(15px);
+      font-size: fn.rem(16px);
       min-height: var(--button-height);
       margin-left: var(--space-s);
       color: var(--section-title-fg);
@@ -62,7 +62,7 @@
       position: absolute;
 
       > .os-scrollbar {
-        --os-handle-bg: var(--section-scrollbar-color);
+        --os-handle-bg: var(--section-scrollbar-color, var(--scrollbar-color));
       }
     }
   }

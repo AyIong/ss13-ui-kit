@@ -1,40 +1,40 @@
-$roboto-size-adjust: 100% !default;
+$inter-size-adjust: 100% !default;
 
 /* Regular font */
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  size-adjust: $roboto-size-adjust;
-  src: url("./fonts/Roboto-Regular.woff2") format("woff2");
+  size-adjust: $inter-size-adjust;
+  src: url("./fonts/Inter-Regular.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-display: block;
-  size-adjust: $roboto-size-adjust;
-  src: url("./fonts/Roboto-Bold.woff2") format("woff2");
+  size-adjust: $inter-size-adjust;
+  src: url("./fonts/Inter-Bold.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: italic;
   font-weight: 400;
   font-display: block;
-  size-adjust: $roboto-size-adjust;
-  src: url("./fonts/Roboto-Italic.woff2") format("woff2");
+  size-adjust: $inter-size-adjust;
+  src: url("./fonts/Inter-Italic.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: italic;
   font-weight: 700;
   font-display: block;
-  size-adjust: $roboto-size-adjust;
-  src: url("./fonts/Roboto-BoldItalic.woff2") format("woff2");
+  size-adjust: $inter-size-adjust;
+  src: url("./fonts/Inter-BoldItalic.woff2") format("woff2");
 }
 
 /* Monospace font */

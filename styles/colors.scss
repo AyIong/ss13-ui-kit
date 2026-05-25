@@ -41,6 +41,8 @@
     var(--surface-l) calc(var(--surface-c) + 0.005) var(--surface-h)
   );
 
+  --scrollbar-color: #{fn.oklch-from(primary-color, $a: 0.5)};
+
   /* Text colors */
   --text-color: oklch(0.95 0.0125 var(--primary-h));
   --text-color-translucent: oklch(from var(--text-color) l c h / 0.5);

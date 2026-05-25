@@ -14,8 +14,10 @@ export function Preview() {
 function Content() {
   return (
     <Stack fill vertical>
-      <Stack.Item>
+      <Stack.Item grow>
         <Section
+          fill
+          scrollable
           title="Section title"
           buttons={<Button startIcon={{ name: 'book' }}>Button</Button>}
         >

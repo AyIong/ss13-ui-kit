@@ -18,12 +18,9 @@
 
   /* Scrollbar track */
   --os-handle-border-radius: var(--border-radius-c);
-  --os-handle-bg: var(--bg-secondary);
-  --os-handle-bg-hover: #{fn.oklch-from(os-handle-bg, $l: var(--adjust-hover))};
-  --os-handle-bg-active: #{fn.oklch-from(
-      os-handle-bg,
-      $l: var(--adjust-active)
-    )};
+  --os-handle-bg: var(--scrollbar-color);
+  --os-handle-bg-hover: #{fn.oklch-from(os-handle-bg, $a: 1)};
+  --os-handle-bg-active: var(--os-handle-bg-hover);
 
   --os-handle-interactive-area-offset: #{fn.rem(3px)};
   --os-handle-perpendicular-size-hover: calc(
