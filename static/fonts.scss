@@ -1,40 +1,40 @@
-$arimo-size-adjust: 100% !default;
+$roboto-size-adjust: 100% !default;
 
 /* Regular font */
 @font-face {
-  font-family: "Arimo";
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  size-adjust: $arimo-size-adjust;
-  src: url("./fonts/Arimo-Regular.woff2") format("woff2");
+  size-adjust: $roboto-size-adjust;
+  src: url("./fonts/Roboto-Regular.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Arimo";
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 700;
   font-display: block;
-  size-adjust: $arimo-size-adjust;
-  src: url("./fonts/Arimo-Bold.woff2") format("woff2");
+  size-adjust: $roboto-size-adjust;
+  src: url("./fonts/Roboto-Bold.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Arimo";
+  font-family: "Roboto";
   font-style: italic;
   font-weight: 400;
   font-display: block;
-  size-adjust: $arimo-size-adjust;
-  src: url("./fonts/Arimo-Italic.woff2") format("woff2");
+  size-adjust: $roboto-size-adjust;
+  src: url("./fonts/Roboto-Italic.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "Arimo";
+  font-family: "Roboto";
   font-style: italic;
   font-weight: 700;
   font-display: block;
-  size-adjust: $arimo-size-adjust;
-  src: url("./fonts/Arimo-BoldItalic.woff2") format("woff2");
+  size-adjust: $roboto-size-adjust;
+  src: url("./fonts/Roboto-BoldItalic.woff2") format("woff2");
 }
 
 /* Monospace font */

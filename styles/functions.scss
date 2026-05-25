@@ -42,14 +42,14 @@
   @return calc($px / var(--font-size) * 1rem);
 }
 
-// Shortcut for relative colors, that accepts percentages (except hue)
-@function oklch-from($color, $l: 0, $c: 0, $h: 0, $a: null) {
+// Shortcut for relative colors, accept only css variables names
+@function oklch-from($variable, $l: 0, $c: 0, $h: 0, $a: null) {
   $l-part: if(sass($l == 0): l; else: calc(l + $l));
   $c-part: if(sass($c == 0): c; else: calc(c + $c));
   $h-part: if(sass($h == 0): h; else: calc(h + $h));
   $a-part: if(not sass($a == null): "/ #{$a}");
 
   @return oklch(
-    from var(--#{$color}) #{$l-part} #{$c-part} #{$h-part} #{$a-part}
+    from var(--#{$variable}) #{$l-part} #{$c-part} #{$h-part} #{$a-part}
   );
 }

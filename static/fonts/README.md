@@ -1,12 +1,12 @@
 # Used fonts
 
-- [Arimo](https://gwfh.mranftl.com/fonts/arimo) - Basic font, primarly used.
+- [Roboto](https://gwfh.mranftl.com/fonts/roboto) - Basic font, primarly used.
 - [JetBrains Mono](https://gwfh.mranftl.com/fonts/jetbrains-mono) - Monospace font, replacement for Consolas font.
 - [FontAwesome 7 Free](https://fontawesome.com) - Icon pack for almost any taste.
 
 # Features
 
-### Arimo & JetBrains Mono
+### Roboto & JetBrains Mono
 
 Fonts contain only Latin and Cyrillic characters (Without extensions!)
 
