@@ -32,10 +32,7 @@
   }
 
   &:active {
-    background-color: fn.oklch-from(
-      button-bg-final,
-      $l: calc(-1 * var(--adjust-active))
-    );
+    background-color: fn.oklch-from(button-bg-final, $l: var(--adjust-active));
     transition-duration: 0s;
   }
 

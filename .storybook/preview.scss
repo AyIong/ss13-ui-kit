@@ -1,6 +1,6 @@
 html,
 body {
   scrollbar-color: var(--surface-color) transparent;
-  background-color: var(--background-color);
+  background-color: oklch(from var(--background-color) calc(l - 0.05) c h);
   color: var(--text-color);
 }

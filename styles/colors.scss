@@ -21,21 +21,22 @@
 
 :root {
   /* Accent colors: Base colors used by default almost everywhere */
-  --primary-l: 0.525;
-  --primary-c: 0.125;
+  --primary-l: 0.475;
+  --primary-c: 0.1;
   --primary-h: 265;
   --primary-color: oklch(var(--primary-l) var(--primary-c) var(--primary-h));
 
-  --background-l: 0.265;
-  --background-c: 0.035;
+  --background-l: 0.225;
+  --background-c: 0.01;
   --background-h: var(--primary-h);
   --background-color: oklch(
     var(--background-l) var(--background-c) var(--background-h)
   );
 
-  --surface-l-adjust: 0.0375;
+  --surface-l-adjust: 0.06;
+  --surface-c-adjust: 0.01;
   --surface-l: calc(var(--background-l) + var(--surface-l-adjust));
-  --surface-c: calc(var(--background-c) + 0.0075);
+  --surface-c: calc(var(--background-c) + var(--surface-c-adjust));
   --surface-h: var(--background-h);
   --surface-color: oklch(
     var(--surface-l) calc(var(--surface-c) + 0.005) var(--surface-h)
@@ -44,7 +45,7 @@
   --scrollbar-color: #{fn.oklch-from(primary-color, $a: 0.5)};
 
   /* Text colors */
-  --text-color: oklch(0.95 0.015 var(--primary-h));
+  --text-color: oklch(0.925 0.015 var(--primary-h));
   --text-color-translucent: oklch(from var(--text-color) l c h / 0.5);
   --text-color-translucent-light: oklch(from var(--text-color) l c h / 0.75);
 
