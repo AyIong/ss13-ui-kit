@@ -1,5 +1,5 @@
 import { Window } from '@stories/window';
-import { Button, Section, Stack } from 'ss13-ui-kit/components/index';
+import { Button, Icon, Section, Stack } from 'ss13-ui-kit/components/index';
 
 export function Preview() {
   return (
@@ -22,13 +22,19 @@ function Content() {
           buttons={
             <>
               <Button startIcon={{ name: 'book' }}>Button</Button>
-              <Button startIcon={{ name: 'book' }}>Button</Button>
+              <Button startIcon={{ name: 'gamepad', animation: 'fade' }}>
+                Button
+              </Button>
             </>
           }
         >
           {Array.from({ length: 10 }, (_, i) => (
             <div key={i}>Section content 1234567890</div>
           ))}
+          <Icon.Stack>
+            <Icon regular name="circle" size={2} />
+            <Icon name="book" />
+          </Icon.Stack>
         </Section>
       </Stack.Item>
       <Stack.Item>

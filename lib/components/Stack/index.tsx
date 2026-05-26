@@ -57,15 +57,12 @@ import type { StackDividerProps, StackItemProps, StackProps } from './types';
 export function Stack(props: StackProps) {
   const {
     className,
-    vertical,
     fill,
+    vertical,
     reverse,
-    zebra,
-    align,
-    wrap,
-    justify,
-    direction,
     inlineFlex,
+    zebra,
+    direction,
     ...rest
   } = props;
 
@@ -78,9 +75,9 @@ export function Stack(props: StackProps) {
         'stack',
         fill && 'fill',
         vertical ? 'vertical' : 'horizontal',
+        reverse && `reverse${vertical ? '-vertical' : ''}`,
         inlineFlex && 'inline',
         zebra && 'zebra',
-        reverse && `reverse${vertical ? '-vertical' : ''}`,
         className,
         computeBoxClassName(props),
       ])}

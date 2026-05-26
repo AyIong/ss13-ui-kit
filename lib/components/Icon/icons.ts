@@ -1,7 +1,7 @@
 import type {
   IconDefinition,
   IconName,
-} from '@fortawesome/fontawesome-svg-core';
+} from '@fortawesome/fontawesome-common-types';
 
 /**
  * Custom icons to use with Icon component.
@@ -54,7 +54,7 @@ const tgAirTankSlash: IconDefinition = {
     512,
     [],
     '',
-    'M21 0Q13 0 6 6c-8 9-8 22 0 31l470 469a21 21 0 0 0 30-30L313 283l98-104c26-28 26-74 0-102a65 65 0 0 0-96 0l-35 38c18-25 23-54 10-69q-4-6-9-6c-11 0-21 25-43 47-29 27-42 39-26 58 14 17 24 13 47-8l-45 47L36 6q-6-6-15-6m355 9c-8 8-8 22 0 31l93 98c8 9 21 9 29 0 8-8 8-22 0-31l-86-93q-19 0-36-5M156 246l-67 71a15 15 0 0 0 1 22l77 76a15 15 0 0 0 21 0l67-70zM47 367a15 15 0 0 0-10 5l-10 10a75 75 0 0 0 0 101c26 28 70 28 96 0l13-13a15 15 0 0 0-1-22l-77-76a15 15 0 0 0-11-5'
+    'M21 0Q13 0 6 6c-8 9-8 22 0 31l470 469a21 21 0 0 0 30-30L313 283l98-104c26-28 26-74 0-102a65 65 0 0 0-96 0l-35 38c18-25 23-54 10-69q-4-6-9-6c-11 0-21 25-43 47-29 27-42 39-26 58 14 17 24 13 47-8l-45 47L36 6q-6-6-15-6m355 9c-8 8-8 22 0 31l93 98c8 9 21 9 29 0 8-8 8-22 0-31l-86-93q-19 0-36-5M156 246l-67 71a15 15 0 0 0 1 22l77 76a15 15 0 0 0 21 0l67-70zM47 367a15 15 0 0 0-10 5l-10 10a75 75 0 0 0 0 101c26 28 70 28 96 0l13-13a15 15 0 0 0-1-22l-77-76a15 15 0 0 0-11-5',
   ],
 };
 
@@ -167,6 +167,18 @@ export const tgIcons = {
   tgNonBinary,
   tgProstheticLeg,
   tgProstheticFull,
-}
+};
 
-export type CustomIconName = 'tg-nanotrasen' | 'tg-syndicate' | 'tg-air-tank' | 'tg-air-tank-slash' | 'tg-bad-touch' | 'tg-image-plus' | 'tg-image-minus' | 'tg-sound-plus' | 'tg-sound-minus' | 'tg-non-binary' | 'tg-prosthetic-leg' | 'tg-prosthetic-full';
+export type CustomIconName =
+  | 'tg-nanotrasen'
+  | 'tg-syndicate'
+  | 'tg-air-tank'
+  | 'tg-air-tank-slash'
+  | 'tg-bad-touch'
+  | 'tg-image-plus'
+  | 'tg-image-minus'
+  | 'tg-sound-plus'
+  | 'tg-sound-minus'
+  | 'tg-non-binary'
+  | 'tg-prosthetic-leg'
+  | 'tg-prosthetic-full';

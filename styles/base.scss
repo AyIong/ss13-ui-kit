@@ -15,6 +15,7 @@
   --font-size: 12px;
   --font-family: Inter, sans-serif;
   --font-family-mono: "JetBrains Mono", monospace;
+  --line-height: 16px;
 
   // MARK: Border width
   --border-width-unit: #{fn.rem(1px)};
@@ -90,7 +91,7 @@
 
   // MARK: Color adjustment
   /* Color lightness multiplier. + for FG - for BG */
-  --adjust-color: 0.05;
+  --adjust-color: 0.075;
   /* Color lightness multiplier when hovered */
   --adjust-hover: 0.1;
   /* Color lightness multiplier when active (clicked) */

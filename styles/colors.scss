@@ -59,7 +59,7 @@
   --color-good: oklch(0.6 0.15 135);
   --color-average: oklch(0.7 0.175 47);
   --color-bad: oklch(0.575 0.2 25);
-  --color-label: oklch(from var(--color-primary) 0.6 0.04 h);
+  --color-label: oklch(from var(--primary-color) 0.55 0.05 h);
   --candystripe-odd: oklch(0 0 0 / 0.25);
   --candystripe-even: transparent;
 
@@ -78,7 +78,7 @@
   --color-gold: oklch(0.825 0.1675 90);
 
   /* Neutral colors: Almost without saturacy */
-  --color-neutral-: oklch(0.5 0 0);
+  --color-neutral: oklch(0.5 0 0);
   --color-neutral-lighter: oklch(0.666 0 0);
 
   /* Border */
@@ -124,7 +124,7 @@ $grayscale-colors: (
 );
 
 $semantic-colors: (
-  "primary": var(--color-primary),
+  "primary": var(--primary-color),
   "good": var(--color-good),
   "average": var(--color-average),
   "bad": var(--color-bad),

@@ -1,14 +1,10 @@
 import { classes } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { tgIcons } from './icons';
-import type { IconNamesUnion, IconProps, IconStackProps } from './types';
+import type { IconProps, IconStackProps } from './types';
 
 export function Icon(props: IconProps) {
-  const { name, regular, size, className, rotation, ...rest } = props;
+  const { name, regular, size, className, rotation, animation, ...rest } =
+    props;
 
   const customStyle = rest.style || {};
   if (size) {
@@ -18,18 +14,35 @@ export function Icon(props: IconProps) {
     customStyle.transform = `rotate(${rotation}deg)`;
   }
   rest.style = customStyle;
-
   const boxProps = computeBoxProps(rest);
-  library.add(fas, far, tgIcons);
+
+  let iconClass: string;
+  if (name.startsWith('tg-')) {
+    iconClass = name;
+  } else {
+    // FontAwesome icon;
+    const preprendFa = !name.startsWith('fa-');
+
+    iconClass = regular ? 'far ' : 'fas ';
+    if (preprendFa) {
+      iconClass += 'fa-';
+    }
+    iconClass += name;
+  }
+
+  if (animation) {
+    iconClass += ` fa-${animation}`;
+  }
 
   return (
-    <FontAwesomeIcon
-      className={classes(['icon', className, computeBoxClassName(rest)])}
-      // @ts-expect-error
-      icon={[regular ? 'far' : 'fas', name as IconNamesUnion]}
-      style={customStyle}
+    <i
+      className={classes([
+        className,
+        'icon',
+        iconClass,
+        computeBoxClassName(rest),
+      ])}
       {...boxProps}
-      {...rest}
     />
   );
 }

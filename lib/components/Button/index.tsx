@@ -12,6 +12,7 @@ export function ButtonContainer(props: ButtonBaseProps) {
     captureKeys,
     fluid,
     color,
+    variant = 'filled',
     className,
     disabled,
     selected,
@@ -29,11 +30,12 @@ export function ButtonContainer(props: ButtonBaseProps) {
     <button
       className={classes([
         'button',
+        variant,
         fluid && 'fluid',
         !children && 'icon-only',
         disabled && 'disabled',
         selected && 'selected',
-        color && color,
+        `bg-${color ? color : 'primary'}`,
         className,
         computeBoxClassName(rest),
       ])}
@@ -57,27 +59,24 @@ export function ButtonContainer(props: ButtonBaseProps) {
 
   return finalButtonContainer;
 }
-Button.Container = ButtonContainer;
 
 export function ButtonIcon(props: IconProps) {
   return <Icon className="button-icon" {...props} />;
 }
-Button.Icon = ButtonIcon;
 
 export function ButtonContent(props: PropsWithChildren) {
   const { children } = props;
-  return children && <div className="button-content">{children}</div>;
+  return <div className="button-content">{children}</div>;
 }
-Button.Content = ButtonContent;
 
 export function Button(props: ButtonProps) {
-  const { children, circular, startIcon, endIcon, ...rest } = props;
+  const { children, startIcon, endIcon, ...rest } = props;
 
   return (
-    <Button.Container {...rest}>
-      {startIcon && <Button.Icon {...startIcon} />}
-      <Button.Content>{children}</Button.Content>
-      {endIcon && <Button.Icon {...endIcon} />}
-    </Button.Container>
+    <ButtonContainer {...rest}>
+      {startIcon && <ButtonIcon {...startIcon} />}
+      {children && <ButtonContent>{children}</ButtonContent>}
+      {endIcon && <ButtonIcon {...endIcon} />}
+    </ButtonContainer>
   );
 }

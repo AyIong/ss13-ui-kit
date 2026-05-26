@@ -1,42 +1,47 @@
 import { COMPONENT_COLORS } from '@common/constants';
 import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { Stack } from '../Stack';
 import { Button } from '.';
 
 type StoryProps = ComponentProps<typeof Button>;
 
 export default {
   component: Button,
-  title: 'Components/Buttons',
+  title: 'Components/Button',
 } satisfies Meta<StoryProps>;
 
 type Story = StoryObj<StoryProps>;
 
+const buttonArgs: StoryProps = {
+  children: 'Button',
+  fluid: false,
+  circular: false,
+  selected: false,
+  disabled: false,
+  variant: 'filled',
+  startIcon: { name: 'xmark' },
+  endIcon: { name: 'xmark', animation: 'fade' },
+};
+
 export const Default: Story = {
-  args: {
-    children: 'Button',
-    fluid: false,
-    circular: false,
-    selected: false,
-    disabled: false,
-    startIcon: { name: 'xmark' },
-    endIcon: { name: 'xmark' },
-  },
+  args: buttonArgs,
   render: (args) => {
     return <Button {...args} />;
   },
 };
 
 export const Colors: Story = {
-  render: () => (
-    <div>
+  args: buttonArgs,
+  render: (args) => (
+    <Stack vertical>
       {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map(
         (color) => (
-          <Button key={color} color={color}>
+          <Button key={color} color={color} {...args}>
             {color}
           </Button>
         ),
       )}
-    </div>
+    </Stack>
   ),
 };

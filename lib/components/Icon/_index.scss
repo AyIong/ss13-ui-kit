@@ -1,7 +1,7 @@
 @use "../../../styles/functions" as fn;
 
 .icon {
-  font-size: 1rem;
+  --fa-width: #{fn.em(16px)};
 }
 
 .icon-stack {

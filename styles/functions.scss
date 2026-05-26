@@ -14,12 +14,12 @@
 
 /* Darken color, to make it more readable if used as a background */
 @function bg($color) {
-  @return hsl(from $color h s calc(l - var(--adjust-color)));
+  @return oklch(from $color calc(l - var(--adjust-color)) c h);
 }
 
 /* Lighten color, to make it more readable if used as a text */
 @function fg($color) {
-  @return hsl(from $color h s calc(l + var(--adjust-color)));
+  @return oklch(from $color calc(l + var(--adjust-color)) c h);
 }
 
 /* Increases perceptual color lightness. */

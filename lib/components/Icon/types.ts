@@ -1,9 +1,5 @@
 import type { BoxProps } from '@components';
-import type { IconName } from '@fortawesome/fontawesome-svg-core';
-import type {
-  AnimationProps,
-  CSSVariables,
-} from '@fortawesome/react-fontawesome';
+import type { IconName } from '@fortawesome/fontawesome-common-types';
 import type { CSSProperties } from 'react';
 import type { CustomIconName } from './icons';
 
@@ -19,10 +15,18 @@ export type IconProps = {
   size: number;
   /** Icon rotation, in degrees. */
   rotation: number;
+  /** FontAwesome animations */
+  animation:
+    | 'beat'
+    | 'beat-fade'
+    | 'bounce'
+    | 'fade'
+    | 'shake'
+    | 'spin'
+    | 'spin-pulse';
   /** CSS styles and FontAwesome variables */
-  style: CSSProperties & CSSVariables;
+  style: CSSProperties;
 }> &
-  AnimationProps &
   Omit<BoxProps, 'children'>;
 
 export type IconStackProps = {
