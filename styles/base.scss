@@ -65,6 +65,9 @@
   /* 21px */
   --space-xxl: calc(var(--space-unit) * 21);
 
+  // MARK: Sizes
+  --base-height: #{fn.rem(20px)};
+
   // MARK: Transition times
   --transition-time-unit: 1s;
   /* 0.1s | 100ms */
@@ -77,7 +80,8 @@
   --transition-time-slowest: var(--transition-time-unit);
 
   // MARK: Shadows
-  --shadow-small: 0 #{fn.rem(3px)} #{fn.rem(3px)} #{fn.rem(-1px)};
+  --shadow-small: 0 #{fn.rem(2px)} #{fn.rem(2px)} #{fn.rem(-1px)};
+  --shadow-medium: 0 #{fn.rem(3px)} #{fn.rem(3px)} #{fn.rem(-1px)};
 
   // MARK: Blur
   --blur-small: blur(6px);

@@ -19,15 +19,16 @@ function Content() {
           fill
           scrollable
           title="Section title"
-          buttons={<Button startIcon={{ name: 'book' }}>Button</Button>}
+          buttons={
+            <>
+              <Button startIcon={{ name: 'book' }}>Button</Button>
+              <Button startIcon={{ name: 'book' }}>Button</Button>
+            </>
+          }
         >
           {Array.from({ length: 10 }, (_, i) => (
             <div key={i}>Section content 1234567890</div>
           ))}
-          <Section title="Nested section">
-            Nested section content
-            <Section title="Nested section 2">Nested section content</Section>
-          </Section>
         </Section>
       </Stack.Item>
       <Stack.Item>

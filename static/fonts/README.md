@@ -2,7 +2,6 @@
 
 - [Inter](https://gwfh.mranftl.com/fonts/inter) - Basic font, primarly used.
 - [JetBrains Mono](https://gwfh.mranftl.com/fonts/jetbrains-mono) - Monospace font, replacement for Consolas font.
-- [FontAwesome 7 Free](https://fontawesome.com) - Icon pack for almost any taste.
 
 # Features
 
@@ -22,9 +21,5 @@ Bold has **700** weight
 
 ### FontAwesome 7 Free
 
-Ripped out useless styles, like for spinning or resizing.
-
-Also removed Brands icons and imports from CSS.
-
-If you want to update it, make sure you removed at least Brand icons from `all.min.css`.
-It saves ~20kb.
+If you lookin' for FA, you will not find it, we're moved
+to [FontAwesome React Component](https://docs.fontawesome.com/web/use-with/react)

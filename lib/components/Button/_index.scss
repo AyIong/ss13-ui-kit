@@ -19,7 +19,7 @@
   align-items: center;
   white-space: nowrap;
   padding: var(--space-xs) var(--space-s);
-  min-height: var(--button-height);
+  min-height: var(--base-height);
   background-color: var(--button-bg-final);
   color: contrast-color(oklch(from var(--button-bg-final) calc(l - 0.1) c h));
   border-radius: var(--button-border-radius);

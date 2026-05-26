@@ -1,9 +1,17 @@
 @use "../../../styles/functions" as fn;
 
 .section {
+  --section-background: oklch(0.1 0.033 var(--background-h) / 0.25);
+  --section-border: var(--border-width-1) outset var(--color-border);
+  --section-title-color: var(--text-color);
+  --section-title-border-color: var(--primary-color);
+  --section-title-glow: 0 #{fn.rem(-2px)} #{fn.rem(3px)};
+  --section-title-glow-color: #{fn.oklch-from(
+      section-title-border-color,
+      $l: -0.075,
+      $a: 0.66
+    )};
   --section-padding: var(--space-m);
-  --section-bg: #{fn.oklch-from(surface-color, $a: 50%)};
-  --section-title-fg: var(--fg-default);
   --section-shadow: var(--shadow-small) var(--color-shadow);
   // Allow to change it only for section
   --section-scrollbar-color: var(--undefined);
@@ -12,8 +20,8 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background-color: var(--section-bg);
-  border: fn.rem(1px) outset hsl(0, 0%, 100%, 0.05);
+  background-color: var(--section-background);
+  border: var(--section-border);
   border-radius: var(--border-radius-3);
   box-shadow: var(--section-shadow);
 
@@ -24,9 +32,8 @@
   &-title {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-sm);
-    border-bottom: var(--border-width-2) solid var(--primary-color);
+    gap: var(--space-m);
+    padding: var(--space-m);
 
     > .left-side {
       flex: 1;
@@ -34,14 +41,14 @@
       align-items: center;
       font-weight: bold;
       font-size: fn.rem(16px);
-      min-height: var(--button-height);
+      min-height: var(--base-height);
       margin-left: var(--space-s);
-      color: var(--section-title-fg);
+      color: var(--section-title-color);
     }
 
     > .right-side {
       display: flex;
-      gap: var(--space-s);
+      gap: var(--space-m);
     }
   }
 
@@ -50,8 +57,13 @@
     padding: var(--section-padding);
 
     &-wrapper {
-      position: relative;
+      --wrapper-br: var(--border-radius-3);
+
       flex: 1;
+      position: relative;
+      border-top: var(--border-width-2) solid var(--section-title-border-color);
+      border-radius: var(--wrapper-br) var(--wrapper-br) 0 0;
+      box-shadow: var(--section-title-glow) var(--section-title-glow-color);
     }
 
     &.no-top-padding {

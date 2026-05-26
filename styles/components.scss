@@ -1,10 +1,5 @@
 @use "functions" as fn;
 
-// MARK: Component specific
-:root {
-  --button-height: #{fn.rem(20px)};
-}
-
 // MARK: OverlayScrollbar
 [data-overlayscrollbars-contents] {
   display: flex;
