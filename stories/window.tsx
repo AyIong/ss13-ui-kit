@@ -21,8 +21,8 @@ type Props = Partial<{
 export function Window(props: Props) {
   const {
     canClose = true,
-    width = 475,
-    height = 650,
+    width = 375,
+    height = 500,
     children,
     buttons,
     showDimmer,

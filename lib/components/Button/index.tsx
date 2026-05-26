@@ -1,34 +1,31 @@
-import { KEY } from '@common/keys';
 import { classes } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import { Icon, Tooltip } from '@components';
+import { Icon, type IconProps, Tooltip } from '@components';
 import type { Placement } from '@floating-ui/react';
-import type { ButtonProps } from './types';
+import type { PropsWithChildren } from 'react';
+import { useInteractions } from 'ss13-ui-kit/common/hooks';
+import type { ButtonBaseProps, ButtonProps } from './types';
 
-/**
- * Base Button component.
- * If you add something here, all buttons will have it.
- *
- * For button specific features, go to propper component.
- */
-export function Button(props: ButtonProps) {
+export function ButtonContainer(props: ButtonBaseProps) {
   const {
     children,
     captureKeys,
     fluid,
     color,
     className,
-    circular,
     disabled,
     selected,
-    startIcon,
-    endIcon,
     tooltip,
     onClick,
     ...rest
   } = props;
+  const interactions = useInteractions({
+    disabled,
+    captureKeys,
+    onClick,
+  });
 
-  let finalButton = (
+  let finalButtonContainer = (
     <button
       className={classes([
         'button',
@@ -36,48 +33,51 @@ export function Button(props: ButtonProps) {
         !children && 'icon-only',
         disabled && 'disabled',
         selected && 'selected',
-        circular && 'circular',
         color && color,
         className,
         computeBoxClassName(rest),
       ])}
-      onClick={(event) => {
-        if (!disabled && onClick) {
-          onClick(event);
-        }
-      }}
-      onKeyDown={(event) => {
-        if (!captureKeys) {
-          return;
-        }
-
-        // Simulate a click when pressing space or enter.
-        if (event.key === KEY.Space || event.key === KEY.Enter) {
-          event.preventDefault();
-          if (!disabled && onClick) {
-            onClick(event);
-          }
-          return;
-        }
-      }}
+      {...interactions}
       {...computeBoxProps(rest)}
     >
-      {startIcon && <Icon className="button-icon" {...startIcon} />}
-      {children && <div className="content">{children}</div>}
-      {endIcon && <Icon className="button-icon" {...endIcon} />}
+      {children}
     </button>
   );
 
   if (tooltip) {
-    finalButton = (
+    finalButtonContainer = (
       <Tooltip
         content={tooltip.content}
         position={tooltip.position as Placement}
       >
-        {finalButton}
+        {finalButtonContainer}
       </Tooltip>
     );
   }
 
-  return finalButton;
+  return finalButtonContainer;
+}
+Button.Container = ButtonContainer;
+
+export function ButtonIcon(props: IconProps) {
+  return <Icon className="button-icon" {...props} />;
+}
+Button.Icon = ButtonIcon;
+
+export function ButtonContent(props: PropsWithChildren) {
+  const { children } = props;
+  return children && <div className="button-content">{children}</div>;
+}
+Button.Content = ButtonContent;
+
+export function Button(props: ButtonProps) {
+  const { children, circular, startIcon, endIcon, ...rest } = props;
+
+  return (
+    <Button.Container {...rest}>
+      {startIcon && <Button.Icon {...startIcon} />}
+      <Button.Content>{children}</Button.Content>
+      {endIcon && <Button.Icon {...endIcon} />}
+    </Button.Container>
+  );
 }
