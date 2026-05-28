@@ -24,8 +24,9 @@ body {
 *,
 *:before,
 *:after {
-  font-kerning: none;
   box-sizing: inherit;
+  font-kerning: none;
+  font-variant-numeric: tabular-nums;
   margin: 0;
   padding: 0;
 }
