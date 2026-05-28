@@ -30,6 +30,8 @@ export function TitleBar(props: TitleBarProps) {
   } = props;
 
   const setKitchenSink = useSetAtom(kitchenSinkAtom as PrimitiveAtom<boolean>);
+  const devMode = process.env.NODE_ENV !== 'production';
+  const hasButtons = !!children || devMode;
   const finalTitle =
     (typeof title === 'string' &&
       title === title.toLowerCase() &&
@@ -52,14 +54,18 @@ export function TitleBar(props: TitleBarProps) {
         />
       )}
       <div className="title">{finalTitle}</div>
-      {!!children && <div className="buttons">{children}</div>}
-      {process.env.NODE_ENV !== 'production' && (
-        <Button
-          className="debug-button"
-          color="green"
-          startIcon={{ name: 'bug' }}
-          onClick={() => setKitchenSink?.((prev) => !prev)}
-        />
+      {hasButtons && (
+        <div className="buttons">
+          {devMode && (
+            <Button
+              className="debug-button"
+              color="green"
+              startIcon={{ name: 'bug' }}
+              onClick={() => setKitchenSink?.((prev) => !prev)}
+            />
+          )}
+          {children}
+        </div>
       )}
       {!!canClose && (
         <div className="close" onClick={onClose}>
