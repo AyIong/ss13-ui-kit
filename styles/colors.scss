@@ -82,7 +82,7 @@
   --color-neutral-lighter: oklch(0.666 0 0);
 
   /* Border */
-  --border-color: oklch(1 0 0 / 0.1);
+  --border-color: var(--surface-color);
   --border-color-dark: oklch(0 0 0 / 0.33);
 
   --border-primary-saturation: 100;

@@ -3,7 +3,9 @@
 .section {
   --section-background: oklch(0.175 0.015 var(--background-h) / 0.5);
   --section-background: #{fn.oklch-from(background-color, $l: -0.035, $a: 0.5)};
-  --section-border: var(--border-width-1) outset var(--border-color);
+  --section-border-width: var(--border-width-1);
+  --section-border-color: var(--border-color);
+  --section-border-style: solid;
   --section-title-color: var(--text-color);
   --section-title-border-color: var(--primary-color);
   --section-title-glow: 0 #{fn.rem(-2px)} #{fn.rem(3px)};
@@ -22,7 +24,10 @@
   display: flex;
   flex-direction: column;
   background-color: var(--section-background);
-  border: var(--section-border);
+  border: var(--section-border-width) var(--section-border-style)
+    var(--section-border-color);
+  border-top-color: fn.oklch-from(section-border-color, $l: 0.05);
+  border-bottom-color: fn.oklch-from(section-border-color, $l: -0.025);
   border-radius: var(--border-radius-3);
   box-shadow: var(--section-shadow);
 
