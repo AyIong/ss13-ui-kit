@@ -1,4 +1,5 @@
 export { AnimatedNumber } from './AnimatedNumber';
+export { Autofocus } from './Autofocus';
 export { BlockQuote } from './BlockQuote';
 export { Box } from './Box';
 export type { BoxProps } from './Box/types';

@@ -45,6 +45,7 @@ export type BoxInternalProps = Partial<{
 }>;
 
 type LiftedHTMLAttributes<TElement> = {
+  tabIndex?: number;
   /** Whether this element is draggable.
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/draggable
    */
