@@ -70,10 +70,13 @@ export function ButtonContent(props: PropsWithChildren) {
 }
 
 export function Button(props: ButtonProps) {
-  const { children, startIcon, endIcon, ...rest } = props;
+  const { children, circular, startIcon, endIcon, className, ...rest } = props;
 
   return (
-    <ButtonContainer {...rest}>
+    <ButtonContainer
+      className={classes([circular && 'circular', className])}
+      {...rest}
+    >
       {startIcon && <ButtonIcon {...startIcon} />}
       {children && <ButtonContent>{children}</ButtonContent>}
       {endIcon && <ButtonIcon {...endIcon} />}

@@ -1,4 +1,4 @@
-import { Stack, Tooltip } from '@components';
+import { Tooltip } from '@components';
 import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 
