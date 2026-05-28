@@ -65,17 +65,6 @@ describe('Button Component', () => {
 });
 
 /*
-describe('Button.Checkbox Component', () => {
-  it('renders checked and unchecked states', () => {
-    const { rerender, container } = render(<Button.Checkbox checked />);
-
-    expect(container.querySelector('.Button--selected')).toBeTruthy();
-
-    rerender(<Button.Checkbox checked={false} />);
-    expect(container.querySelector('.Button--selected')).toBeFalsy();
-  });
-});
-
 describe('Button.Confirm Component', () => {
   it('requires two clicks to confirm', () => {
     let confirmed = false;

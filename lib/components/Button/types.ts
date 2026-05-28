@@ -24,6 +24,8 @@ export type ButtonBaseProps = Partial<{
   tooltip: ButtonTooltip;
   /** Called when element is clicked */
   onClick: (event: any) => void;
+  /** Called when the button is missing focus */
+  onBlur: (event: FocusEvent) => void;
 }> &
   BoxProps;
 

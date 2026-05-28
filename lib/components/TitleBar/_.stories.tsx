@@ -11,7 +11,14 @@ export default {
   argTypes: {
     status: {
       options: [undefined, 0, 1, 2],
-      control: { type: 'select' },
+      control: {
+        type: 'radio',
+        labels: {
+          0: 'Static',
+          1: 'Visible',
+          2: 'Interactive',
+        },
+      },
     },
   },
 } satisfies Meta<StoryProps>;
