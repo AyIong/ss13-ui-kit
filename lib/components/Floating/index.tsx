@@ -3,7 +3,6 @@ import {
   autoUpdate,
   FloatingPortal,
   flip,
-  offset,
   safePolygon,
   shift,
   size,
@@ -41,7 +40,6 @@ export function Floating(props: FloatingProps) {
     content,
     contentAutoWidth,
     contentClasses,
-    contentOffset = 6,
     contentStyles,
     disabled,
     hoverDelay,
@@ -58,7 +56,6 @@ export function Floating(props: FloatingProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { refs, floatingStyles, context } = useFloating({
     middleware: [
-      offset(contentOffset),
       flip({ padding: 6 }),
       shift(),
       contentAutoWidth &&
@@ -108,7 +105,7 @@ export function Floating(props: FloatingProps) {
   const click = useClick(context, { enabled: !disabled });
   const hover = useHover(context, {
     enabled: !disabled,
-    restMs: hoverDelay || 200,
+    restMs: hoverDelay || 100,
     handleClose: hoverSafePolygon
       ? safePolygon({
           requireIntent: false,
@@ -154,8 +151,8 @@ export function Floating(props: FloatingProps) {
     <div
       ref={refs.setFloating}
       className={classes([
-        'Floating',
-        !animationDuration && 'Floating--animated',
+        'floating',
+        !animationDuration && 'animated',
         contentClasses,
       ])}
       data-position={context.placement}

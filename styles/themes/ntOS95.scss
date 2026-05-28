@@ -15,7 +15,7 @@
     --color-secondary: var(--color-primary);
     --color-label: var(--color-black);
     --color-scrollbar-thumb: hsl(from var(--color-section) h s calc(l - 25));
-    --color-border-primary: hsl(from var(--color-black) h s l / 0.5);
+    --border-color-primary: hsl(from var(--color-black) h s l / 0.5);
     --color-text: var(--color-black);
     --base-gradient-spread: 0;
     --border-radius-unit: 0;

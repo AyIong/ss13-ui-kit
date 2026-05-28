@@ -1,16 +1,19 @@
-.Floating {
+.floating {
+  --floating-indentation: var(--space-m);
+  --floating-transition-time: var(--transition-time-medium);
+  --floating-transition-timing: ease;
+
   z-index: 5;
 
-  &--animated {
+  &.animated {
     &[data-transition="open"] {
       opacity: 1;
-      transform: scale(1);
+      transform: translate(var(--translate-x, 0), var(--translate-y, 0));
     }
 
     &[data-transition="close"],
     &[data-transition="initial"] {
       opacity: 0;
-      transform: scale(0.9);
     }
 
     &[data-transition="open"],
@@ -22,39 +25,27 @@
   }
 
   // MARK: Transform origin handling
-  &[data-position="top"] {
-    transform-origin: bottom;
-  }
-
   &[data-position="top-start"],
-  &[data-position="right-end"] {
-    transform-origin: bottom left;
+  &[data-position="top"],
+  &[data-position="top-end"] {
+    --translate-y: calc(-1 * var(--floating-indentation));
   }
 
-  &[data-position="top-end"],
+  &[data-position="left-start"],
+  &[data-position="left"],
   &[data-position="left-end"] {
-    transform-origin: bottom right;
+    --translate-x: calc(-1 * var(--floating-indentation));
   }
 
-  &[data-position="bottom"] {
-    transform-origin: top;
+  &[data-position="right-start"],
+  &[data-position="right"],
+  &[data-position="right-end"] {
+    --translate-x: var(--floating-indentation);
   }
 
   &[data-position="bottom-start"],
-  &[data-position="right-start"] {
-    transform-origin: top left;
-  }
-
-  &[data-position="bottom-end"],
-  &[data-position="left-start"] {
-    transform-origin: top right;
-  }
-
-  &[data-position="right"] {
-    transform-origin: left;
-  }
-
-  &[data-position="left"] {
-    transform-origin: right;
+  &[data-position="bottom"],
+  &[data-position="bottom-end"] {
+    --translate-y: var(--floating-indentation);
   }
 }

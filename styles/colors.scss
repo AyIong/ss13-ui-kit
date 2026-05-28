@@ -82,19 +82,20 @@
   --color-neutral-lighter: oklch(0.666 0 0);
 
   /* Border */
-  --color-border: hsla(0, 0%, 100%, 0.1);
-  --color-border-dark: hsla(0, 0%, 0%, 0.33);
+  --border-color: oklch(1 0 0 / 0.1);
+  --border-color-dark: oklch(0 0 0 / 0.33);
+
   --border-primary-saturation: 100;
   --border-primary-lightness: 75;
   --border-primary-alpha: 0.75;
-  --color-border-primary: hsl(
+  --border-color-primary: hsl(
     from var(--color-primary) h var(--border-primary-saturation)
       var(--border-primary-lightness) / var(--border-primary-alpha)
   );
-  --color-border-secondary: hsl(from var(--color-border-primary) h s l / 1);
+  --border-color-secondary: hsl(from var(--border-color-primary) h s l / 1);
 
   /* Shadow */
-  --color-shadow: oklch(0 0 0 / 0.5);
+  --shadow-color: oklch(0 0 0 / 0.5);
 }
 
 // Mappings of color names

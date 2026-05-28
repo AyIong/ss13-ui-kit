@@ -3,7 +3,7 @@
 .section {
   --section-background: oklch(0.175 0.015 var(--background-h) / 0.5);
   --section-background: #{fn.oklch-from(background-color, $l: -0.035, $a: 0.5)};
-  --section-border: var(--border-width-1) outset var(--color-border);
+  --section-border: var(--border-width-1) outset var(--border-color);
   --section-title-color: var(--text-color);
   --section-title-border-color: var(--primary-color);
   --section-title-glow: 0 #{fn.rem(-2px)} #{fn.rem(3px)};
@@ -13,7 +13,7 @@
       $a: 0.66
     )};
   --section-padding: var(--space-m);
-  --section-shadow: var(--shadow-small) var(--color-shadow);
+  --section-shadow: var(--shadow-small) var(--shadow-color);
   // Allow to change it only for section
   --section-scrollbar-color: var(--undefined);
 

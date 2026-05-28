@@ -83,6 +83,7 @@
   // MARK: Shadows
   --shadow-small: 0 #{fn.rem(2px)} #{fn.rem(2px)} #{fn.rem(-1px)};
   --shadow-medium: 0 #{fn.rem(3px)} #{fn.rem(3px)} #{fn.rem(-1px)};
+  --shadow-large: 0 #{fn.rem(3px)} #{fn.rem(3px)} 0;
 
   // MARK: Blur
   --blur-small: blur(6px);

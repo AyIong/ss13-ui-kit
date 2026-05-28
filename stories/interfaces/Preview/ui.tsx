@@ -22,7 +22,10 @@ function Content() {
           buttons={
             <>
               <Button startIcon={{ name: 'book' }}>Button</Button>
-              <Button startIcon={{ name: 'gamepad', animation: 'fade' }}>
+              <Button
+                startIcon={{ name: 'gamepad', animation: 'fade' }}
+                tooltip={{ content: 'This is a tooltip' }}
+              >
                 Button
               </Button>
             </>

@@ -1,7 +1,7 @@
 @use "../../../styles/functions" as fn;
 
 .layout {
-  --layout-shadow-color: var(--color-shadow);
+  --layout-shadow-color: var(--shadow-color);
   --layout-br: var(--border-radius-4);
 
   position: relative;

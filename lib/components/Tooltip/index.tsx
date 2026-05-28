@@ -22,7 +22,7 @@ export function Tooltip(props: TooltipProps) {
   return (
     <Floating
       content={content}
-      contentClasses="Tooltip"
+      contentClasses="tooltip"
       hoverOpen
       placement={position}
     >
