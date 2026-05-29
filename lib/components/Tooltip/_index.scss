@@ -10,6 +10,7 @@
 
   pointer-events: none;
   text-align: left;
+  text-wrap: balance;
   max-width: fn.em(250px);
   padding: var(--space-sm) var(--space-m);
   background-color: var(--tooltip-background);

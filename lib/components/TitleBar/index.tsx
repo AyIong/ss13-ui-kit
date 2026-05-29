@@ -1,7 +1,7 @@
 import { UI_DISABLED, UI_INTERACTIVE, UI_UPDATE } from '@common/constants';
-import { classes } from '@common/react';
 import { toTitleCase } from '@common/string';
 import { Button, Icon } from '@components';
+import clsx from 'clsx';
 import { type PrimitiveAtom, useSetAtom } from 'jotai';
 import type { TitleBarProps } from './types';
 
@@ -40,7 +40,7 @@ export function TitleBar(props: TitleBarProps) {
 
   return (
     <div
-      className={classes(['titlebar', canClose && 'closeable', className])}
+      className={clsx(['titlebar', canClose && 'closeable', className])}
       style={styles}
     >
       <div className="dragzone" onMouseDown={(event) => onDragStart?.(event)} />

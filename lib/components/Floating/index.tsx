@@ -1,4 +1,3 @@
-import { classes } from '@common/react';
 import {
   autoUpdate,
   FloatingPortal,
@@ -13,6 +12,7 @@ import {
   useInteractions,
   useTransitionStatus,
 } from '@floating-ui/react';
+import clsx from 'clsx';
 import {
   cloneElement,
   isValidElement,
@@ -105,12 +105,12 @@ export function Floating(props: FloatingProps) {
   const click = useClick(context, { enabled: !disabled });
   const hover = useHover(context, {
     enabled: !disabled,
-    restMs: hoverDelay || 100,
     handleClose: hoverSafePolygon
       ? safePolygon({
           requireIntent: false,
         })
       : null,
+    restMs: hoverDelay || 100,
   });
 
   const openHandled = handleOpen !== undefined;
@@ -150,7 +150,7 @@ export function Floating(props: FloatingProps) {
   const floatingContent = (
     <div
       ref={refs.setFloating}
-      className={classes([
+      className={clsx([
         'floating',
         !animationDuration && 'animated',
         contentClasses,

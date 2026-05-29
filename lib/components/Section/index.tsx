@@ -1,5 +1,6 @@
-import { canRender, classes } from '@common/react';
+import { canRender } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
+import clsx from 'clsx';
 import { useOverlayScrollbars } from 'overlayscrollbars-react';
 import { useEffect, useRef } from 'react';
 import type { SectionProps } from './types';
@@ -63,9 +64,9 @@ export function Section(props: SectionProps) {
     defer: true,
     options: {
       scrollbars: {
-        theme: '',
         autoHide: 'leave',
         autoHideSuspend: true,
+        theme: '',
       },
     },
   });
@@ -92,7 +93,7 @@ export function Section(props: SectionProps) {
   return (
     <section
       id={container_id}
-      className={classes([
+      className={clsx([
         'section',
         fill && 'fill',
         fitted && 'fitted',
@@ -108,12 +109,12 @@ export function Section(props: SectionProps) {
           <div className="right-side">{buttons}</div>
         </div>
       )}
-      <div className={classes(['section-content-wrapper'])}>
+      <div className={clsx(['section-content-wrapper'])}>
         <div
           // For posterity: the forwarded ref needs to be here specifically
           // to actually let things interact with the scrolling.
           ref={nodeRef}
-          className={classes([
+          className={clsx([
             'section-content',
             scrollable && 'scrollable',
             stretchContents && 'stretch-contents',

@@ -1,7 +1,23 @@
-import { classes } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
+import clsx from 'clsx';
 import type { IconProps, IconStackProps } from './types';
 
+/**
+ * ## Icon
+ *
+ * Renders one of the FontAwesome icons of your choice.
+ *
+ * Example:
+ *
+ * ```tsx
+ * <Icon name="plus" />
+ * ```
+ *
+ * Icons: https://fontawesome.com/v6/search?o=r&m=free
+ *
+ * - [View documentation on tgui core](http://localhost:6006/?path=/docs/components-icon--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ */
 export function Icon(props: IconProps) {
   const { name, regular, size, className, rotation, animation, ...rest } =
     props;
@@ -36,7 +52,7 @@ export function Icon(props: IconProps) {
 
   return (
     <i
-      className={classes([
+      className={clsx([
         className,
         'icon',
         iconClass,
@@ -47,7 +63,20 @@ export function Icon(props: IconProps) {
   );
 }
 
-function IconStack(props: IconStackProps) {
+/**
+ * ## Icon.Stack
+ * Renders children icons on top of each other in order to make your own icon.
+ *
+ * Example:
+ *
+ * ```tsx
+ * <Icon.Stack>
+ *   <Icon name="pen" />
+ *   <Icon name="slash" />
+ * </Icon.Stack>
+ * ```
+ */
+export function IconStack(props: IconStackProps) {
   const { className, children, size, ...rest } = props;
 
   const customStyle = rest.style || {};
@@ -58,7 +87,7 @@ function IconStack(props: IconStackProps) {
 
   return (
     <span
-      className={classes([
+      className={clsx([
         'icon-stack',
         className,
         computeBoxClassName<HTMLSpanElement>(rest),
@@ -69,36 +98,4 @@ function IconStack(props: IconStackProps) {
     </span>
   );
 }
-
-/**
- * ## Icon
- *
- * Renders one of the FontAwesome icons of your choice.
- *
- * Example:
- *
- * ```tsx
- * <Icon name="plus" />
- * ```
- *
- * Icons: https://fontawesome.com/v6/search?o=r&m=free
- *
- * - [View documentation on tgui core](http://localhost:6006/?path=/docs/components-icon--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
- */
-export namespace Icon {
-  /**
-   * ## Icon.Stack
-   * Renders children icons on top of each other in order to make your own icon.
-   *
-   * Example:
-   *
-   * ```tsx
-   * <Icon.Stack>
-   *   <Icon name="pen" />
-   *   <Icon name="slash" />
-   * </Icon.Stack>
-   * ```
-   */
-  export const Stack = IconStack;
-}
+Icon.Stack = IconStack;

@@ -1,7 +1,8 @@
 import type { BoxProps } from '@components';
+import clsx from 'clsx';
 import type { CSSProperties, DOMAttributes } from 'react';
 import { CSS_COLORS } from './constants.ts';
-import { type BooleanLike, classes } from './react.ts';
+import type { BooleanLike } from './react.ts';
 
 type UnitMapper = (value: unknown) => string | undefined;
 
@@ -327,7 +328,7 @@ export function computeBoxClassName<TElement = HTMLDivElement>(
   const color = props.textColor || props.color;
   const { backgroundColor } = props;
 
-  return classes([
+  return clsx([
     isColorClass(color) && `color-${color}`,
     isColorClass(backgroundColor) && `color-bg-${backgroundColor}`,
   ]);

@@ -15,8 +15,6 @@ import {
 } from '@storybook/addon-docs/blocks';
 
 const preview: Preview = {
-  tags: ['autodocs'],
-
   decorators: [
     (Story, context) => {
       document.documentElement.className = `theme-${context.globals.theme}`;
@@ -24,8 +22,22 @@ const preview: Preview = {
     },
   ],
 
+  globalTypes: {
+    theme: {
+      description: 'Global theme for components',
+      toolbar: {
+        icon: 'paintbrush',
+        items: themes,
+        title: 'Theme',
+      },
+    },
+  },
+
+  initialGlobals: {
+    theme: 'default',
+  },
+
   parameters: {
-    layout: 'centered',
     actions: { argTypesRegex: '^on[A-Z].*' },
     backgrounds: {
       options: {
@@ -39,8 +51,6 @@ const preview: Preview = {
       },
     },
     docs: {
-      theme: previewTheme,
-      toc: false,
       codePanel: true,
       page: () => (
         <>
@@ -50,23 +60,12 @@ const preview: Preview = {
           <Controls />
         </>
       ),
+      theme: previewTheme,
+      toc: false,
     },
+    layout: 'centered',
   },
-
-  globalTypes: {
-    theme: {
-      description: 'Global theme for components',
-      toolbar: {
-        title: 'Theme',
-        icon: 'paintbrush',
-        items: themes,
-      },
-    },
-  },
-
-  initialGlobals: {
-    theme: 'default',
-  },
+  tags: ['autodocs'],
 };
 
 export default preview;

@@ -4,8 +4,8 @@
  * @license MIT
  */
 
-import { classes } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
+import clsx from 'clsx';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useEffect } from 'react';
 import type { BoxProps } from '../Box/types';
@@ -22,7 +22,7 @@ export function Layout(props: LayoutProps) {
   return (
     <div
       id="tgui-layout"
-      className={classes(['layout', className, computeBoxClassName(rest)])}
+      className={clsx(['layout', className, computeBoxClassName(rest)])}
       {...computeBoxProps(rest)}
     >
       {children}
@@ -39,12 +39,12 @@ function LayoutContent(props: BoxProps) {
         defer
         options={{
           scrollbars: {
-            theme: '',
             autoHide: 'leave',
             autoHideSuspend: true,
+            theme: '',
           },
         }}
-        className={classes([
+        className={clsx([
           'layout-content',
           className,
           computeBoxClassName(rest),

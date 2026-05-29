@@ -23,7 +23,7 @@ function Content() {
             <>
               <Button startIcon={{ name: 'book' }}>Button</Button>
               <Button
-                startIcon={{ name: 'gamepad', animation: 'fade' }}
+                startIcon={{ animation: 'fade', name: 'gamepad' }}
                 tooltip={{ content: 'This is a tooltip' }}
               >
                 Button

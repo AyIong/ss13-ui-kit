@@ -1,10 +1,10 @@
+import clsx from 'clsx';
 import {
   type PropsWithChildren,
   type ReactNode,
   type RefObject,
   useRef,
 } from 'react';
-import { classes } from 'ss13-ui-kit/common/react';
 import { TitleBar } from 'ss13-ui-kit/components/index';
 import { Layout } from 'ss13-ui-kit/components/Layout/index';
 
@@ -31,11 +31,11 @@ export function Window(props: Props) {
 
   const ref = useRef<HTMLDivElement | null>(null);
   return (
-    <Layout ref={ref} style={{ width, height }}>
+    <Layout ref={ref} style={{ height, width }}>
       <TitleBar title={title} canClose={canClose}>
         {buttons}
       </TitleBar>
-      <Layout.Content className={classes([showDimmer && 'dimmed'])}>
+      <Layout.Content className={clsx([showDimmer && 'dimmed'])}>
         {children}
       </Layout.Content>
       {/* Resize handlers */}
@@ -55,7 +55,7 @@ type WindowContentProps = Partial<{
 export function WindowContent(props: WindowContentProps) {
   const { children, className, fitted, ...rest } = props;
   return (
-    <div className={classes(['window-content', className])} {...rest}>
+    <div className={clsx(['window-content', className])} {...rest}>
       {fitted ? children : <div className="window-padding">{children}</div>}
     </div>
   );

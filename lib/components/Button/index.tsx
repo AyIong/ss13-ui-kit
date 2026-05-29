@@ -1,7 +1,7 @@
-import { classes } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { Icon, type IconProps, Tooltip } from '@components';
 import type { Placement } from '@floating-ui/react';
+import clsx from 'clsx';
 import type { PropsWithChildren } from 'react';
 import { useInteractions } from 'ss13-ui-kit/common/hooks';
 import type { ButtonBaseProps, ButtonProps } from './types';
@@ -21,14 +21,14 @@ export function ButtonContainer(props: ButtonBaseProps) {
     ...rest
   } = props;
   const interactions = useInteractions({
-    disabled,
     captureKeys,
+    disabled,
     onClick,
   });
 
   let finalButtonContainer = (
     <button
-      className={classes([
+      className={clsx([
         'button',
         variant,
         fluid && 'fluid',
@@ -74,7 +74,7 @@ export function Button(props: ButtonProps) {
 
   return (
     <ButtonContainer
-      className={classes([circular && 'circular', className])}
+      className={clsx([circular && 'circular', className])}
       {...rest}
     >
       {startIcon && <ButtonIcon {...startIcon} />}

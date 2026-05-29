@@ -13,14 +13,18 @@ const baseDir = path.join('lib', 'components', componentName);
 fs.mkdirSync(baseDir, { recursive: true });
 
 const files = {
-  'index.tsx': `import { classes } from '@common/react';
+  '_index.scss': `.${componentName.toLowerCase()} {
+  // Placeholder
+}
+`,
+  'index.tsx': `import clsx from 'clsx';
 import type { ${componentName}Props } from './types';
 
 export function ${componentName}(props: ${componentName}Props) {
   const { children, className } = props;
 
   return (
-    <div className={classes(['${componentName.toLowerCase()}', className])}>
+    <div className={clsx(['${componentName.toLowerCase()}', className])}>
       {children}
     </div>
   );
@@ -32,11 +36,6 @@ export function ${componentName}(props: ${componentName}Props) {
 export type ${componentName}Props = {
   children?: ReactNode;
   className?: string;
-}
-`,
-
-  '_index.scss': `.${componentName.toLowerCase()} {
-  // Placeholder
 }
 `,
 };

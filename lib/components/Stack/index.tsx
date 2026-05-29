@@ -1,5 +1,5 @@
-import { classes } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
+import clsx from 'clsx';
 import { useRef } from 'react';
 import type { StackDividerProps, StackItemProps, StackProps } from './types';
 
@@ -71,7 +71,7 @@ export function Stack(props: StackProps) {
 
   return (
     <div
-      className={classes([
+      className={clsx([
         'stack',
         fill && 'fill',
         vertical ? 'vertical' : 'horizontal',
@@ -124,7 +124,7 @@ function StackItem(props: StackItemProps) {
   return (
     <div
       ref={ref}
-      className={classes(['stack-item', className, computeBoxClassName(rest)])}
+      className={clsx(['stack-item', className, computeBoxClassName(rest)])}
       {...computeStackItemProps(rest)}
     />
   );
@@ -135,7 +135,7 @@ function StackDivider(props: StackDividerProps) {
   const { className, hidden, ...rest } = props;
   return (
     <div
-      className={classes([
+      className={clsx([
         'stack-divider',
         hidden && 'hidden',
         className,

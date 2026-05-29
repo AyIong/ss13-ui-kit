@@ -1,5 +1,5 @@
-import { classes } from '@common/react';
 import { Box, type BoxProps } from '@components';
+import clsx from 'clsx';
 
 /**
  * ## BlockQuote
@@ -16,7 +16,7 @@ export function BlockQuote(props: BoxProps) {
   return (
     <Box
       as="blockquote"
-      className={classes(['blockquote', className])}
+      className={clsx(['blockquote', className])}
       {...rest}
     />
   );

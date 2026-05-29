@@ -24,5 +24,6 @@ export type SectionProps = Partial<{
   title: ReactNode;
   /** Ref to the section element. */
   ref: RefObject<HTMLDivElement | null>;
-}> & PropsWithChildren &
+}> &
+  PropsWithChildren &
   BoxProps;

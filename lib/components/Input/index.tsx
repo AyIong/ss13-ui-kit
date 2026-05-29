@@ -1,115 +1,15 @@
 import { isEscape, KEY } from '@common/keys';
-import { classes } from '@common/react';
 import { inputDebounce } from '@common/timer';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import type { BoxProps } from '@components';
-import { type RefObject, useEffect, useRef, useState } from 'react';
-
-/** Takes two optional params: The dom element type & the input type */
-export type BaseInputProps<
-  TElement = HTMLInputElement,
-  // Restricted inputs are number based
-  TInput = string,
-> = Partial<{
-  /** Automatically focuses the input on mount */
-  autoFocus: boolean;
-  /** Automatically selects the input value on focus */
-  autoSelect: boolean;
-  /** Custom css classes */
-  className: string;
-  /** Disables the input. Outlined in gray */
-  disabled: boolean;
-  /**
-   * Whether to debounce the onChange event.
-   *
-   * Do this if it's performing expensive ops on each input, like filtering or
-   * sending the value immediate to Byond (via act).
-   *
-   * It will only fire once every 250ms by default. Pass in a number in ms
-   * for a custom fire rate
-   */
-  expensive: boolean | number;
-  /** Fills the parent container */
-  fluid: boolean;
-  /** Mark this if you want to use a monospace font */
-  monospace: boolean;
-  /** Will force an update when value changes even if the input isn't currently highlighted */
-  alwaysUpdate: boolean;
-  /** Fires each time focus leaves the input, including if Esc or Enter are pressed */
-  onBlur: (value: TInput) => void;
-  /**
-   * Fires each time the input has been changed. You do not need to enter the second param unless you're using it. All of these are valid:
-   *
-   * @example
-   * ```tsx
-   * <Input onChange={(value) => console.log(value)} />
-   * <Input onChange={(value, event) => console.log(value, event)} />
-   * <Input onChange={console.log} /> // This will log the value and the event
-   * <Input onChange={setValue} /> // This will just change the value state
-   * ```
-   */
-  onChange: (value: TInput, event?: React.ChangeEvent<TElement>) => void;
-  /** Fires once the enter key is pressed */
-  onEnter: (value: TInput, event?: React.KeyboardEvent<TElement>) => void;
-  /** Fires once the escape key is pressed */
-  onEscape: (value: TInput, event?: React.KeyboardEvent<TElement>) => void;
-  /**
-   * Generally, input can handle its own state value. You might not NEED this.
-   *
-   * Use this if you want to hold the value in the parent for external
-   * manipulation. For instance:
-   *
-   * Clearing the input
-   *
-   * ```tsx
-   * const [value, setValue] = useState('');
-   *
-   * return (
-   *  <>
-   *    <Button onClick={() => act('inputVal', {inputVal: value})}>
-   *      Submit
-   *    </Button>
-   *    <Input
-   *      value={value}
-   *      onChange={setValue} />
-   *    <Button onClick={() => setValue('')}>
-   *      Clear
-   *    </Button>
-   *  </>
-   * )
-   * ```
-   *
-   * Updating the value from the backend
-   *
-   * ```tsx
-   * const { data } = useBackend<Data>();
-   * const { valveSetting } = data;
-   *
-   * return (
-   *  <Input
-   *    value={valveSetting}
-   *    onEnter={(value) => act('submit', { valveSetting: value })}
-   *  />
-   * )
-   * ```
-   */
-  value: TInput;
-}> &
-  BoxProps<TElement>;
-
-export type TextInputProps<TElement = HTMLInputElement> = Partial<{
-  /** The maximum length of the input value */
-  maxLength: number;
-  /** The placeholder text when everything is cleared */
-  placeholder: string;
-  /** Ref of the input element */
-  ref: RefObject<TElement | null>;
-  /** Clears the input value on enter */
-  selfClear: boolean;
-  /** Allows to toggle on spellcheck on inputs */
-  spellcheck: boolean;
-}> &
-  BaseInputProps<TElement>;
+import clsx from 'clsx';
+import {
+  type ChangeEvent,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
+import type { TextInputProps } from './types';
 
 /**
  * ## Input
@@ -144,11 +44,11 @@ export function Input(props: TextInputProps) {
   } = props;
 
   const ourRef = useRef<HTMLInputElement>(null);
-  const inputRef = ref ?? ourRef;
+  const inputRef = ref || ourRef;
 
-  const [innerValue, setInnerValue] = useState(value ?? '');
+  const [innerValue, setInnerValue] = useState(value || '');
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
+  function handleChange(event: ChangeEvent<HTMLInputElement>): void {
     const value = event.currentTarget.value;
     setInnerValue(value);
     if (expensive) {
@@ -180,19 +80,13 @@ export function Input(props: TextInputProps) {
   }
 
   /** Focuses the input on mount */
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-
+  useLayoutEffect(() => {
     if (autoFocus || autoSelect) {
-      timer = setTimeout(() => {
-        inputRef.current?.focus();
-        if (autoSelect) {
-          inputRef.current?.select();
-        }
-      }, 1);
+      inputRef.current?.focus();
+      if (autoSelect) {
+        inputRef.current?.select();
+      }
     }
-
-    return () => clearTimeout(timer);
   }, []);
 
   /** Updates the value on props change */
@@ -203,16 +97,16 @@ export function Input(props: TextInputProps) {
         value !== innerValue) ||
       alwaysUpdate
     ) {
-      setInnerValue(value ?? '');
+      setInnerValue(value || '');
     }
   }, [value]);
 
   const boxProps = computeBoxProps(rest);
-  const clsx = classes([
-    'Input',
-    disabled && 'Input--disabled',
-    fluid && 'Input--fluid',
-    monospace && 'Input--monospace',
+  const classNames = clsx([
+    'input',
+    disabled && 'disabled',
+    fluid && 'fluid',
+    monospace && 'monospace',
     computeBoxClassName<HTMLInputElement>(rest),
     className,
   ]);
@@ -221,7 +115,7 @@ export function Input(props: TextInputProps) {
     <input
       {...boxProps}
       autoComplete="off"
-      className={clsx}
+      className={classNames}
       disabled={disabled}
       maxLength={maxLength}
       onBlur={() => onBlur?.(innerValue)}

@@ -1,5 +1,6 @@
 /**
  * Helper for conditionally adding/removing classes in React
+ * @deprecated Use the `clsx` package instead
  */
 export function classes(classNames: (string | BooleanLike)[]): string {
   let className = '';
