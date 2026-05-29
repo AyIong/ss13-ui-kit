@@ -1,36 +1,59 @@
-.Input {
-  font-size: 1em;
-  background-color: var(--input-background);
-  border-radius: var(--input-border-radius);
-  border: var(--border-thickness-tiny) solid var(--input-border-color);
-  color: var(--input-color);
-  font-family: var(--input-font-family);
-  padding: var(--space-xxs) var(--space-sm);
-  width: var(--input-width);
+@use "../../../styles/functions" as fn;
 
-  &:focus {
-    outline: none;
+.input {
+  --input-width: #{fn.em(150px)};
+  --input-caret-color: var(--secondary-color);
+  --input-background-color: var(--background-color);
+  --input-color: var(--text-color);
+  --input-placeholder-color: #{fn.oklch-from(input-color, $a: 0.33)};
+  --input-border-color: #{fn.oklch-from(border-color, $l: 0.05)};
+  --input-border-color-focus: var(--primary-color);
+  --input-border-radius: var(--border-radius-2);
+
+  cursor: var(--cursor-text);
+  box-sizing: border-box; // Respect padding
+  caret-color: var(--input-caret-color);
+  width: var(--input-width);
+  height: var(--base-height);
+  padding: var(--space-m);
+  background-color: var(--input-background-color);
+  color: var(--input-color);
+  outline: var(--border-width-1) solid var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  transition-property: opacity, outline-color;
+  transition-duration: var(--transition-time-medium);
+  transition-timing-function: ease-out;
+
+  &:hover:not(.disabled) {
+    outline-color: fn.oklch-from(input-border-color-focus, $a: 0.75);
   }
 
   &:focus-within {
-    border-color: var(--input-border-color-focus);
+    outline-color: fn.oklch-from(
+      input-border-color-focus,
+      $l: var(--adjust-active)
+    );
   }
 
   &::placeholder {
-    font-style: italic;
-    color: var(--input-color-placeholder);
+    color: var(--input-placeholder-color);
   }
-}
 
-.Input--disabled {
-  border-color: var(--input-border-disabled);
-  color: var(--input-color-placeholder);
-}
+  &.disabled {
+    --disabled-color: color-mix(
+      var(--color-bad) 50%,
+      var(--input-background-color)
+    );
+    --input-placeholder-color: var(--disabled-color);
+    --input-border-color: var(--disabled-color);
+    cursor: var(--cursor-disabled);
+  }
 
-.Input--fluid {
-  width: 100%;
-}
+  &.fluid {
+    width: 100%;
+  }
 
-.Input--monospace {
-  font-family: var(--input-font-family-mono);
+  &.monospace {
+    font-family: var(--font-family-mono);
+  }
 }

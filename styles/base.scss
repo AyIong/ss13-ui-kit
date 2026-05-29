@@ -98,10 +98,14 @@
   /* Color lightness multiplier when active (clicked) */
   --adjust-active: 0.05;
 
+  // MARK: Opacity
+  --opacity-disabled: 0.75;
+
   /* Cursors */
   --cursor-default: default;
   --cursor-pointer: pointer;
   --cursor-grab: grab;
+  --cursor-text: text;
   --cursor-disabled: var(--cursor-default);
   --cursor-n-resize: n-resize;
   --cursor-s-resize: s-resize;

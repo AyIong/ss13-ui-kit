@@ -114,18 +114,18 @@ export function Input(props: TextInputProps) {
   return (
     <input
       {...boxProps}
-      autoComplete="off"
+      ref={inputRef}
       className={classNames}
+      type="text"
+      autoComplete="off"
+      value={innerValue}
+      placeholder={placeholder}
       disabled={disabled}
       maxLength={maxLength}
+      spellCheck={spellcheck}
       onBlur={() => onBlur?.(innerValue)}
       onChange={handleChange}
       onKeyDown={handleKeyDown}
-      placeholder={placeholder}
-      ref={inputRef}
-      spellCheck={spellcheck}
-      type="text"
-      value={innerValue}
     />
   );
 }

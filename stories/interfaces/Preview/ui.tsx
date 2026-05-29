@@ -1,5 +1,11 @@
 import { Window } from '@stories/window';
-import { Button, Icon, Section, Stack } from 'ss13-ui-kit/components/index';
+import {
+  Button,
+  Icon,
+  Input,
+  Section,
+  Stack,
+} from 'ss13-ui-kit/components/index';
 
 export function Preview() {
   return (
@@ -21,13 +27,13 @@ function Content() {
           title="Section title"
           buttons={
             <>
-              <Button startIcon={{ name: 'book' }}>Button</Button>
               <Button
                 startIcon={{ animation: 'fade', name: 'gamepad' }}
                 tooltip={{ content: 'This is a tooltip' }}
               >
                 Button
               </Button>
+              <Input disabled placeholder="Search..." />
             </>
           }
         >
