@@ -9,11 +9,6 @@
   );
   --button-disabled-opacity: 0.5;
   --button-border-radius: var(--border-radius-2);
-  --button-transition-duration: var(--transition-time-fast);
-  --button-transition-property: background-color, color, opacity;
-  --button-transition-timing-function: ease-out;
-  // Allow downstreams to override disabled color
-  --button-background-disabled: var(--undefined);
 
   cursor: var(--cursor-pointer);
   user-select: none;
@@ -26,9 +21,9 @@
   background-color: var(--button-background-final);
   color: var(--button-color);
   border-radius: var(--button-border-radius);
-  transition-duration: var(--button-transition-duration);
-  transition-property: var(--button-transition-property);
-  transition-timing-function: var(--button-transition-timing-function);
+  transition-duration: var(--transition-time-fast);
+  transition-property: background-color, color, opacity;
+  transition-timing-function: ease-out;
 
   &:hover {
     background-color: fn.oklch-from(
@@ -42,7 +37,7 @@
       button-background-final,
       $l: var(--adjust-active)
     );
-    transition-duration: 0s;
+    transition: none;
   }
 
   &-content {
@@ -97,17 +92,17 @@
 .button.outlined {
   --button-background-final: transparent;
   --button-color: #{fn.fg(var(--button-background))};
-  --button-transition-property: outline-color, color;
 
   position: relative;
   outline: var(--border-width-1) solid fn.oklch-from(button-color, $a: 0.75);
+  transition-property: outline-color, color;
 
   &:hover {
     outline-color: var(--button-color);
   }
 
   &:active {
-    transition-duration: 0s;
+    transition: none;
   }
 }
 
@@ -123,8 +118,10 @@
 // MARK: States
 .button {
   &.disabled {
+    // Allow downstreams to override disabled color
     --button-background: var(
-      --button-background-disabled var(--button-background)
+      --button-background-disabled,
+      var(--button-background)
     );
 
     pointer-events: none;
@@ -136,10 +133,11 @@
   }
 
   &.circular {
+    --button-border-radius: var(--border-radius-c);
+
     aspect-ratio: 1 / 1;
     white-space: normal;
     text-align: center;
-    border-radius: var(--border-radius-c);
   }
 
   &.fluid {

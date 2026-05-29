@@ -1,28 +1,23 @@
 @use "../../../styles/functions" as fn;
 
 .section {
+  --section-padding: var(--space-m);
   --section-background: #{fn.oklch-from(background-color, $l: -0.05, $a: 0.5)};
-  --section-border-width: var(--border-width-1);
-  --section-border-color: var(--border-color);
-  --section-border-style: solid;
   --section-title-color: var(--text-color);
   --section-title-border-color: var(--primary-color);
-  --section-padding: var(--space-m);
-  --section-shadow: var(--shadow-small) var(--shadow-color);
-  // Allow to change it only for section
-  --section-scrollbar-color: var(--undefined);
+  --section-border-color: var(--border-color);
+  --section-shadow-color: var(--shadow-color);
 
   overflow: hidden;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   background-color: var(--section-background);
-  border: var(--section-border-width) var(--section-border-style)
-    var(--section-border-color);
+  border: var(--border-width-1) solid var(--section-border-color);
   border-top-color: fn.oklch-from(section-border-color, $l: 0.05);
   border-bottom-color: fn.oklch-from(section-border-color, $l: -0.025);
   border-radius: var(--border-radius-3);
-  box-shadow: var(--section-shadow);
+  box-shadow: var(--shadow-small) var(--section-shadow-color);
 
   &.fill {
     height: 100%;
@@ -73,6 +68,7 @@
       position: absolute;
 
       > .os-scrollbar {
+        // Allow to change it only for section
         --os-handle-bg: var(--section-scrollbar-color, var(--scrollbar-color));
       }
     }

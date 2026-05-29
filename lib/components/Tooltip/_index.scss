@@ -1,22 +1,15 @@
 @use "../../../styles/functions" as fn;
 
 .tooltip {
-  --tooltip-background: var(--background-color);
-  --tooltip-color: var(--text-color);
-  --tooltip-border-radius: var(--border-radius-2);
-  --tooltip-border: var(--border-width-1) solid var(--border-color);
-  --tooltip-shadow: var(--shadow-large) var(--shadow-color);
-  --tooltip-blur: var(--blur-medium);
-
   pointer-events: none;
   text-align: left;
   text-wrap: balance;
   max-width: fn.em(250px);
   padding: var(--space-sm) var(--space-m);
-  background-color: var(--tooltip-background);
-  color: var(--tooltip-color);
-  border: var(--tooltip-border);
-  border-radius: var(--tooltip-border-radius);
-  box-shadow: var(--tooltip-shadow);
-  backdrop-filter: var(--tooltip-blur);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: var(--border-width-1) solid var(--border-color);
+  border-radius: var(--border-radius-2);
+  box-shadow: var(--shadow-large) var(--shadow-color);
+  backdrop-filter: var(--blur-medium);
 }

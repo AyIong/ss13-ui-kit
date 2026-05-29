@@ -1,8 +1,6 @@
 @use "../../../styles/functions" as fn;
 
 .input {
-  --input-width: #{fn.em(150px)};
-  --input-caret-color: var(--secondary-color);
   --input-background-color: var(--background-color);
   --input-color: var(--text-color);
   --input-placeholder-color: #{fn.oklch-from(input-color, $a: 0.33)};
@@ -12,16 +10,16 @@
 
   cursor: var(--cursor-text);
   box-sizing: border-box; // Respect padding
-  caret-color: var(--input-caret-color);
-  width: var(--input-width);
+  caret-color: var(--secondary-color);
+  width: fn.em(150px);
   height: var(--base-height);
   padding: var(--space-m);
   background-color: var(--input-background-color);
   color: var(--input-color);
   outline: var(--border-width-1) solid var(--input-border-color);
   border-radius: var(--input-border-radius);
-  transition-property: outline-color;
-  transition-duration: var(--transition-time-medium);
+  transition-property: color, outline-color;
+  transition-duration: var(--transition-time-fast);
   transition-timing-function: ease-out;
 
   &:hover:not(.disabled) {
@@ -37,6 +35,7 @@
 
   &::placeholder {
     color: var(--input-placeholder-color);
+    transition: color var(--transition-time-medium) ease-out;
   }
 
   &.disabled {

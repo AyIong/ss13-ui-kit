@@ -90,6 +90,7 @@ export function Floating(props: FloatingProps) {
   }));
 
   const { isMounted, status } = useTransitionStatus(context, {
+    // TODO: Calculate CSS var value
     duration: animationDuration || 200,
   });
 

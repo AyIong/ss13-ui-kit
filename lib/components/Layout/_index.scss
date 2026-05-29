@@ -2,7 +2,7 @@
 
 .layout {
   --layout-shadow-color: var(--shadow-color);
-  --layout-br: var(--border-radius-4);
+  --layout-border-radius: var(--border-radius-4);
 
   position: relative;
   display: flex;
@@ -30,7 +30,7 @@
       margin: fn.rem(2px);
       margin-top: 0;
       background-color: var(--background-color);
-      border-radius: var(--layout-br) var(--layout-br) 0 0;
+      border-radius: var(--layout-border-radius) var(--layout-border-radius) 0 0;
       box-shadow: inset var(--shadow-medium) var(--layout-shadow-color);
     }
   }
