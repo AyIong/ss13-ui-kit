@@ -31,7 +31,7 @@ export function Window(props: Props) {
 
   const ref = useRef<HTMLDivElement | null>(null);
   return (
-    <Layout ref={ref} style={{ height, width }}>
+    <Layout ref={ref} style={{ width, height }}>
       <TitleBar title={title} canClose={canClose}>
         {buttons}
       </TitleBar>
