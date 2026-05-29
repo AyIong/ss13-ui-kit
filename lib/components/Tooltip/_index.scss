@@ -1,12 +1,14 @@
 @use "../../../styles/functions" as fn;
 
 .tooltip {
+  --tooltip-background-color: #{fn.oklch-from(background-color, $a: 0.85)};
+
   pointer-events: none;
   text-align: left;
   text-wrap: balance;
   max-width: fn.em(250px);
   padding: var(--space-sm) var(--space-m);
-  background-color: var(--background-color);
+  background-color: var(--tooltip-background-color);
   color: var(--text-color);
   border: var(--border-width-1) solid var(--border-color);
   border-radius: var(--border-radius-2);

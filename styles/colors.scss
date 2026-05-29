@@ -27,7 +27,7 @@
   --primary-color: oklch(var(--primary-l) var(--primary-c) var(--primary-h));
 
   --background-l: 0.233;
-  --background-c: 0.01;
+  --background-c: 0.005;
   --background-h: var(--primary-h);
   --background-color: oklch(
     var(--background-l) var(--background-c) var(--background-h)
