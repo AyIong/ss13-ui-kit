@@ -33,7 +33,7 @@ function Content() {
               >
                 Button
               </Button>
-              <Input disabled placeholder="Search..." />
+              <Input placeholder="Search..." />
             </>
           }
         >

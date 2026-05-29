@@ -20,7 +20,7 @@
   color: var(--input-color);
   outline: var(--border-width-1) solid var(--input-border-color);
   border-radius: var(--input-border-radius);
-  transition-property: opacity, outline-color;
+  transition-property: outline-color;
   transition-duration: var(--transition-time-medium);
   transition-timing-function: ease-out;
 
@@ -28,7 +28,7 @@
     outline-color: fn.oklch-from(input-border-color-focus, $a: 0.75);
   }
 
-  &:focus-within {
+  &:focus-within:not(.disabled) {
     outline-color: fn.oklch-from(
       input-border-color-focus,
       $l: var(--adjust-active)
@@ -44,6 +44,7 @@
       var(--color-bad) 50%,
       var(--input-background-color)
     );
+    --input-color: #{fn.fg(var(--disabled-color))};
     --input-placeholder-color: var(--disabled-color);
     --input-border-color: var(--disabled-color);
     cursor: var(--cursor-disabled);
