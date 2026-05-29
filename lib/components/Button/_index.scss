@@ -47,8 +47,15 @@
     margin: 0 var(--space-s);
   }
 
-  &:not(:has(.button-content)) .icon {
+  // Make icon-only buttons simmetrical
+  .icon {
     --fa-width: #{fn.em(14px)};
+  }
+
+  // Reset icon width if we have content
+  // :not(:has(.button-content)) pretty heavy
+  &:has(.button-content) .icon {
+    --fa-width: var(--icon-width);
   }
 }
 
@@ -138,11 +145,5 @@
     aspect-ratio: 1 / 1;
     white-space: normal;
     text-align: center;
-  }
-
-  &.fluid {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
   }
 }

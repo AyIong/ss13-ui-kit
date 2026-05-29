@@ -32,7 +32,6 @@ export function ButtonContainer(props: ButtonBaseProps) {
         'button',
         variant,
         fluid && 'fluid',
-        !children && 'icon-only',
         disabled && 'disabled',
         selected && 'selected',
         `bg-${color ? color : 'primary'}`,
