@@ -9,9 +9,16 @@ type ButtonTooltip = {
   position?: Placement;
 };
 
-export type ButtonBaseProps = Partial<{
+export type ButtonInteractionProps = Partial<{
   /** Captures keyboard events */
   captureKeys: boolean;
+  /** Called when element is clicked */
+  onClick: (event: any) => void;
+  /** Called when the button is missing focus */
+  onBlur: (event: FocusEvent) => void;
+}>;
+
+export type ButtonBaseProps = Partial<{
   /** Fill all available horizontal space */
   fluid: boolean;
   /** Disables button and makes it semi-transparent */
@@ -22,11 +29,8 @@ export type ButtonBaseProps = Partial<{
   variant: 'filled' | 'transparent' | 'outlined';
   /** A fancy, boxy tooltip, which appears when hovering over the button */
   tooltip: ButtonTooltip;
-  /** Called when element is clicked */
-  onClick: (event: any) => void;
-  /** Called when the button is missing focus */
-  onBlur: (event: FocusEvent) => void;
 }> &
+  ButtonInteractionProps &
   BoxProps;
 
 export type ButtonProps = Partial<{

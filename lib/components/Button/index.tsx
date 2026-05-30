@@ -3,7 +3,7 @@ import { Icon, type IconProps, Tooltip } from '@components';
 import type { Placement } from '@floating-ui/react';
 import clsx from 'clsx';
 import type { PropsWithChildren } from 'react';
-import { useInteractions } from 'ss13-ui-kit/common/hooks';
+import { useButton } from 'ss13-ui-kit/hooks/button';
 import type { ButtonBaseProps, ButtonProps } from './types';
 
 export function ButtonContainer(props: ButtonBaseProps) {
@@ -20,7 +20,7 @@ export function ButtonContainer(props: ButtonBaseProps) {
     onClick,
     ...rest
   } = props;
-  const interactions = useInteractions({
+  const interactions = useButton({
     captureKeys,
     disabled,
     onClick,

@@ -1,14 +1,8 @@
-import { isEscape, KEY } from '@common/keys';
-import { inputDebounce } from '@common/timer';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import clsx from 'clsx';
-import {
-  type ChangeEvent,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import { type RefObject, useRef } from 'react';
+import { useAutofocus } from 'ss13-ui-kit/hooks/autofocus';
+import { useInput } from 'ss13-ui-kit/hooks/input';
 import type { TextInputProps } from './types';
 
 /**
@@ -44,62 +38,22 @@ export function Input(props: TextInputProps) {
   } = props;
 
   const ourRef = useRef<HTMLInputElement>(null);
-  const inputRef = ref || ourRef;
+  const inputRef = (ref || ourRef) as RefObject<HTMLInputElement>;
 
-  const [innerValue, setInnerValue] = useState(value || '');
-
-  function handleChange(event: ChangeEvent<HTMLInputElement>): void {
-    const value = event.currentTarget.value;
-    setInnerValue(value);
-    if (expensive) {
-      const debounceTime = typeof expensive === 'number' ? expensive : 250;
-      inputDebounce(debounceTime)(() => onChange?.(value, event));
-    } else {
-      onChange?.(value, event);
-    }
-  }
-
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>): void {
-    onKeyDown?.(event);
-
-    if (event.key === KEY.Enter) {
-      event.preventDefault();
-      onEnter?.(event.currentTarget.value, event);
-      if (selfClear) {
-        setInnerValue('');
-      }
-      event.currentTarget.blur();
-      return;
-    }
-
-    if (isEscape(event.key)) {
-      event.preventDefault();
-      onEscape?.(event.currentTarget.value, event);
-      event.currentTarget.blur();
-    }
-  }
-
-  /** Focuses the input on mount */
-  useLayoutEffect(() => {
-    if (autoFocus || autoSelect) {
-      inputRef.current?.focus();
-      if (autoSelect) {
-        inputRef.current?.select();
-      }
-    }
-  }, []);
-
-  /** Updates the value on props change */
-  useEffect(() => {
-    if (
-      (inputRef.current &&
-        document.activeElement !== inputRef.current &&
-        value !== innerValue) ||
-      alwaysUpdate
-    ) {
-      setInnerValue(value || '');
-    }
-  }, [value]);
+  useAutofocus(inputRef, { autoFocus, autoSelect });
+  const { innerValue, ...interactions } = useInput<HTMLInputElement>(inputRef, {
+    dontUseTabForIndent: true,
+    alwaysUpdate,
+    disabled,
+    expensive,
+    selfClear,
+    value,
+    onBlur,
+    onChange,
+    onKeyDown,
+    onEnter,
+    onEscape,
+  });
 
   const boxProps = computeBoxProps(rest);
   const classNames = clsx([
@@ -123,9 +77,7 @@ export function Input(props: TextInputProps) {
       disabled={disabled}
       maxLength={maxLength}
       spellCheck={spellcheck}
-      onBlur={() => onBlur?.(innerValue)}
-      onChange={handleChange}
-      onKeyDown={handleKeyDown}
+      {...interactions}
     />
   );
 }

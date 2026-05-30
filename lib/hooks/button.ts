@@ -1,22 +1,18 @@
-import { KEY } from './keys';
+import { KEY } from 'ss13-ui-kit/common/keys';
+import type { ButtonInteractionProps } from 'ss13-ui-kit/components/Button/types';
 
 /**
- * Unifies interaction events between all
- * interactive elements, such as buttons.
- *
- * For usage example, see Button component.
+ * Returns input handlers for
+ * clickable elements, such as buttons.
  */
-interface UseInteractionsProps {
-  disabled?: boolean;
-  captureKeys?: boolean;
-  onClick?: (event) => void;
-}
+type useButtonProps = Partial<{
+  disabled: boolean;
+}> &
+  ButtonInteractionProps;
 
-export function useInteractions({
-  disabled,
-  captureKeys = true,
-  onClick,
-}: UseInteractionsProps) {
+export function useButton(props: useButtonProps) {
+  const { disabled, captureKeys, onClick } = props;
+
   function handleClick(event) {
     if (!disabled) {
       onClick?.(event);

@@ -22,6 +22,10 @@ export const Default: Story = {
     placeholder: 'Type something here...',
     value: 'Hello, world!',
   },
+
+  render(args) {
+    return <Input {...args} />;
+  },
 };
 
 export const AutoSelect: Story = {

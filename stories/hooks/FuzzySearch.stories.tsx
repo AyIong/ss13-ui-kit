@@ -1,5 +1,5 @@
-import { useFuzzySearch } from '@common/fuzzysearch';
 import { Box, Input } from '@components';
+import { useFuzzySearch } from '@hooks';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 
 const items: string[] = [
