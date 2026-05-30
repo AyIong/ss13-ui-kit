@@ -1,0 +1,9 @@
+.input-restricted {
+  --input-border-color-focus: var(--color-good);
+
+  box-shadow: var(--shadow-medium) var(--input-border-color-focus);
+
+  &--invalid {
+    --input-border-color-focus: var(--color-bad);
+  }
+}

@@ -39,7 +39,9 @@ describe('Button Component', () => {
     let clicked = false;
 
     const { getByText } = render(
-      <Button onClick={() => (clicked = true)}>Click</Button>,
+      <Button captureKeys onClick={() => (clicked = true)}>
+        Click
+      </Button>,
     );
 
     const btn = getByText('Click');
@@ -53,7 +55,9 @@ describe('Button Component', () => {
     let clicked = false;
 
     const { getByText } = render(
-      <Button onClick={() => (clicked = true)}>Click</Button>,
+      <Button captureKeys onClick={() => (clicked = true)}>
+        Click
+      </Button>,
     );
 
     const btn = getByText('Click');

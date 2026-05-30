@@ -43,7 +43,7 @@ export function TextArea(props: TextAreaProps) {
   const textareaRef = (ref || ourRef) as RefObject<HTMLTextAreaElement>;
 
   useAutofocus(textareaRef, { autoFocus, autoSelect });
-  const { innerValue, ...interactions } = useInput<HTMLTextAreaElement>(
+  const { innerValue, ...interactions } = useInput<HTMLTextAreaElement, string>(
     textareaRef,
     {
       userMarkup,
@@ -64,6 +64,8 @@ export function TextArea(props: TextAreaProps) {
   const classNames = clsx([
     'input',
     'input-textarea',
+    fluid && 'fluid',
+    monospace && 'monospace',
     disabled && 'disabled',
     computeBoxClassName<HTMLTextAreaElement>(rest),
     className,

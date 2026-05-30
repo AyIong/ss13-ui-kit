@@ -19,7 +19,7 @@ export function useAutofocus(
 
   useEffect(() => {
     const element = ref.current;
-    if (!element && !(autoFocus || autoSelect)) {
+    if (!element || !(autoFocus || autoSelect)) {
       return;
     }
 

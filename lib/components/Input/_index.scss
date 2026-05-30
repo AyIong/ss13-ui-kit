@@ -4,7 +4,7 @@
   --input-background-color: var(--background-color);
   --input-color: var(--text-color);
   --input-placeholder-color: #{fn.oklch-from(input-color, $a: 0.33)};
-  --input-border-color: #{fn.oklch-from(border-color, $l: 0.05)};
+  --input-border-color: var(--border-color);
   --input-border-color-focus: var(--primary-color);
   --input-border-radius: var(--border-radius-2);
 
@@ -16,7 +16,8 @@
   padding: var(--space-m);
   background-color: var(--input-background-color);
   color: var(--input-color);
-  outline: var(--border-width-1) solid var(--input-border-color);
+  outline: var(--border-width-1) solid
+    #{fn.oklch-from(input-border-color, $l: 0.05)};
   border-radius: var(--input-border-radius);
   transition-property: color, outline-color;
   transition-duration: var(--transition-time-fast);

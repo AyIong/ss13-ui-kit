@@ -102,7 +102,10 @@ export type InputEventProps<
   onEscape: (value: TInput, event?: React.KeyboardEvent<TElement>) => void;
 }>;
 
-export type TextInputProps<TElement = HTMLInputElement> = Partial<{
+export type TextInputProps<
+  TElement = HTMLInputElement,
+  TInput = string,
+> = Partial<{
   /** Custom css classes */
   className: string;
   /** Fills the parent container */
@@ -118,4 +121,4 @@ export type TextInputProps<TElement = HTMLInputElement> = Partial<{
   /** Allows to toggle on spellcheck on inputs */
   spellcheck: boolean;
 }> &
-  BaseInputProps<TElement>;
+  BaseInputProps<TElement, TInput>;

@@ -41,19 +41,22 @@ export function Input(props: TextInputProps) {
   const inputRef = (ref || ourRef) as RefObject<HTMLInputElement>;
 
   useAutofocus(inputRef, { autoFocus, autoSelect });
-  const { innerValue, ...interactions } = useInput<HTMLInputElement>(inputRef, {
-    dontUseTabForIndent: true,
-    alwaysUpdate,
-    disabled,
-    expensive,
-    selfClear,
-    value,
-    onBlur,
-    onChange,
-    onKeyDown,
-    onEnter,
-    onEscape,
-  });
+  const { innerValue, ...interactions } = useInput<HTMLInputElement, string>(
+    inputRef,
+    {
+      dontUseTabForIndent: true,
+      alwaysUpdate,
+      disabled,
+      expensive,
+      selfClear,
+      value,
+      onBlur,
+      onChange,
+      onKeyDown,
+      onEnter,
+      onEscape,
+    },
+  );
 
   const boxProps = computeBoxProps(rest);
   const classNames = clsx([
