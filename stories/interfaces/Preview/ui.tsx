@@ -47,7 +47,15 @@ function Content() {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Section title" buttons={<Button>Button</Button>}>
+        <Section
+          title="Section title"
+          buttons={
+            <>
+              <Button>Primary</Button>
+              <Button color="secondary">Secondary</Button>
+            </>
+          }
+        >
           Section content
         </Section>
       </Stack.Item>

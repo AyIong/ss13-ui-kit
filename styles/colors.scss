@@ -21,10 +21,17 @@
 
 :root {
   /* Accent colors: Base colors used by default almost everywhere */
-  --primary-l: 0.475;
-  --primary-c: 0.1;
+  --primary-l: 0.5;
+  --primary-c: 0.125;
   --primary-h: 265;
   --primary-color: oklch(var(--primary-l) var(--primary-c) var(--primary-h));
+
+  --secondary-l: 0.55;
+  --secondary-c: 0.175;
+  --secondary-h: var(--primary-h);
+  --secondary-color: oklch(
+    var(--secondary-l) var(--secondary-c) var(--secondary-h)
+  );
 
   --background-l: 0.233;
   --background-c: 0.005;
@@ -126,6 +133,7 @@ $grayscale-colors: (
 
 $semantic-colors: (
   "primary": var(--primary-color),
+  "secondary": var(--secondary-color),
   "good": var(--color-good),
   "average": var(--color-average),
   "bad": var(--color-bad),
