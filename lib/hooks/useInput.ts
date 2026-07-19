@@ -1,4 +1,11 @@
-import { type ChangeEvent, type RefObject, useEffect, useState } from 'react';
+import {
+  type ChangeEvent,
+  type FocusEvent,
+  type KeyboardEvent,
+  type RefObject,
+  useEffect,
+  useState,
+} from 'react';
 import { isEscape, KEY } from 'ss13-ui-kit/common/keys';
 import { inputDebounce } from 'ss13-ui-kit/common/timer';
 import type { BaseInputProps } from 'ss13-ui-kit/components/Input/types';
@@ -25,6 +32,10 @@ function getMarkupString(
   return `${inputText.substring(0, startPosition)}${markupType}${inputText.substring(startPosition, endPosition)}${markupType}${inputText.substring(endPosition)}`;
 }
 
+function toStoredValue<TInput>(raw: string, isNumeric?: boolean): TInput {
+  return (isNumeric ? Number(raw) : raw) as TInput;
+}
+
 export function useInput<
   TElement extends WritableElement,
   TInput extends string | number,
@@ -45,7 +56,9 @@ export function useInput<
     onEscape,
   } = props;
 
-  const [innerValue, setInnerValue] = useState(value || (isNumeric ? 0 : ''));
+  const emptyValue = (isNumeric ? 0 : '') as TInput;
+  const [innerValue, setInnerValue] = useState<TInput>(value || emptyValue);
+
   /** Updates the initial value on props change */
   useEffect(() => {
     if (!ref?.current) {
@@ -54,26 +67,26 @@ export function useInput<
 
     const valueChanged = value !== innerValue;
     const inputBlured = document.activeElement !== ref.current;
-    console.log(!(inputBlured && valueChanged) && 'Will not be updated');
-    if ((inputBlured && valueChanged) || alwaysUpdate) {
-      setInnerValue(value || (isNumeric ? 0 : ''));
-    }
-  }, [value]);
 
-  function tryOnChange(value: TInput, event?: React.ChangeEvent<TElement>) {
+    if ((inputBlured && valueChanged) || alwaysUpdate) {
+      setInnerValue(value || emptyValue);
+    }
+  }, [value, alwaysUpdate]);
+
+  function tryOnChange(value: TInput, event?: ChangeEvent<TElement>) {
     if (!onChange || disabled) {
       return;
     }
 
     if (expensive) {
       const debounceTime = typeof expensive === 'number' ? expensive : 250;
-      inputDebounce(debounceTime)(() => onChange?.(value as TInput, event));
+      inputDebounce(debounceTime)(() => onChange?.(value, event));
     } else {
-      onChange?.(value as TInput, event);
+      onChange?.(value, event);
     }
   }
 
-  function handleBlur(_event: React.FocusEvent<TElement>) {
+  function handleBlur(_event: FocusEvent<TElement>) {
     onBlur?.(innerValue as TInput);
   }
 
@@ -83,10 +96,67 @@ export function useInput<
    * will be called only when you stop typing.
    */
   function handleChange(event: ChangeEvent<TElement>): void {
-    const value = event.currentTarget.value;
-    const finalValue = isNumeric ? Number(value) : value;
+    const finalValue = toStoredValue<TInput>(
+      event.currentTarget.value,
+      isNumeric,
+    );
+
     setInnerValue(finalValue);
-    tryOnChange(finalValue as TInput, event);
+    tryOnChange(finalValue, event);
+  }
+
+  function handleEnter(event: KeyboardEvent<TElement>, finalValue: TInput) {
+    event.preventDefault();
+    onEnter?.(finalValue, event);
+    if (selfClear) {
+      setInnerValue(emptyValue);
+    }
+    event.currentTarget.blur();
+  }
+
+  function handleEscape(event: KeyboardEvent<TElement>, finalValue: TInput) {
+    event.preventDefault();
+    onEscape?.(finalValue, event);
+    event.currentTarget.blur();
+  }
+
+  function handleTab(event: KeyboardEvent<TElement>) {
+    event.preventDefault();
+    let { value, selectionStart, selectionEnd } = event.currentTarget;
+    const start = selectionStart || 0;
+    const end = selectionEnd || start;
+
+    const newValue = `${value.substring(0, start)}\t${value.substring(end)}`;
+    setInnerValue(newValue as TInput);
+    selectionEnd = start + 1;
+
+    // Save our tabulation on backend
+    onChange?.(newValue as TInput, event as any);
+  }
+
+  function handleMinus(event: KeyboardEvent<TElement>) {
+    event.preventDefault();
+    const newValue = (Number(innerValue) * -1) as TInput;
+    setInnerValue(newValue);
+    tryOnChange(newValue, event as any);
+  }
+
+  function handleUserMarkup(
+    event: KeyboardEvent<TElement>,
+    userMarkup: string,
+  ) {
+    event.preventDefault();
+
+    let { value, selectionStart, selectionEnd } = event.currentTarget;
+    const start = selectionStart || 0;
+    const end = selectionEnd || start;
+
+    const newValue = getMarkupString(value, userMarkup, start, end);
+    setInnerValue(newValue as TInput);
+    selectionEnd = end + userMarkup.length * 2;
+
+    // Save markup on backend
+    onChange?.(newValue as TInput, event as any);
   }
 
   function handleKeyDown(event: React.KeyboardEvent<TElement>): void {
@@ -95,69 +165,40 @@ export function useInput<
     }
 
     onKeyDown?.(event);
-    const value = event.currentTarget.value;
-    const finalValue = isNumeric ? Number(value) : value;
+    const finalValue = toStoredValue<TInput>(
+      event.currentTarget.value,
+      isNumeric,
+    );
 
     // Enter
-    if (event.key === KEY.Enter) {
-      event.preventDefault();
-      onEnter?.(finalValue as TInput, event);
-      if (selfClear) {
-        setInnerValue(isNumeric ? 0 : '');
-      }
-      event.currentTarget.blur();
+    // Prevent calling it on Shift + Enter (save new line behaviour)
+    if (event.key === KEY.Enter && !event.shiftKey) {
+      handleEnter(event, finalValue);
       return;
     }
 
     // Escape
     if (isEscape(event.key)) {
-      event.preventDefault();
-      onEscape?.(finalValue as TInput, event);
-      event.currentTarget.blur();
+      handleEscape(event, finalValue);
       return;
     }
 
     // Tab
     if (!dontUseTabForIndent && event.key === KEY.Tab) {
-      event.preventDefault();
-      let { value, selectionStart, selectionEnd } = event.currentTarget;
-      const start = selectionStart || 0;
-      const end = selectionEnd || start;
-
-      const newValue = `${value.substring(0, start)}\t${value.substring(end)}`;
-      setInnerValue(newValue);
-      selectionEnd = start + 1;
-
-      // Save our tabulation on backend
-      onChange?.(newValue as TInput, event as any);
+      handleTab(event);
       return;
     }
 
     // Minus
     if (isNumeric && event.key === KEY.Minus) {
-      event.preventDefault();
-      const newValue = Number(innerValue) * -1;
-      setInnerValue(newValue);
-      tryOnChange(newValue as TInput, event as any);
+      handleMinus(event);
       return;
     }
 
     // User markup
     const modKey = event.ctrlKey || event.metaKey;
     if (userMarkup && modKey && userMarkup[event.key]) {
-      event.preventDefault();
-
-      let { value, selectionStart, selectionEnd } = event.currentTarget;
-      const start = selectionStart || 0;
-      const end = selectionEnd || start;
-
-      const markupString = userMarkup[event.key];
-      const newValue = getMarkupString(value, markupString, start, end);
-      setInnerValue(newValue);
-      selectionEnd = end + markupString.length * 2;
-
-      // Save our tabulation on backend
-      onChange?.(newValue as TInput, event as any);
+      handleUserMarkup(event, userMarkup[event.key]);
       return;
     }
   }
