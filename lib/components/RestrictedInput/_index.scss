@@ -1,9 +1,16 @@
 .input-restricted {
   --input-border-color-focus: var(--color-good);
 
+  appearance: textfield;
   box-shadow: var(--shadow-medium) var(--input-border-color-focus);
 
   &--invalid {
     --input-border-color-focus: var(--color-bad);
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
   }
 }
