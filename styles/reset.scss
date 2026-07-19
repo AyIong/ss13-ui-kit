@@ -9,6 +9,8 @@ body {
 }
 
 html {
+  --font-size: calc(var(--font-size-unit) * 1px);
+
   cursor: var(--cursor-default, default); // Reset the cursor.
   overflow: hidden;
   font-size: var(--font-size, 12px);
