@@ -26,7 +26,7 @@ export type ButtonBaseProps = Partial<{
   /** Activates the button (gives it a green color) */
   selected: boolean;
   /** Changes button style */
-  variant: 'filled' | 'transparent' | 'outlined';
+  variant: 'filled' | 'transparent';
   /** A fancy, boxy tooltip, which appears when hovering over the button */
   tooltip: ButtonTooltip;
 }> &

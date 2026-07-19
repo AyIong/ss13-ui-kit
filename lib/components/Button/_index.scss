@@ -95,24 +95,6 @@
   }
 }
 
-// MARK: Variants: Outlined
-.button.outlined {
-  --button-background-final: transparent;
-  --button-color: #{fn.fg(var(--button-background))};
-
-  position: relative;
-  outline: var(--border-width-1) solid fn.oklch-from(button-color, $a: 0.75);
-  transition-property: outline-color, color;
-
-  &:hover {
-    outline-color: var(--button-color);
-  }
-
-  &:active {
-    transition: none;
-  }
-}
-
 // MARK: Colors
 .button {
   @each $color-name, $color-value in colors.$color-map {
