@@ -12,6 +12,7 @@
 
   cursor: var(--cursor-pointer);
   user-select: none;
+  position: relative;
   box-sizing: border-box; // Include padding in size calculations
   display: inline-flex;
   align-items: center;
@@ -45,11 +46,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0 var(--space-s);
+    z-index: 1;
   }
 
   // Make icon-only buttons simmetrical
   .icon {
     --fa-width: #{fn.em(14px)};
+    z-index: 1;
   }
 
   // Reset icon width if we have content

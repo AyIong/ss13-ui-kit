@@ -1,4 +1,5 @@
 import { Window } from '@stories/window';
+import { useState } from 'react';
 import {
   Button,
   Icon,
@@ -18,6 +19,8 @@ export function Preview() {
 }
 
 function Content() {
+  const [selected, setSelected] = useState(false);
+
   return (
     <Stack fill vertical>
       <Stack.Item grow>
@@ -51,7 +54,12 @@ function Content() {
           title="Section title"
           buttons={
             <>
-              <Button>Primary</Button>
+              <Button
+                selected={selected}
+                onClick={() => setSelected(!selected)}
+              >
+                Primary
+              </Button>
               <Button color="secondary">Secondary</Button>
             </>
           }
