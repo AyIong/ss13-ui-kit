@@ -1,4 +1,4 @@
-export { useAutofocus } from './autofocus';
-export { useButton } from './button';
-export { useFuzzySearch } from './fuzzysearch';
-export { useInput } from './input';
+export { useAutofocus } from './useAutofocus';
+export { useButton } from './useButton';
+export { useFuzzySearch } from './useFuzzySearch';
+export { useInput } from './useInput';

@@ -1,8 +1,7 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
+import { useAutofocus, useInput } from '@hooks';
 import clsx from 'clsx';
 import { type RefObject, useRef } from 'react';
-import { useAutofocus } from 'ss13-ui-kit/hooks/autofocus';
-import { useInput } from 'ss13-ui-kit/hooks/input';
 import type { TextInputProps } from './types';
 
 /**

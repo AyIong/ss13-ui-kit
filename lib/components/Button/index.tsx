@@ -1,9 +1,9 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { Icon, type IconProps, Tooltip } from '@components';
 import type { Placement } from '@floating-ui/react';
+import { useButton } from '@hooks';
 import clsx from 'clsx';
 import type { PropsWithChildren } from 'react';
-import { useButton } from 'ss13-ui-kit/hooks/button';
 import type { ButtonBaseProps, ButtonProps } from './types';
 
 export function ButtonContainer(props: ButtonBaseProps) {
