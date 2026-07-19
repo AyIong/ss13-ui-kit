@@ -23,9 +23,10 @@
     "@floating-ui/react": "^0.27.16",
     "@fortawesome/fontawesome-common-types": "^7.2.0",
     "@nozbe/microfuzz": "^1.0.0",
-    "jotai": "^2.20.0",
     "clsx": "^2.1.1",
-    "overlayscrollbars-react": "^0.5.6"
+    "jotai": "^2.20.0",
+    "overlayscrollbars-react": "^0.5.6",
+    "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.11",

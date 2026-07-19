@@ -4,9 +4,14 @@ import type {
   EventHandlers,
   StringStyleMap,
 } from '@common/ui';
-import type { CSSProperties, HTMLAttributes, ReactNode } from 'react';
+import type {
+  CSSProperties,
+  HTMLAttributes,
+  ReactNode,
+  RefObject,
+} from 'react';
 
-export type BoxInternalProps = Partial<{
+export type BoxInternalProps<TElement> = Partial<{
   /**
    * The component used for the root node.
    * @default <div>
@@ -42,6 +47,8 @@ export type BoxInternalProps = Partial<{
    * 3. This should be a static string with minimal interpolation. If you need more logic, prefer the props approach.
    */
   tw: string;
+  /** Ref to the Box created element. */
+  ref: RefObject<TElement | null>;
 }>;
 
 type LiftedHTMLAttributes<TElement> = {
@@ -63,7 +70,7 @@ export type DangerDoNotUse = {
 // This is because I'm trying to isolate DangerDoNotUse from the rest of the props.
 // While you still can technically use ComponentProps, it won't throw an error if someone uses dangerouslySet.
 export interface BoxProps<TElement = HTMLDivElement>
-  extends BoxInternalProps,
+  extends BoxInternalProps<TElement>,
     BooleanStyleMap,
     StringStyleMap,
     LiftedHTMLAttributes<TElement>,

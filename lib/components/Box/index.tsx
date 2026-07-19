@@ -57,7 +57,7 @@ import type { BoxProps, DangerDoNotUse } from './types';
 export function Box<TElement = HTMLDivElement>(
   props: BoxProps<TElement> & DangerDoNotUse,
 ) {
-  const { as = 'div', className, children, tw, ...rest } = props;
+  const { as = 'div', className, children, tw, ref, ...rest } = props;
 
   const computedClassName = className
     ? `${className} ${computeBoxClassName<TElement>(rest)}`
@@ -72,6 +72,7 @@ export function Box<TElement = HTMLDivElement>(
     as,
     {
       ...computedProps,
+      ref: ref,
       className: computedClassName,
     },
     children,

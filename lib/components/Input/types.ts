@@ -1,5 +1,4 @@
 import type { BoxProps } from '@components';
-import type { RefObject } from 'react';
 
 /** Takes two optional params: The dom element type & the input type */
 export type BaseInputProps<
@@ -116,8 +115,6 @@ export type TextInputProps<
   maxLength: number;
   /** The placeholder text when everything is cleared */
   placeholder: string;
-  /** Ref of the input element */
-  ref: RefObject<TElement | null>;
   /** Allows to toggle on spellcheck on inputs */
   spellcheck: boolean;
 }> &

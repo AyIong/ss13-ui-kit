@@ -1,5 +1,5 @@
 import type { BoxProps } from '@components';
-import type { PropsWithChildren, ReactNode, RefObject } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 
 export type SectionProps = Partial<{
   /** Buttons to render aside the section title. */
@@ -22,8 +22,6 @@ export type SectionProps = Partial<{
   stretchContents: boolean;
   /** Title of the section. */
   title: ReactNode;
-  /** Ref to the section element. */
-  ref: RefObject<HTMLDivElement | null>;
 }> &
   PropsWithChildren &
   BoxProps;
