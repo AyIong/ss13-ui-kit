@@ -2,6 +2,7 @@ import { Window } from '@stories/window';
 import { useState } from 'react';
 import {
   Button,
+  Collapsible,
   Icon,
   Input,
   Section,
@@ -65,6 +66,22 @@ function Content() {
           }
         >
           Section content
+          <Collapsible
+            title="Collapsible"
+            buttons={
+              <>
+                <Button>Do nothing</Button>
+                <Button
+                  startIcon={{ name: 'times' }}
+                  tooltip={{ content: 'This button do nothing.' }}
+                />
+              </>
+            }
+          >
+            Interactive story playground Controls give you an easy to use
+            interface to test your components. Set your story args and you'll
+            see controls appearing here automatically.
+          </Collapsible>
         </Section>
       </Stack.Item>
     </Stack>

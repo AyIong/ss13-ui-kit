@@ -15,3 +15,9 @@ $map-keys: colors.$color-map !default;
     ) !important;
   }
 }
+
+@each $color-name, $color-value in colors.$color-map {
+  .bg-#{$color-name} {
+    --bg-color: oklch(from #{$color-value} calc(l - 0.033) c h);
+  }
+}

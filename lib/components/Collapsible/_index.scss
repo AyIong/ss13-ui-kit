@@ -1,0 +1,124 @@
+@use "../../../styles/functions" as fn;
+
+.collapsible {
+  --fg-color: contrast-color(#{fn.oklch-from(bg-color, $l: -0.1)});
+
+  padding: 0 var(--space-xs);
+  margin-top: var(--space-m);
+  border-radius: var(--border-radius-2);
+  transition: padding var(--transition-time-medium);
+
+  &.is-open {
+    padding: var(--space-xs);
+  }
+
+  &-content {
+    padding: var(--space-sm);
+
+    &-wrapper {
+      --wrapper-br: calc(var(--border-radius-2) - var(--space-xxs));
+
+      overflow: hidden;
+      height: max-content;
+      background-color: color-mix(var(--bg-color), var(--background-color) 85%);
+      border-radius: 0 0 var(--wrapper-br) var(--wrapper-br);
+      box-shadow: inset var(--shadow-small) var(--shadow-color);
+      transition: height var(--transition-time-medium);
+    }
+  }
+
+  &-controls {
+    border-style: solid;
+    border-color: fn.oklch-from(bg-color, $l: 0.1);
+    border-width: 0;
+    transition: border-width var(--transition-time-fast);
+
+    .is-open & {
+      border-bottom-width: var(--border-width-2);
+    }
+  }
+
+  &-button {
+    user-select: none;
+    cursor: var(--cursor-pointer);
+    box-sizing: content-box;
+    flex: 1;
+    align-items: center;
+    height: var(--base-height);
+    padding-left: var(--space-sm);
+    color: var(--fg-color);
+  }
+
+  &-buttons {
+    gap: var(--space-xs);
+
+    .button {
+      border: var(--border-width-2) solid var(--surface-color);
+      border-bottom: none;
+      border-radius: 0;
+
+      .is-open & {
+        border-top-left-radius: var(--border-radius-2);
+        border-top-right-radius: var(--border-radius-2);
+      }
+    }
+  }
+
+  &-icon {
+    position: relative;
+    height: fn.em(2px);
+    width: var(--font-size);
+    border-radius: var(--border-radius-c);
+    transition: transform var(--transition-time-fast);
+
+    &-1,
+    &-2,
+    &-3 {
+      position: absolute;
+      background-color: var(--fg-color);
+    }
+
+    .is-open & {
+      transform: translateY(fn.em(-4px));
+
+      &-1,
+      &-2,
+      &-3 {
+        transition-delay: var(--transition-time-medium);
+      }
+
+      &-1 {
+        transform: translateY(fn.em(0px));
+      }
+
+      &-2 {
+        transform: translateY(fn.em(4px));
+      }
+
+      &-3 {
+        transform: translateY(fn.em(8px));
+      }
+    }
+  }
+
+  &-title,
+  &-icon {
+    opacity: 0.9;
+  }
+
+  // React Animations
+  &-enter,
+  &-exit-active {
+    height: 0;
+  }
+
+  &-enter-active,
+  &-enter-done {
+    height: max-content;
+  }
+
+  // Remove margin if directly inside <Stack>
+  .stack > & {
+    margin-top: 0;
+  }
+}

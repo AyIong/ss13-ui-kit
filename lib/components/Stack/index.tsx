@@ -72,13 +72,13 @@ export function Stack(props: StackProps) {
   return (
     <div
       className={clsx([
+        className,
         'stack',
         fill && 'fill',
         vertical ? 'vertical' : 'horizontal',
         reverse && `reverse${vertical ? '-vertical' : ''}`,
         inlineFlex && 'inline',
         zebra && 'zebra',
-        className,
         computeBoxClassName(props),
       ])}
       {...computeStackProps({
@@ -124,7 +124,7 @@ function StackItem(props: StackItemProps) {
   return (
     <div
       ref={ref}
-      className={clsx(['stack-item', className, computeBoxClassName(rest)])}
+      className={clsx([className, 'stack-item', computeBoxClassName(rest)])}
       {...computeStackItemProps(rest)}
     />
   );

@@ -134,6 +134,8 @@ $grayscale-colors: (
 $semantic-colors: (
   "primary": var(--primary-color),
   "secondary": var(--secondary-color),
+  "surface": fn.oklch-from(surface-color, $l: 0.05),
+  "background": var(--background-color),
   "good": var(--color-good),
   "average": var(--color-average),
   "bad": var(--color-bad),

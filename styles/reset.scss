@@ -1,5 +1,11 @@
 @use "./functions" as fn;
 
+:root {
+  // Enable animations between height: 0% => height: 100%
+  // for example.
+  interpolate-size: allow-keywords;
+}
+
 html,
 body {
   box-sizing: border-box;

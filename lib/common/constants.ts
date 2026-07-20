@@ -364,5 +364,15 @@ export const COMPONENT_COLORS = {
     'grey',
     'gold',
   ],
-  states: ['primary', 'good', 'average', 'bad', 'black', 'white'],
+  states: [
+    'primary',
+    'secondary',
+    'surface',
+    'background',
+    'good',
+    'average',
+    'bad',
+    'black',
+    'white',
+  ],
 } as const;

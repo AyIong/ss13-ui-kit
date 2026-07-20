@@ -1,12 +1,9 @@
-@use "../../../styles/colors";
 @use "../../../styles/functions" as fn;
 
 .button {
-  --button-background: var(--primary-color);
-  --button-background-final: #{fn.oklch-from(button-background, $l: -0.025)};
-  --button-color: contrast-color(
-    oklch(from var(--button-background-final) calc(l - 0.1) c h)
-  );
+  --bg-color: var(--primary-color);
+  --bg-color-final: #{fn.oklch-from(bg-color, $l: -0.025)};
+  --button-color: contrast-color(#{fn.oklch-from(bg-color-final, $l: -0.1)});
   --button-disabled-opacity: 0.5;
   --button-border-radius: var(--border-radius-2);
 
@@ -19,7 +16,7 @@
   white-space: nowrap;
   min-height: var(--base-height);
   padding: var(--space-xs) var(--space-s);
-  background-color: var(--button-background-final);
+  background-color: var(--bg-color-final);
   color: var(--button-color);
   border-radius: var(--button-border-radius);
   transition-duration: var(--transition-time-fast);
@@ -27,17 +24,11 @@
   transition-timing-function: ease-out;
 
   &:hover {
-    background-color: fn.oklch-from(
-      button-background-final,
-      $l: var(--adjust-hover)
-    );
+    background-color: fn.oklch-from(bg-color, $l: var(--adjust-hover));
   }
 
   &:active {
-    background-color: fn.oklch-from(
-      button-background-final,
-      $l: var(--adjust-active)
-    );
+    background-color: fn.oklch-from(bg-color, $l: var(--adjust-active));
     transition: none;
   }
 
@@ -65,15 +56,15 @@
 // MARK: Variants: Transparent
 .button.transparent {
   --button-color-opacity: 1;
-  --button-background-final: transparent;
+  --bg-color-final: transparent;
   --button-color: #{fn.oklch-from(
-      button-background,
+      bg-color,
       $l: 0.1,
       $a: var(--button-color-opacity)
     )};
 
   &:hover {
-    --button-background-final: #{fn.oklch-from(button-background, $a: 0.125)};
+    --bg-color-final: #{fn.oklch-from(bg-color, $a: 0.125)};
   }
 
   &:active {
@@ -83,27 +74,18 @@
   // Default color must be text color
   &.bg-primary:not(.selected) {
     --button-color-opacity: 0.5;
-    --button-background: var(--text-color-translucent);
+    --bg-color: var(--text-color-translucent);
   }
 
   &.selected {
-    --button-background: #{fn.oklch-from(color-good, $l: 0.1, $c: 0.1)};
+    --bg-color: #{fn.oklch-from(color-good, $l: 0.1, $c: 0.1)};
   }
 
   &.disabled {
-    --button-background-final: #{fn.oklch-from(color-bad, $c: 0.1, $a: 0.125)};
+    --bg-color-final: #{fn.oklch-from(color-bad, $c: 0.1, $a: 0.125)};
     --button-color: #{fn.oklch-from(color-bad, $l: 0.075)};
 
     opacity: 1;
-  }
-}
-
-// MARK: Colors
-.button {
-  @each $color-name, $color-value in colors.$color-map {
-    &.bg-#{$color-name} {
-      --button-background: oklch(from #{$color-value} calc(l - 0.033) c h);
-    }
   }
 }
 
@@ -111,17 +93,14 @@
 .button {
   &.disabled {
     // Allow downstreams to override disabled color
-    --button-background: var(
-      --button-background-disabled,
-      var(--button-background)
-    );
+    --bg-color: var(--bg-color-disabled, var(--bg-color));
 
     pointer-events: none;
     opacity: var(--button-disabled-opacity);
   }
 
   &.selected {
-    --button-background: var(--color-good);
+    --bg-color: var(--color-good);
   }
 
   &.circular {
