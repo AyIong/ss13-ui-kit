@@ -15,26 +15,22 @@ export function Collapsible(props: CollapsibleProps) {
   });
 
   return (
-    <Stack
-      g={0}
-      vertical
+    <div
       className={clsx(
         'collapsible',
         `bg-${color || 'primary'}`,
         isOpen && 'is-open',
       )}
     >
-      <Stack className="collapsible-controls">
-        <Stack className="collapsible-button" {...interactions}>
+      <div className="collapsible-controls">
+        <div className="collapsible-button" {...interactions}>
           {icon ? <Icon {...icon} /> : <CollapsibleIcon />}
-          <Stack.Item grow className="collapsible-title">
-            {title}
-          </Stack.Item>
-        </Stack>
+          <div className="collapsible-title">{title}</div>
+        </div>
         {buttons && <Stack className="collapsible-buttons">{buttons}</Stack>}
-      </Stack>
+      </div>
       <CollapsibleContent isOpen={isOpen}>{children}</CollapsibleContent>
-    </Stack>
+    </div>
   );
 }
 
@@ -44,11 +40,13 @@ function CollapsibleContent(props: CollapsibleContentProps) {
 
   return (
     <CSSTransition in={isOpen} duration={200} classNames="collapsible">
-      <Stack ref={contentRef} className="collapsible-content-wrapper">
-        <Stack.Item grow className="collapsible-content">
-          <div className="collapsible-content-container">{children}</div>
-        </Stack.Item>
-      </Stack>
+      <div ref={contentRef} className="collapsible-content-wrapper">
+        <div className="collapsible-content">
+          <section className="collapsible-content-container">
+            {children}
+          </section>
+        </div>
+      </div>
     </CSSTransition>
   );
 }

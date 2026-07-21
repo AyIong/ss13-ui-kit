@@ -67,7 +67,6 @@ function Content() {
         >
           Section content
           <Collapsible
-            color="surface"
             title="Collapsible"
             buttons={
               <>

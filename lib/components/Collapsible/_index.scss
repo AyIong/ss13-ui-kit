@@ -6,23 +6,44 @@
 
   margin-top: var(--space-m);
 
+  // Container with clickables, such as collapsible button and buttons prop content
+  &-controls {
+    display: flex;
+    gap: var(--space-m);
+  }
+
+  // Collapsible button, opens content. What else did you expect?
+  &-button {
+    flex: 1;
+    user-select: none;
+    cursor: var(--cursor-pointer);
+    display: flex;
+    align-items: center;
+    gap: var(--space-m);
+    padding: 0 var(--space-m);
+    min-height: var(--base-height);
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+  }
+
   // Content styles, middle layer of content container
   &-content {
     --content-br: calc(var(--border-radius) - var(--space-xs));
 
-    padding: var(--space-sm);
+    flex: 1;
+    overflow: hidden;
     margin: var(--space-xs);
     margin-top: 0;
-    // --bg-color var inherited from .bg-xxxx className
     background-color: color-mix(var(--bg-color), var(--background-color) 85%);
     border-top: var(--border-width-2) solid
       oklch(from var(--bg-color) calc(l + 0.1) c h);
     border-radius: 0 0 var(--content-br) var(--content-br);
     box-shadow: inset var(--shadow-medium) var(--shadow-color);
 
-    // Wrap content to neat borders. Also used for smooth height animation
+    // Wrap content for a neat borders. Also used for smooth height animation
     &-wrapper {
       overflow: hidden;
+      display: flex;
       height: max-content;
       background-color: var(--bg-color);
       border-radius: 0 0 var(--border-radius) var(--border-radius);
@@ -31,6 +52,7 @@
 
     // Used to animate collapsible content appearing/disappearing
     &-container {
+      margin: var(--space-sm);
       transform-origin: bottom;
       transition-property: transform, opacity;
       transition-duration: var(--transition-time-medium);
@@ -39,18 +61,6 @@
         transition-delay: var(--transition-time-fast);
       }
     }
-  }
-
-  // Collapsible button, opens content. What else did you expect?
-  &-button {
-    user-select: none;
-    cursor: var(--cursor-pointer);
-    flex: 1;
-    align-items: center;
-    min-height: var(--base-height);
-    padding: 0 var(--space-m);
-    background-color: var(--bg-color);
-    color: var(--fg-color);
   }
 
   // Slightly style components inside buttons container, for consistency
@@ -117,7 +127,7 @@
 
     .collapsible-content-container {
       opacity: 0;
-      transform: translateY(50%);
+      transform: translateY(25%);
     }
   }
 
