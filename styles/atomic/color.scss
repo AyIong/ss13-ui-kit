@@ -1,23 +1,36 @@
+/**
+ * File contains sass function that creates classes for each available color
+ */
 @use "../colors.scss";
+@use "../functions.scss" as fn;
 
 $map-keys: colors.$color-map !default;
 
+// Foreground colors
 @each $color-name, $color-value in $map-keys {
   .color-#{$color-name} {
-    color: hsl(from $color-value h s calc(l + var(--adjust-color))) !important;
+    color: fn.fg($color-value) !important;
   }
 }
 
+// Background colors
 @each $color-name, $color-value in $map-keys {
   .color-bg-#{$color-name} {
-    background-color: hsl(
-      from $color-value h s calc(l - var(--adjust-color))
-    ) !important;
+    background-color: fn.bg($color-value) !important;
   }
 }
 
+// Foreground colors but css variable. Used for component styling
+// Created for standartization and less repeated code
+@each $color-name, $color-value in colors.$color-map {
+  .fg-#{$color-name} {
+    --fg-color: #{fn.fg($color-value)};
+  }
+}
+
+// Same as previous but for background
 @each $color-name, $color-value in colors.$color-map {
   .bg-#{$color-name} {
-    --bg-color: oklch(from #{$color-value} calc(l - 0.055) c h);
+    --bg-color: #{fn.bg($color-value)};
   }
 }

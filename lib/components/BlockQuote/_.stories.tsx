@@ -15,7 +15,7 @@ export const Default: Story = {
   render: () => {
     return (
       <>
-        <BlockQuote>Quote Block</BlockQuote>
+        <BlockQuote color="red">Quote Block</BlockQuote>
         <BlockQuote>The quick brown fox jumps over the lazy dog.</BlockQuote>
       </>
     );

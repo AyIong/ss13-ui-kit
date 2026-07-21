@@ -21,12 +21,12 @@
 
 :root {
   /* Accent colors: Base colors used by default almost everywhere */
-  --primary-l: 0.5;
+  --primary-l: 0.52;
   --primary-c: 0.125;
   --primary-h: 265;
   --primary-color: oklch(var(--primary-l) var(--primary-c) var(--primary-h));
 
-  --secondary-l: 0.55;
+  --secondary-l: 0.57;
   --secondary-c: 0.175;
   --secondary-h: var(--primary-h);
   --secondary-color: oklch(
@@ -63,26 +63,26 @@
   --color-hyperlink-new-visited: hsl(15, 100%, 70%);
 
   /* Semantic colors: Indicates state */
-  --color-good: oklch(0.6 0.15 135);
-  --color-average: oklch(0.7 0.175 47);
-  --color-bad: oklch(0.575 0.2 25);
+  --color-good: oklch(0.62 0.15 135);
+  --color-average: oklch(0.72 0.175 47);
+  --color-bad: oklch(0.595 0.2 25);
   --color-label: oklch(from var(--primary-color) 0.55 0.05 h);
   --candystripe-odd: oklch(0 0 0 / 0.25);
   --candystripe-even: transparent;
 
   /* Stable colors: Try to not change they hue at least */
-  --color-red: oklch(0.625 0.25 30);
-  --color-orange: oklch(0.8 0.17 73);
-  --color-yellow: oklch(0.9 0.18 100);
-  --color-olive: oklch(0.75 0.15 120);
-  --color-green: oklch(0.6 0.16 150);
-  --color-teal: oklch(0.6 0.1 185);
-  --color-blue: oklch(0.5 0.225 265);
-  --color-violet: oklch(0.55 0.225 290);
-  --color-purple: oklch(0.575 0.25 305);
-  --color-pink: oklch(0.725 0.15 10);
-  --color-brown: oklch(0.6 0.1 55);
-  --color-gold: oklch(0.825 0.1675 90);
+  --color-red: oklch(0.645 0.25 30);
+  --color-orange: oklch(0.82 0.17 73);
+  --color-yellow: oklch(0.92 0.18 100);
+  --color-olive: oklch(0.77 0.15 120);
+  --color-green: oklch(0.62 0.16 150);
+  --color-teal: oklch(0.62 0.1 185);
+  --color-blue: oklch(0.52 0.225 265);
+  --color-violet: oklch(0.57 0.225 290);
+  --color-purple: oklch(0.595 0.25 305);
+  --color-pink: oklch(0.745 0.15 10);
+  --color-brown: oklch(0.62 0.1 55);
+  --color-gold: oklch(0.845 0.1675 90);
 
   /* Neutral colors: Almost without saturacy */
   --color-neutral: oklch(0.5 0 0);
@@ -90,8 +90,8 @@
 
   /* Border */
   --border-color: var(--surface-color);
-  --border-color-dark: oklch(0 0 0 / 0.33);
 
+  // Maybe should be removed
   --border-primary-saturation: 100;
   --border-primary-lightness: 75;
   --border-primary-alpha: 0.75;
@@ -134,7 +134,7 @@ $grayscale-colors: (
 $semantic-colors: (
   "primary": var(--primary-color),
   "secondary": var(--secondary-color),
-  "surface": fn.oklch-from(surface-color, $l: 0.05),
+  "surface": fn.oklch-from(surface-color, $l: 0.085),
   "background": var(--background-color),
   "good": var(--color-good),
   "average": var(--color-average),

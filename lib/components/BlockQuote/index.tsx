@@ -11,12 +11,12 @@ import clsx from 'clsx';
  * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
  */
 export function BlockQuote(props: BoxProps) {
-  const { className, ...rest } = props;
+  const { className, color, ...rest } = props;
 
   return (
     <Box
       as="blockquote"
-      className={clsx(['blockquote', className])}
+      className={clsx(['blockquote', `fg-${color || 'label'}`, className])}
       {...rest}
     />
   );
