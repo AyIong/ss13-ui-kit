@@ -3,6 +3,7 @@
 .collapsible {
   --fg-color: contrast-color(#{fn.oklch-from(bg-color, $l: -0.1)});
   --border-radius: var(--border-radius-2);
+  --gap: var(--space-m);
 
   margin-top: var(--space-m);
 
@@ -19,11 +20,16 @@
     cursor: var(--cursor-pointer);
     display: flex;
     align-items: center;
-    gap: var(--space-m);
+    gap: var(--gap);
     padding: 0 var(--space-m);
     min-height: var(--base-height);
     background-color: var(--bg-color);
     color: var(--fg-color);
+  }
+
+  &-buttons {
+    display: flex;
+    gap: var(--gap);
   }
 
   // Content styles, middle layer of content container
@@ -112,12 +118,6 @@
         transform: translateY(calc(var(--step) * 2));
       }
     }
-  }
-
-  // Dim title text and icon, somehow it look's lighter than button by default
-  &-title,
-  &-icon {
-    opacity: 0.9;
   }
 
   // React Animations

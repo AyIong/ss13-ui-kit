@@ -3,7 +3,6 @@ import { useRef, useState } from 'react';
 import { CSSTransition } from 'react-transitioning';
 import { useButton } from 'ss13-ui-kit/hooks/useButton';
 import { Icon } from '../Icon';
-import { Stack } from '../Stack';
 import type { CollapsibleContentProps, CollapsibleProps } from './types';
 
 export function Collapsible(props: CollapsibleProps) {
@@ -27,7 +26,7 @@ export function Collapsible(props: CollapsibleProps) {
           {icon ? <Icon {...icon} /> : <CollapsibleIcon />}
           <div className="collapsible-title">{title}</div>
         </div>
-        {buttons && <Stack className="collapsible-buttons">{buttons}</Stack>}
+        {buttons && <div className="collapsible-buttons">{buttons}</div>}
       </div>
       <CollapsibleContent isOpen={isOpen}>{children}</CollapsibleContent>
     </div>
