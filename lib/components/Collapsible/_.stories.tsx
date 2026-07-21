@@ -1,4 +1,4 @@
-import { Collapsible, Stack } from '@components';
+import { Button, Collapsible, Stack } from '@components';
 import type { ComponentProps } from 'react';
 import { COMPONENT_COLORS } from 'ss13-ui-kit/common/constants';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
@@ -36,14 +36,10 @@ export const Colors: Story = {
   ),
 };
 
-export const StyledChildren: Story = {
+export const WithButtons: Story = {
   args: collapsibleArgs,
 
   render: (args) => (
-    <Collapsible
-      {...args}
-      open
-      childrenStyles={{ borderRadius: 0, backgroundColor: 'transparent' }}
-    />
+    <Collapsible {...args} buttons={<Button>Button</Button>} open />
   ),
 };

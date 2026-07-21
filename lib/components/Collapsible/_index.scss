@@ -2,68 +2,70 @@
 
 .collapsible {
   --fg-color: contrast-color(#{fn.oklch-from(bg-color, $l: -0.1)});
+  --border-radius: var(--border-radius-2);
 
-  padding: 0 var(--space-xs);
   margin-top: var(--space-m);
-  border-radius: var(--border-radius-2);
-  transition: padding var(--transition-time-medium);
 
-  &.is-open {
-    padding: var(--space-xs);
-  }
-
+  // Content styles, middle layer of content container
   &-content {
+    --content-br: calc(var(--border-radius) - var(--space-xs));
+
     padding: var(--space-sm);
+    margin: var(--space-xs);
+    margin-top: 0;
+    // --bg-color var inherited from .bg-xxxx className
+    background-color: color-mix(var(--bg-color), var(--background-color) 85%);
+    border-top: var(--border-width-2) solid
+      oklch(from var(--bg-color) calc(l + 0.1) c h);
+    border-radius: 0 0 var(--content-br) var(--content-br);
+    box-shadow: inset var(--shadow-medium) var(--shadow-color);
 
+    // Wrap content to neat borders. Also used for smooth height animation
     &-wrapper {
-      --wrapper-br: calc(var(--border-radius-2) - var(--space-xxs));
-
       overflow: hidden;
       height: max-content;
-      background-color: color-mix(var(--bg-color), var(--background-color) 85%);
-      border-radius: 0 0 var(--wrapper-br) var(--wrapper-br);
-      box-shadow: inset var(--shadow-small) var(--shadow-color);
+      background-color: var(--bg-color);
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
       transition: height var(--transition-time-medium);
     }
-  }
 
-  &-controls {
-    border-style: solid;
-    border-color: fn.oklch-from(bg-color, $l: 0.1);
-    border-width: 0;
-    transition: border-width var(--transition-time-fast);
-
-    .is-open & {
-      border-bottom-width: var(--border-width-2);
-    }
-  }
-
-  &-button {
-    user-select: none;
-    cursor: var(--cursor-pointer);
-    box-sizing: content-box;
-    flex: 1;
-    align-items: center;
-    height: var(--base-height);
-    padding-left: var(--space-sm);
-    color: var(--fg-color);
-  }
-
-  &-buttons {
-    gap: var(--space-xs);
-
-    .button {
-      border: var(--border-width-2) solid var(--surface-color);
-      border-bottom: none;
-      border-radius: 0;
+    // Used to animate collapsible content appearing/disappearing
+    &-container {
+      transform-origin: bottom;
+      transition-property: transform, opacity;
+      transition-duration: var(--transition-time-medium);
 
       .is-open & {
-        border-top-left-radius: var(--border-radius-2);
-        border-top-right-radius: var(--border-radius-2);
+        transition-delay: var(--transition-time-fast);
       }
     }
   }
 
+  // Collapsible button, opens content. What else did you expect?
+  &-button {
+    user-select: none;
+    cursor: var(--cursor-pointer);
+    flex: 1;
+    align-items: center;
+    min-height: var(--base-height);
+    padding: 0 var(--space-m);
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+  }
+
+  // Slightly style components inside buttons container, for consistency
+  &-button,
+  &-buttons > * {
+    border-radius: var(--border-radius);
+
+    .is-open & {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  // Handmade animated icon. Default chevron had... bad alignment
+  // Component still have ability to have custom FA icons
   &-icon {
     position: relative;
     height: fn.em(2px);
@@ -79,7 +81,8 @@
     }
 
     .is-open & {
-      transform: translateY(fn.em(-4px));
+      --step: #{fn.em(4px)};
+      transform: translateY(calc(-1 * var(--step)));
 
       &-1,
       &-2,
@@ -88,19 +91,20 @@
       }
 
       &-1 {
-        transform: translateY(fn.em(0px));
+        transform: translateY(fn.em(0px)); // Reset inherited transofrm
       }
 
       &-2 {
-        transform: translateY(fn.em(4px));
+        transform: translateY(var(--step));
       }
 
       &-3 {
-        transform: translateY(fn.em(8px));
+        transform: translateY(calc(var(--step) * 2));
       }
     }
   }
 
+  // Dim title text and icon, somehow it look's lighter than button by default
   &-title,
   &-icon {
     opacity: 0.9;
@@ -110,11 +114,21 @@
   &-enter,
   &-exit-active {
     height: 0;
+
+    .collapsible-content-container {
+      opacity: 0;
+      transform: translateY(50%);
+    }
   }
 
   &-enter-active,
   &-enter-done {
     height: max-content;
+
+    .collapsible-content-container {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   // Remove margin if directly inside <Stack>

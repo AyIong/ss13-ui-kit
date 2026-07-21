@@ -1,4 +1,4 @@
-import type { CSSProperties, PropsWithChildren, ReactNode } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 import type { BoxProps } from '../Box/types';
 import type { IconProps } from '../Icon/types';
 
@@ -11,13 +11,10 @@ export type CollapsibleProps = Partial<{
   open: boolean;
   /** Text to display on the button for collapsing */
   title: ReactNode;
-  /** Custom styles for the child nodes */
-  childrenStyles: CSSProperties;
 }> &
   BoxProps &
   PropsWithChildren;
 
 export type CollapsibleContentProps = {
   isOpen: boolean;
-  childrenStyles?: CSSProperties;
 } & PropsWithChildren;

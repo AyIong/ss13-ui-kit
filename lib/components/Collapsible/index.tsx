@@ -7,7 +7,7 @@ import { Stack } from '../Stack';
 import type { CollapsibleContentProps, CollapsibleProps } from './types';
 
 export function Collapsible(props: CollapsibleProps) {
-  const { children, childrenStyles, color, title, buttons, icon, open } = props;
+  const { children, color, title, buttons, icon, open } = props;
 
   const [isOpen, setIsOpen] = useState<boolean>(open || false);
   const interactions = useButton({
@@ -33,26 +33,22 @@ export function Collapsible(props: CollapsibleProps) {
         </Stack>
         {buttons && <Stack className="collapsible-buttons">{buttons}</Stack>}
       </Stack>
-      <CollapsibleContent isOpen={isOpen} childrenStyles={childrenStyles}>
-        {children}
-      </CollapsibleContent>
+      <CollapsibleContent isOpen={isOpen}>{children}</CollapsibleContent>
     </Stack>
   );
 }
 
 function CollapsibleContent(props: CollapsibleContentProps) {
-  const { children, isOpen, childrenStyles } = props;
+  const { children, isOpen } = props;
   const contentRef = useRef(null);
 
   return (
     <CSSTransition in={isOpen} duration={200} classNames="collapsible">
-      <Stack.Item
-        className="collapsible-content-wrapper"
-        ref={contentRef}
-        style={childrenStyles}
-      >
-        <div className="collapsible-content">{children}</div>
-      </Stack.Item>
+      <Stack ref={contentRef} className="collapsible-content-wrapper">
+        <Stack.Item grow className="collapsible-content">
+          <div className="collapsible-content-container">{children}</div>
+        </Stack.Item>
+      </Stack>
     </CSSTransition>
   );
 }
