@@ -18,6 +18,6 @@ $map-keys: colors.$color-map !default;
 
 @each $color-name, $color-value in colors.$color-map {
   .bg-#{$color-name} {
-    --bg-color: oklch(from #{$color-value} calc(l - 0.033) c h);
+    --bg-color: oklch(from #{$color-value} calc(l - 0.055) c h);
   }
 }
