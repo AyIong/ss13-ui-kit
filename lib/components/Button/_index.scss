@@ -23,11 +23,11 @@
   transition-timing-function: ease-out;
 
   &:hover {
-    background-color: fn.oklch-from(bg-color, $l: var(--adjust-hover));
+    background-color: fn.oklch-from(bg-color-final, $l: var(--adjust-hover));
   }
 
   &:active {
-    background-color: fn.oklch-from(bg-color, $l: var(--adjust-active));
+    background-color: fn.oklch-from(bg-color-final, $l: var(--adjust-active));
     transition: none;
   }
 
