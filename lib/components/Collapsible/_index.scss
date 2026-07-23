@@ -74,7 +74,7 @@
   &-buttons > * {
     border-radius: var(--border-radius);
 
-    .is-open & {
+    .collapsible:has(.collapsible-content-wrapper) & {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
