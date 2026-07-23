@@ -1,6 +1,14 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
-import type { IconProps, IconStackProps } from './types';
+import { tgIcons } from './icons';
+import type { IconNamesUnion, IconProps, IconStackProps } from './types';
+
+// "Activate" imported FontAwesome icons
+library.add(fas, far, tgIcons);
 
 /**
  * ## Icon
@@ -30,34 +38,16 @@ export function Icon(props: IconProps) {
     customStyle.transform = `rotate(${rotation}deg)`;
   }
   rest.style = customStyle;
+
   const boxProps = computeBoxProps(rest);
 
-  let iconClass: string;
-  if (name.startsWith('tg-')) {
-    iconClass = name;
-  } else {
-    // FontAwesome icon;
-    const preprendFa = !name.startsWith('fa-');
-
-    iconClass = regular ? 'far ' : 'fas ';
-    if (preprendFa) {
-      iconClass += 'fa-';
-    }
-    iconClass += name;
-  }
-
-  if (animation) {
-    iconClass += ` fa-${animation}`;
-  }
-
   return (
-    <i
-      className={clsx([
-        className,
-        'icon',
-        iconClass,
-        computeBoxClassName(rest),
-      ])}
+    <FontAwesomeIcon
+      // @ts-expect-error: Allow to use custom icons
+      icon={[regular ? 'far' : 'fas', name as IconNamesUnion]}
+      className={clsx([className, 'icon', computeBoxClassName(rest)])}
+      style={customStyle}
+      {...rest}
       {...boxProps}
     />
   );

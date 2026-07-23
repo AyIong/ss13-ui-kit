@@ -21,7 +21,7 @@ const buttonArgs: StoryProps = {
   disabled: false,
   variant: 'filled',
   startIcon: { name: 'xmark' },
-  endIcon: { name: 'xmark', animation: 'fade' },
+  endIcon: { name: 'xmark', animation: { fade: true } },
 };
 
 export const Default: Story = {

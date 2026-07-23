@@ -18,8 +18,3 @@ Only 4 styles are used for each font:
 
 Regular/Italic has **400** weight.
 Bold has **700** weight
-
-### FontAwesome 7 Free
-
-If you lookin' for FA, you will not find it, we're moved
-to [FontAwesome React Component](https://docs.fontawesome.com/web/use-with/react)

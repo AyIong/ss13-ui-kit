@@ -1,22 +1,5 @@
 $inter-size-adjust: 100% !default;
 
-/* Font Awesome */
-@font-face {
-  font-family: "Font Awesome 7 Free";
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  src: url("./font-awesome/FontAwesome-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Font Awesome 7 Free";
-  font-style: normal;
-  font-weight: 900;
-  font-display: block;
-  src: url("./font-awesome/FontAwesome-Solid.woff2") format("woff2");
-}
-
 /* Regular font */
 @font-face {
   font-family: "Inter";

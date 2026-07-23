@@ -3,7 +3,6 @@ import { themes } from '../stories/themes';
 import previewTheme from './previewTheme.ts';
 
 import '../static/fonts.scss';
-import '../static/fontawesome.min.css';
 import '../styles/main.scss';
 import '../styles/storybook.scss';
 

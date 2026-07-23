@@ -32,7 +32,7 @@ function Content() {
           buttons={
             <>
               <Button
-                startIcon={{ animation: 'fade', name: 'gamepad' }}
+                startIcon={{ animation: { fade: true }, name: 'gamepad' }}
                 tooltip={{ content: 'This is a tooltip' }}
               >
                 Button
