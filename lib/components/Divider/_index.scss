@@ -1,0 +1,17 @@
+.divider {
+  --divider-border: var(--border-width-1) solid var(--border-color);
+
+  margin: var(--space-m) 0;
+  border-top: var(--divider-border);
+
+  &-vertical {
+    height: 100%;
+    margin: 0 var(--space-m);
+    border-top: none;
+    border-left: var(--divider-border);
+  }
+
+  &-hidden {
+    border: none !important;
+  }
+}

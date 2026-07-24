@@ -8,6 +8,8 @@ export { Checkbox } from './Checkbox';
 export { Collapsible } from './Collapsible';
 export { ColorBox } from './ColorBox';
 export { Dialog } from './Dialog';
+export { Dimmer } from './Dimmer';
+export { Divider } from './Divider';
 export { Floating } from './Floating';
 export { Icon } from './Icon';
 export type { IconProps } from './Icon/types';
