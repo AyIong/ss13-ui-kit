@@ -16,6 +16,7 @@
   transition-property: transform, opacity;
 
   &-wrapper {
+    user-select: none;
     position: absolute;
     inset: 0;
     display: flex;
@@ -29,9 +30,8 @@
   &-header {
     display: flex;
     align-items: center;
-    gap: var(--space-l);
+    gap: var(--space-m);
     padding: var(--space-s);
-    padding-left: var(--space-m);
     background-color: var(--surface-color);
     box-shadow: var(--shadow-small) var(--primary-color);
 
@@ -39,10 +39,14 @@
       flex: 1;
       font-weight: bold;
       font-size: fn.em(14px);
+      align-content: center;
+      min-height: var(--base-height);
+      margin: 0 var(--space-s);
     }
   }
 
   &-content {
+    user-select: text;
     position: relative;
     flex: 1;
     padding: var(--space-m);

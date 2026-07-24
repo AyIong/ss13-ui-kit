@@ -19,21 +19,33 @@ import type { DialogProps } from './types';
 export function Dialog(props: DialogProps) {
   const { title, isOpen, onClose, children, width, height } = props;
 
+  function handleClick(event) {
+    event.stopPropagation();
+  }
+
   return (
     <FloatingPortal id={uiRootId}>
       <CSSTransition classNames="dialog" in={isOpen} duration={200}>
-        <div className="dialog-wrapper">
-          <Box className="dialog" width={width} height={height}>
+        <div className="dialog-wrapper" onClick={onClose}>
+          <Box
+            className="dialog"
+            width={width}
+            height={height}
+            onClick={handleClick}
+          >
             <div className="dialog-header">
               <div className="dialog-header--title">{title}</div>
-              <Button
-                className="dialog-header--button"
-                variant="transparent"
-                startIcon="times"
-                tooltip={{ content: 'Close', position: 'top' }}
-                onClick={onClose}
-              />
+              {onClose && (
+                <Button
+                  className="dialog-header--button"
+                  variant="transparent"
+                  startIcon="times"
+                  tooltip={{ content: 'Close', position: 'top' }}
+                  onClick={onClose}
+                />
+              )}
             </div>
+
             <div className="dialog-content">{children}</div>
           </Box>
         </div>
