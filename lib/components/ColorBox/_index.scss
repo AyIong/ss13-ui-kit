@@ -1,0 +1,13 @@
+@use "../../../styles/functions.scss" as fn;
+
+.colorbox {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: fn.em(14px);
+  height: fn.em(14px);
+  font-weight: bold;
+  font-family: var(--font-family-mono);
+  background-color: var(--colorbox-bg);
+  color: contrast-color(fn.oklch-from(colorbox-bg, $l: -0.1));
+}

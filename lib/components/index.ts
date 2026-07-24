@@ -6,6 +6,7 @@ export type { BoxProps } from './Box/types';
 export { Button } from './Button';
 export { Checkbox } from './Checkbox';
 export { Collapsible } from './Collapsible';
+export { ColorBox } from './ColorBox';
 export { Floating } from './Floating';
 export { Icon } from './Icon';
 export type { IconProps } from './Icon/types';
