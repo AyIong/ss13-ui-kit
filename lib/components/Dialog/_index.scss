@@ -1,0 +1,80 @@
+@use "../../../styles/functions.scss" as fn;
+
+.dialog {
+  overflow: hidden;
+  border: var(--border-width-1) solid var(--border-color);
+  border-radius: var(--border-radius-2);
+  box-shadow: var(--shadow-medium) var(--shadow-color);
+  transition-duration: var(--transition-time-medium);
+  transition-delay: var(--transition-time-fast);
+  transition-property: transform, opacity;
+
+  &-wrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--layout-border-radius);
+    transition-duration: var(--transition-time-medium);
+    transition-property: backdrop-filter, background-color, box-shadow;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-l);
+    padding: var(--space-s);
+    padding-left: var(--space-m);
+    background-color: var(--surface-color);
+    box-shadow: var(--shadow-small) var(--primary-color);
+
+    &--title {
+      flex: 1;
+      font-weight: bold;
+      font-size: fn.em(14px);
+    }
+  }
+
+  &-content {
+    position: relative;
+    padding: var(--space-m);
+    background-color: fn.oklch-from(background-color, $a: 0.85);
+    z-index: -1;
+  }
+
+  // React Animations
+  &-enter,
+  &-exit-active {
+    background-color: transparent;
+    box-shadow: none;
+    backdrop-filter: blur(0) saturate(100%);
+
+    .dialog {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+  }
+
+  &-enter-active,
+  &-enter-done {
+    background-color: fn.oklch-from(background-color, $a: 0.75);
+    box-shadow: inset var(--shadow-medium)
+      #{fn.oklch-from(shadow-color, $a: 0.33)};
+    backdrop-filter: var(--blur-small) saturate(150%);
+
+    .dialog {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+  &-exit {
+    pointer-events: none;
+
+    .dialog {
+      transition-duration: var(--transition-time-fast);
+      transition-delay: 0s;
+    }
+  }
+}

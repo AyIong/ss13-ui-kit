@@ -21,6 +21,7 @@ import {
   useImperativeHandle,
   useState,
 } from 'react';
+import { floatingRoot } from 'ss13-ui-kit/common/constants';
 import type { FloatingProps } from './types';
 
 /**
@@ -173,7 +174,7 @@ export function Floating(props: FloatingProps) {
         (preventPortal ? (
           floatingContent
         ) : (
-          <FloatingPortal id="floating-root">{floatingContent}</FloatingPortal>
+          <FloatingPortal id={floatingRoot}>{floatingContent}</FloatingPortal>
         ))}
     </>
   );

@@ -1,6 +1,5 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { Icon, type IconProps, Tooltip } from '@components';
-import type { Placement } from '@floating-ui/react';
 import { useButton } from '@hooks';
 import clsx from 'clsx';
 import type { PropsWithChildren } from 'react';
@@ -47,10 +46,7 @@ export function ButtonContainer(props: ButtonBaseProps) {
 
   if (tooltip) {
     finalButtonContainer = (
-      <Tooltip
-        content={tooltip.content}
-        position={tooltip.position as Placement}
-      >
+      <Tooltip content={tooltip.content} position={tooltip.position}>
         {finalButtonContainer}
       </Tooltip>
     );

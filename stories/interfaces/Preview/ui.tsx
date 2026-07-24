@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {
   Button,
   Collapsible,
+  Dialog,
   Icon,
   Input,
   Section,
@@ -21,6 +22,7 @@ export function Preview() {
 
 function Content() {
   const [selected, setSelected] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
     <Stack fill vertical>
@@ -31,9 +33,17 @@ function Content() {
           title="Section title"
           buttons={
             <>
+              <Dialog
+                title="Test Dialog"
+                isOpen={dialogOpen}
+                onClose={() => setDialogOpen(false)}
+              >
+                Poor Content
+              </Dialog>
               <Button
                 startIcon={{ animation: { fade: true }, name: 'gamepad' }}
                 tooltip={{ content: 'This is a tooltip' }}
+                onClick={() => setDialogOpen(true)}
               >
                 Button
               </Button>

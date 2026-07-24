@@ -86,9 +86,9 @@
   --shadow-large: 0 #{fn.rem(3px)} #{fn.rem(3px)} 0;
 
   // MARK: Blur
-  --blur-small: blur(6px);
-  --blur-medium: blur(12px);
-  --blur-large: blur(24px);
+  --blur-small: blur(3px);
+  --blur-medium: blur(6px);
+  --blur-large: blur(12px);
 
   // MARK: Color adjustment
   /* Color lightness multiplier. + for FG - for BG */

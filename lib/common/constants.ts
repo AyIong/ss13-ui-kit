@@ -12,6 +12,13 @@ export const UI_UPDATE = 1;
 export const UI_DISABLED = 0;
 export const UI_CLOSE = -1;
 
+// Container outside react-root, where will be located
+// created by FloatingUI components
+export const floatingRoot = 'floating-root';
+
+// Container under titlebar, where will be located overlay components
+export const uiRootId = 'layout-root';
+
 // All game related colors are stored here
 export const COLORS = {
   // Damage type colors

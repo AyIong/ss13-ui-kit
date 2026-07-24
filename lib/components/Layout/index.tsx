@@ -34,7 +34,7 @@ function LayoutContent(props: BoxProps) {
   const { className, children, ...rest } = props;
 
   return (
-    <div className="layout-content-wrapper">
+    <div id="layout-root" className="layout-content-wrapper">
       <OverlayScrollbarsComponent
         defer
         options={{
