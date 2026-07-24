@@ -33,12 +33,13 @@ export type ButtonBaseProps = Partial<{
   ButtonInteractionProps &
   BoxProps;
 
+export type ButtonIconProps = string | IconProps;
 export type ButtonProps = Partial<{
   /** Makes the button circular, with fixed ratio size 1:1 */
   circular: boolean;
   /** Adds an left side icon to the button */
-  startIcon: IconProps;
+  startIcon: ButtonIconProps;
   /** Adds an right side icon to the button */
-  endIcon: IconProps;
+  endIcon: ButtonIconProps;
 }> &
   ButtonBaseProps;

@@ -4,7 +4,7 @@ import type { Placement } from '@floating-ui/react';
 import { useButton } from '@hooks';
 import clsx from 'clsx';
 import type { PropsWithChildren } from 'react';
-import type { ButtonBaseProps, ButtonProps } from './types';
+import type { ButtonBaseProps, ButtonIconProps, ButtonProps } from './types';
 
 export function ButtonContainer(props: ButtonBaseProps) {
   const {
@@ -59,8 +59,17 @@ export function ButtonContainer(props: ButtonBaseProps) {
   return finalButtonContainer;
 }
 
-export function ButtonIcon(props: IconProps) {
-  return <Icon className="button-icon" {...props} />;
+export function ButtonIcon(props: ButtonIconProps) {
+  const iconProps = typeof props === 'string' ? { name: props } : props;
+  return <Icon className="button-icon" {...(iconProps as IconProps)} />;
+}
+
+export function renderIcon(icon: ButtonIconProps) {
+  return (
+    <ButtonIcon
+      {...((typeof icon === 'string' ? { name: icon } : icon) as IconProps)}
+    />
+  );
 }
 
 export function ButtonContent(props: PropsWithChildren) {
@@ -76,9 +85,9 @@ export function Button(props: ButtonProps) {
       className={clsx([circular && 'circular', className])}
       {...rest}
     >
-      {startIcon && <ButtonIcon {...startIcon} />}
+      {startIcon && renderIcon(startIcon)}
       {children && <ButtonContent>{children}</ButtonContent>}
-      {endIcon && <ButtonIcon {...endIcon} />}
+      {endIcon && renderIcon(endIcon)}
     </ButtonContainer>
   );
 }

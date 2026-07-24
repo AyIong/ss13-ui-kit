@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ButtonContainer, ButtonContent, ButtonIcon } from '../Button';
+import { ButtonContainer, ButtonContent, renderIcon } from '../Button';
 import type { ConfirmProps } from './types';
 
 export function Confirm(props: ConfirmProps) {
@@ -38,9 +38,8 @@ export function Confirm(props: ConfirmProps) {
       onClick={handleClick}
       {...rest}
     >
-      {(startIcon || (confirmIcon && clickedOnce)) && (
-        <ButtonIcon {...(startIcon || confirmIcon)} />
-      )}
+      {(startIcon || (confirmIcon && clickedOnce)) &&
+        renderIcon(startIcon || confirmIcon)}
       <ButtonContent>{clickedOnce ? confirmContent : children}</ButtonContent>
     </ButtonContainer>
   );

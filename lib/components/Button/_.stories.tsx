@@ -20,7 +20,7 @@ const buttonArgs: StoryProps = {
   selected: false,
   disabled: false,
   variant: 'filled',
-  startIcon: { name: 'xmark' },
+  startIcon: 'xmark',
   endIcon: { name: 'xmark', animation: { fade: true } },
 };
 
