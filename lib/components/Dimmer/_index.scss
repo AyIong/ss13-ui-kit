@@ -1,0 +1,14 @@
+@use "../../../styles/functions.scss" as fn;
+
+.dimmer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // Fill positioned parent
+  position: absolute;
+  inset: 0;
+  // Dim everything around it
+  background-color: fn.oklch-from(background-color, $a: 0.75);
+  // Should be enough to cover everything except tooltips
+  z-index: 100;
+}
