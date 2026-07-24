@@ -15,8 +15,8 @@ export function Dimmer(props: BoxProps) {
   const { className, children, ...rest } = props;
 
   return (
-    <Box className={clsx('dimmerr', className)} {...rest}>
-      <div className="dimmer-inner">{children}</div>
+    <Box className={clsx('dimmer', className)} {...rest}>
+      {children}
     </Box>
   );
 }

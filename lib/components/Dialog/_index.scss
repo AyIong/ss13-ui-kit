@@ -16,12 +16,6 @@
   transition-property: transform, opacity;
 
   &-wrapper {
-    user-select: none;
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: var(--layout-border-radius);
     transition-duration: var(--transition-time-medium);
     transition-property: backdrop-filter, background-color, box-shadow;
@@ -56,6 +50,7 @@
 
   // React Animations
   &-enter,
+  &-appear,
   &-exit-active {
     background-color: transparent;
     box-shadow: none;
@@ -68,8 +63,9 @@
   }
 
   &-enter-active,
-  &-enter-done {
-    background-color: fn.oklch-from(background-color, $a: 0.75);
+  &-enter-done,
+  &-appear-done {
+    background-color: var(--dimmer-background);
     box-shadow: inset var(--shadow-medium)
       #{fn.oklch-from(shadow-color, $a: 0.33)};
     backdrop-filter: var(--blur-small) saturate(150%);

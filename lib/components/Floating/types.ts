@@ -23,7 +23,7 @@ export type FloatingProps = {
   /**
    * Indentation of content element from children.
    * @default 6
-   * @deprecated: Use CSS `floating-indentation` variable instead.
+   * @deprecated Use CSS `floating-indentation` variable instead.
    */
   contentOffset: number;
   /** Disables all interactions. */

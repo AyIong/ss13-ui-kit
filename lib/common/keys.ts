@@ -67,6 +67,18 @@ export function isEscape(key: string): boolean {
 }
 
 /**
+ * ### isEnter
+ *
+ * Checks if the user has hit the 'Enter' key on their keyboard.
+ *
+ * @param key - the key to check, typically from event.key
+ * @returns true if key is Escape or Esc, false otherwise
+ */
+export function isEnter(key: string): boolean {
+  return key === KEY.Enter;
+}
+
+/**
  * ### isAlphabetic
  *
  * Checks if the user has hit any alphabetic key (a - z)
