@@ -1,0 +1,30 @@
+import type { ReactNode } from 'react';
+import type { BoxProps } from '../Box/types';
+
+export enum Direction {
+  NORTH = 1,
+  SOUTH = 2,
+  EAST = 4,
+  WEST = 8,
+  NORTHEAST = NORTH | EAST,
+  NORTHWEST = NORTH | WEST,
+  SOUTHEAST = SOUTH | EAST,
+  SOUTHWEST = SOUTH | WEST,
+}
+
+export type DmIconProps = {
+  /** Required: The path of the icon */
+  icon: string;
+  /** Required: The state of the icon */
+  icon_state: string;
+} & Partial<{
+  /** Facing direction. See direction enum. Default is South */
+  direction: Direction;
+  /** Fallback icon. */
+  fallback: ReactNode;
+  /** Frame number. Default is 1 */
+  frame: number;
+  /** Movement state. Default is false */
+  movement: boolean;
+}> &
+  BoxProps;
