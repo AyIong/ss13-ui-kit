@@ -15,8 +15,6 @@ type Story = StoryObj<StoryProps>;
 const collapsibleArgs: StoryProps = {
   title: 'Click me',
   children: 'Collapsed content',
-  startIcon: 'cog',
-  endIcon: 'cog',
 };
 
 export const Default: Story = {

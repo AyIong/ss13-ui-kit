@@ -12,9 +12,15 @@ import type { BoxProps } from '../Box/types';
 import type { LayoutProps } from './types';
 
 export function Layout(props: LayoutProps) {
-  const { className, theme = 'nanotrasen', children, ...rest } = props;
+  const {
+    className,
+    theme = 'nanotrasen',
+    colorScheme = 'night',
+    children,
+    ...rest
+  } = props;
 
-  const themeClass = `theme-${theme}`;
+  const themeClass = `theme-${theme} pref-${colorScheme}`;
   useEffect(() => {
     document.documentElement.className = themeClass;
   }, [themeClass]);

@@ -16,39 +16,39 @@ import {
 const preview: Preview = {
   decorators: [
     (Story, context) => {
-      document.documentElement.className = `theme-${context.globals.theme}`;
+      document.documentElement.className = `
+        theme-${context.globals.theme} pref-${context.globals.colorScheme}
+      `;
       return <Story />;
     },
   ],
 
   globalTypes: {
     theme: {
-      description: 'Global theme for components',
+      description: 'Components thematic style',
       toolbar: {
         icon: 'paintbrush',
         items: themes,
         title: 'Theme',
       },
     },
+    colorScheme: {
+      description: 'Global theme for components',
+      toolbar: {
+        icon: 'sun',
+        items: ['day', 'night'],
+        title: 'Color Scheme',
+      },
+    },
   },
 
   initialGlobals: {
     theme: 'default',
+    colorScheme: 'night',
   },
 
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
-    backgrounds: {
-      options: {
-        section: { name: 'Section', value: 'rgba(0, 0, 0, 0.33)' },
-      },
-    },
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
     docs: {
       codePanel: true,
       page: () => (
