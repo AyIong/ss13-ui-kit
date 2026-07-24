@@ -1,7 +1,13 @@
 @use "../../../styles/functions.scss" as fn;
 
 .dialog {
+  --max-size: calc(100% - var(--space-xxl));
+
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-width: var(--max-size);
+  max-height: var(--max-size);
   border: var(--border-width-1) solid var(--border-color);
   border-radius: var(--border-radius-2);
   box-shadow: var(--shadow-medium) var(--shadow-color);
@@ -38,6 +44,7 @@
 
   &-content {
     position: relative;
+    flex: 1;
     padding: var(--space-m);
     background-color: fn.oklch-from(background-color, $a: 0.85);
     z-index: -1;
