@@ -1,6 +1,7 @@
 import type { BoxProps, IconProps } from '@components';
 import type { Placement } from '@floating-ui/react';
 import type { ReactNode } from 'react';
+import type { IconNamesUnion } from '../Icon/types';
 
 type ButtonTooltip = {
   /** Content of the tooltip. Can be a string or a node */
@@ -33,7 +34,7 @@ export type ButtonBaseProps = Partial<{
   ButtonInteractionProps &
   BoxProps;
 
-export type ButtonIconProps = string | IconProps;
+export type ButtonIconProps = IconProps | IconNamesUnion;
 export type ButtonProps = Partial<{
   /** Makes the button circular, with fixed ratio size 1:1 */
   circular: boolean;

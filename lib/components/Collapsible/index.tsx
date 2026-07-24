@@ -4,14 +4,17 @@ import { CSSTransition } from 'react-transitioning';
 import { useButton } from 'ss13-ui-kit/hooks/useButton';
 import { Icon } from '../Icon';
 import type { CollapsibleContentProps, CollapsibleProps } from './types';
+import { IconProps } from '../Icon/types';
 
 export function Collapsible(props: CollapsibleProps) {
-  const { children, color, title, buttons, icon, open } = props;
+  const { children, color, title, buttons, startIcon, endIcon, open } = props;
 
   const [isOpen, setIsOpen] = useState<boolean>(open || false);
   const interactions = useButton({
     onClick: () => setIsOpen(!isOpen),
   });
+  const startIconProps = typeof startIcon === 'string' ? { name: startIcon } : startIcon;
+  const endIconProps = typeof endIcon === 'string' ? { name: endIcon } : endIcon;
 
   return (
     <div
@@ -23,8 +26,9 @@ export function Collapsible(props: CollapsibleProps) {
     >
       <div className="collapsible-controls">
         <div className="collapsible-button" {...interactions}>
-          {icon ? <Icon {...icon} /> : <CollapsibleIcon />}
+          {startIcon ? <Icon {...startIconProps as IconProps} /> : <CollapsibleIcon />}
           <div className="collapsible-title">{title}</div>
+          {endIcon && <Icon {...endIconProps as IconProps} />}
         </div>
         {buttons && <div className="collapsible-buttons">{buttons}</div>}
       </div>

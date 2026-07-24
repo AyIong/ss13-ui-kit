@@ -27,6 +27,10 @@
     color: var(--fg-color);
   }
 
+  &-title {
+    flex: 1;
+  }
+
   &-buttons {
     display: flex;
     gap: var(--gap);
