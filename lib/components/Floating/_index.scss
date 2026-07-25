@@ -1,3 +1,7 @@
+#floating-root {
+  z-index: 999;
+}
+
 .floating {
   --floating-indentation: var(--space-m);
   --floating-transition-time: var(--transition-time-medium);
