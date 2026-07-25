@@ -1,16 +1,16 @@
 import type { ReactNode } from 'react';
 
-export type DialogProps = {
-  /** The content of the dialog. */
+export type ModalProps = {
+  /** The content of the modal. */
   children: ReactNode;
-  /** Whether the Dialog is open */
+  /** Whether the Modal is open */
   isOpen: boolean;
 } & Partial<{
-  /** The title of the dialog. */
+  /** The title of the modal. */
   title: ReactNode;
-  /** The height of the dialog. */
+  /** The height of the modal. */
   height: string;
-  /** The width of the dialog. */
+  /** The width of the modal. */
   width: string;
   /**
    * The function to call when close is clicked.

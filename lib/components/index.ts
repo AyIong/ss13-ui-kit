@@ -1,4 +1,4 @@
-export { Modal } from './@deprecated/Modal';
+export { Dialog } from './@deprecated/Dialog';
 
 export { AnimatedNumber } from './AnimatedNumber';
 export { Autofocus } from './Autofocus';
@@ -9,7 +9,6 @@ export { Button } from './Button';
 export { Checkbox } from './Checkbox';
 export { Collapsible } from './Collapsible';
 export { ColorBox } from './ColorBox';
-export { Dialog } from './Dialog';
 export { Dimmer } from './Dimmer';
 export { Divider } from './Divider';
 export { DmIcon } from './DmIcon';
@@ -19,6 +18,7 @@ export type { IconProps } from './Icon/types';
 export { Image } from './Image';
 export { Input } from './Input';
 export { Layout } from './Layout';
+export { Modal } from './Modal';
 export { RestrictedInput } from './RestrictedInput';
 export { Section } from './Section';
 export { Stack } from './Stack';

@@ -3,9 +3,9 @@ import { useState } from 'react';
 import {
   Button,
   Collapsible,
-  Dialog,
   Icon,
   Input,
+  Modal,
   Section,
   Stack,
 } from 'ss13-ui-kit/components/index';
@@ -22,7 +22,7 @@ export function Preview() {
 
 function Content() {
   const [selected, setSelected] = useState(false);
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <Stack fill vertical>
@@ -33,17 +33,17 @@ function Content() {
           title="Section title"
           buttons={
             <>
-              <Dialog
-                title="Test Dialog"
-                isOpen={dialogOpen}
-                onClose={() => setDialogOpen(false)}
+              <Modal
+                title="Test Modal"
+                isOpen={modalOpen}
+                onClose={() => setModalOpen(false)}
               >
                 Poor Content
-              </Dialog>
+              </Modal>
               <Button
                 startIcon={{ animation: { fade: true }, name: 'gamepad' }}
                 tooltip={{ content: 'This is a tooltip' }}
-                onClick={() => setDialogOpen(true)}
+                onClick={() => setModalOpen(true)}
               >
                 Button
               </Button>

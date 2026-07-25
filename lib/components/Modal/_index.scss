@@ -1,6 +1,6 @@
 @use "../../../styles/functions.scss" as fn;
 
-.dialog {
+.modal {
   --max-size: calc(100% - var(--space-xxl));
 
   overflow: hidden;
@@ -56,7 +56,7 @@
     box-shadow: none;
     backdrop-filter: blur(0) saturate(100%);
 
-    .dialog {
+    .modal {
       opacity: 0;
       transform: translateY(30px);
     }
@@ -70,7 +70,7 @@
       #{fn.oklch-from(shadow-color, $a: 0.33)};
     backdrop-filter: var(--blur-small) saturate(150%);
 
-    .dialog {
+    .modal {
       opacity: 1;
       transform: translateY(0px);
     }
@@ -79,7 +79,7 @@
   &-exit {
     pointer-events: none;
 
-    .dialog {
+    .modal {
       transition-duration: var(--transition-time-fast);
       transition-delay: 0s;
     }

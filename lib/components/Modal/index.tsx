@@ -4,12 +4,12 @@ import { useEffect } from 'react';
 import { CSSTransition } from 'react-transitioning';
 import { uiRootId } from 'ss13-ui-kit/common/constants';
 import { isEnter, isEscape } from 'ss13-ui-kit/common/keys';
-import type { DialogProps } from './types';
+import type { ModalProps } from './types';
 
 /**
- * ## Dialog
+ * ## Modal
  *
- * A themed dialog for user interaction.
+ * A themed modal for user interaction or info.
  * Can be placed whenever you want, it always be
  * teleported to layout-root, over all content.
  *
@@ -20,12 +20,12 @@ import type { DialogProps } from './types';
  *
  * To be opened, need prop `isOpen` true to be passed,
  * you can do that with useState inside your UI, or just specify it manually,
- * in that case dialog will be open always, and cannot be closed if onClose,
+ * in that case modal will be open always, and cannot be closed if onClose,
  * function not passed.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-dialog--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-modal--docs)
  */
-export function Dialog(props: DialogProps) {
+export function Modal(props: ModalProps) {
   const { children, title, isOpen, width, height, onEnter, onClose } = props;
 
   useEffect(() => {
@@ -51,21 +51,21 @@ export function Dialog(props: DialogProps) {
 
   return (
     <FloatingPortal id={uiRootId}>
-      <CSSTransition appear classNames="dialog" in={isOpen} duration={200}>
-        <Dimmer className="dialog-wrapper" onClick={onClose}>
+      <CSSTransition appear classNames="modal" in={isOpen} duration={200}>
+        <Dimmer className="modal-wrapper" onClick={onClose}>
           <Box
-            className="dialog"
+            className="modal"
             width={width}
             height={height}
             // We don't want to close it, when user interacting with content
             onClick={(event) => event.stopPropagation()}
           >
             {title && (
-              <div className="dialog-header">
-                <div className="dialog-header--title">{title}</div>
+              <div className="modal-header">
+                <div className="modal-header--title">{title}</div>
                 {onClose && (
                   <Button
-                    className="dialog-header--button"
+                    className="modal-header--button"
                     variant="transparent"
                     startIcon="times"
                     tooltip={{ content: 'Close', position: 'top' }}
@@ -74,7 +74,7 @@ export function Dialog(props: DialogProps) {
                 )}
               </div>
             )}
-            <div className="dialog-content">{children}</div>
+            <div className="modal-content">{children}</div>
           </Box>
         </Dimmer>
       </CSSTransition>
