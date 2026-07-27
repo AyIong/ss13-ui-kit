@@ -1,0 +1,85 @@
+@use "../../../styles/functions.scss" as fn;
+
+.dropdown {
+  display: flex;
+  gap: var(--space-m);
+
+  &-handler {
+    flex: 1;
+  }
+
+  &-text {
+    border-right: var(--border-width-2) solid var(--border-color-dark);
+  }
+
+  &-chevron {
+    transition: transform var(--transition-time-fast);
+
+    .dropdown-open & {
+      transform: rotate(0.5turn);
+    }
+  }
+
+  // Hide everything except icon. EVERYTHING!
+  &.icon-only {
+    .dropdown {
+      &-handler {
+        flex: 0;
+      }
+
+      &-text,
+      &-chevron {
+        display: none;
+      }
+    }
+  }
+}
+
+.dropdown-menu {
+  --menu-bg: color-mix(var(--bg-color), var(--background-color) 85%);
+
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-sm);
+  background-color: fn.oklch-from(menu-bg, $a: 0.9);
+  border: var(--border-width-2) solid var(--bg-color);
+  border-radius: var(--border-radius-3);
+  backdrop-filter: var(--blur-large);
+
+  &-wrapper {
+    box-shadow: var(--shadow-medium) var(--shadow-color);
+
+    &[data-transition="open"] {
+      .dropdown-menu-entry {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+
+  &-entry {
+    --appear-delay: calc(30ms * var(--index));
+
+    cursor: var(--cursor-pointer);
+    user-select: none;
+    opacity: 0;
+    padding: var(--space-xs) var(--space-m);
+    border-radius: var(--border-radius-2);
+    transform: translateX(calc(-1 * var(--space-m)));
+    transition-delay: var(--appear-delay), var(--appear-delay), 0s;
+    transition-duration: var(--transition-time-medium);
+    transition-property: transform, opacity, background-color;
+
+    &:hover {
+      background-color: fn.oklch-from(bg-color, $a: 0.25);
+      transition-duration: 0s;
+    }
+
+    &.selected {
+      pointer-events: none;
+      opacity: 1;
+      background-color: fn.oklch-from(bg-color, $a: 0.5);
+      transform: none;
+    }
+  }
+}

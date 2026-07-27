@@ -18,7 +18,6 @@ import {
   isValidElement,
   type ReactElement,
   useEffect,
-  useImperativeHandle,
   useState,
 } from 'react';
 import { floatingRoot } from 'ss13-ui-kit/common/constants';
@@ -33,7 +32,6 @@ import type { FloatingProps } from './types';
  */
 export function Floating(props: FloatingProps) {
   const {
-    ref,
     allowedOutsideClasses,
     animationDuration,
     children,
@@ -84,11 +82,6 @@ export function Floating(props: FloatingProps) {
       });
     },
   });
-
-  // ref may be a forwarded ref for imperative control; provide a properly-typed handle
-  useImperativeHandle(ref as React.Ref<{ close: () => void } | null>, () => ({
-    close: () => context.onOpenChange(false),
-  }));
 
   const { isMounted, status } = useTransitionStatus(context, {
     // TODO: Calculate CSS var value

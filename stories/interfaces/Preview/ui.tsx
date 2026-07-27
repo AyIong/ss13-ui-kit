@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {
   Button,
   Collapsible,
+  Dropdown,
   Icon,
   Input,
   Modal,
@@ -20,9 +21,22 @@ export function Preview() {
   );
 }
 
+const defaultItems: any[] = [];
+for (let i = 0; i < 15; i++) {
+  defaultItems.push({
+    displayText: `Item ${i}`,
+    value: `item-${i}`,
+  });
+}
+
 function Content() {
   const [selected, setSelected] = useState(false);
+  const [isScrollable, setScrollable] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [dropdownSelected, setDropdownSelected] = useState<string>();
+  const displayText = dropdownSelected
+    ? defaultItems.find((item) => item.value === dropdownSelected)?.displayText
+    : 'Dropdown';
 
   return (
     <Stack fill vertical>
@@ -62,6 +76,7 @@ function Content() {
       </Stack.Item>
       <Stack.Item>
         <Section
+          scrollable={isScrollable}
           title="Section title"
           buttons={
             <>
@@ -71,7 +86,12 @@ function Content() {
               >
                 Primary
               </Button>
-              <Button color="secondary">Secondary</Button>
+              <Button
+                color="secondary"
+                onClick={() => setScrollable(!isScrollable)}
+              >
+                Secondary
+              </Button>
             </>
           }
         >
@@ -88,6 +108,13 @@ function Content() {
               </>
             }
           >
+            <Dropdown
+              buttons
+              options={defaultItems}
+              displayText={displayText}
+              selected={dropdownSelected}
+              onSelected={setDropdownSelected}
+            />
             Interactive story playground Controls give you an easy to use
             interface to test your components. Set your story args and you'll
             see controls appearing here automatically.

@@ -1,8 +1,8 @@
 import { canRender } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import clsx from 'clsx';
-import { useOverlayScrollbars } from 'overlayscrollbars-react';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { useScrollable } from 'ss13-ui-kit/hooks/useScrollable';
 import type { SectionProps } from './types';
 /**
  * ## Section
@@ -60,35 +60,8 @@ export function Section(props: SectionProps) {
   const hasTitle = canRender(title) || canRender(buttons);
   const ourRef = useRef<HTMLDivElement>(null);
   const nodeRef = ref || ourRef;
-  const [initialize, instance] = useOverlayScrollbars({
-    defer: true,
-    options: {
-      scrollbars: {
-        autoHide: 'leave',
-        autoHideSuspend: true,
-        theme: '',
-      },
-    },
-  });
-
-  useEffect(() => {
-    const osInstance = instance();
-    const osState = osInstance?.state();
-    const osNotInitialized = !osInstance || osState?.destroyed;
-
-    // Initialize OS if section scrollable
-    if (osNotInitialized && scrollable) {
-      initialize(nodeRef.current as HTMLDivElement);
-    }
-
-    // Destroy OS and remove nodes if section not scrollable
-    // Will not be executed if section without scrollable initialy
-    // That's for the dynamic scrollable prop behavior, which is
-    // not standart case, but... it makes me calmer
-    if (osInstance && !scrollable) {
-      osInstance?.destroy();
-    }
-  }, [scrollable, initialize]);
+  // Initialize scrollbar
+  useScrollable(nodeRef, { scrollable });
 
   return (
     <section

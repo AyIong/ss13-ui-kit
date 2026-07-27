@@ -1,6 +1,6 @@
 import type { BooleanLike } from '@common/react';
 import type { Placement } from '@floating-ui/react';
-import type { CSSProperties, ReactNode, Ref } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 export type FloatingProps = {
   /** Interacting with this element will open the floating element. */
@@ -13,11 +13,11 @@ export type FloatingProps = {
    * - See [Placement](https://floating-ui.com/docs/useFloating#placement)
    * @default 'bottom'
    */
-  placement: Placement;
+  placement: Placement | false;
   /** Classes with will be applied to the content. */
   contentClasses: string;
   /** Inline styles with will be applied to the content. */
-  contentStyles: CSSProperties;
+  contentStyles: CSSProperties | false;
   /** Use calculated by Floating UI children width as content width. */
   contentAutoWidth: boolean;
   /**
@@ -64,8 +64,6 @@ export type FloatingProps = {
   stopChildPropagation: boolean;
   /** Close the content after interaction with it. */
   closeAfterInteract: boolean;
-  /** FloatingUI ref. */
-  ref: Ref<HTMLElement>;
   /**
    * Called when the open state changes.
    * Returns the new open state.
@@ -77,6 +75,4 @@ export type FloatingProps = {
   onOpenChange: (open: boolean) => void;
   /** Called when mounted */
   onMounted: () => void;
-  /** Imperatively close the floating element. */
-  close: () => void;
 }>;

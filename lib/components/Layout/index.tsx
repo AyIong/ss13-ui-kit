@@ -6,8 +6,8 @@
 
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import clsx from 'clsx';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { useScrollable } from 'ss13-ui-kit/hooks/useScrollable';
 import type { BoxProps } from '../Box/types';
 import type { LayoutProps } from './types';
 
@@ -38,18 +38,14 @@ export function Layout(props: LayoutProps) {
 
 function LayoutContent(props: BoxProps) {
   const { className, children, ...rest } = props;
+  const layoutRef = useRef(null);
+
+  // Initialize scrollbar
+  useScrollable(layoutRef);
 
   return (
-    <div id="layout-root" className="layout-content-wrapper">
-      <OverlayScrollbarsComponent
-        defer
-        options={{
-          scrollbars: {
-            autoHide: 'leave',
-            autoHideSuspend: true,
-            theme: '',
-          },
-        }}
+    <div ref={layoutRef} id="layout-root" className="layout-content-wrapper">
+      <div
         className={clsx([
           'layout-content',
           className,
@@ -58,7 +54,7 @@ function LayoutContent(props: BoxProps) {
         {...computeBoxProps(rest)}
       >
         {children}
-      </OverlayScrollbarsComponent>
+      </div>
     </div>
   );
 }

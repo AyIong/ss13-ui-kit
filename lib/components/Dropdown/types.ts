@@ -1,0 +1,73 @@
+import type { ReactNode } from 'react';
+import type { BoxProps } from '../Box/types';
+import type { IconProps } from '../Icon/types';
+
+export type DropdownOption = string | DropdownEntry;
+
+export type DropdownEntry = {
+  displayText: ReactNode;
+  value: string | number;
+};
+
+// Typescript will say you to fuck off when you try to use iconOnly without icon
+type DropdownIconProps =
+  | {
+      /** Icon to display in dropdown button */
+      icon?: IconProps;
+      /** Whether the icon should be displayed alone */
+      iconOnly?: never;
+    }
+  | { icon: IconProps; iconOnly?: boolean };
+
+export type DropdownProps = Partial<{
+  /** Whether to display previous / next buttons */
+  buttons: boolean;
+  /** Color of dropdown button */
+  color: string;
+  /** Disables the dropdown */
+  disabled: boolean;
+  /** Overwrites selection text with this. Good for objects etc. */
+  displayText: ReactNode;
+  /** Whether we want to make the search input styled like a regular dropdown button. */
+  styledInput: boolean;
+  /** Width of the dropdown menu in box units. Default: 15 */
+  menuWidth: string | number;
+  /** Dropdown renders over instead of below */
+  over: boolean;
+  /** Text to show when nothing has been selected. */
+  placeholder: string;
+  /** Turns the dropdown button into a search textbox. Incompatible with Tiny */
+  searchInput: boolean;
+  /** @deprecated If you want to allow dropdown breaks layout, set width 100% */
+  clipSelectedText: boolean;
+  /** Called when dropdown button is clicked */
+  onClick: (event) => void;
+}> &
+  DropdownMenuProps &
+  DropdownIconProps;
+
+type DropdownSelectionProps = {
+  /** Currently selected entry to display. Can be left stateless to permanently display this value. */
+  selected: DropdownOption | null | undefined;
+  /** Called when a value is picked from the list, `value` is the value that was picked */
+  onSelected: (value: any) => void;
+};
+
+export type DropdownMenuProps = {
+  /** An array of strings which will be displayed in the
+  dropdown when open. See Dropdown.tsx for more advanced usage with DropdownEntry */
+  options: DropdownOption[];
+} & Partial<{
+  /**
+   * Maximum number of items to show when dropdown opened.
+   * Limited to 20
+   */
+  maxItems: number;
+}> &
+  DropdownSelectionProps &
+  Omit<BoxProps, 'maxHeight'>;
+
+export type DropdownMenuEntryProps = {
+  index?: number;
+  option: DropdownOption;
+} & DropdownSelectionProps;

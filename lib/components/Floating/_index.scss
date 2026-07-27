@@ -4,8 +4,6 @@
 
 .floating {
   --floating-indentation: var(--space-m);
-  --floating-transition-time: var(--transition-time-medium);
-  --floating-transition-timing: ease;
 
   z-index: 5;
 
@@ -22,8 +20,7 @@
 
     &[data-transition="open"],
     &[data-transition="close"] {
-      transition-duration: var(--floating-transition-time);
-      transition-timing-function: var(--floating-transition-timing);
+      transition-duration: var(--transition-time-medium);
       transition-property: opacity, transform;
     }
   }
