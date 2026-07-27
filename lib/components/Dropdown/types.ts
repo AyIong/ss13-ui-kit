@@ -30,8 +30,8 @@ export type DropdownProps = Partial<{
   displayText: ReactNode;
   /** Whether we want to make the search input styled like a regular dropdown button. */
   styledInput: boolean;
-  /** Width of the dropdown menu in box units. Default: Unlimited */
-  menuWidth: string | number;
+  /** Width of the dropdown menu in box units. Default use dropdown width */
+  menuWidth: number;
   /** Text to show when nothing has been selected. */
   placeholder: string;
   /** Called when dropdown button is clicked */
@@ -40,11 +40,9 @@ export type DropdownProps = Partial<{
   DropdownMenuProps &
   DropdownIconProps;
 
-export type DropdownSelected = DropdownOption | null | undefined;
-
 type DropdownSelectionProps = {
   /** Currently selected entry to display. Can be left stateless to permanently display this value. */
-  selected: DropdownSelected;
+  selected: DropdownOption | null | undefined;
   /** Called when a value is picked from the list, `value` is the value that was picked */
   onSelected: (value: any) => void;
 };

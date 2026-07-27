@@ -1,41 +1,25 @@
 import clsx from 'clsx';
-import {
-  type CSSProperties,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from 'react';
-import { isEnter, KEY } from 'ss13-ui-kit/common/keys';
+import { type CSSProperties, useLayoutEffect, useState } from 'react';
 import { unit } from 'ss13-ui-kit/common/ui';
 import { useButton } from 'ss13-ui-kit/hooks/useButton';
 import { useScrollable } from 'ss13-ui-kit/hooks/useScrollable';
 import { Input } from '../Input';
 import {
-  changeIndex,
-  DIRECTION,
   entryClassName,
   getOptionDisplayText,
-  getOptionIndex,
   getOptionValue,
+  getSelectedIndex,
   maxItemsDefault,
   maxItemsLimit,
-  scrollToElement,
 } from './helpers';
-import type {
-  DropdownMenuEntryProps,
-  DropdownMenuProps,
-  DropdownSelected,
-} from './types';
+import type { DropdownMenuEntryProps, DropdownMenuProps } from './types';
 
 export function DropdownMenu(props: DropdownMenuProps) {
   const { ref, color, options, maxItems, selected, onSelected } = props;
 
-  const [entryHeight, setEntryHeight] = useState<number>(20); // 20 is fallback
-  const [highlighted, setHighlighted] = useState<DropdownSelected>(selected);
-
   const isEmpty = options.length === 0;
-  const selectedIndex = getOptionIndex(options, selected);
-  const highlightedValue = getOptionValue(highlighted);
+  const selectedIndex = getSelectedIndex(options, selected);
+  const [entryHeight, setEntryHeight] = useState<number>(2000); // 20 is fallback
 
   // Initialize scrollbar
   useScrollable(ref);
@@ -61,40 +45,6 @@ export function DropdownMenu(props: DropdownMenuProps) {
     return Math.min(maxItems, maxItemsLimit) * entryHeight;
   }
 
-  function handlePress(event) {
-    const highlightedIndex = getOptionIndex(options, highlighted);
-    let newIndex: number = highlightedIndex;
-
-    if (event.key === KEY.Up) {
-      newIndex = changeIndex(DIRECTION.Previous, options, highlightedIndex);
-    }
-
-    if (event.key === KEY.Down) {
-      newIndex = changeIndex(DIRECTION.Next, options, highlightedIndex);
-    }
-
-    if (isEnter(event.key)) {
-      onSelected?.(highlightedValue);
-    }
-
-    setHighlighted(options[newIndex]);
-    scrollToElement(ref, {
-      options,
-      selected: highlighted,
-      position: newIndex,
-    });
-  }
-
-  useEffect(() => {
-    if (options.length > 1) {
-      window.addEventListener('keydown', handlePress);
-    }
-
-    return () => {
-      window.removeEventListener('keydown', handlePress);
-    };
-  }, [highlighted]);
-
   return (
     <div className={clsx('dropdown-menu', `bg-${color ? color : 'primary'}`)}>
       <Input autoFocus fluid />
@@ -116,7 +66,6 @@ export function DropdownMenu(props: DropdownMenuProps) {
                 key={value}
                 index={relativeIndex}
                 option={option}
-                highlighted={highlightedValue}
                 selected={selected}
                 onSelected={onSelected}
               />
@@ -128,10 +77,9 @@ export function DropdownMenu(props: DropdownMenuProps) {
   );
 }
 
-function DropdownMenuEntry(
-  props: DropdownMenuEntryProps & { highlighted?: string | number },
-) {
-  const { index, option, highlighted, selected, onSelected } = props;
+function DropdownMenuEntry(props: DropdownMenuEntryProps) {
+  const { index, option, selected, onSelected } = props;
+
   const value = getOptionValue(option);
   const interations = useButton({
     disabled: false,
@@ -141,12 +89,7 @@ function DropdownMenuEntry(
 
   return (
     <div
-      tabIndex={-1}
-      className={clsx(
-        'dropdown-menu-entry',
-        selected === value && 'selected',
-        highlighted === value && 'highlighted',
-      )}
+      className={clsx('dropdown-menu-entry', selected === value && 'selected')}
       style={{ '--index': index || 0 } as CSSProperties}
       {...interations}
     >

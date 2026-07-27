@@ -81,11 +81,6 @@
       transition-duration: 0s;
     }
 
-    &.highlighted {
-      background-color: fn.oklch-from(bg-color, $a: 0.25);
-      transition: none;
-    }
-
     &.selected {
       pointer-events: none;
       opacity: 1;
