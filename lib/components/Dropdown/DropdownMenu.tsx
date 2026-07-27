@@ -152,9 +152,6 @@ function DropdownMenuEntry(
 
   return (
     <div
-      role="option"
-      tabIndex={-1}
-      aria-selected={highlighted || selected === value}
       className={clsx(
         'dropdown-menu-entry',
         selected === value && 'selected',
