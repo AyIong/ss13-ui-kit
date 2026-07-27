@@ -4,15 +4,16 @@ import {
   eventHandlers,
   stringStyleMap,
 } from '../lib/common/ui.ts';
-import type { BoxInternalProps } from '../lib/components/Box';
+import type { BoxInternalProps } from '../lib/components/Box/types';
 
-const boxInternalProps: Array<keyof BoxInternalProps> = [
+const boxInternalProps: Array<keyof BoxInternalProps<HTMLDivElement>> = [
   'as',
   'children',
   'className',
   'id',
   'style',
   'tw',
+  'ref',
 ];
 
 const boxProps = [

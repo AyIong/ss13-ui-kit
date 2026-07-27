@@ -30,25 +30,21 @@ export type DropdownProps = Partial<{
   displayText: ReactNode;
   /** Whether we want to make the search input styled like a regular dropdown button. */
   styledInput: boolean;
-  /** Width of the dropdown menu in box units. Default: 15 */
+  /** Width of the dropdown menu in box units. Default: Unlimited */
   menuWidth: string | number;
-  /** Dropdown renders over instead of below */
-  over: boolean;
   /** Text to show when nothing has been selected. */
   placeholder: string;
-  /** Turns the dropdown button into a search textbox. Incompatible with Tiny */
-  searchInput: boolean;
-  /** @deprecated If you want to allow dropdown breaks layout, set width 100% */
-  clipSelectedText: boolean;
   /** Called when dropdown button is clicked */
   onClick: (event) => void;
 }> &
   DropdownMenuProps &
   DropdownIconProps;
 
+export type DropdownSelected = DropdownOption | null | undefined;
+
 type DropdownSelectionProps = {
   /** Currently selected entry to display. Can be left stateless to permanently display this value. */
-  selected: DropdownOption | null | undefined;
+  selected: DropdownSelected;
   /** Called when a value is picked from the list, `value` is the value that was picked */
   onSelected: (value: any) => void;
 };

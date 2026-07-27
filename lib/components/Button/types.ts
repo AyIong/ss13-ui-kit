@@ -32,7 +32,7 @@ export type ButtonBaseProps = Partial<{
   tooltip: ButtonTooltip;
 }> &
   ButtonInteractionProps &
-  BoxProps;
+  BoxProps<HTMLButtonElement>;
 
 export type ButtonIconProps = IconProps | IconNamesUnion;
 export type ButtonProps = Partial<{

@@ -7,7 +7,7 @@ type UseScrollableProps = Partial<{
 }>;
 
 export function useScrollable(
-  ref: RefObject<HTMLDivElement | null> | undefined,
+  ref?: RefObject<HTMLDivElement | null>,
   props: UseScrollableProps = {},
 ) {
   const { scrollable = true } = props;
@@ -43,10 +43,8 @@ export function useScrollable(
       // Prob overkill...
       if (isScrollbarInitialized()) {
         instance()?.destroy();
-        console.log('Nuked', ref?.current);
       }
 
-      console.log('Skipped', ref?.current);
       restoreOriginalRef();
       return;
     }
@@ -59,14 +57,14 @@ export function useScrollable(
       // Replace passed ref with new one, actually scrollable
       const viewport = instance()?.elements()?.viewport || null;
       ref.current = viewport as HTMLDivElement;
-      console.log('Initialized', ref?.current);
     }
 
     return () => {
-      console.log('Trying to unmount', isScrollbarInitialized());
+      // OverlayScrollbars hook automatically destroys instance on component unmount
+      // But for safety we check if it really destroyed, also scrollable change need
+      // to be handled
       if (isScrollbarInitialized()) {
         instance()?.destroy();
-        console.log('Unmounted');
       }
       restoreOriginalRef();
     };

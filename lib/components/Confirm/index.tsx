@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type MouseEvent, useState } from 'react';
 import { ButtonContainer, ButtonContent, renderIcon } from '../Button';
 import type { ConfirmProps } from './types';
 
@@ -21,7 +21,7 @@ export function Confirm(props: ConfirmProps) {
     onBlur?.(event);
   }
 
-  function handleClick(event: React.MouseEvent<HTMLDivElement>): void {
+  function handleClick(event: MouseEvent<HTMLButtonElement>): void {
     if (!clickedOnce) {
       setClickedOnce(true);
       return;

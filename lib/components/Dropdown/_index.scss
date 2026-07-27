@@ -36,11 +36,13 @@
 }
 
 .dropdown-menu {
+  --indent: var(--space-sm);
   --menu-bg: color-mix(var(--bg-color), var(--background-color) 85%);
 
   display: flex;
   flex-direction: column;
-  padding: var(--space-sm);
+  gap: var(--indent);
+  padding: var(--indent);
   background-color: fn.oklch-from(menu-bg, $a: 0.9);
   border: var(--border-width-2) solid var(--bg-color);
   border-radius: var(--border-radius-3);
@@ -54,6 +56,10 @@
         opacity: 1;
         transform: none;
       }
+    }
+
+    &[data-position="top"] .dropdown-menu {
+      flex-direction: column-reverse;
     }
   }
 
@@ -73,6 +79,11 @@
     &:hover {
       background-color: fn.oklch-from(bg-color, $a: 0.25);
       transition-duration: 0s;
+    }
+
+    &.highlighted {
+      background-color: fn.oklch-from(bg-color, $a: 0.25);
+      transition: none;
     }
 
     &.selected {

@@ -32,6 +32,7 @@ import type { FloatingProps } from './types';
  */
 export function Floating(props: FloatingProps) {
   const {
+    allowedInsideClasses,
     allowedOutsideClasses,
     animationDuration,
     children,
@@ -88,13 +89,18 @@ export function Floating(props: FloatingProps) {
     duration: animationDuration || 200,
   });
 
+  function isWhitelisted(event, className) {
+    if (!className || !(event.target instanceof Element)) {
+      return false;
+    }
+
+    const element = event.target;
+    return element.closest(className);
+  }
+
   const dismiss = useDismiss(context, {
     ancestorScroll: true,
-    outsidePress: (event) =>
-      !allowedOutsideClasses
-        ? true
-        : event.target instanceof Element &&
-          !event.target.closest(allowedOutsideClasses),
+    outsidePress: (event) => !isWhitelisted(event, allowedOutsideClasses),
   });
 
   const click = useClick(context, { enabled: !disabled });
@@ -120,8 +126,8 @@ export function Floating(props: FloatingProps) {
   });
 
   const floatingProps = getFloatingProps({
-    onClick: () => {
-      if (closeAfterInteract) {
+    onClick: (event) => {
+      if (closeAfterInteract && !isWhitelisted(event, allowedInsideClasses)) {
         context.onOpenChange(false);
       }
     },

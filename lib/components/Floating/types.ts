@@ -52,7 +52,14 @@ export type FloatingProps = {
    */
   hoverSafePolygon: boolean;
   /**
-   * Whitelisted classes.
+   * Whitelisted inside classes.
+   * Used to allow to add some secured classes,
+   * click on which will not close the content.
+   * - Classes must be sent like this: `".class1, .class2"`
+   */
+  allowedInsideClasses: string;
+  /**
+   * Whitelisted outside classes.
    * Used to allow to add some secured classes,
    * click on which will not close the content.
    * - Classes must be sent like this: `".class1, .class2"`

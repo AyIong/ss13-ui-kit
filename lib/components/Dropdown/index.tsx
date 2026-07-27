@@ -6,7 +6,13 @@ import { Button, ButtonContainer, ButtonContent, ButtonIcon } from '../Button';
 import { Floating } from '../Floating';
 import { Icon } from '../Icon';
 import { DropdownMenu } from './DropdownMenu';
-import { DIRECTION, getOptionValue, getSelectedIndex } from './helpers';
+import {
+  changeIndex,
+  DIRECTION,
+  getOptionIndex,
+  getOptionValue,
+  scrollToElement,
+} from './helpers';
 import type { DropdownProps } from './types';
 
 /**
@@ -38,14 +44,14 @@ export function Dropdown(props: DropdownProps) {
   } = props;
 
   const [isOpen, setOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const dropdownMenuRef = useRef<HTMLDivElement>(null);
   const interactions = useButton({
     captureKeys: true,
     disabled: disabled && !isOpen,
     onClick,
   });
 
-  const selectedIndex = getSelectedIndex(options, selected);
+  const selectedIndex = getOptionIndex(options, selected);
   const hasSelectedIndex = selectedIndex !== -1;
   const displayedText =
     displayText ||
@@ -53,49 +59,23 @@ export function Dropdown(props: DropdownProps) {
     placeholder ||
     'Select...';
 
-  /** Scroll dropdown content to selected option */
-  function scrollToElement(position: number): void {
-    let scrollPos = position;
-    if (position < selectedIndex) {
-      scrollPos = position < 2 ? 0 : position - 2;
-    } else {
-      scrollPos =
-        position > options.length - 3 ? options.length - 1 : position - 2;
-    }
-
-    const dropdownMenu = menuRef.current;
-    const element = dropdownMenu?.children[scrollPos] as HTMLElement;
-    if (dropdownMenu && element) {
-      dropdownMenu.scrollTop = element.offsetTop;
-    }
-  }
-
   /** Update the selected value when clicking the left/right buttons */
   function updateSelected(direction: DIRECTION): void {
     if (options.length < 1 || disabled) {
       return;
     }
 
-    let newIndex: number;
-    const startIndex = 0;
-    const endIndex = options.length - 1;
-
-    if (selectedIndex < 0) {
-      newIndex = direction === 'next' ? endIndex : startIndex; // No selection yet
-    } else if (direction === 'next') {
-      newIndex = selectedIndex === endIndex ? startIndex : selectedIndex + 1; // Move to next option
-    } else {
-      newIndex = selectedIndex === startIndex ? endIndex : selectedIndex - 1; // Move to previous option
-    }
-
+    const position = changeIndex(direction, options, selectedIndex);
     if (isOpen) {
-      scrollToElement(newIndex);
+      scrollToElement(dropdownMenuRef, { options, selected, position });
     }
-    onSelected?.(getOptionValue(options[newIndex]));
+
+    onSelected?.(getOptionValue(options[position]));
   }
 
   return (
     <div
+      style={{ width: unit(width) }}
       className={clsx(
         'dropdown',
         isOpen && 'dropdown-open',
@@ -105,6 +85,7 @@ export function Dropdown(props: DropdownProps) {
     >
       <Floating
         closeAfterInteract
+        allowedInsideClasses=".input"
         allowedOutsideClasses=".dropdown"
         disabled={disabled}
         contentAutoWidth={!menuWidth}
@@ -112,7 +93,7 @@ export function Dropdown(props: DropdownProps) {
         contentClasses="dropdown-menu-wrapper"
         content={
           <DropdownMenu
-            ref={menuRef}
+            ref={dropdownMenuRef}
             color={color}
             maxItems={maxItems}
             options={options}
@@ -120,24 +101,22 @@ export function Dropdown(props: DropdownProps) {
             onSelected={onSelected}
           />
         }
-        contentStyles={!!menuWidth && { width: unit(menuWidth) }}
         onOpenChange={setOpen}
         onMounted={() => {
           if (!isOpen && !hasSelectedIndex) {
             return;
           }
-          /**
-           * Floating uses async FloatingPortal,
-           * the dropdown content is not yet ready when you open it.
-           */
-          requestAnimationFrame(() => scrollToElement(selectedIndex));
+          scrollToElement(dropdownMenuRef, {
+            options,
+            selected,
+            position: selectedIndex,
+          });
         }}
       >
         <ButtonContainer
           color={color}
           disabled={disabled}
           className="dropdown-handler"
-          style={{ width: unit(width) }}
           {...interactions}
         >
           {icon && <ButtonIcon className="dropdown-icon" {...icon} />}
