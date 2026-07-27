@@ -22,7 +22,7 @@ export function Preview() {
 }
 
 const defaultItems: any[] = [];
-for (let i = 0; i < 15; i++) {
+for (let i = 0; i < 50; i++) {
   defaultItems.push({
     displayText: `Item ${i}`,
     value: `item-${i}`,

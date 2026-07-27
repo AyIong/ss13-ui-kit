@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { RefObject } from 'react';
 import type { DropdownOption } from './types';
 
 export enum DIRECTION {
@@ -15,21 +15,35 @@ export function getOptionValue(option: DropdownOption): string | number {
   return typeof option === 'string' ? option : option.value;
 }
 
-export function getOptionDisplayText(
-  option: DropdownOption,
-): string | ReactNode {
+export function getOptionDisplayText(option: DropdownOption): string {
   return typeof option === 'string' ? option : option.displayText;
 }
 
-export function getSelectedIndex(
+export function getOptionIndex(
   options: DropdownOption[],
-  selected: DropdownOption | null | undefined,
+  optionToFind: DropdownOption | null | undefined,
 ) {
-  if (!selected) {
+  if (!optionToFind) {
     return -1;
   }
 
   return (
-    options.findIndex((option) => getOptionValue(option) === selected) || 0
+    options.findIndex((option) => getOptionValue(option) === optionToFind) || 0
   );
+}
+
+/** Scroll dropdown content to selected option */
+export function scrollToElement(
+  ref: RefObject<HTMLDivElement | null> | undefined,
+  scrollTo: number,
+): void {
+  if (!ref?.current) {
+    return;
+  }
+
+  const entries = ref.current.querySelectorAll(`.${entryClassName}`);
+  const target = entries[scrollTo] as HTMLElement | undefined;
+  if (target) {
+    target.scrollIntoView({ block: 'center' });
+  }
 }

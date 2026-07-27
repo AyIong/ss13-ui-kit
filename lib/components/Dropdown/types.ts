@@ -5,7 +5,7 @@ import type { IconProps } from '../Icon/types';
 export type DropdownOption = string | DropdownEntry;
 
 export type DropdownEntry = {
-  displayText: ReactNode;
+  displayText: string;
   value: string | number;
 };
 

@@ -79,7 +79,6 @@ export function Floating(props: FloatingProps) {
       return autoUpdate(reference, floating, update, {
         ancestorResize: false,
         ancestorScroll: false,
-        elementResize: false, // ResizeObserver crashes in multiple cases, disabled for now
       });
     },
   });
@@ -98,14 +97,11 @@ export function Floating(props: FloatingProps) {
     return element.closest(className);
   }
 
-  const dismiss = useDismiss(context, {
-    ancestorScroll: true,
-    outsidePress: (event) => !isWhitelisted(event, allowedOutsideClasses),
-  });
-
-  const click = useClick(context, { enabled: !disabled });
+  const openHandled = handleOpen !== undefined;
+  const interactionsEnabled = !disabled && !openHandled;
+  const click = useClick(context, { enabled: interactionsEnabled });
   const hover = useHover(context, {
-    enabled: !disabled,
+    enabled: interactionsEnabled,
     handleClose: hoverSafePolygon
       ? safePolygon({
           requireIntent: false,
@@ -113,9 +109,12 @@ export function Floating(props: FloatingProps) {
       : null,
     restMs: hoverDelay || 100,
   });
+  const dismiss = useDismiss(context, {
+    ancestorScroll: true,
+    outsidePress: (event) => !isWhitelisted(event, allowedOutsideClasses),
+  });
 
-  const openHandled = handleOpen !== undefined;
-  const interactions = openHandled ? [] : [dismiss, hoverOpen ? hover : click];
+  const interactions = [dismiss, hoverOpen ? hover : click];
   const { getReferenceProps, getFloatingProps } = useInteractions(interactions);
 
   const referenceProps = getReferenceProps({

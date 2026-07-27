@@ -6,7 +6,12 @@ import { Button, ButtonContainer, ButtonContent, ButtonIcon } from '../Button';
 import { Floating } from '../Floating';
 import { Icon } from '../Icon';
 import { DropdownMenu } from './DropdownMenu';
-import { DIRECTION, getOptionValue, getSelectedIndex } from './helpers';
+import {
+  DIRECTION,
+  getOptionIndex,
+  getOptionValue,
+  scrollToElement,
+} from './helpers';
 import type { DropdownProps } from './types';
 
 /**
@@ -42,33 +47,18 @@ export function Dropdown(props: DropdownProps) {
   const interactions = useButton({
     captureKeys: true,
     disabled: disabled && !isOpen,
-    onClick,
+    onClick: (value) => {
+      onClick?.(value);
+      setOpen(!isOpen);
+    },
   });
 
-  const selectedIndex = getSelectedIndex(options, selected);
-  const hasSelectedIndex = selectedIndex !== -1;
+  const selectedIndex = getOptionIndex(options, selected);
   const displayedText =
     displayText ||
     (selected && getOptionValue(selected)) ||
     placeholder ||
     'Select...';
-
-  /** Scroll dropdown content to selected option */
-  function scrollToElement(position: number): void {
-    let scrollPos = position;
-    if (position < selectedIndex) {
-      scrollPos = position < 2 ? 0 : position - 2;
-    } else {
-      scrollPos =
-        position > options.length - 3 ? options.length - 1 : position - 2;
-    }
-
-    const dropdownMenu = dropdownMenuRef.current;
-    const element = dropdownMenu?.children[scrollPos] as HTMLElement;
-    if (dropdownMenu && element) {
-      dropdownMenu.scrollTop = element.offsetTop;
-    }
-  }
 
   /** Update the selected value when clicking the left/right buttons */
   function updateSelected(direction: DIRECTION): void {
@@ -89,8 +79,9 @@ export function Dropdown(props: DropdownProps) {
     }
 
     if (isOpen) {
-      scrollToElement(newIndex);
+      scrollToElement(dropdownMenuRef, newIndex);
     }
+
     onSelected?.(getOptionValue(options[newIndex]));
   }
 
@@ -105,12 +96,15 @@ export function Dropdown(props: DropdownProps) {
       )}
     >
       <Floating
-        closeAfterInteract
+        handleOpen={isOpen}
+        onOpenChange={setOpen}
+        allowedInsideClasses=".input"
         allowedOutsideClasses=".dropdown"
         disabled={disabled}
         contentAutoWidth={!menuWidth}
         placement={iconOnly && 'bottom-start'}
         contentClasses="dropdown-menu-wrapper"
+        contentStyles={!!menuWidth && { width: unit(menuWidth) }}
         content={
           <DropdownMenu
             ref={dropdownMenuRef}
@@ -118,17 +112,12 @@ export function Dropdown(props: DropdownProps) {
             maxItems={maxItems}
             options={options}
             selected={selected}
-            onSelected={onSelected}
+            onSelected={(value) => {
+              onSelected?.(value);
+              setOpen(false);
+            }}
           />
         }
-        contentStyles={!!menuWidth && { width: unit(menuWidth) }}
-        onOpenChange={setOpen}
-        onMounted={() => {
-          if (!isOpen && !hasSelectedIndex) {
-            return;
-          }
-          scrollToElement(selectedIndex);
-        }}
       >
         <ButtonContainer
           color={color}
