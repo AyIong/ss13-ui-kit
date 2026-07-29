@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, RefObject } from 'react';
 import type { BoxProps } from '../Box/types';
 import type { IconProps } from '../Icon/types';
 
@@ -28,8 +28,6 @@ export type DropdownProps = Partial<{
   disabled: boolean;
   /** Overwrites selection text with this. Good for objects etc. */
   displayText: ReactNode;
-  /** Whether we want to make the search input styled like a regular dropdown button. */
-  styledInput: boolean;
   /** Width of the dropdown menu in box units. Default use dropdown width */
   menuWidth: number;
   /** Text to show when nothing has been selected. */
@@ -47,7 +45,12 @@ type DropdownSelectionProps = {
   onSelected: (value: any) => void;
 };
 
+export type DropdownMenuHandle = {
+  scrollToIndex: (index: number) => void;
+};
+
 export type DropdownMenuProps = {
+  ref?: RefObject<DropdownMenuHandle | null>;
   /** An array of strings which will be displayed in the
   dropdown when open. See Dropdown.tsx for more advanced usage with DropdownEntry */
   options: DropdownOption[];
@@ -59,7 +62,7 @@ export type DropdownMenuProps = {
   maxItems: number;
 }> &
   DropdownSelectionProps &
-  Omit<BoxProps, 'maxHeight'>;
+  Omit<BoxProps, 'maxHeight' | 'ref'>;
 
 export type DropdownMenuEntryProps = {
   index?: number;

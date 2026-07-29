@@ -6,13 +6,8 @@ import { Button, ButtonContainer, ButtonContent, ButtonIcon } from '../Button';
 import { Floating } from '../Floating';
 import { Icon } from '../Icon';
 import { DropdownMenu } from './DropdownMenu';
-import {
-  DIRECTION,
-  getOptionIndex,
-  getOptionValue,
-  scrollToElement,
-} from './helpers';
-import type { DropdownProps } from './types';
+import { DIRECTION, getOptionIndex, getOptionValue } from './helpers';
+import type { DropdownMenuHandle, DropdownProps } from './types';
 
 /**
  * ## Dropdown
@@ -43,7 +38,7 @@ export function Dropdown(props: DropdownProps) {
   } = props;
 
   const [isOpen, setOpen] = useState(false);
-  const dropdownMenuRef = useRef<HTMLDivElement>(null);
+  const dropdownMenuRef = useRef<DropdownMenuHandle>(null);
   const interactions = useButton({
     captureKeys: true,
     disabled: disabled && !isOpen,
@@ -79,7 +74,7 @@ export function Dropdown(props: DropdownProps) {
     }
 
     if (isOpen) {
-      scrollToElement(dropdownMenuRef, newIndex);
+      dropdownMenuRef.current?.scrollToIndex(newIndex);
     }
 
     onSelected?.(getOptionValue(options[newIndex]));

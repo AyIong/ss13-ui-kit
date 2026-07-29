@@ -1,8 +1,6 @@
-import type { RefObject } from 'react';
 import type { DropdownOption } from './types';
 
 export enum DIRECTION {
-  Current = 'current',
   Next = 'next',
   Previous = 'previous',
 }
@@ -27,23 +25,23 @@ export function getOptionIndex(
     return -1;
   }
 
-  return (
-    options.findIndex((option) => getOptionValue(option) === optionToFind) || 0
-  );
+  return options.findIndex((option) => getOptionValue(option) === optionToFind);
 }
 
-/** Scroll dropdown content to selected option */
-export function scrollToElement(
-  ref: RefObject<HTMLDivElement | null> | undefined,
-  scrollTo: number,
-): void {
-  if (!ref?.current) {
-    return;
-  }
-
-  const entries = ref.current.querySelectorAll(`.${entryClassName}`);
-  const target = entries[scrollTo] as HTMLElement | undefined;
+// Scroll dropdown content to selected option
+export function scrollToElement(element: HTMLElement, scrollTo: number): void {
+  const entries = element.querySelectorAll(`.${entryClassName}`);
+  const target = entries[scrollTo];
   if (target) {
     target.scrollIntoView({ block: 'center' });
   }
+}
+
+// Get max height, depend on maxItems and entryHeight
+// By default, returns 10 * ~20 (~200px)
+export function getMaxHeight(maxItems, entryHeight) {
+  if (!maxItems) {
+    return maxItemsDefault * entryHeight;
+  }
+  return Math.min(maxItems, maxItemsLimit) * entryHeight;
 }

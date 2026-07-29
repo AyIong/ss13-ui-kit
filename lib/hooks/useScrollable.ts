@@ -21,14 +21,7 @@ export function useScrollable(
     },
   });
 
-  const originalNodeRef = useRef<HTMLDivElement | null>(null);
-  function restoreOriginalRef() {
-    if (ref && originalNodeRef.current) {
-      ref.current = originalNodeRef.current;
-    }
-    originalNodeRef.current = null;
-  }
-
+  const viewportRef = useRef<HTMLDivElement | null>(null);
   function isScrollbarInitialized() {
     const osInstance = instance();
     return !!osInstance && !osInstance.state().destroyed;
@@ -45,18 +38,15 @@ export function useScrollable(
         instance()?.destroy();
       }
 
-      restoreOriginalRef();
+      viewportRef.current = null;
       return;
     }
 
     // Initialize OS if hook used with scrollable true
-    if (scrollable && !isScrollbarInitialized() && ref.current) {
-      originalNodeRef.current = ref.current;
+    if (!isScrollbarInitialized() && ref.current) {
       initialize(ref.current as HTMLDivElement);
-
-      // Replace passed ref with new one, actually scrollable
-      const viewport = instance()?.elements()?.viewport || null;
-      ref.current = viewport as HTMLDivElement;
+      viewportRef.current =
+        (instance()?.elements()?.viewport as HTMLDivElement) || null;
     }
 
     return () => {
@@ -66,7 +56,8 @@ export function useScrollable(
       if (isScrollbarInitialized()) {
         instance()?.destroy();
       }
-      restoreOriginalRef();
+      viewportRef.current = null;
     };
-  }, [scrollable]);
+  }, [scrollable, ref]);
+  return viewportRef;
 }

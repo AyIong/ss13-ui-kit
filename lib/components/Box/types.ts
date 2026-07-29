@@ -11,7 +11,10 @@ import type {
   RefObject,
 } from 'react';
 
-export type BoxInternalProps<TElement> = Partial<{
+export type BoxInternalProps<TElement> = {
+  /** Ref to the Box created element. */
+  ref?: RefObject<TElement | null>;
+} & Partial<{
   /**
    * The component used for the root node.
    * @default <div>
@@ -47,8 +50,6 @@ export type BoxInternalProps<TElement> = Partial<{
    * 3. This should be a static string with minimal interpolation. If you need more logic, prefer the props approach.
    */
   tw: string;
-  /** Ref to the Box created element. */
-  ref: RefObject<TElement | null>;
 }>;
 
 type LiftedHTMLAttributes<TElement> = {

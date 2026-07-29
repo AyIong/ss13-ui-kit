@@ -16,25 +16,24 @@
     "test": "bun test"
   },
   "peerDependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.27.16",
-    "@fortawesome/fontawesome-common-types": "^7.2.0",
+    "@floating-ui/react": "^0.27.20",
     "@fortawesome/fontawesome-svg-core": "^7.3.1",
     "@fortawesome/free-regular-svg-icons": "^7.3.1",
     "@fortawesome/free-solid-svg-icons": "^7.3.1",
     "@fortawesome/react-fontawesome": "^3.5.0",
     "@nozbe/microfuzz": "^1.0.0",
     "clsx": "^2.1.1",
-    "jotai": "^2.20.0",
+    "jotai": "^2.20.2",
     "overlayscrollbars-react": "^0.5.6",
     "react-transitioning": "^1.0.9"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.11",
-    "@happy-dom/global-registrator": "^20.0.11",
+    "@biomejs/biome": "2.5.5",
+    "@happy-dom/global-registrator": "^20.11.1",
     "@rsbuild/core": "^1.7.1",
     "@rsbuild/plugin-react": "^1.4.2",
     "@rsbuild/plugin-sass": "^1.4.0",
@@ -44,8 +43,8 @@
     "@testing-library/react": "^16.3.1",
     "@types/bun": "latest",
     "@types/react-dom": "latest",
-    "@types/react": "latest",
-    "prettier": "^3.7.4",
+    "@types/react": "19.2.17",
+    "prettier": "^3.9.6",
     "storybook-react-rsbuild": "^3.2.0",
     "storybook": "^10.1.11",
     "typescript": "^5.9.3"

@@ -1,18 +1,24 @@
+import { osOptions } from '@common/constants';
+import { isEnter, KEY } from '@common/keys';
+import { unit } from '@common/ui';
+import { Input } from '@components';
+import { useButton, useFuzzySearch } from '@hooks';
 import clsx from 'clsx';
+import {
+  OverlayScrollbarsComponent,
+  type OverlayScrollbarsComponentRef,
+} from 'overlayscrollbars-react';
 import {
   type CSSProperties,
   useEffect,
+  useImperativeHandle,
   useLayoutEffect,
+  useRef,
   useState,
 } from 'react';
-import { isEnter, KEY } from 'ss13-ui-kit/common/keys';
-import { unit } from 'ss13-ui-kit/common/ui';
-import { useButton } from 'ss13-ui-kit/hooks/useButton';
-import { useFuzzySearch } from 'ss13-ui-kit/hooks/useFuzzySearch';
-import { useScrollable } from 'ss13-ui-kit/hooks/useScrollable';
-import { Input } from '../Input';
 import {
   entryClassName,
+  getMaxHeight,
   getOptionDisplayText,
   getOptionIndex,
   getOptionValue,
@@ -35,15 +41,6 @@ export function DropdownMenu(props: DropdownMenuProps) {
 
   const isEmpty = options.length === 0;
   const displayOptions = query ? results : options;
-
-  // Get max height, depend on maxItems and entryHeight
-  // By default, returns 10 * ~20 (~200px)
-  function getMaxHeight() {
-    if (!maxItems) {
-      return maxItemsDefault * entryHeight;
-    }
-    return Math.min(maxItems, maxItemsLimit) * entryHeight;
-  }
 
   function handleKeyDown(event) {
     if (isEmpty) {
@@ -70,70 +67,104 @@ export function DropdownMenu(props: DropdownMenuProps) {
     }
   }
 
-  // Initialize scrollbar
-  useScrollable(ref);
+  // OverlayScrollbars ref, which contains 2 functions. See OS docs
+  const osRef = useRef<OverlayScrollbarsComponentRef>(null);
+  function getViewport(): HTMLElement | null {
+    return osRef.current?.osInstance()?.elements().viewport || null;
+  }
+
+  // Replace default ref, which contains element link
+  // With scrollToElement functions, allow buttons to call it
+  useImperativeHandle(
+    ref,
+    () => ({
+      scrollToIndex(index: number) {
+        const scrollable = getViewport();
+        if (scrollable) {
+          scrollToElement(scrollable, index);
+        }
+      },
+    }),
+    [],
+  );
 
   // Calculate entry height, to use it for maxHeight
   useLayoutEffect(() => {
-    if (!ref || !ref.current) {
+    const hostElement = osRef.current?.getElement();
+    if (!hostElement) {
       return;
     }
 
-    const entryElement = ref.current.querySelector(`.${entryClassName}`);
+    const entryElement = hostElement.querySelector(`.${entryClassName}`);
     const entrySize = entryElement?.getBoundingClientRect().height;
     if (entrySize) {
       setEntryHeight(entrySize);
     }
-  }, [options]);
+  }, []);
 
   // Reset highlightedIndex on search
+  // and sync with selected if no query
   useEffect(() => {
     if (query) {
       setHighlightedIndex(0);
+    } else {
+      setHighlightedIndex(selectedIndex);
     }
-  }, [query]);
+  }, [query, selectedIndex]);
 
   // Scroll to selected element, if we have one
   useEffect(() => {
-    scrollToElement(ref, highlightedIndex);
+    const viewport = getViewport();
+    if (viewport) {
+      scrollToElement(viewport, highlightedIndex);
+    }
   }, [highlightedIndex]);
 
   return (
     <div className={clsx('dropdown-menu', `bg-${color ? color : 'primary'}`)}>
-      <Input
-        autoFocus
-        fluid
-        placeholder="Search..."
-        value={query}
-        onChange={setQuery}
-        onKeyDown={handleKeyDown}
-      />
-      <div
-        // Ref must be there, or autoscroll to selected will not work
-        ref={ref}
-        tabIndex={-1}
-        className="dropdown-menu-entries"
-        style={{ maxHeight: unit(`${getMaxHeight()}px`) }}
-      >
-        {isEmpty || (query && results.length === 0) ? (
-          <div className={entryClassName}>No options</div>
-        ) : (
-          displayOptions.map((option, index) => {
-            const value = getOptionValue(option);
-            const relativeIndex = Math.abs(index - selectedIndex);
+      {options.length > (maxItems || maxItemsDefault) && (
+        <div className="dropdown-menu-input">
+          <Input
+            autoFocus
+            fluid
+            placeholder="Search..."
+            value={query}
+            onChange={setQuery}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
+      )}
+      <div className="dropdown-menu-entries">
+        <OverlayScrollbarsComponent
+          ref={osRef}
+          style={{
+            maxHeight: unit(`${getMaxHeight(maxItems, entryHeight)}px`),
+          }}
+          {...osOptions}
+        >
+          {isEmpty || (query && results.length === 0) ? (
+            <div className={entryClassName}>No options</div>
+          ) : (
+            displayOptions.map((option, index) => {
+              const value = getOptionValue(option);
+              const relativeIndex = Math.min(
+                Math.abs(index - selectedIndex),
+                maxItemsLimit, // Selected must not have animation
+              );
 
-            return (
-              <DropdownMenuEntry
-                key={value}
-                index={relativeIndex}
-                option={option}
-                selected={selected}
-                highlighted={index === highlightedIndex}
-                onSelected={onSelected}
-              />
-            );
-          })
-        )}
+              return (
+                <DropdownMenuEntry
+                  key={value}
+                  index={relativeIndex}
+                  option={option}
+                  selected={selected}
+                  highlighted={index === highlightedIndex}
+                  onSelected={onSelected}
+                />
+              );
+            })
+          )}
+        </OverlayScrollbarsComponent>
       </div>
     </div>
   );
@@ -144,8 +175,7 @@ function DropdownMenuEntry(
 ) {
   const { index, option, selected, highlighted, onSelected } = props;
   const value = getOptionValue(option);
-  const interations = useButton({
-    disabled: false,
+  const interactions = useButton({
     captureKeys: true,
     onClick: () => onSelected?.(value),
   });
@@ -157,8 +187,8 @@ function DropdownMenuEntry(
         selected === value && 'selected',
         highlighted && 'highlighted',
       )}
-      style={{ '--index': index || 0 } as CSSProperties}
-      {...interations}
+      style={{ '--index': index } as CSSProperties}
+      {...interactions}
     >
       {getOptionDisplayText(option)}
     </div>
