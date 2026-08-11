@@ -64,7 +64,7 @@ export function Floating(props: FloatingProps) {
             elements.floating.style.width = `${rects.reference.width}px`;
           },
         }),
-    ],
+    ].filter(Boolean),
     onOpenChange(isOpen) {
       setIsOpen(isOpen);
       onOpenChange?.(isOpen);
@@ -79,6 +79,7 @@ export function Floating(props: FloatingProps) {
       return autoUpdate(reference, floating, update, {
         ancestorResize: false,
         ancestorScroll: false,
+        animationFrame: true, // Fixes ResizeObserver error
       });
     },
   });
