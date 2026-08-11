@@ -110,7 +110,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
     } else {
       setHighlightedIndex(selectedIndex);
     }
-  }, [query, selectedIndex]);
+  }, [query]);
 
   // Scroll to selected element, if we have one
   useEffect(() => {
@@ -149,7 +149,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
               const value = getOptionValue(option);
               const relativeIndex = Math.min(
                 Math.abs(index - selectedIndex),
-                maxItemsLimit, // Selected must not have animation
+                maxItemsLimit,
               );
 
               return (

@@ -1,9 +1,11 @@
 import { canRender } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import clsx from 'clsx';
-import { useRef } from 'react';
-import { useScrollable } from 'ss13-ui-kit/hooks/useScrollable';
+import { useOverlayScrollbars } from 'overlayscrollbars-react';
+import { useEffect, useRef } from 'react';
+import { osOptions } from 'ss13-ui-kit/common/constants';
 import type { SectionProps } from './types';
+
 /**
  * ## Section
  *
@@ -59,9 +61,56 @@ export function Section(props: SectionProps) {
 
   const hasTitle = canRender(title) || canRender(buttons);
   const ourRef = useRef<HTMLDivElement>(null);
-  const nodeRef = ref || ourRef;
-  // Initialize scrollbar
-  useScrollable(nodeRef, { scrollable });
+  const [initialize, instance] = useOverlayScrollbars({ ...osOptions });
+
+  function isScrollbarInitialized() {
+    const osInstance = instance();
+    return !!osInstance && !osInstance.state().destroyed;
+  }
+
+  useEffect(() => {
+    if (!scrollable) {
+      if (isScrollbarInitialized()) {
+        instance()?.destroy();
+      }
+
+      if (ref) {
+        ref.current = ourRef.current;
+      }
+      return;
+    }
+
+    if (!isScrollbarInitialized() && ourRef.current) {
+      // Initialize OS with prepared containers, if we don't do that,
+      // UI will instanly crash if you try to change they content...
+      initialize({
+        target: ourRef.current,
+        elements: {
+          viewport: (host) =>
+            host.querySelector('[data-os-viewport]') as HTMLDivElement,
+          content: (viewport) =>
+            viewport.querySelector('[data-os-content]') as HTMLDivElement,
+        },
+      });
+    }
+
+    // Forward real scrollable container ref, if section scrollable (OS is initialized)
+    // Or just send ref created by useRef
+    if (ref) {
+      ref.current =
+        (instance()?.elements().viewport as HTMLDivElement) || ourRef.current;
+    }
+
+    return () => {
+      if (isScrollbarInitialized()) {
+        instance()?.destroy();
+      }
+
+      if (ref) {
+        ref.current = ourRef.current;
+      }
+    };
+  }, [scrollable, ref]);
 
   return (
     <section
@@ -84,9 +133,9 @@ export function Section(props: SectionProps) {
       )}
       <div className={clsx(['section-content-wrapper'])}>
         <div
-          // For posterity: the forwarded ref needs to be here specifically
-          // to actually let things interact with the scrolling.
-          ref={nodeRef}
+          // That is not really scrollable ref, it'll be used only if section
+          // not scrallable, otherwise it will be replaced with OS viewport ref
+          ref={ourRef}
           className={clsx([
             'section-content',
             scrollable && 'scrollable',
@@ -95,7 +144,13 @@ export function Section(props: SectionProps) {
           ])}
           onScroll={onScroll}
         >
-          {children}
+          {scrollable ? (
+            <div data-os-viewport>
+              <div data-os-content>{children}</div>
+            </div>
+          ) : (
+            children
+          )}
         </div>
       </div>
     </section>

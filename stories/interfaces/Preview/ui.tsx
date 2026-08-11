@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: <Don't care, story> */
 import { Window } from '@stories/window';
 import { useState } from 'react';
 import {
@@ -65,9 +66,10 @@ function Content() {
             </>
           }
         >
-          {Array.from({ length: 10 }, (_, i) => (
-            <div key={i}>Section content 1234567890</div>
-          ))}
+          {selected &&
+            Array.from({ length: 10 }, (_, i) => (
+              <div key={i}>Section content 1234567890</div>
+            ))}
           <Icon.Stack>
             <Icon regular name="circle" size={2} />
             <Icon name="book" />
