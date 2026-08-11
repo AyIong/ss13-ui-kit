@@ -1,4 +1,23 @@
+/**
+ * TGUI
+ * Component specific variables
+ *
+ * Add component specific variables here, but make sure, they are
+ * used or will be used between several components.
+ *
+ * Do not add variables, if they are used only inside their component.
+ * Also, you can add libraries specific variables here.
+ */
+
 @use "functions" as fn;
+
+:root {
+  --scrollbar-color: #{fn.oklch-from(primary-color, $a: 0.5)};
+
+  // MARK: Section
+  --section-color: #{fn.oklch-from(background-color, $l: -0.05, $a: 0.5)};
+  --section-border-radius: var(--border-radius-3);
+}
 
 // MARK: OverlayScrollbar
 [data-overlayscrollbars-contents] {

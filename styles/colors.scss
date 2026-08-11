@@ -10,7 +10,7 @@
  * When adding new raw colors, you should add them here.
  *
  * Overwriting these variables will have an extreme impact
- * on the global appearance of the entire TGUI, as they are used everywhere.
+ * on the global appearance of the entire TGUI.
  */
 
 @use "sass:color";
@@ -49,9 +49,6 @@
   --surface-color: oklch(
     var(--surface-l) calc(var(--surface-c) + 0.005) var(--surface-h)
   );
-
-  --section-color: #{fn.oklch-from(background-color, $l: -0.05, $a: 0.5)};
-  --scrollbar-color: #{fn.oklch-from(primary-color, $a: 0.5)};
 
   /* Text colors */
   --text-color: oklch(0.925 0.015 var(--primary-h));

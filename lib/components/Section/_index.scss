@@ -15,7 +15,7 @@
   border: var(--border-width-1) solid var(--section-border-color);
   border-top-color: fn.oklch-from(section-border-color, $l: 0.05);
   border-bottom-color: fn.oklch-from(section-border-color, $l: -0.025);
-  border-radius: var(--border-radius-3);
+  border-radius: var(--section-border-radius);
   box-shadow: var(--shadow-small) var(--section-shadow-color);
 
   &.fill {

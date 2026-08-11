@@ -7,15 +7,16 @@
   height: 100%;
   background-color: var(--section-color);
   outline: var(--border-width-1) solid var(--border-color);
-  border-radius: var(--border-radius-1);
+  border-radius: var(--section-border-radius);
   box-shadow: var(--shadow-medium) var(--shadow-color);
   // Better to have something if sizes undefined
   min-width: fn.rem(150px);
   min-height: fn.rem(75px);
 
-  // Change bg color if inside section
+  // Change bg color and border radius if inside section
   .section & {
     background-color: var(--background-color);
+    border-radius: var(--border-radius-1);
   }
 
   polyline {
