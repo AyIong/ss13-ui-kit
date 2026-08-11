@@ -33,6 +33,7 @@
     var(--secondary-l) var(--secondary-c) var(--secondary-h)
   );
 
+  /* Background colors */
   --background-l: 0.233;
   --background-c: 0.005;
   --background-h: var(--primary-h);
@@ -49,6 +50,7 @@
     var(--surface-l) calc(var(--surface-c) + 0.005) var(--surface-h)
   );
 
+  --section-color: #{fn.oklch-from(background-color, $l: -0.05, $a: 0.5)};
   --scrollbar-color: #{fn.oklch-from(primary-color, $a: 0.5)};
 
   /* Text colors */

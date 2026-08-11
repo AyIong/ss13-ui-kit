@@ -1,6 +1,7 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: <Don't care, story> */
 import { Window } from '@stories/window';
 import { useState } from 'react';
+import { Chart } from 'ss13-ui-kit/components/Chart/index';
 import {
   Button,
   Collapsible,
@@ -66,14 +67,36 @@ function Content() {
             </>
           }
         >
-          {selected &&
-            Array.from({ length: 10 }, (_, i) => (
-              <div key={i}>Section content 1234567890</div>
-            ))}
-          <Icon.Stack>
-            <Icon regular name="circle" size={2} />
-            <Icon name="book" />
-          </Icon.Stack>
+          <Stack fill vertical>
+            <Stack.Item grow>
+              {selected &&
+                Array.from({ length: 10 }, (_, i) => (
+                  <div key={i}>Section content 1234567890</div>
+                ))}
+              <Icon.Stack>
+                <Icon regular name="circle" size={2} />
+                <Icon name="book" />
+              </Icon.Stack>
+            </Stack.Item>
+            <Stack.Item>
+              <Chart
+                height="64px"
+                data={[
+                  [0, 50],
+                  [10, 55],
+                  [20, 48],
+                  [30, 60],
+                  [40, 52],
+                  [50, 65],
+                  [60, 58],
+                  [70, 70],
+                  [80, 62],
+                  [90, 75],
+                  [100, 68],
+                ]}
+              />
+            </Stack.Item>
+          </Stack>
         </Section>
       </Stack.Item>
       <Stack.Item>

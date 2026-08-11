@@ -2,7 +2,6 @@
 
 .section {
   --section-padding: var(--space-m);
-  --section-background: #{fn.oklch-from(background-color, $l: -0.05, $a: 0.5)};
   --section-title-color: var(--text-color);
   --section-title-border-color: var(--primary-color);
   --section-border-color: var(--border-color);
@@ -12,7 +11,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background-color: var(--section-background);
+  background-color: var(--section-color);
   border: var(--border-width-1) solid var(--section-border-color);
   border-top-color: fn.oklch-from(section-border-color, $l: 0.05);
   border-bottom-color: fn.oklch-from(section-border-color, $l: -0.025);
