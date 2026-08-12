@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { computeBoxProps } from 'ss13-ui-kit/common/ui';
 import { dataToPolylinePoints, normalizeData } from './helpers';
 import type { ChartLineProps, ChartProps, ViewBox } from './types';
@@ -44,7 +44,7 @@ export function ChartLine(props: ChartLineProps) {
     setViewBox([rect.width, rect.height]);
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.addEventListener('resize', handleResize);
     handleResize();
 

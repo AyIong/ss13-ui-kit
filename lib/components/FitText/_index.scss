@@ -1,0 +1,21 @@
+.fittext {
+  --max-size: var(--font-size-max, var(--font-size));
+  --scaled-size: clamp(
+    var(--font-size-min),
+    max(var(--max-size) * var(--scale), var(--font-size-min)),
+    var(--max-size)
+  );
+
+  width: 100%;
+
+  &:not(.ellipsis) {
+    // Line height must scale too, for consistency, but we need it just a
+    // little bigger than font size
+    // and only if text will not be truncated
+    line-height: calc(var(--scaled-size) * 1.33);
+  }
+
+  &-content {
+    font-size: var(--scaled-size);
+  }
+}

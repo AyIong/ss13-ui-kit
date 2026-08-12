@@ -13,6 +13,7 @@ export { Dimmer } from './Dimmer';
 export { Divider } from './Divider';
 export { DmIcon } from './DmIcon';
 export { Dropdown } from './Dropdown';
+export { FitText } from './FitText';
 export { Floating } from './Floating';
 export { Icon } from './Icon';
 export type { IconProps } from './Icon/types';

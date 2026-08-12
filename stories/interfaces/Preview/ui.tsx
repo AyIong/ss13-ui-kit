@@ -2,6 +2,7 @@
 import { Window } from '@stories/window';
 import { useState } from 'react';
 import { Chart } from 'ss13-ui-kit/components/Chart/index';
+import { FitText } from 'ss13-ui-kit/components/FitText/index';
 import {
   Button,
   Collapsible,
@@ -68,6 +69,9 @@ function Content() {
           }
         >
           <Stack fill vertical>
+            <Stack.Item>
+              <FitText>That text will be fitted. Used default values</FitText>
+            </Stack.Item>
             <Stack.Item grow>
               {selected &&
                 Array.from({ length: 10 }, (_, i) => (

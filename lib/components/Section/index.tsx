@@ -127,8 +127,8 @@ export function Section(props: SectionProps) {
     >
       {hasTitle && (
         <div className="section-title">
-          <div className="left-side">{title}</div>
-          <div className="right-side">{buttons}</div>
+          {title && <div className="left-side">{title}</div>}
+          {buttons && <div className="right-side">{buttons}</div>}
         </div>
       )}
       <div className={clsx(['section-content-wrapper'])}>
