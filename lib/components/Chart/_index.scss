@@ -3,25 +3,33 @@
 .chart {
   overflow: hidden;
   position: relative;
-  display: flex;
-  height: 100%;
+  box-shadow: var(--shadow-medium) var(--shadow-color);
   background-color: var(--section-color);
   outline: var(--border-width-1) solid var(--border-color);
   border-radius: var(--section-border-radius);
-  box-shadow: var(--shadow-medium) var(--shadow-color);
   // Better to have something if sizes undefined
   min-width: fn.rem(150px);
   min-height: fn.rem(75px);
+
+  &-fluid {
+    display: flex;
+    flex: 1;
+  }
+
+  &-line {
+    position: absolute;
+    inset: 0;
+
+    polyline {
+      fill: fn.oklch-from(bg-color, $a: 0.15);
+      stroke: fn.fg(var(--bg-color));
+      transform: scaleY(-1) translateY(-100%);
+    }
+  }
 
   // Change bg color and border radius if inside section
   .section & {
     background-color: var(--background-color);
     border-radius: var(--border-radius-1);
-  }
-
-  polyline {
-    fill: fn.oklch-from(bg-color, $a: 0.15);
-    stroke: fn.fg(var(--bg-color));
-    transform: scaleY(-1) translateY(-100%);
   }
 }

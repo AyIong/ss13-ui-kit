@@ -2,18 +2,19 @@ import clsx from 'clsx';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { computeBoxProps } from 'ss13-ui-kit/common/ui';
 import { dataToPolylinePoints, normalizeData } from './helpers';
-import type { ChartProps, ViewBox } from './types';
+import type { ChartLineProps, ChartProps, ViewBox } from './types';
 
 /**
- * ## Chart
+ * ## Chart Line
  *
  * A simple chart component that displays a polyline based on the provided data.
  *
  * It normalizes the data to fit within the viewBox dimensions.
  *
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-chart--docs)
  * - [View inherited Box Props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
  */
-export function Chart(props: ChartProps) {
+export function ChartLine(props: ChartLineProps) {
   const { data = [], rangeX, rangeY, color, strokeWidth, ...rest } = props;
 
   const innerRef = useRef<HTMLDivElement>(null);
@@ -55,7 +56,7 @@ export function Chart(props: ChartProps) {
   return (
     <div
       ref={innerRef}
-      className={clsx('chart', `bg-${color ? color : 'primary'}`)}
+      className={clsx('chart-line', `bg-${color ? color : 'primary'}`)}
       {...computeBoxProps(rest)}
     >
       <svg
@@ -64,6 +65,27 @@ export function Chart(props: ChartProps) {
       >
         <polyline points={points} strokeWidth={strokeWidthToUse} />
       </svg>
+    </div>
+  );
+}
+
+Chart.Line = ChartLine;
+
+/**
+ * ## Chart
+ *
+ * Simple styled container for Chart lines
+ *
+ * - [View inherited Box Props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ */
+export function Chart(props: ChartProps) {
+  const { children, fluid, ...rest } = props;
+  return (
+    <div
+      className={clsx('chart', fluid && 'chart-fluid')}
+      {...computeBoxProps(rest)}
+    >
+      {children}
     </div>
   );
 }

@@ -52,9 +52,9 @@ export const Default: Story = {
 
     return (
       <Stack width={30}>
-        <Stack.Item grow>
-          <Chart data={chartData} rangeX={[0, 100]} rangeY={[0, 100]} />
-        </Stack.Item>
+        <Chart>
+          <Chart.Line data={chartData} rangeX={[0, 100]} rangeY={[0, 100]} />
+        </Chart>
       </Stack>
     );
   },
@@ -68,14 +68,14 @@ export const Colors: Story = {
       <Stack wrap="balance">
         {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map(
           (color) => (
-            <Stack.Item key={color} grow>
-              <Chart
+            <Chart fluid key={color}>
+              <Chart.Line
                 color={color}
                 data={chartData}
                 rangeX={[0, 100]}
                 rangeY={[0, 100]}
               />
-            </Stack.Item>
+            </Chart>
           ),
         )}
       </Stack>

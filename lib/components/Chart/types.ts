@@ -1,6 +1,12 @@
 import type { BoxProps } from '../Box/types';
 
-export type ChartProps = {
+export type ChartProps = Partial<{
+  // Make Chart container flexible and allow it to fill all available width
+  fluid: boolean;
+}> &
+  BoxProps;
+
+export type ChartLineProps = {
   data: number[][];
 } & Partial<{
   fillColor: string;
