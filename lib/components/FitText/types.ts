@@ -1,6 +1,7 @@
-export type FitTextProps = Partial<{
+export type FitTextProps = {
   /** Text that will be fitted */
   children: string;
+} & Partial<{
   /**
    * Removes line breaks and truncates text when it overflows,
    * leaving an ellipsis at the end

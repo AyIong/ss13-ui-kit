@@ -1,5 +1,11 @@
 import clsx from 'clsx';
-import { type CSSProperties, useLayoutEffect, useRef, useState } from 'react';
+import {
+  type CSSProperties,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { getCssVariableValue } from 'ss13-ui-kit/common/css';
 import { unit } from 'ss13-ui-kit/common/ui';
 import type { FitTextProps } from './types';
@@ -31,14 +37,23 @@ export function FitText(props: FitTextProps) {
     setScale(containerWidth / textWidth);
   }
 
-  useLayoutEffect(() => {
-    getScale();
-    window.addEventListener('resize', getScale);
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) {
+      return;
+    }
+
+    const observer = new ResizeObserver(() => getScale());
+    observer.observe(container);
 
     return () => {
-      window.removeEventListener('resize', getScale);
+      observer.disconnect();
     };
-  }, [children]);
+  }, []);
+
+  useLayoutEffect(() => {
+    getScale();
+  }, [children, minFontSize, maxFontSize]);
 
   return (
     <div

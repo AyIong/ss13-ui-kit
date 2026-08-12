@@ -8,6 +8,11 @@
 
   width: 100%;
 
+  &.ellipsis {
+    // Height = line height
+    height: 1lh;
+  }
+
   &:not(.ellipsis) {
     // Line height must scale too, for consistency, but we need it just a
     // little bigger than font size
@@ -16,6 +21,7 @@
   }
 
   &-content {
+    vertical-align: middle;
     font-size: var(--scaled-size);
   }
 }
