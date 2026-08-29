@@ -2,8 +2,12 @@ import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { type BoxProps, Icon, type IconProps, Tooltip } from '@components';
 import { useButton } from '@hooks';
 import clsx from 'clsx';
-import type { PropsWithChildren } from 'react';
-import type { ButtonBaseProps, ButtonIconProps, ButtonProps } from './types';
+import type {
+  ButtonBaseProps,
+  ButtonContentProps,
+  ButtonIconProps,
+  ButtonProps,
+} from './types';
 
 export function ButtonContainer(props: ButtonBaseProps) {
   const {
@@ -65,9 +69,13 @@ export function renderIcon(icon: ButtonIconProps) {
   );
 }
 
-export function ButtonContent(props: PropsWithChildren & BoxProps) {
-  const { children, className } = props;
-  return <div className={clsx(className, 'button-content')}>{children}</div>;
+export function ButtonContent(props: ButtonContentProps) {
+  const { children, innerStyle, className } = props;
+  return (
+    <div className={clsx(className, 'button-content')} style={innerStyle}>
+      {children}
+    </div>
+  );
 }
 
 export function Button(props: ButtonProps) {
@@ -78,6 +86,7 @@ export function Button(props: ButtonProps) {
     endIcon,
     disabled,
     className,
+    innerStyle,
     captureKeys,
     onClick,
     ...rest
@@ -95,7 +104,9 @@ export function Button(props: ButtonProps) {
       {...interactions}
     >
       {startIcon && renderIcon(startIcon)}
-      {children && <ButtonContent>{children}</ButtonContent>}
+      {children && (
+        <ButtonContent innerStyle={innerStyle}>{children}</ButtonContent>
+      )}
       {endIcon && renderIcon(endIcon)}
     </ButtonContainer>
   );

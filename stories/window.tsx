@@ -1,22 +1,17 @@
 import clsx from 'clsx';
-import {
-  type PropsWithChildren,
-  type ReactNode,
-  type RefObject,
-  useRef,
-} from 'react';
+import { type ReactNode, type RefObject, useRef } from 'react';
 import { TitleBar } from 'ss13-ui-kit/components/index';
 import { Layout } from 'ss13-ui-kit/components/Layout/index';
 
 type Props = Partial<{
+  children: ReactNode;
   canClose: boolean;
   height: number;
   title: string;
   width: number;
   showDimmer: boolean;
   buttons: ReactNode;
-}> &
-  PropsWithChildren;
+}>;
 
 export function Window(props: Props) {
   const {
@@ -47,10 +42,10 @@ export function Window(props: Props) {
 }
 
 type WindowContentProps = Partial<{
+  children: ReactNode;
   className: string;
   fitted: boolean;
-}> &
-  PropsWithChildren;
+}>;
 
 export function WindowContent(props: WindowContentProps) {
   const { children, className, fitted, ...rest } = props;

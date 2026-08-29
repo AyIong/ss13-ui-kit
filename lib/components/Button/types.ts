@@ -1,6 +1,6 @@
 import type { BoxProps, IconProps } from '@components';
 import type { Placement } from '@floating-ui/react';
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import type { IconNamesUnion } from '../Icon/types';
 
 type ButtonTooltip = {
@@ -32,7 +32,15 @@ export type ButtonBaseProps = Partial<{
   tooltip: ButtonTooltip;
 }> &
   ButtonInteractionProps &
+  ButtonContentProps &
   BoxProps<HTMLButtonElement>;
+
+export type ButtonContentProps = Partial<{
+  className: string;
+  children: ReactNode;
+  /** The styles to be passed to Button__content */
+  innerStyle: CSSProperties;
+}>;
 
 export type ButtonIconProps = IconProps | IconNamesUnion;
 export type ButtonProps = Partial<{

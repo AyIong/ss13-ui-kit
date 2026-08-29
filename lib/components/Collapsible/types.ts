@@ -15,8 +15,7 @@ export type CollapsibleProps = Partial<{
   /** Text to display on the button for collapsing */
   title: ReactNode;
 }> &
-  BoxProps &
-  PropsWithChildren;
+  BoxProps;
 
 export type CollapsibleContentProps = {
   isOpen: boolean;

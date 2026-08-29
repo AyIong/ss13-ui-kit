@@ -1,5 +1,5 @@
 import type { BoxProps } from '@components';
-import type { PropsWithChildren, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export type SectionProps = Partial<{
   /** Buttons to render aside the section title. */
@@ -23,5 +23,4 @@ export type SectionProps = Partial<{
   /** Title of the section. */
   title: ReactNode;
 }> &
-  PropsWithChildren &
   BoxProps;
