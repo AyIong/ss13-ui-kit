@@ -62,7 +62,7 @@ export function Slider(props: SliderProps) {
           style: {
             '--int-percentage': percentage.internal,
             // Maked external same as internal while tickWhileDragging,
-            // so we don't have weird "jumps.
+            // so we don't have weird "jumps".
             '--ext-percentage': tickWhileDragging ? percentage.internal : percentage.external,
             '--fill-value': fillValue && `${fillValue}%`,
           },
