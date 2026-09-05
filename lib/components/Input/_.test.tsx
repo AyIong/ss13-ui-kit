@@ -1,12 +1,4 @@
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  jest,
-  mock,
-} from 'bun:test';
+import { afterEach, beforeEach, describe, expect, it, jest, mock } from 'bun:test';
 import { KEY } from '@common/keys';
 import { act, cleanup, fireEvent, render } from '@testing-library/react';
 import { Input } from '.';
@@ -122,9 +114,7 @@ describe('Input Component', () => {
   });
 
   it('clears value if selfClear is true on Enter', () => {
-    const { container } = render(
-      <Input value="abc" selfClear onEnter={() => {}} />,
-    );
+    const { container } = render(<Input value="abc" selfClear onEnter={() => {}} />);
     const input = container.querySelector('input')!;
     fireEvent.keyDown(input, { key: KEY.Enter });
     expect(input.value).toBe('');

@@ -1,6 +1,6 @@
 import { type ComponentProps, useEffect, useState } from 'react';
-import { COMPONENT_COLORS } from 'ss13-ui-kit/common/constants';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { COMPONENT_COLORS } from 'tgui-core/common/constants';
 import { Stack } from '../Stack';
 import { Chart } from '.';
 
@@ -32,10 +32,7 @@ function useRandomChart() {
     const interval = setInterval(() => {
       setChartData((data) => {
         const lastY = data[data.length - 1][1];
-        const nextY = Math.max(
-          0,
-          Math.min(100, lastY + (Math.random() - 0.5) * 20),
-        );
+        const nextY = Math.max(0, Math.min(100, lastY + (Math.random() - 0.5) * 20));
 
         return [...data.slice(1).map(([x, y]) => [x - 10, y]), [100, nextY]];
       });
@@ -66,18 +63,11 @@ export const Colors: Story = {
 
     return (
       <Stack wrap="balance">
-        {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map(
-          (color) => (
-            <Chart fluid key={color}>
-              <Chart.Line
-                color={color}
-                data={chartData}
-                rangeX={[0, 100]}
-                rangeY={[0, 100]}
-              />
-            </Chart>
-          ),
-        )}
+        {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map((color) => (
+          <Chart fluid key={color}>
+            <Chart.Line color={color} data={chartData} rangeX={[0, 100]} rangeY={[0, 100]} />
+          </Chart>
+        ))}
       </Stack>
     );
   },

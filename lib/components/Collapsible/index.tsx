@@ -1,11 +1,21 @@
 import clsx from 'clsx';
 import { useRef, useState } from 'react';
 import { CSSTransition } from 'react-transitioning';
-import { useButton } from 'ss13-ui-kit/hooks/useButton';
+import { useButton } from 'tgui-core/hooks/useButton';
 import { Icon } from '../Icon';
 import type { IconProps } from '../Icon/types';
 import type { CollapsibleContentProps, CollapsibleProps } from './types';
 
+/**
+ * ## Collapsible
+ *
+ * Displays contents when open, acts as a fluid button when closed.
+ *
+ * Click to toggle, closed by default.
+ *
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-collapsible--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ */
 export function Collapsible(props: CollapsibleProps) {
   const { children, color, title, buttons, startIcon, endIcon, open } = props;
 
@@ -14,26 +24,14 @@ export function Collapsible(props: CollapsibleProps) {
     onClick: () => setIsOpen(!isOpen),
   });
 
-  const startIconProps =
-    typeof startIcon === 'string' ? { name: startIcon } : startIcon;
-  const endIconProps =
-    typeof endIcon === 'string' ? { name: endIcon } : endIcon;
+  const startIconProps = typeof startIcon === 'string' ? { name: startIcon } : startIcon;
+  const endIconProps = typeof endIcon === 'string' ? { name: endIcon } : endIcon;
 
   return (
-    <div
-      className={clsx(
-        'collapsible',
-        `bg-${color || 'primary'}`,
-        isOpen && 'is-open',
-      )}
-    >
+    <div className={clsx('collapsible', `bg-${color || 'primary'}`, isOpen && 'is-open')}>
       <div className="collapsible-controls">
         <div className="collapsible-button" {...interactions}>
-          {startIcon ? (
-            <Icon {...(startIconProps as IconProps)} />
-          ) : (
-            <CollapsibleIcon />
-          )}
+          {startIcon ? <Icon {...(startIconProps as IconProps)} /> : <CollapsibleIcon />}
           <div className="collapsible-title">{title}</div>
           {endIcon && <Icon {...(endIconProps as IconProps)} />}
         </div>
@@ -52,9 +50,7 @@ function CollapsibleContent(props: CollapsibleContentProps) {
     <CSSTransition in={isOpen} duration={200} classNames="collapsible">
       <div ref={contentRef} className="collapsible-content-wrapper">
         <div className="collapsible-content">
-          <section className="collapsible-content-container">
-            {children}
-          </section>
+          <section className="collapsible-content-container">{children}</section>
         </div>
       </div>
     </CSSTransition>

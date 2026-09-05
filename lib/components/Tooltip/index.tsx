@@ -18,12 +18,13 @@ import type { TooltipProps } from './types';
  * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-tooltip--docs)
  */
 export function Tooltip(props: TooltipProps) {
-  const { content, children, position } = props;
+  const { content, children, position, isOpen } = props;
   return (
     <Floating
-      content={content}
+      hoverOpen={!isOpen}
+      handleOpen={isOpen}
       contentClasses="tooltip"
-      hoverOpen
+      content={content}
       placement={position}
     >
       {children}

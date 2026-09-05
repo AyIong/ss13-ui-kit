@@ -11,6 +11,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   background-color: var(--section-color);
   border: var(--border-width-1) solid var(--section-border-color);
   border-top-color: fn.oklch-from(section-border-color, $l: 0.05);
@@ -59,11 +60,19 @@
       border-top: var(--border-width-2) solid var(--section-title-border-color);
     }
 
+    &.fitted {
+      padding: 0;
+    }
+
     &.no-top-padding {
       padding-top: 0;
     }
+  }
 
-    &.scrollable {
+  &.scrollable {
+    flex-shrink: 1;
+
+    & .section-content {
       position: absolute;
 
       > .os-scrollbar {
@@ -71,10 +80,6 @@
         --os-handle-bg: var(--section-scrollbar-color, var(--scrollbar-color));
       }
     }
-  }
-
-  &.fitted > &-content {
-    padding: 0;
   }
 
   // Nested sections

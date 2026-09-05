@@ -3,9 +3,7 @@ const path = require('node:path');
 
 const componentName = process.argv[2];
 if (!componentName) {
-  console.error(
-    'Specify a component name: \n bun create-component ComponentName \n',
-  );
+  console.error('Specify a component name: \n bun create-component ComponentName \n');
   process.exit(1);
 }
 
@@ -44,9 +42,6 @@ Object.entries(files).forEach(([filename, content]) => {
   fs.writeFileSync(path.join(baseDir, filename), content);
 });
 
-fs.appendFileSync(
-  path.join('lib', 'components', 'main.scss'),
-  `@forward "./${componentName}";\n`,
-);
+fs.appendFileSync(path.join('lib', 'components', 'main.scss'), `@forward "./${componentName}";\n`);
 
 console.log(`Done!`);

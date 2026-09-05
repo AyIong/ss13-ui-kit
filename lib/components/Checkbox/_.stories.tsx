@@ -21,13 +21,7 @@ export const Default: Story = {
   render: (args) => {
     const [checked, setChecked] = useState(false);
 
-    return (
-      <Checkbox
-        checked={checked}
-        onClick={() => setChecked(!checked)}
-        {...args}
-      />
-    );
+    return <Checkbox checked={checked} onClick={() => setChecked(!checked)} {...args} />;
   },
 };
 
@@ -36,18 +30,16 @@ export const Colors: Story = {
     const [checked, setChecked] = useState(false);
     return (
       <div>
-        {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map(
-          (color) => (
-            <Checkbox
-              key={color}
-              color={color}
-              checked={checked}
-              onClick={() => setChecked(!checked)}
-            >
-              {color}
-            </Checkbox>
-          ),
-        )}
+        {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map((color) => (
+          <Checkbox
+            key={color}
+            color={color}
+            checked={checked}
+            onClick={() => setChecked(!checked)}
+          >
+            {color}
+          </Checkbox>
+        ))}
       </div>
     );
   },

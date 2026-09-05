@@ -71,10 +71,7 @@ export function AnimatedNumber(props: AnimatedNumberProps) {
       return;
     }
 
-    const dt =
-      lastTickTime.current === null
-        ? SIXTY_HZ
-        : timestamp - lastTickTime.current;
+    const dt = lastTickTime.current === null ? SIXTY_HZ : timestamp - lastTickTime.current;
     lastTickTime.current = timestamp;
 
     const q = Q ** (dt / SIXTY_HZ);

@@ -54,9 +54,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
 
     if (event.key === KEY.Down) {
       event.preventDefault();
-      setHighlightedIndex(
-        Math.min(highlightedIndex + 1, displayOptions.length - 1),
-      );
+      setHighlightedIndex(Math.min(highlightedIndex + 1, displayOptions.length - 1));
     }
 
     if (isEnter(event.key)) {
@@ -147,10 +145,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
           ) : (
             displayOptions.map((option, index) => {
               const value = getOptionValue(option);
-              const relativeIndex = Math.min(
-                Math.abs(index - selectedIndex),
-                maxItemsLimit,
-              );
+              const relativeIndex = Math.min(Math.abs(index - selectedIndex), maxItemsLimit);
 
               return (
                 <DropdownMenuEntry
@@ -170,9 +165,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
   );
 }
 
-function DropdownMenuEntry(
-  props: DropdownMenuEntryProps & { highlighted?: boolean },
-) {
+function DropdownMenuEntry(props: DropdownMenuEntryProps & { highlighted?: boolean }) {
   const { index, option, selected, highlighted, onSelected } = props;
   const value = getOptionValue(option);
   const interactions = useButton({

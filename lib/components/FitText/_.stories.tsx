@@ -13,21 +13,13 @@ type Story = StoryObj<StoryProps>;
 
 export const Default: Story = {
   render: () => {
-    const [storyText, setStoryText] = useState(
-      'Text will automatically fit container',
-    );
+    const [storyText, setStoryText] = useState('Text will automatically fit container');
     return (
       <Section
         fill
         width={12.5}
         height={15}
-        buttons={
-          <Input
-            fluid
-            value={storyText}
-            onChange={(value) => setStoryText(value)}
-          />
-        }
+        buttons={<Input fluid value={storyText} onChange={(value) => setStoryText(value)} />}
       >
         With Ellipsis
         <FitText ellipsis>{storyText}</FitText>

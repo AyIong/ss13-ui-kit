@@ -33,16 +33,12 @@ describe('AnimatedNumber Component', () => {
 
   it('uses custom format function', () => {
     const format = (v: number) => `$${v.toFixed(2)}`;
-    const { getByText } = render(
-      <AnimatedNumber value={50} initial={50} format={format} />,
-    );
+    const { getByText } = render(<AnimatedNumber value={50} initial={50} format={format} />);
     expect(getByText('$50.00')).toBeTruthy();
   });
 
   it('matches the numeric precision of the target value', () => {
-    const { getByText } = render(
-      <AnimatedNumber value={10.55} initial={10.55} />,
-    );
+    const { getByText } = render(<AnimatedNumber value={10.55} initial={10.55} />);
     expect(getByText('10.55')).toBeTruthy();
   });
 

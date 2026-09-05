@@ -75,10 +75,7 @@ export type FocusInputProps = Partial<{
   autoSelect: boolean;
 }>;
 
-export type InputEventProps<
-  TElement = HTMLInputElement,
-  TInput = string,
-> = Partial<{
+export type InputEventProps<TElement = HTMLInputElement, TInput = string> = Partial<{
   /** Fires each time focus leaves the input, including if Esc or Enter are pressed */
   onBlur: (value: TInput) => void;
   /**
@@ -101,10 +98,7 @@ export type InputEventProps<
   onEscape: (value: TInput, event?: React.KeyboardEvent<TElement>) => void;
 }>;
 
-export type TextInputProps<
-  TElement = HTMLInputElement,
-  TInput = string,
-> = Partial<{
+export type TextInputProps<TElement = HTMLInputElement, TInput = string> = Partial<{
   /** Custom css classes */
   className: string;
   /** Fills the parent container */

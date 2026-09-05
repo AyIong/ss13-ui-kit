@@ -51,7 +51,5 @@
   $h-part: if(sass($h == 0): h; else: calc(h + $h));
   $a-part: if(not sass($a == null): "/ #{$a}");
 
-  @return oklch(
-    from var(--#{$variable}) #{$l-part} #{$c-part} #{$h-part} #{$a-part}
-  );
+  @return oklch(from var(--#{$variable}) #{$l-part} #{$c-part} #{$h-part} #{$a-part});
 }

@@ -1,7 +1,7 @@
 import { unit } from '@common/ui';
 import clsx from 'clsx';
 import { useRef, useState } from 'react';
-import { useButton } from 'ss13-ui-kit/hooks/useButton';
+import { useButton } from 'tgui-core/hooks/useButton';
 import { Button, ButtonContainer, ButtonContent, ButtonIcon } from '../Button';
 import { Floating } from '../Floating';
 import { Icon } from '../Icon';
@@ -50,10 +50,7 @@ export function Dropdown(props: DropdownProps) {
 
   const selectedIndex = getOptionIndex(options, selected);
   const displayedText =
-    displayText ||
-    (selected && getOptionValue(selected)) ||
-    placeholder ||
-    'Select...';
+    displayText || (selected && getOptionValue(selected)) || placeholder || 'Select...';
 
   /** Update the selected value when clicking the left/right buttons */
   function updateSelected(direction: DIRECTION): void {
@@ -83,12 +80,7 @@ export function Dropdown(props: DropdownProps) {
   return (
     <div
       style={{ width: unit(width) }}
-      className={clsx(
-        'dropdown',
-        isOpen && 'dropdown-open',
-        iconOnly && 'icon-only',
-        className,
-      )}
+      className={clsx('dropdown', isOpen && 'dropdown-open', iconOnly && 'icon-only', className)}
     >
       <Floating
         handleOpen={isOpen}
@@ -121,9 +113,7 @@ export function Dropdown(props: DropdownProps) {
           {...interactions}
         >
           {icon && <ButtonIcon className="dropdown-icon" {...icon} />}
-          <ButtonContent className="dropdown-text">
-            {displayedText}
-          </ButtonContent>
+          <ButtonContent className="dropdown-text">{displayedText}</ButtonContent>
           <Icon className="dropdown-chevron" name="chevron-down" />
         </ButtonContainer>
       </Floating>

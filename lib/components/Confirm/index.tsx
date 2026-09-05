@@ -2,6 +2,10 @@ import { type MouseEvent, useState } from 'react';
 import { ButtonContainer, ButtonContent, renderIcon } from '../Button';
 import type { ConfirmProps } from './types';
 
+/**
+ * ## Confirm
+ * A button with an extra confirmation step, using native button component.
+ */
 export function Confirm(props: ConfirmProps) {
   const {
     children,
@@ -38,8 +42,7 @@ export function Confirm(props: ConfirmProps) {
       onClick={handleClick}
       {...rest}
     >
-      {(startIcon || (confirmIcon && clickedOnce)) &&
-        renderIcon(startIcon || confirmIcon)}
+      {(startIcon || (confirmIcon && clickedOnce)) && renderIcon(startIcon || confirmIcon)}
       <ButtonContent>{clickedOnce ? confirmContent : children}</ButtonContent>
     </ButtonContainer>
   );

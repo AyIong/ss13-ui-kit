@@ -21,6 +21,9 @@ export const floatingRoot = 'floating-root';
 // Container under titlebar, where will be located overlay components
 export const uiRootId = 'layout-root';
 
+// Class name which will be applied if user drag any component that support that
+export const draggingClassName = 'dragging';
+
 // OverlayScrollbars options
 export const osOptions: OverlayScrollbarsComponentProps = {
   options: {

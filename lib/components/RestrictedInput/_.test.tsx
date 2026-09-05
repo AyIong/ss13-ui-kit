@@ -1,21 +1,6 @@
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  jest,
-  mock,
-  spyOn,
-} from 'bun:test';
+import { afterEach, beforeEach, describe, expect, it, jest, mock, spyOn } from 'bun:test';
 import { KEY } from '@common/keys';
-import {
-  act,
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-} from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { RestrictedInput } from '.';
 
 describe('RestrictedInput Component', () => {
@@ -51,9 +36,7 @@ describe('RestrictedInput Component', () => {
 
   it('debounces onChange when expensive prop is true (default 250ms)', () => {
     const onChange = mock();
-    const { getByRole } = render(
-      <RestrictedInput expensive onChange={onChange} />,
-    );
+    const { getByRole } = render(<RestrictedInput expensive onChange={onChange} />);
     const input = getByRole('spinbutton');
 
     fireEvent.change(input, { target: { value: '100' } });
@@ -68,9 +51,7 @@ describe('RestrictedInput Component', () => {
 
   it('debounces onChange when expensive prop is true (custom 550ms)', () => {
     const onChange = mock();
-    const { getByRole } = render(
-      <RestrictedInput expensive={500} onChange={onChange} />,
-    );
+    const { getByRole } = render(<RestrictedInput expensive={500} onChange={onChange} />);
     const input = getByRole('spinbutton');
 
     fireEvent.change(input, { target: { value: '100' } });
@@ -100,9 +81,7 @@ describe('RestrictedInput Component', () => {
 
   it('calls onEnter and blurs when Enter key is pressed', () => {
     const onEnter = mock();
-    const { getByRole } = render(
-      <RestrictedInput value={50} onEnter={onEnter} />,
-    );
+    const { getByRole } = render(<RestrictedInput value={50} onEnter={onEnter} />);
     const input = getByRole('spinbutton');
 
     const blurSpy = spyOn(input, 'blur');
@@ -115,9 +94,7 @@ describe('RestrictedInput Component', () => {
 
   it('calls onEscape and blurs when Escape key is pressed', () => {
     const onEscape = mock();
-    const { getByRole } = render(
-      <RestrictedInput value={50} onEscape={onEscape} />,
-    );
+    const { getByRole } = render(<RestrictedInput value={50} onEscape={onEscape} />);
     const input = getByRole('spinbutton');
 
     fireEvent.keyDown(input, { key: KEY.Escape });
@@ -128,11 +105,7 @@ describe('RestrictedInput Component', () => {
   it('validates min/max constraints and triggers onValidationChange', () => {
     const onValidationChange = mock();
     const { getByRole } = render(
-      <RestrictedInput
-        minValue={0}
-        maxValue={10}
-        onValidationChange={onValidationChange}
-      />,
+      <RestrictedInput minValue={0} maxValue={10} onValidationChange={onValidationChange} />,
     );
     const input = getByRole('spinbutton') as HTMLInputElement;
 

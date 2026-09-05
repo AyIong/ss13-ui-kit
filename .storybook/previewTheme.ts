@@ -6,6 +6,6 @@ export default create({
   appContentBg: 'hsl(0, 0%, 14%)',
   appPreviewBg: 'hsl(0, 0%, 14%)',
   base: 'dark',
-  brandTitle: 'SS13 UI Kit',
+  brandTitle: 'TGUI Core',
   brandUrl: 'https://github.com/tgstation/tgui-core',
 });

@@ -14,9 +14,7 @@ describe('Button Component', () => {
   it('calls onClick when clicked', () => {
     let clicked = false;
 
-    const { getByText } = render(
-      <Button onClick={() => (clicked = true)}>Click</Button>,
-    );
+    const { getByText } = render(<Button onClick={() => (clicked = true)}>Click</Button>);
 
     fireEvent.click(getByText('Click'));
     expect(clicked).toBe(true);

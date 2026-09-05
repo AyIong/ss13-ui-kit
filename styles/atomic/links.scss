@@ -13,9 +13,7 @@ a {
 
     &:hover,
     &:active {
-      color: hsl(
-        from var(--color-hyperlink-visited) h s calc(l + var(--adjust-hover))
-      );
+      color: hsl(from var(--color-hyperlink-visited) h s calc(l + var(--adjust-hover)));
     }
   }
 }

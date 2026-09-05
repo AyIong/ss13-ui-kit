@@ -120,12 +120,7 @@ describe('Vector normalize', () => {
   });
 
   it('Vector normalize: four entries', () => {
-    const result = [
-      4 / Math.sqrt(130),
-      7 / Math.sqrt(130),
-      8 / Math.sqrt(130),
-      1 / Math.sqrt(130),
-    ];
+    const result = [4 / Math.sqrt(130), 7 / Math.sqrt(130), 8 / Math.sqrt(130), 1 / Math.sqrt(130)];
     assert.deepEqual(vecNormalize(vector2), result);
   });
 });

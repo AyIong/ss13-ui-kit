@@ -25,8 +25,8 @@ export function RestrictedInput(props: RestrictedInputProps) {
     disabled,
     expensive,
     fluid,
-    maxValue = 10000,
-    minValue = 0,
+    maxValue,
+    minValue,
     monospace,
     onBlur,
     onChange,
@@ -42,22 +42,19 @@ export function RestrictedInput(props: RestrictedInputProps) {
   const inputRef = (ref || ourRef) as RefObject<HTMLInputElement>;
 
   useAutofocus(inputRef, { autoFocus, autoSelect });
-  const { innerValue, ...interactions } = useInput<HTMLInputElement, number>(
-    inputRef,
-    {
-      isNumeric: true,
-      dontUseTabForIndent: true,
-      disabled,
-      expensive,
-      selfClear,
-      value,
-      onBlur,
-      onChange,
-      onKeyDown,
-      onEnter,
-      onEscape,
-    },
-  );
+  const { innerValue, ...interactions } = useInput<HTMLInputElement, number>(inputRef, {
+    isNumeric: true,
+    dontUseTabForIndent: true,
+    disabled,
+    expensive,
+    selfClear,
+    value,
+    onBlur,
+    onChange,
+    onKeyDown,
+    onEnter,
+    onEscape,
+  });
 
   const [isValid, setIsValid] = useState(true);
   /** Check validity on input change */
@@ -89,8 +86,8 @@ export function RestrictedInput(props: RestrictedInputProps) {
       autoComplete="off"
       className={classNames}
       disabled={disabled}
-      max={maxValue}
-      min={minValue}
+      max={maxValue || 10000}
+      min={minValue || 0}
       ref={inputRef}
       spellCheck={false}
       step={allowFloats ? 'any' : '1'}

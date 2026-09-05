@@ -9,4 +9,9 @@ export type TooltipProps = {
   children: ReactNode;
   /** Where to place the tooltip relative to the reference element */
   position: Placement;
+  /**
+   * By default, tooltip opens when you hover on his child.
+   * This prop allows you to manually control open state
+   */
+  isOpen: boolean;
 }>;

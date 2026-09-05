@@ -8,8 +8,7 @@ import { Direction, type DmIconProps } from './types';
  * A much faster alternative to base64 icons.
  */
 export function DmIcon(props: DmIconProps) {
-  const { direction, fallback, icon, icon_state, frame, movement, ...rest } =
-    props;
+  const { direction, fallback, icon, icon_state, frame, movement, ...rest } = props;
 
   const iconRef = Byond.iconRefMap?.[icon];
   if (!iconRef) {

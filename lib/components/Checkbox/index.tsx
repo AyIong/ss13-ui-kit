@@ -1,6 +1,10 @@
 import { ButtonContainer, ButtonContent, ButtonIcon } from '../Button';
 import type { CheckboxProps } from './types';
 
+/**
+ * ## Checkbox
+ * A ghetto checkbox, made entirely using existing Button API.
+ */
 export function Checkbox(props: CheckboxProps) {
   const { children, checked, ...rest } = props;
 

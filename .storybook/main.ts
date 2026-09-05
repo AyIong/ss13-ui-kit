@@ -1,9 +1,5 @@
 import type { StorybookConfig } from 'storybook-react-rsbuild';
-import {
-  booleanStyleMap,
-  eventHandlers,
-  stringStyleMap,
-} from '../lib/common/ui.ts';
+import { booleanStyleMap, eventHandlers, stringStyleMap } from '../lib/common/ui.ts';
 import type { BoxInternalProps } from '../lib/components/Box/types';
 
 const boxInternalProps: Array<keyof BoxInternalProps<HTMLDivElement>> = [
@@ -42,10 +38,7 @@ const config: StorybookConfig = {
     return config;
   },
 
-  stories: [
-    '../stories/**/*.stories.tsx',
-    '../lib/components/**/*.stories.tsx',
-  ],
+  stories: ['../stories/**/*.stories.tsx', '../lib/components/**/*.stories.tsx'],
 
   typescript: {
     check: true,

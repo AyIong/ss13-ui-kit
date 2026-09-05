@@ -23,6 +23,7 @@ export { Layout } from './Layout';
 export { Modal } from './Modal';
 export { RestrictedInput } from './RestrictedInput';
 export { Section } from './Section';
+export { Slider } from './Slider';
 export { Stack } from './Stack';
 export { TextArea } from './TextArea';
 export { TitleBar } from './TitleBar';

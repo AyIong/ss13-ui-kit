@@ -35,13 +35,11 @@ export const Colors: Story = {
   args: buttonArgs,
   render: (args) => (
     <Stack vertical>
-      {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map(
-        (color) => (
-          <Button key={color} color={color} {...args}>
-            {color}
-          </Button>
-        ),
-      )}
+      {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map((color) => (
+        <Button key={color} color={color} {...args}>
+          {color}
+        </Button>
+      ))}
     </Stack>
   ),
 };

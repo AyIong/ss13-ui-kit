@@ -1,12 +1,4 @@
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  mock,
-  spyOn,
-} from 'bun:test';
+import { afterEach, beforeEach, describe, expect, it, mock, spyOn } from 'bun:test';
 import { captureExternalLinks } from '../links.ts';
 
 describe('captureExternalLinks', () => {
@@ -33,10 +25,7 @@ describe('captureExternalLinks', () => {
   });
 
   it('should subscribe to document clicks', () => {
-    expect(addEventListenerSpy).toHaveBeenCalledWith(
-      'click',
-      expect.any(Function),
-    );
+    expect(addEventListenerSpy).toHaveBeenCalledWith('click', expect.any(Function));
   });
 
   it('should preventDefault and send a message when a non-BYOND external link is clicked', () => {

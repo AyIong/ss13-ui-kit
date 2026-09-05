@@ -29,26 +29,20 @@
   --secondary-l: 0.57;
   --secondary-c: 0.175;
   --secondary-h: var(--primary-h);
-  --secondary-color: oklch(
-    var(--secondary-l) var(--secondary-c) var(--secondary-h)
-  );
+  --secondary-color: oklch(var(--secondary-l) var(--secondary-c) var(--secondary-h));
 
   /* Background colors */
   --background-l: 0.233;
   --background-c: 0.005;
   --background-h: var(--primary-h);
-  --background-color: oklch(
-    var(--background-l) var(--background-c) var(--background-h)
-  );
+  --background-color: oklch(var(--background-l) var(--background-c) var(--background-h));
 
   --surface-l-adjust: 0.06;
   --surface-c-adjust: 0.01;
   --surface-l: calc(var(--background-l) + var(--surface-l-adjust));
   --surface-c: calc(var(--background-c) + var(--surface-c-adjust));
   --surface-h: var(--background-h);
-  --surface-color: oklch(
-    var(--surface-l) calc(var(--surface-c) + 0.005) var(--surface-h)
-  );
+  --surface-color: oklch(var(--surface-l) calc(var(--surface-c) + 0.005) var(--surface-h));
 
   /* Text colors */
   --text-color: oklch(0.925 0.015 var(--primary-h));
@@ -96,8 +90,8 @@
   --border-primary-lightness: 75;
   --border-primary-alpha: 0.75;
   --border-color-primary: hsl(
-    from var(--color-primary) h var(--border-primary-saturation)
-      var(--border-primary-lightness) / var(--border-primary-alpha)
+    from var(--color-primary) h var(--border-primary-saturation) var(--border-primary-lightness) /
+      var(--border-primary-alpha)
   );
   --border-color-secondary: hsl(from var(--border-color-primary) h s l / 1);
 

@@ -55,16 +55,7 @@ import type { StackDividerProps, StackItemProps, StackProps } from './types';
  * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
  */
 export function Stack(props: StackProps) {
-  const {
-    className,
-    fill,
-    vertical,
-    reverse,
-    inlineFlex,
-    zebra,
-    direction,
-    ...rest
-  } = props;
+  const { className, fill, vertical, reverse, inlineFlex, zebra, direction, ...rest } = props;
 
   const directionPrefix = vertical ? 'column' : 'row';
   const directionSuffix = reverse ? '-reverse' : '';
@@ -135,12 +126,7 @@ function StackDivider(props: StackDividerProps) {
   const { className, hidden, ...rest } = props;
   return (
     <div
-      className={clsx([
-        'stack-divider',
-        hidden && 'hidden',
-        className,
-        computeBoxClassName(rest),
-      ])}
+      className={clsx(['stack-divider', hidden && 'hidden', className, computeBoxClassName(rest)])}
       {...computeStackItemProps(rest)}
     />
   );

@@ -1,9 +1,6 @@
 import type { BoxProps } from '@components';
 import type { IconName } from '@fortawesome/fontawesome-svg-core';
-import type {
-  AnimationProps,
-  CSSVariables,
-} from '@fortawesome/react-fontawesome';
+import type { AnimationProps, CSSVariables } from '@fortawesome/react-fontawesome';
 import type { CSSProperties } from 'react';
 import type { CustomIconName } from './icons';
 

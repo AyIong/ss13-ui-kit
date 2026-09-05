@@ -23,12 +23,6 @@ export function Divider(props: Props) {
   const { hidden, vertical } = props;
 
   return (
-    <div
-      className={clsx(
-        'divider',
-        hidden && 'divider-hidden',
-        vertical && 'divider-vertical',
-      )}
-    />
+    <div className={clsx('divider', hidden && 'divider-hidden', vertical && 'divider-vertical')} />
   );
 }

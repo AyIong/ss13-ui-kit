@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
-import { computeBoxProps } from 'ss13-ui-kit/common/ui';
+import { computeBoxProps } from 'tgui-core/common/ui';
 import { dataToPolylinePoints, normalizeData } from './helpers';
 import type { ChartLineProps, ChartProps, ViewBox } from './types';
 
@@ -59,10 +59,7 @@ export function ChartLine(props: ChartLineProps) {
       className={clsx('chart-line', `bg-${color ? color : 'primary'}`)}
       {...computeBoxProps(rest)}
     >
-      <svg
-        preserveAspectRatio="none"
-        viewBox={`0 0 ${viewBox[0]} ${viewBox[1]}`}
-      >
+      <svg preserveAspectRatio="none" viewBox={`0 0 ${viewBox[0]} ${viewBox[1]}`}>
         <polyline points={points} strokeWidth={strokeWidthToUse} />
       </svg>
     </div>
@@ -81,10 +78,7 @@ Chart.Line = ChartLine;
 export function Chart(props: ChartProps) {
   const { children, fluid, ...rest } = props;
   return (
-    <div
-      className={clsx('chart', fluid && 'chart-fluid')}
-      {...computeBoxProps(rest)}
-    >
+    <div className={clsx('chart', fluid && 'chart-fluid')} {...computeBoxProps(rest)}>
       {children}
     </div>
   );

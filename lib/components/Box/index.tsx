@@ -1,8 +1,4 @@
-import {
-  computeBoxClassName,
-  computeBoxProps,
-  computeTwClass,
-} from '@common/ui';
+import { computeBoxClassName, computeBoxProps, computeTwClass } from '@common/ui';
 import { createElement } from 'react';
 
 import type { BoxProps, DangerDoNotUse } from './types';
@@ -54,9 +50,7 @@ import type { BoxProps, DangerDoNotUse } from './types';
  *
  * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
  */
-export function Box<TElement = HTMLDivElement>(
-  props: BoxProps<TElement> & DangerDoNotUse,
-) {
+export function Box<TElement = HTMLDivElement>(props: BoxProps<TElement> & DangerDoNotUse) {
   const { as = 'div', className, children, tw, ref, ...rest } = props;
 
   const computedClassName = className

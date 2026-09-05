@@ -11,13 +11,12 @@
   cursor: var(--cursor-text);
   box-sizing: border-box; // Respect padding
   caret-color: var(--secondary-color);
-  width: fn.em(125px);
+  width: var(--base-input-width);
   height: var(--base-height);
   padding: var(--space-m);
   background-color: var(--input-background-color);
   color: var(--input-color);
-  outline: var(--border-width-1) solid
-    #{fn.oklch-from(input-border-color, $l: 0.05)};
+  outline: var(--border-width-1) solid #{fn.oklch-from(input-border-color, $l: 0.05)};
   border-radius: var(--input-border-radius);
   transition-property: color, outline-color;
   transition-duration: var(--transition-time-fast);
@@ -28,10 +27,7 @@
   }
 
   &:focus-within:not(.disabled) {
-    outline-color: fn.oklch-from(
-      input-border-color-focus,
-      $l: var(--adjust-active)
-    );
+    outline-color: fn.oklch-from(input-border-color-focus, $l: var(--adjust-active));
   }
 
   &::placeholder {
@@ -40,10 +36,7 @@
   }
 
   &.disabled {
-    --disabled-color: color-mix(
-      var(--color-bad) 50%,
-      var(--input-background-color)
-    );
+    --disabled-color: color-mix(var(--color-bad) 50%, var(--input-background-color));
     --input-color: #{fn.fg(var(--disabled-color))};
     --input-placeholder-color: var(--disabled-color);
     --input-border-color: var(--disabled-color);

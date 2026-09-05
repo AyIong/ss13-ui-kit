@@ -27,9 +27,7 @@ export const Default: Story = {
         <HoverBox position="top-end" />
         <HoverBox position="left" />
         <Tooltip content={false && 'Tooltip'}>
-          <div style={{ border: 'thin solid red', padding: '6px' }}>
-            My content is falsy
-          </div>
+          <div style={{ border: 'thin solid red', padding: '6px' }}>My content is falsy</div>
         </Tooltip>
         <HoverBox position="right" />
         <HoverBox position="bottom-start" />
@@ -44,9 +42,7 @@ function HoverBox(props) {
   const { position } = props;
   return (
     <Tooltip content="Tooltip content example" position={position}>
-      <div style={{ border: 'thin solid green', padding: '6px' }}>
-        {position}
-      </div>
+      <div style={{ border: 'thin solid green', padding: '6px' }}>{position}</div>
     </Tooltip>
   );
 }

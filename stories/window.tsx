@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { type ReactNode, type RefObject, useRef } from 'react';
-import { TitleBar } from 'ss13-ui-kit/components/index';
-import { Layout } from 'ss13-ui-kit/components/Layout/index';
+import { TitleBar } from 'tgui-core/components/index';
+import { Layout } from 'tgui-core/components/Layout/index';
 
 type Props = Partial<{
   children: ReactNode;
@@ -30,9 +30,7 @@ export function Window(props: Props) {
       <TitleBar title={title} canClose={canClose}>
         {buttons}
       </TitleBar>
-      <Layout.Content className={clsx([showDimmer && 'dimmed'])}>
-        {children}
-      </Layout.Content>
+      <Layout.Content className={clsx([showDimmer && 'dimmed'])}>{children}</Layout.Content>
       {/* Resize handlers */}
       <ResizeHandler targetRef={ref} axis="x" />
       <ResizeHandler targetRef={ref} axis="y" />
@@ -108,7 +106,5 @@ function ResizeHandler(props: ResizerProps) {
     document.documentElement.classList.remove(`resizing-${axis}`);
   }
 
-  return (
-    <div className={`resize-handler ${axis}`} onMouseDown={handleDragStart} />
-  );
+  return <div className={`resize-handler ${axis}`} onMouseDown={handleDragStart} />;
 }

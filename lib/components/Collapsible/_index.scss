@@ -45,8 +45,7 @@
     margin: var(--space-xs);
     margin-top: 0;
     background-color: color-mix(var(--bg-color), var(--background-color) 85%);
-    border-top: var(--border-width-2) solid
-      oklch(from var(--bg-color) calc(l + 0.1) c h);
+    border-top: var(--border-width-2) solid oklch(from var(--bg-color) calc(l + 0.1) c h);
     border-radius: 0 0 var(--content-br) var(--content-br);
     box-shadow: inset var(--shadow-medium) var(--shadow-color);
 

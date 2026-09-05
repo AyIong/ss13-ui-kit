@@ -1,8 +1,8 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: <Don't care, story> */
 import { Window } from '@stories/window';
 import { useState } from 'react';
-import { Chart } from 'ss13-ui-kit/components/Chart/index';
-import { FitText } from 'ss13-ui-kit/components/FitText/index';
+import { Chart } from 'tgui-core/components/Chart/index';
+import { FitText } from 'tgui-core/components/FitText/index';
 import {
   Button,
   Collapsible,
@@ -12,7 +12,7 @@ import {
   Modal,
   Section,
   Stack,
-} from 'ss13-ui-kit/components/index';
+} from 'tgui-core/components/index';
 
 export function Preview() {
   return (
@@ -43,130 +43,113 @@ function Content() {
 
   return (
     <Stack fill vertical>
-      <Stack.Item grow>
-        <Section
-          fill
-          scrollable
-          title="Section title"
+      <Section
+        fill
+        scrollable
+        title="Section title"
+        buttons={
+          <>
+            <Modal title="Test Modal" isOpen={modalOpen} onClose={() => setModalOpen(false)}>
+              Poor Content
+            </Modal>
+            <Button
+              startIcon={{ animation: { fade: true }, name: 'gamepad' }}
+              tooltip={{ content: 'This is a tooltip' }}
+              onClick={() => setModalOpen(true)}
+            >
+              Button
+            </Button>
+            <Input placeholder="Search..." />
+          </>
+        }
+      >
+        <Stack fill vertical>
+          <Stack.Item>
+            <FitText>That text will be fitted. Used default values</FitText>
+          </Stack.Item>
+          <Stack.Item grow>
+            {selected &&
+              Array.from({ length: 10 }, (_, i) => <div key={i}>Section content 1234567890</div>)}
+            <Icon.Stack>
+              <Icon regular name="circle" size={2} />
+              <Icon name="book" />
+            </Icon.Stack>
+          </Stack.Item>
+          <Stack.Item>
+            <Chart height="64px">
+              <Chart.Line
+                data={[
+                  [0, 50],
+                  [10, 55],
+                  [20, 48],
+                  [30, 60],
+                  [40, 52],
+                  [50, 65],
+                  [60, 58],
+                  [70, 70],
+                  [80, 62],
+                  [90, 75],
+                  [100, 68],
+                ]}
+              />
+              <Chart.Line
+                color="red"
+                data={[
+                  [0, 68],
+                  [10, 75],
+                  [20, 62],
+                  [30, 70],
+                  [40, 58],
+                  [50, 65],
+                  [60, 52],
+                  [70, 60],
+                  [80, 48],
+                  [90, 55],
+                  [100, 50],
+                ]}
+              />
+            </Chart>
+          </Stack.Item>
+        </Stack>
+      </Section>
+      <Section
+        scrollable={isScrollable}
+        title="Section title"
+        buttons={
+          <>
+            <Button selected={selected} onClick={() => setSelected(!selected)}>
+              Primary
+            </Button>
+            <Button color="secondary" onClick={() => setScrollable(!isScrollable)}>
+              Secondary
+            </Button>
+          </>
+        }
+      >
+        Section content
+        <Collapsible
+          title="Collapsible"
           buttons={
             <>
-              <Modal
-                title="Test Modal"
-                isOpen={modalOpen}
-                onClose={() => setModalOpen(false)}
-              >
-                Poor Content
-              </Modal>
+              <Button>Do nothing</Button>
               <Button
-                startIcon={{ animation: { fade: true }, name: 'gamepad' }}
-                tooltip={{ content: 'This is a tooltip' }}
-                onClick={() => setModalOpen(true)}
-              >
-                Button
-              </Button>
-              <Input placeholder="Search..." />
+                startIcon={{ name: 'times' }}
+                tooltip={{ content: 'This button do nothing.' }}
+              />
             </>
           }
         >
-          <Stack fill vertical>
-            <Stack.Item>
-              <FitText>That text will be fitted. Used default values</FitText>
-            </Stack.Item>
-            <Stack.Item grow>
-              {selected &&
-                Array.from({ length: 10 }, (_, i) => (
-                  <div key={i}>Section content 1234567890</div>
-                ))}
-              <Icon.Stack>
-                <Icon regular name="circle" size={2} />
-                <Icon name="book" />
-              </Icon.Stack>
-            </Stack.Item>
-            <Stack.Item>
-              <Chart height="64px">
-                <Chart.Line
-                  data={[
-                    [0, 50],
-                    [10, 55],
-                    [20, 48],
-                    [30, 60],
-                    [40, 52],
-                    [50, 65],
-                    [60, 58],
-                    [70, 70],
-                    [80, 62],
-                    [90, 75],
-                    [100, 68],
-                  ]}
-                />
-                <Chart.Line
-                  color="red"
-                  data={[
-                    [0, 68],
-                    [10, 75],
-                    [20, 62],
-                    [30, 70],
-                    [40, 58],
-                    [50, 65],
-                    [60, 52],
-                    [70, 60],
-                    [80, 48],
-                    [90, 55],
-                    [100, 50],
-                  ]}
-                />
-              </Chart>
-            </Stack.Item>
-          </Stack>
-        </Section>
-      </Stack.Item>
-      <Stack.Item>
-        <Section
-          scrollable={isScrollable}
-          title="Section title"
-          buttons={
-            <>
-              <Button
-                selected={selected}
-                onClick={() => setSelected(!selected)}
-              >
-                Primary
-              </Button>
-              <Button
-                color="secondary"
-                onClick={() => setScrollable(!isScrollable)}
-              >
-                Secondary
-              </Button>
-            </>
-          }
-        >
-          Section content
-          <Collapsible
-            title="Collapsible"
-            buttons={
-              <>
-                <Button>Do nothing</Button>
-                <Button
-                  startIcon={{ name: 'times' }}
-                  tooltip={{ content: 'This button do nothing.' }}
-                />
-              </>
-            }
-          >
-            <Dropdown
-              buttons
-              options={defaultItems}
-              displayText={displayText}
-              selected={dropdownSelected}
-              onSelected={setDropdownSelected}
-            />
-            Interactive story playground Controls give you an easy to use
-            interface to test your components. Set your story args and you'll
-            see controls appearing here automatically.
-          </Collapsible>
-        </Section>
-      </Stack.Item>
+          <Dropdown
+            buttons
+            options={defaultItems}
+            displayText={displayText}
+            selected={dropdownSelected}
+            onSelected={setDropdownSelected}
+          />
+          Interactive story playground Controls give you an easy to use interface to test your
+          components. Set your story args and you'll see controls appearing here automatically.
+        </Collapsible>
+      </Section>
     </Stack>
   );
 }

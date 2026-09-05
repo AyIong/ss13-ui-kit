@@ -24,13 +24,13 @@ $map-keys: colors.$color-map !default;
 // Created for standartization and less repeated code
 @each $color-name, $color-value in colors.$color-map {
   .fg-#{$color-name} {
-    --fg-color: #{fn.fg($color-value)};
+    --fg-color: #{fn.fg($color-value)} !important; // Prevent missing color
   }
 }
 
 // Same as previous but for background
 @each $color-name, $color-value in colors.$color-map {
   .bg-#{$color-name} {
-    --bg-color: #{fn.bg($color-value)};
+    --bg-color: #{fn.bg($color-value)} !important; // Prevent missing color
   }
 }

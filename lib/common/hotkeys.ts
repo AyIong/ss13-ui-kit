@@ -74,11 +74,7 @@ function handlePassthrough(key: KeyEvent) {
   }
   // NOTE: Alt modifier is pretty bad and sticky in IE11.
 
-  if (
-    key.event.defaultPrevented ||
-    key.isModifierKey() ||
-    hotKeysAcquired.includes(key.code)
-  ) {
+  if (key.event.defaultPrevented || key.isModifierKey() || hotKeysAcquired.includes(key.code)) {
     return;
   }
   const byondKeyCode = keyCodeToByond(key.code);
@@ -102,10 +98,7 @@ function handlePassthrough(key: KeyEvent) {
   // KeyUp
   if (key.isUp() && keyState[byondKeyCode]) {
     keyState[byondKeyCode] = false;
-    const command = keyPassthroughConfig.verbParamsFn(
-      keyPassthroughConfig.keyUpVerb,
-      byondKeyCode,
-    );
+    const command = keyPassthroughConfig.verbParamsFn(keyPassthroughConfig.keyUpVerb, byondKeyCode);
     return Byond.command(command);
   }
 }
@@ -133,10 +126,7 @@ export function releaseHeldKeys() {
     if (keyState[byondKeyCode]) {
       keyState[byondKeyCode] = false;
       Byond.command(
-        keyPassthroughConfig.verbParamsFn(
-          keyPassthroughConfig.keyUpVerb,
-          byondKeyCode,
-        ),
+        keyPassthroughConfig.verbParamsFn(keyPassthroughConfig.keyUpVerb, byondKeyCode),
       );
     }
   }

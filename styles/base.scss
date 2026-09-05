@@ -68,6 +68,7 @@
 
   // MARK: Sizes
   --base-height: #{fn.rem(20px)};
+  --base-input-width: #{fn.em(125px)};
 
   // MARK: Transition times
   --transition-time-unit: 1s;
@@ -99,12 +100,13 @@
   --adjust-active: 0.05;
 
   // MARK: Opacity
-  --opacity-disabled: 0.75;
+  --opacity-disabled: 0.66;
 
   /* Cursors */
   --cursor-default: default;
   --cursor-pointer: pointer;
   --cursor-grab: grab;
+  --cursor-grabbing: grabbing;
   --cursor-text: text;
   --cursor-disabled: var(--cursor-default);
   --cursor-n-resize: n-resize;

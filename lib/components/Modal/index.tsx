@@ -2,8 +2,8 @@ import { Box, Button, Dimmer } from '@components';
 import { FloatingPortal } from '@floating-ui/react';
 import { useEffect } from 'react';
 import { CSSTransition } from 'react-transitioning';
-import { uiRootId } from 'ss13-ui-kit/common/constants';
-import { isEnter, isEscape } from 'ss13-ui-kit/common/keys';
+import { uiRootId } from 'tgui-core/common/constants';
+import { isEnter, isEscape } from 'tgui-core/common/keys';
 import type { ModalProps } from './types';
 
 /**

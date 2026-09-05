@@ -7,9 +7,7 @@
  * logger.log(getShallowTypes(data));
  * ```
  */
-export function getShallowTypes(
-  data: Record<string, unknown>,
-): Record<string, unknown> {
+export function getShallowTypes(data: Record<string, unknown>): Record<string, unknown> {
   const output = {};
 
   for (const key in data) {

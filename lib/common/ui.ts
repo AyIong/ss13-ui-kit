@@ -8,9 +8,7 @@ import type { BooleanLike } from './react.ts';
 type UnitMapper = (value: unknown) => string | undefined;
 
 // Do you get it? Are you feeling it now mr krabs?
-type StyleCourier = (
-  ...args: any[]
-) => (style: CSSProperties, value: unknown) => void;
+type StyleCourier = (...args: any[]) => (style: CSSProperties, value: unknown) => void;
 
 /**
  * Coverts our rem-like spacing unit into a CSS unit.
@@ -62,16 +60,14 @@ const mapUnitPropTo: StyleCourier =
     }
   };
 
-const mapBooleanPropTo: StyleCourier =
-  (attrName: string, attrValue: unknown) => (style, value) => {
-    if (value) {
-      style[attrName] = attrValue;
-    }
-  };
+const mapBooleanPropTo: StyleCourier = (attrName: string, attrValue: unknown) => (style, value) => {
+  if (value) {
+    style[attrName] = attrValue;
+  }
+};
 
 const mapDirectionalUnitPropTo: StyleCourier =
-  (attrName: string, unitMapper: UnitMapper, dirs: string[]) =>
-  (style, value) => {
+  (attrName: string, unitMapper: UnitMapper, dirs: string[]) => (style, value) => {
     if (typeof value === 'number' || typeof value === 'string') {
       for (let i = 0; i < dirs.length; i++) {
         style[attrName + dirs[i]] = unitMapper(value);
@@ -221,12 +217,7 @@ export const stringStyleMap: Record<keyof StringStyleMap, any> = {
     }
   },
   // Margin
-  m: mapDirectionalUnitPropTo('margin', halfUnit, [
-    'Top',
-    'Bottom',
-    'Left',
-    'Right',
-  ]),
+  m: mapDirectionalUnitPropTo('margin', halfUnit, ['Top', 'Bottom', 'Left', 'Right']),
   maxHeight: mapUnitPropTo('maxHeight', unit),
   maxWidth: mapUnitPropTo('maxWidth', unit),
   mb: mapUnitPropTo('marginBottom', halfUnit),
@@ -242,12 +233,7 @@ export const stringStyleMap: Record<keyof StringStyleMap, any> = {
   overflowX: mapRawPropTo('overflowX'),
   overflowY: mapRawPropTo('overflowY'),
   // Padding
-  p: mapDirectionalUnitPropTo('padding', halfUnit, [
-    'Top',
-    'Bottom',
-    'Left',
-    'Right',
-  ]),
+  p: mapDirectionalUnitPropTo('padding', halfUnit, ['Top', 'Bottom', 'Left', 'Right']),
   pb: mapUnitPropTo('paddingBottom', halfUnit),
   pl: mapUnitPropTo('paddingLeft', halfUnit),
   position: mapRawPropTo('position'),
@@ -307,9 +293,7 @@ export function computeBoxProps(props): Record<string, any> {
     }
 
     const propValue = props[propName];
-
-    const mapPropToStyle =
-      stringStyleMap[propName] || booleanStyleMap[propName];
+    const mapPropToStyle = stringStyleMap[propName] || booleanStyleMap[propName];
 
     if (mapPropToStyle) {
       mapPropToStyle(computedStyles, propValue);
@@ -324,9 +308,7 @@ export function computeBoxProps(props): Record<string, any> {
   return computedProps;
 }
 
-export function computeBoxClassName<TElement = HTMLDivElement>(
-  props: BoxProps<TElement>,
-): string {
+export function computeBoxClassName<TElement = HTMLDivElement>(props: BoxProps<TElement>): string {
   const color = props.textColor || props.color;
   const { backgroundColor } = props;
 

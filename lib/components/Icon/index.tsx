@@ -21,14 +21,13 @@ library.add(fas, far, tgIcons);
  * <Icon name="plus" />
  * ```
  *
- * Icons: https://fontawesome.com/v6/search?o=r&m=free
+ * Icons: https://fontawesome.com/search?ic=free-collection
  *
- * - [View documentation on tgui core](http://localhost:6006/?path=/docs/components-icon--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-icon--docs)
  * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
  */
 export function Icon(props: IconProps) {
-  const { name, regular, size, className, rotation, animation, ...rest } =
-    props;
+  const { name, regular, size, className, rotation, animation, ...rest } = props;
 
   const customStyle = rest.style || {};
   if (size) {
@@ -77,11 +76,7 @@ export function IconStack(props: IconStackProps) {
 
   return (
     <span
-      className={clsx([
-        'icon-stack',
-        className,
-        computeBoxClassName<HTMLSpanElement>(rest),
-      ])}
+      className={clsx(['icon-stack', className, computeBoxClassName<HTMLSpanElement>(rest)])}
       {...computeBoxProps(rest)}
     >
       {children}

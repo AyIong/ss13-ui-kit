@@ -12,19 +12,14 @@ describe('Chart Component', () => {
   ];
 
   it('renders a polyline with correct stroke width', () => {
-    const { container } = render(
-      <Chart.Line data={mockData} strokeWidth={5} />,
-    );
+    const { container } = render(<Chart.Line data={mockData} strokeWidth={5} />);
     const polyline = container.querySelector('polyline')!;
     expect(polyline.getAttribute('stroke-width')).toBe('5');
   });
 
   it('updates viewBox on window resize', () => {
     // getBoundingClientRect just returns 0s, so we have to mock it
-    const spy = spyOn(
-      HTMLDivElement.prototype,
-      'getBoundingClientRect',
-    ).mockReturnValue({
+    const spy = spyOn(HTMLDivElement.prototype, 'getBoundingClientRect').mockReturnValue({
       width: 800,
       height: 400,
       top: 0,
@@ -48,10 +43,7 @@ describe('Chart Component', () => {
   });
 
   it('normalizes points within the viewBox', () => {
-    const spy = spyOn(
-      HTMLDivElement.prototype,
-      'getBoundingClientRect',
-    ).mockReturnValue({
+    const spy = spyOn(HTMLDivElement.prototype, 'getBoundingClientRect').mockReturnValue({
       width: 600,
       height: 200,
       top: 0,

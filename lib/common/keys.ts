@@ -123,9 +123,7 @@ export function isCardinal(key: string): boolean {
  * @returns true if key matches any arrow keys
  */
 export function isArrow(key: string): boolean {
-  return (
-    key === KEY.Up || key === KEY.Down || key === KEY.Left || key === KEY.Right
-  );
+  return key === KEY.Up || key === KEY.Down || key === KEY.Left || key === KEY.Right;
 }
 
 /**

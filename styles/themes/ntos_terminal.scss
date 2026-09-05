@@ -8,9 +8,7 @@
 
   // Base
   --color-base: hsl(120, 10%, 10%);
-  --color-secondary: hsl(
-    from var(--terminal-color) calc(h - 25) calc(s + 20) calc(l - 34) / 0.25
-  );
+  --color-secondary: hsl(from var(--terminal-color) calc(h - 25) calc(s + 20) calc(l - 34) / 0.25);
   --color-primary: var(--terminal-color);
   --color-good: hsl(from var(--terminal-color) h s l / 0.5);
   --color-text: var(--color-white);
@@ -39,10 +37,7 @@
         transparent 5px
       ),
       radial-gradient(
-        hsl(
-          from var(--terminal-color) calc(h - 25) calc(s + 20) calc(l - 34) /
-            0.75
-        ),
+        hsl(from var(--terminal-color) calc(h - 25) calc(s + 20) calc(l - 34) / 0.75),
         black 150%
       );
     background-size: 100%, 100%;

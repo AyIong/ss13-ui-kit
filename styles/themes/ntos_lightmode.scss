@@ -12,9 +12,7 @@
   --secondary-lightness-adjustment: -50;
   --color-section: hsla(0, 0%, 50%, 0.33);
   --color-text: var(--color-black);
-  --color-label: hsl(
-    var(--primary-hue) calc(var(--primary-saturation) - 20%) 40%
-  );
+  --color-label: hsl(var(--primary-hue) calc(var(--primary-saturation) - 20%) 40%);
   --border-primary-lightness: 35;
   --tooltip-background-lightness: 90;
 

@@ -42,22 +42,19 @@ export function TextArea(props: TextAreaProps) {
   const textareaRef = (ref || ourRef) as RefObject<HTMLTextAreaElement>;
 
   useAutofocus(textareaRef, { autoFocus, autoSelect });
-  const { innerValue, ...interactions } = useInput<HTMLTextAreaElement, string>(
-    textareaRef,
-    {
-      userMarkup,
-      dontUseTabForIndent,
-      disabled,
-      expensive,
-      selfClear,
-      value,
-      onBlur,
-      onChange,
-      onKeyDown,
-      onEnter,
-      onEscape,
-    },
-  );
+  const { innerValue, ...interactions } = useInput<HTMLTextAreaElement, string>(textareaRef, {
+    userMarkup,
+    dontUseTabForIndent,
+    disabled,
+    expensive,
+    selfClear,
+    value,
+    onBlur,
+    onChange,
+    onKeyDown,
+    onEnter,
+    onEscape,
+  });
 
   const boxProps = computeBoxProps(rest);
   const classNames = clsx([

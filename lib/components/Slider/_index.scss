@@ -1,0 +1,92 @@
+@use "../../../styles/functions" as fn;
+
+.slider {
+  --indent: var(--space-xs);
+  --fill-transition-properties: width, background-color;
+
+  cursor: var(--cursor-grab);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  min-width: var(--base-input-width);
+  height: var(--base-height);
+  padding: var(--indent);
+  background-color: var(--background-color);
+  border: var(--border-width-1) solid var(--bg-color);
+  border-radius: var(--border-radius-2);
+  transition-property: border-color, opacity;
+  transition-duration: var(--transition-time-medium);
+
+  &-cursor {
+    position: absolute;
+    width: var(--indent);
+    height: 100%;
+    right: 0;
+    opacity: 0;
+    background-color: fn.oklch-from(bg-color, $l: 0.2);
+    transition: opacity var(--transition-time-fast);
+    transition-delay: var(--transition-time-slowest);
+    transform: scale(1.25) translateX(50%);
+
+    &.always-visible {
+      opacity: 1;
+    }
+  }
+
+  &-fill {
+    position: relative;
+    display: grid;
+    width: 100%;
+
+    > * {
+      grid-area: 1 / 1;
+      border-radius: var(--border-radius-1);
+      transition-property: var(--fill-transition-properties);
+      transition-duration: var(--transition-time-medium);
+    }
+
+    &--cursor {
+      position: relative;
+      width: var(--int-percentage);
+    }
+
+    &--internal {
+      width: var(--fill-value, min(var(--int-percentage), var(--ext-percentage)));
+      background-color: var(--bg-color);
+    }
+
+    &--external {
+      width: max(var(--int-percentage), var(--ext-percentage));
+      background-color: fn.oklch-from(bg-color, $a: 0.5);
+    }
+  }
+
+  &-value {
+    pointer-events: none;
+    user-select: none;
+    position: absolute;
+    right: calc(var(--indent) * 3);
+    z-index: 1;
+  }
+
+  &:hover,
+  &.dragging {
+    .slider-cursor {
+      opacity: 1;
+      transition-delay: 0s;
+    }
+  }
+
+  &.dragging {
+    --fill-transition-properties: background-color;
+  }
+
+  &.disabled {
+    cursor: var(--cursor-disabled);
+    opacity: var(--opacity-disabled);
+
+    .slider-cursor {
+      display: none;
+    }
+  }
+}

@@ -1,13 +1,7 @@
 import clsx from 'clsx';
-import {
-  type CSSProperties,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
-import { getCssVariableValue } from 'ss13-ui-kit/common/css';
-import { unit } from 'ss13-ui-kit/common/ui';
+import { type CSSProperties, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { getCssVariableValue } from 'tgui-core/common/css';
+import { unit } from 'tgui-core/common/ui';
 import type { FitTextProps } from './types';
 
 export function FitText(props: FitTextProps) {
@@ -26,9 +20,7 @@ export function FitText(props: FitTextProps) {
     }
 
     text.style.whiteSpace = 'nowrap';
-    text.style.fontSize = unit(
-      maxFontSize || getCssVariableValue('font-size'),
-    ) as string; // font size variable always available
+    text.style.fontSize = unit(maxFontSize || getCssVariableValue('font-size')) as string; // font size variable always available
     const containerWidth = container.getBoundingClientRect().width;
     const textWidth = text.getBoundingClientRect().width;
     text.style.whiteSpace = '';

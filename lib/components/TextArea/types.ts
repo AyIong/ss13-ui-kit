@@ -11,5 +11,4 @@ export type BaseTextAreaProps = Partial<{
   userMarkup: Record<string, string>;
 }>;
 
-export type TextAreaProps = BaseTextAreaProps &
-  TextInputProps<HTMLTextAreaElement>;
+export type TextAreaProps = BaseTextAreaProps & TextInputProps<HTMLTextAreaElement>;

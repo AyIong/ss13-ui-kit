@@ -1,3 +1,5 @@
+import { getCssVariableValue } from './css';
+
 /**
  * Limits a number to the range between 'min' and 'max'.
  */
@@ -53,10 +55,7 @@ export function inRange(value: number, range: number[]): boolean {
  *
  * Range is an array of two numbers, for example: [0, 15].
  */
-export function keyOfMatchingRange(
-  value: number,
-  ranges: Record<string, any>,
-): string | undefined {
+export function keyOfMatchingRange(value: number, ranges: Record<string, any>): string | undefined {
   for (const rangeName of Object.keys(ranges)) {
     const range = ranges[rangeName];
     if (inRange(value, range)) {
@@ -79,9 +78,7 @@ export function numberOfDecimalDigits(value: number): number {
  * Ensures the number is valid and not infinite/NaN.
  */
 export function isSafeNumber(value: number): boolean {
-  return (
-    typeof value === 'number' && Number.isFinite(value) && !Number.isNaN(value)
-  );
+  return typeof value === 'number' && Number.isFinite(value) && !Number.isNaN(value);
 }
 
 /**
@@ -96,11 +93,9 @@ export function rad2deg(rad: number): number {
  */
 export function pxToRem(px: number, as: 'css' | 'string'): string;
 export function pxToRem(px: number, as: 'number'): number;
-export function pxToRem(
-  px: number,
-  as: 'css' | 'string' | 'number',
-): string | number {
-  const value = px / 12;
+export function pxToRem(px: number, as: 'css' | 'string' | 'number'): string | number {
+  const fontSize = Number.parseFloat(getCssVariableValue('font-size')) || 12;
+  const value = px / fontSize;
   // Match CSS engine rounding (6 decimal places)
   const rounded = Math.round(value * 1_000_000) / 1_000_000;
   return as === 'number' ? rounded : `${rounded}rem`;

@@ -54,10 +54,7 @@ export const UpdateOnExternalChange: Story = {
         <Stack.Item>
           <Stack>
             <Button onClick={() => setValue(randomStr)}>Set random</Button>
-            <Button
-              startIcon={{ name: 'trash-can' }}
-              onClick={() => setValue('')}
-            />
+            <Button startIcon={{ name: 'trash-can' }} onClick={() => setValue('')} />
           </Stack>
         </Stack.Item>
         <Stack.Item>

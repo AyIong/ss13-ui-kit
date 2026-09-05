@@ -15,9 +15,7 @@
     --color-section: hsl(from var(--color-base) h s calc(l - 42.5) / 0.33);
     --color-text: hsl(from var(--color-kitty) h s calc(l + 10));
     --color-text-translucent: hsl(from var(--color-kitty) h s l / 0.75);
-    --color-label: hsl(
-      from var(--color-kitty) calc(h + 40) calc(s - 50) calc(l - 20)
-    );
+    --color-label: hsl(from var(--color-kitty) calc(h + 40) calc(s - 50) calc(l - 20));
     --color-good: var(--color-kitty);
     --color-action: var(--color-kitty);
     --base-gradient-spread: 12;
@@ -32,7 +30,7 @@
     --tooltip-background-lightness: 50;
 
     .layout-content {
-      background-image: url("ss13-ui-kit/assets/bg-cat.svg");
+      background-image: url("tgui-core/assets/bg-cat.svg");
       background-size: 100%;
       background-repeat: no-repeat;
     }

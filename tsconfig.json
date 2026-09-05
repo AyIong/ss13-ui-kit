@@ -8,18 +8,15 @@
     "moduleResolution": "bundler",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    /* Set to true when lib will be ready */
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "paths": {
-      "ss13-ui-kit/*": ["./lib/*.ts", "./lib/*.tsx"],
+      "tgui-core/*": ["./lib/*.ts", "./lib/*.tsx"],
       "@common/*": ["./lib/common/*.ts"],
       "@components": ["./lib/components/index.ts"],
       "@hooks": ["./lib/hooks/index.ts"],
-      "@stories/*": [
-        "./stories/*.ts",
-        "./stories/*.tsx",
-        "./lib/components/*.stories.tsx"
-      ]
+      "@stories/*": ["./stories/*.ts", "./stories/*.tsx", "./lib/components/*.stories.tsx"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,

@@ -17,10 +17,7 @@ export function classes(classNames: (string | BooleanLike)[]): string {
  * Shallowly checks if two objects are different.
  * Credit: https://github.com/developit/preact-compat
  */
-export function shallowDiffers(
-  a: Record<string, any>,
-  b: Record<string, any>,
-): boolean {
+export function shallowDiffers(a: Record<string, any>, b: Record<string, any>): boolean {
   let i: string;
   for (i in a) {
     if (!(i in b)) {

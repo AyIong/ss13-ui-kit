@@ -75,9 +75,7 @@ export const AutoSelect: Story = {
 };
 
 export const Negative: Story = {
-  render: (args) => (
-    <ControlledInputStory {...args} minValue={-5} maxValue={5} />
-  ),
+  render: (args) => <ControlledInputStory {...args} minValue={-5} maxValue={5} />,
   args: { value: 1 },
 };
 
@@ -91,12 +89,7 @@ export const Invalid: Story = {
           <Button onClick={() => setValue(103000)}>Set Out of range</Button>
         </Stack.Item>
         <Stack.Item>
-          <RestrictedInput
-            value={value}
-            minValue={-5}
-            maxValue={5}
-            onChange={setValue}
-          />
+          <RestrictedInput value={value} minValue={-5} maxValue={5} onChange={setValue} />
         </Stack.Item>
       </Stack>
     );

@@ -1,7 +1,4 @@
-import type {
-  IconDefinition,
-  IconName,
-} from '@fortawesome/fontawesome-common-types';
+import type { IconDefinition, IconName } from '@fortawesome/fontawesome-common-types';
 
 /**
  * Custom icons to use with Icon component.

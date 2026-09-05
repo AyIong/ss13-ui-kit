@@ -6,12 +6,7 @@ import '../static/fonts.scss';
 import '../styles/main.scss';
 import '../styles/storybook.scss';
 
-import {
-  Controls,
-  Description,
-  Primary,
-  Subtitle,
-} from '@storybook/addon-docs/blocks';
+import { Controls, Description, Primary, Subtitle } from '@storybook/addon-docs/blocks';
 
 const preview: Preview = {
   decorators: [

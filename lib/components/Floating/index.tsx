@@ -10,6 +10,7 @@ import {
   useFloating,
   useHover,
   useInteractions,
+  useMergeRefs,
   useTransitionStatus,
 } from '@floating-ui/react';
 import clsx from 'clsx';
@@ -17,10 +18,11 @@ import {
   cloneElement,
   isValidElement,
   type ReactElement,
+  type Ref,
   useEffect,
   useState,
 } from 'react';
-import { floatingRoot } from 'ss13-ui-kit/common/constants';
+import { floatingRoot } from 'tgui-core/common/constants';
 import type { FloatingProps } from './types';
 
 /**
@@ -111,6 +113,7 @@ export function Floating(props: FloatingProps) {
     restMs: hoverDelay || 100,
   });
   const dismiss = useDismiss(context, {
+    enabled: !openHandled,
     ancestorScroll: true,
     outsidePress: (event) => !isWhitelisted(event, allowedOutsideClasses),
   });
@@ -118,8 +121,10 @@ export function Floating(props: FloatingProps) {
   const interactions = [dismiss, hoverOpen ? hover : click];
   const { getReferenceProps, getFloatingProps } = useInteractions(interactions);
 
+  const childRef = isValidElement<{ ref: Ref<unknown> }>(children) ? children.props.ref : null;
+  const mergedRef = useMergeRefs([refs.setReference, childRef]); // Fixes stolen ref
   const referenceProps = getReferenceProps({
-    ref: refs.setReference,
+    ref: mergedRef,
     ...(stopChildPropagation && {
       onClick: (event) => event.stopPropagation(),
     }),
@@ -151,11 +156,7 @@ export function Floating(props: FloatingProps) {
   const floatingContent = (
     <div
       ref={refs.setFloating}
-      className={clsx([
-        'floating',
-        !animationDuration && 'animated',
-        contentClasses,
-      ])}
+      className={clsx(['floating', !animationDuration && 'animated', contentClasses])}
       data-position={context.placement}
       data-transition={status}
       style={{ ...floatingStyles, ...contentStyles }}

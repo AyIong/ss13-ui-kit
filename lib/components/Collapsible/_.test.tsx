@@ -40,17 +40,13 @@ describe('Collapsible Component', () => {
   });
 
   it('renders extra buttons if provided', () => {
-    const { getByText } = render(
-      <Collapsible title="Title" buttons={<button>Extra</button>} />,
-    );
+    const { getByText } = render(<Collapsible title="Title" buttons={<button>Extra</button>} />);
 
     expect(getByText('Extra')).toBeTruthy();
   });
 
   it('renders a custom icon if provided instead of sandwich', () => {
-    const { container } = render(
-      <Collapsible title="Title" startIcon="star" />,
-    );
+    const { container } = render(<Collapsible title="Title" startIcon="star" />);
 
     expect(container.querySelector('.fa-star')).toBeTruthy();
     expect(container.querySelector('.collapsible-icon')).toBeFalsy();

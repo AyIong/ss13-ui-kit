@@ -66,8 +66,7 @@
   &-enter-done,
   &-appear-done {
     background-color: var(--dimmer-background);
-    box-shadow: inset var(--shadow-medium)
-      #{fn.oklch-from(shadow-color, $a: 0.33)};
+    box-shadow: inset var(--shadow-medium) #{fn.oklch-from(shadow-color, $a: 0.33)};
     backdrop-filter: var(--blur-small) saturate(150%);
 
     .modal {

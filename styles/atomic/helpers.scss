@@ -1,5 +1,7 @@
 .dragging {
   pointer-events: none;
+  user-select: none;
+  cursor: var(--cursor-grabbing);
 }
 
 .moving {

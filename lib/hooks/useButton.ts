@@ -1,5 +1,5 @@
-import { KEY } from 'ss13-ui-kit/common/keys';
-import type { ButtonInteractionProps } from 'ss13-ui-kit/components/Button/types';
+import { KEY } from 'tgui-core/common/keys';
+import type { ButtonInteractionProps } from 'tgui-core/components/Button/types';
 
 /**
  * Returns input handlers for

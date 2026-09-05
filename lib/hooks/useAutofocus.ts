@@ -11,10 +11,7 @@ type UseAutofocusProps = Partial<{
 
 type InputTypes = HTMLInputElement | HTMLTextAreaElement;
 
-export function useAutofocus(
-  ref: RefObject<HTMLElement | InputTypes>,
-  props: UseAutofocusProps,
-) {
+export function useAutofocus(ref: RefObject<HTMLElement | InputTypes>, props: UseAutofocusProps) {
   const { autoFocus, autoSelect } = props;
 
   useEffect(() => {

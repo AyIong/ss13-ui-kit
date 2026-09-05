@@ -39,13 +39,7 @@ function useRandomIcons(source: Record<string, IconLookup>, count = 5) {
   );
   return { icons, refresh: () => setRefresh((refresh) => refresh + 1) };
 }
-function RandomIcons({
-  regular,
-  icons,
-}: {
-  regular?: boolean;
-  icons: IconLookup[];
-}) {
+function RandomIcons({ regular, icons }: { regular?: boolean; icons: IconLookup[] }) {
   return (
     <Stack p={0.5}>
       {icons.map((icon) => (
@@ -92,13 +86,7 @@ export const Default: Story = {
   },
 };
 
-function AllIcons({
-  source,
-  regular,
-}: {
-  source: Record<string, IconLookup>;
-  regular?: boolean;
-}) {
+function AllIcons({ source, regular }: { source: Record<string, IconLookup>; regular?: boolean }) {
   return (
     <Stack wrap>
       {uniqueIcons(source).map((icon) => (

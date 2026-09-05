@@ -1,15 +1,6 @@
 import type { BooleanLike } from '@common/react';
-import type {
-  BooleanStyleMap,
-  EventHandlers,
-  StringStyleMap,
-} from '@common/ui';
-import type {
-  CSSProperties,
-  HTMLAttributes,
-  ReactNode,
-  RefObject,
-} from 'react';
+import type { BooleanStyleMap, EventHandlers, StringStyleMap } from '@common/ui';
+import type { CSSProperties, HTMLAttributes, ReactNode, RefObject } from 'react';
 
 export type BoxInternalProps<TElement> = {
   /** Ref to the Box created element. */
