@@ -20,6 +20,25 @@ export function Layout(props: LayoutProps) {
     document.documentElement.className = themeClass;
   }, [themeClass]);
 
+  // Fuck that. This error is useless and absolutely RANDOM.
+  // It doesn't broke anything, so we don't need error that brokes UI
+  // just to inform devs, let's ignore that.
+  //
+  // This is the only exception, and it does not mean that other errors
+  // can and should be suppressed in this way, they must be fixed.
+  useEffect(() => {
+    function suppressResizeObserverError(event) {
+      if (event.message === 'ResizeObserver loop completed with undelivered notifications.') {
+        event.stopImmediatePropagation();
+      }
+    }
+
+    window.addEventListener('error', suppressResizeObserverError);
+    return () => {
+      window.removeEventListener('error', suppressResizeObserverError);
+    };
+  }, []);
+
   return (
     <div
       id="tgui-layout"

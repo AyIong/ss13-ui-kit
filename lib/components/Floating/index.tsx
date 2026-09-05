@@ -81,7 +81,6 @@ export function Floating(props: FloatingProps) {
       return autoUpdate(reference, floating, update, {
         ancestorResize: false,
         ancestorScroll: false,
-        animationFrame: true, // Fixes ResizeObserver error
       });
     },
   });
