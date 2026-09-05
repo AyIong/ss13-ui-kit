@@ -15,6 +15,7 @@ export function Slider(props: SliderProps) {
     maxValue,
     disabled,
     step,
+    sensitivity,
     tickWhileDragging,
     onChange,
     // Own props
@@ -34,6 +35,7 @@ export function Slider(props: SliderProps) {
     maxValue,
     disabled,
     step,
+    sensitivity,
     tickWhileDragging,
     onChange,
   });

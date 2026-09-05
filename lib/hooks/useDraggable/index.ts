@@ -7,7 +7,8 @@ import type { ContainerSize, CursorPosition, UseDraggable, UseDraggableProps } f
 
 function clampToStep(rawValue: number, minValue: number, maxValue: number, step: number) {
   const stepped = Math.round(rawValue / step) * step;
-  return Math.min(maxValue, Math.max(minValue, stepped));
+  const decimals = Math.max(0, (step.toString().split('.')[1] || '').length);
+  return Math.min(maxValue, Math.max(minValue, Number(stepped.toFixed(decimals))));
 }
 
 export function useDraggable(

@@ -13,6 +13,7 @@ export function NumberInput(props: NumberInputProps) {
     maxValue,
     disabled,
     step,
+    sensitivity,
     tickWhileDragging,
     onChange,
     // Own props
@@ -32,6 +33,7 @@ export function NumberInput(props: NumberInputProps) {
     maxValue,
     disabled,
     step,
+    sensitivity,
     tickWhileDragging,
     onChange,
   });
