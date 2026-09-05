@@ -14,6 +14,7 @@ export function Slider(props: SliderProps) {
     minValue,
     maxValue,
     disabled,
+    step,
     tickWhileDragging,
     onChange,
     // Own props
@@ -29,14 +30,15 @@ export function Slider(props: SliderProps) {
   const draggableRef = useRef<HTMLDivElement>(null);
   const { percentage, displayValue, dragging, editing, setEditing } = useDraggable(draggableRef, {
     value,
-    tickWhileDragging,
     minValue,
     maxValue,
     disabled,
+    step,
+    tickWhileDragging,
     onChange,
   });
   const formattedValue = format ? format(displayValue) : displayValue;
-  const effectiveColor = color || (ranges && keyOfMatchingRange(fillValue || value, ranges));
+  const effectiveColor = color || (ranges && keyOfMatchingRange(fillValue || displayValue, ranges));
 
   return (
     <DraggableControl
@@ -76,8 +78,8 @@ export function Slider(props: SliderProps) {
             </Tooltip>
           </div>
         </div>
-        <span className="slider-value">
-          {dragging ? formattedValue : <AnimatedNumber value={displayValue} format={format} />}
+        <span className={clsx('slider-value', dragging && 'dragging')}>
+          <AnimatedNumber value={value} format={format} />
           {unit}
         </span>
       </div>
