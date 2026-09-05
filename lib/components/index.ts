@@ -21,6 +21,7 @@ export { Image } from './Image';
 export { Input } from './Input';
 export { Layout } from './Layout';
 export { Modal } from './Modal';
+export { NumberInput } from './NumberInput';
 export { RestrictedInput } from './RestrictedInput';
 export { Section } from './Section';
 export { Slider } from './Slider';

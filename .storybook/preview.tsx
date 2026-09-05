@@ -57,7 +57,6 @@ const preview: Preview = {
       theme: previewTheme,
       toc: false,
     },
-    layout: 'centered',
   },
   tags: ['autodocs'],
 };

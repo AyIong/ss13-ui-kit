@@ -26,7 +26,7 @@ export function useDraggable(
     onChange,
   } = props;
   /** Minimal accepted for dynamic sensitivity size */
-  const minSize = 100;
+  const minSize = 50;
   /** Interval at which onChange will be called if tickWhileDragging is true */
   const defaultUpdateRate = 400;
 
@@ -132,7 +132,10 @@ export function useDraggable(
 
     setDragging(false);
     document.documentElement.classList.remove(draggingClassName);
-    onChange(currentValue.current);
+
+    if (currentValue.current !== value) {
+      onChange(currentValue.current);
+    }
   }
 
   /** Enables editing mod on click. */

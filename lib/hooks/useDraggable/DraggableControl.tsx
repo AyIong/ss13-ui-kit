@@ -14,23 +14,19 @@ export function DraggableControl(props: Props) {
 
   function Controls() {
     const [newValue, setNewValue] = useState<number>(value);
-    const clampedNewValue = clamp(newValue, minValue, maxValue);
+
+    function changeValue(changedValue: number) {
+      const clampedNewValue = clamp(changedValue, minValue, maxValue);
+      if (clampedNewValue !== value) {
+        onChange(clampedNewValue);
+      }
+      setEditing(false);
+    }
 
     return (
-      <TrackOutsideClicks
-        onOutsideClick={() => {
-          onChange(clampedNewValue);
-          setEditing(false);
-        }}
-      >
+      <TrackOutsideClicks onOutsideClick={() => changeValue(newValue)}>
         <Stack style={{ pointerEvents: 'all' }}>
-          <Button
-            startIcon="angles-left"
-            onClick={() => {
-              setNewValue(minValue);
-              onChange(minValue);
-            }}
-          />
+          <Button startIcon="angles-left" onClick={() => changeValue(minValue)} />
           <RestrictedInput
             autoSelect
             value={newValue}
@@ -38,16 +34,10 @@ export function DraggableControl(props: Props) {
             maxValue={maxValue}
             width={3}
             onChange={(value) => setNewValue(value)}
-            onEnter={() => onChange(clampedNewValue)}
+            onEnter={() => changeValue(newValue)}
           />
 
-          <Button
-            startIcon="angles-right"
-            onClick={() => {
-              setNewValue(maxValue);
-              onChange(maxValue);
-            }}
-          />
+          <Button startIcon="angles-right" onClick={() => changeValue(maxValue)} />
         </Stack>
       </TrackOutsideClicks>
     );

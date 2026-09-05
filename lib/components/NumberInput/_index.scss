@@ -1,0 +1,55 @@
+@use "../../../styles/functions" as fn;
+
+.numberinput {
+  --indent: var(--space-xs);
+
+  cursor: var(--cursor-grab);
+  display: inline-flex;
+  gap: var(--indent);
+  padding: var(--indent);
+  height: var(--base-height);
+  background-color: var(--background-color);
+  border: var(--border-width-1) solid var(--bg-color);
+  border-radius: var(--border-radius-2);
+
+  &-bar {
+    --size: calc(var(--indent) * 1.5);
+
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    align-items: end;
+    width: calc(var(--indent) * 1.5);
+    border-radius: var(--border-radius-1);
+
+    > * {
+      grid-area: 1 / 1;
+      width: 100%;
+      border-radius: inherit;
+    }
+
+    &--placeholder {
+      height: 100%;
+      background-color: fn.oklch-from(bg-color, $a: 0.5);
+    }
+
+    &--fill {
+      height: var(--percentage);
+      background-color: fn.oklch-from(bg-color, $l: 0.25);
+      transition: height var(--transition-time-medium);
+
+      &.dragging {
+        transition: none;
+      }
+    }
+  }
+
+  &-value {
+    pointer-events: none;
+    flex: 1;
+    text-align: right;
+    min-width: calc(var(--width, 2ch) + 0.1ch);
+    margin: 0 var(--indent);
+    color: fn.oklch-from(bg-color, $l: 0.2);
+  }
+}

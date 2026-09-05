@@ -73,7 +73,11 @@ export function Slider(props: SliderProps) {
           <div className="slider-fill--internal" />
           <div className="slider-fill--external" />
           <div className="slider-fill--cursor">
-            <Tooltip isOpen={dragging} content={`${displayValue}`} position="top">
+            <Tooltip
+              isOpen={dragging}
+              content={`${format ? formattedValue : displayValue}`}
+              position="top"
+            >
               <div className={clsx('slider-cursor', fillValue && 'always-visible')} />
             </Tooltip>
           </div>
