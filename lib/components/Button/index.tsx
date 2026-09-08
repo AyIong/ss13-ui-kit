@@ -58,7 +58,8 @@ export function ButtonContainer(props: ButtonBaseProps) {
   } = props;
 
   let finalButtonContainer = (
-    <button
+    <div
+      tabIndex={-1}
       className={clsx([
         className,
         'button',
@@ -72,7 +73,7 @@ export function ButtonContainer(props: ButtonBaseProps) {
       {...computeBoxProps(rest)}
     >
       {children}
-    </button>
+    </div>
   );
 
   if (tooltip) {

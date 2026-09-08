@@ -84,9 +84,6 @@ export function Dropdown(props: DropdownProps) {
     >
       <Floating
         handleOpen={isOpen}
-        onOpenChange={setOpen}
-        allowedInsideClasses=".input"
-        allowedOutsideClasses=".dropdown"
         disabled={disabled}
         contentAutoWidth={!menuWidth}
         placement={iconOnly && 'bottom-start'}
