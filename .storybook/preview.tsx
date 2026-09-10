@@ -17,7 +17,6 @@ const preview: Preview = {
       return <Story />;
     },
   ],
-
   globalTypes: {
     theme: {
       description: 'Components thematic style',
@@ -36,13 +35,20 @@ const preview: Preview = {
       },
     },
   },
-
   initialGlobals: {
     theme: 'default',
     colorScheme: 'night',
   },
-
   parameters: {
+    options: {
+      storySort: {
+        order: [
+          'Interfaces',
+          'Components',
+          'Hooks'
+        ],
+      },
+    },
     actions: { argTypesRegex: '^on[A-Z].*' },
     docs: {
       codePanel: true,

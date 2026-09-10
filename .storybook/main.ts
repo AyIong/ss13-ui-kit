@@ -22,24 +22,11 @@ const boxProps = [
 const config: StorybookConfig = {
   addons: ['@storybook/addon-docs'],
   features: { backgrounds: false, interactions: false },
-
   framework: {
     name: 'storybook-react-rsbuild',
     options: {},
   },
-
-  rsbuildFinal: (config) => {
-    // Customize the final Rsbuild config here
-    if (process.env.PAGES_URL !== undefined) {
-      config.output ??= {};
-      config.output.assetPrefix = process.env.PAGES_URL;
-    }
-
-    return config;
-  },
-
-  stories: ['../stories/**/*.stories.tsx', '../lib/components/**/*.stories.tsx'],
-
+  stories: ['../lib/components/**/*.stories.tsx', '../stories/**/*.stories.tsx'],
   typescript: {
     check: true,
     reactDocgen: 'react-docgen-typescript',
@@ -54,6 +41,15 @@ const config: StorybookConfig = {
       shouldExtractLiteralValuesFromEnum: true,
       shouldRemoveUndefinedFromOptional: true,
     },
+  },
+  rsbuildFinal: (config) => {
+    // Customize the final Rsbuild config here
+    if (process.env.PAGES_URL !== undefined) {
+      config.output ??= {};
+      config.output.assetPrefix = process.env.PAGES_URL;
+    }
+
+    return config;
   },
 };
 
