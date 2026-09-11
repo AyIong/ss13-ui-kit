@@ -58,6 +58,7 @@ export function Knob(props: KnobProps) {
         className={clsx(
           'knob',
           bipolar && 'bipolar',
+          dragging && 'dragging',
           `bg-${effectiveColor || 'primary'}`,
           disabled && 'disabled',
           className,

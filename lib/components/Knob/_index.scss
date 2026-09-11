@@ -6,6 +6,7 @@
   --gap: 90;
   --sweep: calc(360 - var(--gap));
   --circumference: calc(2 * var(--radius) * var(--pi));
+  --transition-duration: var(--transition-time-medium);
 
   aspect-ratio: 1;
   display: grid;
@@ -35,7 +36,7 @@
   &-cursor {
     aspect-ratio: 1;
     width: var(--space-m);
-    background-color: var(--bg-color);
+    background-color: fn.fg(var(--bg-color));
     transform: translateY(-100%);
 
     &--wrapper {
@@ -45,6 +46,7 @@
       align-items: flex-start;
       justify-content: center;
       transform: rotate(calc((var(--scaled-value) * var(--sweep) - var(--sweep) / 2) * 1deg));
+      transition: transform var(--transition-duration);
     }
   }
 
@@ -67,10 +69,11 @@
       stroke-dashoffset: calc(
         var(--circumference) - var(--scaled-value) * var(--circumference) * var(--sweep) / 360
       );
+      transition: stroke-dashoffset calc(var(--transition-duration) * 2);
     }
 
     &--placeholder {
-      stroke: fn.oklch-from(bg-color, $a: 0.5);
+      stroke: fn.oklch-from(bg-color, $a: 0.33);
       stroke-dashoffset: calc(var(--circumference) * var(--gap) / 360);
     }
   }
@@ -91,5 +94,9 @@
       transform: rotate(calc((180 - var(--gap) / 2) * 1deg));
       transform-origin: center;
     }
+  }
+
+  &.dragging {
+    --transition-duration: 0s;
   }
 }

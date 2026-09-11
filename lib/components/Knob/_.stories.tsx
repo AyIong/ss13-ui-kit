@@ -23,7 +23,7 @@ function KnobPreview(props: PreviewProps) {
         <Stack>
           <Stack.Item>
             <Button
-              color={'transparent'}
+              variant="transparent"
               fontSize={2.5}
               startIcon="angles-left"
               onClick={() => setValue(0)}
@@ -31,7 +31,6 @@ function KnobPreview(props: PreviewProps) {
           </Stack.Item>
           <Stack.Item>
             <Knob
-              bipolar
               color={color}
               maxValue={100}
               minValue={0}
@@ -42,7 +41,7 @@ function KnobPreview(props: PreviewProps) {
           </Stack.Item>
           <Stack.Item>
             <Button
-              color={'transparent'}
+              variant="transparent"
               fontSize={2.5}
               startIcon="angles-right"
               onClick={() => setValue(100)}
