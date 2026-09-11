@@ -74,4 +74,22 @@
       stroke-dashoffset: calc(var(--circumference) * var(--gap) / 360);
     }
   }
+
+  &.bipolar {
+    --positive-len: calc(
+      max(0, var(--scaled-value) - 0.5) * var(--sweep) * var(--circumference) / 360
+    );
+    --negative-len: calc(
+      max(0, 0.5 - var(--scaled-value)) * var(--sweep) * var(--circumference) / 360
+    );
+
+    .knob-ring--fill {
+      stroke-dashoffset: 0;
+      stroke-dasharray:
+        var(--positive-len), calc(var(--circumference) - var(--positive-len) - var(--negative-len)),
+        var(--negative-len);
+      transform: rotate(calc((180 - var(--gap) / 2) * 1deg));
+      transform-origin: center;
+    }
+  }
 }
