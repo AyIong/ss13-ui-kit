@@ -141,7 +141,7 @@ export function useDraggable(
 
   /** Enables editing mod on click. */
   function handleClick() {
-    if (!disabled && (!dragging || !editing)) {
+    if (!disabled) {
       setEditing(true);
     }
   }
@@ -196,7 +196,7 @@ export function useDraggable(
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [value, dragging, editing, disabled]);
+  }, [value, dragging, editing, disabled, onChange]);
 
   /** Sizes calculation and recalculations if they change */
   useEffect(() => {

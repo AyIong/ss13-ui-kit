@@ -19,6 +19,7 @@ export { Icon } from './Icon';
 export type { IconProps } from './Icon/types';
 export { Image } from './Image';
 export { Input } from './Input';
+export { Knob } from './Knob';
 export { Layout } from './Layout';
 export { Modal } from './Modal';
 export { NumberInput } from './NumberInput';

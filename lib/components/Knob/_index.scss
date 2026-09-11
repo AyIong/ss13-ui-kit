@@ -1,0 +1,77 @@
+@use "../../../styles/functions" as fn;
+
+// NOTE: Math done by AI, may be some inaccuracies, but my math even worse...
+.knob {
+  --radius: 46;
+  --gap: 90;
+  --sweep: calc(360 - var(--gap));
+  --circumference: calc(2 * var(--radius) * var(--pi));
+
+  aspect-ratio: 1;
+  display: grid;
+  width: calc(fn.em(32px) * var(--size, 1));
+
+  * {
+    grid-area: 1 / 1;
+    align-items: center;
+    border-radius: var(--border-radius-c);
+  }
+
+  &-circle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: var(--space-m);
+    background-color: var(--background-color);
+    border: var(--space-m) solid var(--surface-color);
+    z-index: 1;
+  }
+
+  &-value {
+    font-size: 1.75em;
+    font-weight: bold;
+  }
+
+  &-cursor {
+    aspect-ratio: 1;
+    width: var(--space-m);
+    background-color: var(--bg-color);
+    transform: translateY(-100%);
+
+    &--wrapper {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      transform: rotate(calc((var(--scaled-value) * var(--sweep) - var(--sweep) / 2) * 1deg));
+    }
+  }
+
+  &-ring {
+    transform: rotate(calc((90 + var(--gap) / 2) * 1deg));
+    z-index: 0;
+
+    circle {
+      cx: 50;
+      cy: 50;
+      r: var(--radius);
+      fill: transparent;
+      stroke-linecap: round;
+      stroke-width: var(--border-width-4);
+      stroke-dasharray: var(--circumference);
+    }
+
+    &--fill {
+      stroke: var(--bg-color);
+      stroke-dashoffset: calc(
+        var(--circumference) - var(--scaled-value) * var(--circumference) * var(--sweep) / 360
+      );
+    }
+
+    &--placeholder {
+      stroke: fn.oklch-from(bg-color, $a: 0.5);
+      stroke-dashoffset: calc(var(--circumference) * var(--gap) / 360);
+    }
+  }
+}
