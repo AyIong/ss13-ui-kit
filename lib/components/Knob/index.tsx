@@ -65,7 +65,7 @@ export function Knob(props: KnobProps) {
         )}
         {...computeBoxProps({
           style: {
-            '--size': size,
+            '--size': size || 1,
             '--scaled-value': scaledDisplayValue,
           },
           ...rest,

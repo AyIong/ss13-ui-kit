@@ -1,6 +1,6 @@
 export type FitTextProps = {
   /** Text that will be fitted */
-  children: string;
+  children: string | number;
 } & Partial<{
   /**
    * Removes line breaks and truncates text when it overflows,

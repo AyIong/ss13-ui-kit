@@ -22,30 +22,20 @@ function KnobPreview(props: PreviewProps) {
       <Section>
         <Stack>
           <Stack.Item>
-            <Button
-              variant="transparent"
-              fontSize={2.5}
-              startIcon="angles-left"
-              onClick={() => setValue(0)}
-            />
+            <Button variant="transparent" startIcon="angles-left" onClick={() => setValue(0)} />
           </Stack.Item>
           <Stack.Item>
             <Knob
+              size={10}
               color={color}
-              maxValue={100}
               minValue={0}
+              maxValue={100}
               onChange={(value) => setValue(value)}
-              size={2.5}
               value={value}
             />
           </Stack.Item>
           <Stack.Item>
-            <Button
-              variant="transparent"
-              fontSize={2.5}
-              startIcon="angles-right"
-              onClick={() => setValue(100)}
-            />
+            <Button variant="transparent" startIcon="angles-right" onClick={() => setValue(100)} />
           </Stack.Item>
         </Stack>
       </Section>

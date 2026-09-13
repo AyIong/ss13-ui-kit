@@ -6,11 +6,12 @@
   --gap: 90;
   --sweep: calc(360 - var(--gap));
   --circumference: calc(2 * var(--radius) * var(--pi));
+  --cursor-size: calc(var(--space-sm) * var(--size));
+  --circle-indent: calc(var(--space-sm) * var(--size));
   --transition-duration: var(--transition-time-medium);
 
   aspect-ratio: 1;
   display: grid;
-  width: calc(fn.em(32px) * var(--size, 1));
 
   * {
     grid-area: 1 / 1;
@@ -19,23 +20,26 @@
   }
 
   &-circle {
+    aspect-ratio: 1;
     position: relative;
     display: flex;
     justify-content: center;
-    margin: var(--space-m);
+    padding: calc(var(--circle-indent) * 2);
+    margin: var(--circle-indent);
     background-color: var(--background-color);
-    border: var(--space-m) solid var(--surface-color);
+    border: var(--cursor-size) solid var(--surface-color);
     z-index: 1;
   }
 
   &-value {
-    font-size: 1.75em;
+    position: absolute;
+    font-size: calc(0.65rem * var(--size));
     font-weight: bold;
   }
 
   &-cursor {
     aspect-ratio: 1;
-    width: var(--space-m);
+    width: var(--cursor-size);
     background-color: fn.fg(var(--bg-color));
     transform: translateY(-100%);
 
@@ -60,7 +64,7 @@
       r: var(--radius);
       fill: transparent;
       stroke-linecap: round;
-      stroke-width: var(--border-width-4);
+      stroke-width: var(--border-width-5);
       stroke-dasharray: var(--circumference);
     }
 
