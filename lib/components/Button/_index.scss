@@ -66,9 +66,7 @@
     opacity: var(--opacity-disabled);
   }
 
-  // Default color must be text color
   &.bg-primary:not(.selected) {
-    --button-fg-opacity: 0.5;
     --bg-color: var(--text-color-translucent);
   }
 
