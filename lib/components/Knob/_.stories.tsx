@@ -26,7 +26,7 @@ function KnobPreview(props: PreviewProps) {
           </Stack.Item>
           <Stack.Item>
             <Knob
-              size={10}
+              size={2}
               color={color}
               minValue={0}
               maxValue={100}

@@ -26,8 +26,10 @@
     justify-content: center;
     padding: calc(var(--circle-indent) * 2);
     margin: var(--circle-indent);
-    background-color: var(--background-color);
     border: var(--cursor-size) solid var(--surface-color);
+    box-shadow:
+      var(--shadow-medium) var(--shadow-color),
+      inset var(--shadow-small) var(--shadow-color);
     z-index: 1;
   }
 
