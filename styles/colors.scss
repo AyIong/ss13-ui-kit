@@ -21,13 +21,13 @@
 
 :root {
   /* Accent colors: Base colors used by default almost everywhere */
-  --primary-l: 0.52;
-  --primary-c: 0.125;
+  --primary-l: 0.55;
+  --primary-c: 0.12;
   --primary-h: 265;
   --primary-color: oklch(var(--primary-l) var(--primary-c) var(--primary-h));
 
-  --secondary-l: 0.57;
-  --secondary-c: 0.175;
+  --secondary-l: 0.6;
+  --secondary-c: 0.18;
   --secondary-h: var(--primary-h);
   --secondary-color: oklch(var(--secondary-l) var(--secondary-c) var(--secondary-h));
 
