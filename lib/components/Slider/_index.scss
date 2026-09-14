@@ -2,13 +2,14 @@
 
 .slider {
   --indent: var(--space-xs);
+  --min-size: var(--base-input-width);
   --fill-transition-properties: width, background-color;
 
   cursor: var(--cursor-grab);
   position: relative;
   overflow: hidden;
   display: flex;
-  min-width: var(--base-input-width);
+  min-width: var(--min-size);
   height: var(--base-height);
   padding: var(--indent);
   background-color: var(--background-color);
@@ -18,6 +19,8 @@
   transition-duration: var(--transition-time-medium);
 
   &-cursor {
+    --cursor-translate: 50%, 0%;
+
     position: absolute;
     width: var(--indent);
     height: 100%;
@@ -26,7 +29,7 @@
     background-color: fn.oklch-from(bg-color, $l: 0.2);
     transition: opacity var(--transition-time-fast);
     transition-delay: var(--transition-time-slowest);
-    transform: scale(1.25) translateX(50%);
+    transform: scale(1.25) translate(var(--cursor-translate));
 
     &.always-visible {
       opacity: 1;
@@ -34,6 +37,9 @@
   }
 
   &-fill {
+    --internal-fill: var(--fill-value, min(var(--int-percentage), var(--ext-percentage)));
+    --external-fill: max(var(--int-percentage), var(--ext-percentage));
+
     position: relative;
     display: grid;
     width: 100%;
@@ -51,21 +57,24 @@
     }
 
     &--internal {
-      width: var(--fill-value, min(var(--int-percentage), var(--ext-percentage)));
+      width: var(--internal-fill);
       background-color: var(--bg-color);
     }
 
     &--external {
-      width: max(var(--int-percentage), var(--ext-percentage));
+      width: var(--external-fill);
       background-color: fn.oklch-from(bg-color, $a: 0.5);
     }
   }
 
   &-value {
+    --value-indent: calc(var(--indent) * 3);
+
     pointer-events: none;
     user-select: none;
+    text-box: auto;
     position: absolute;
-    right: calc(var(--indent) * 3);
+    right: var(--value-indent);
     transition: opacity var(--transition-time-medium);
     z-index: 1;
 
@@ -92,6 +101,51 @@
 
     .slider-cursor {
       display: none;
+    }
+  }
+}
+
+// MARK: Vertical slider
+.slider-vertical {
+  --fill-transition-properties: height, background-color;
+  min-width: var(--base-height);
+  height: var(--min-size);
+
+  .slider {
+    &-fill {
+      height: 100%;
+      align-items: end;
+
+      * {
+        width: unset;
+      }
+
+      &--cursor {
+        height: var(--int-percentage);
+      }
+
+      &--internal {
+        height: var(--internal-fill);
+      }
+
+      &--external {
+        height: var(--external-fill);
+      }
+    }
+
+    &-cursor {
+      --cursor-translate: 0%, -50%;
+
+      width: 100%;
+      height: var(--indent);
+      right: unset;
+      top: 0;
+    }
+
+    &-value {
+      right: unset;
+      bottom: var(--value-indent);
+      writing-mode: vertical-rl;
     }
   }
 }

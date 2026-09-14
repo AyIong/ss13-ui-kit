@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useRef } from 'react';
 import { keyOfMatchingRange } from 'tgui-core/common/math';
-import { computeBoxProps } from 'tgui-core/common/ui';
+import { computeBoxProps, unit } from 'tgui-core/common/ui';
 import { DraggableControl, useDraggable } from '../../hooks';
 import { AnimatedNumber } from '../AnimatedNumber';
 import { Tooltip } from '../Tooltip';
@@ -10,6 +10,7 @@ import type { SliderProps } from './types';
 export function Slider(props: SliderProps) {
   const {
     // Draggable props (passthrough)
+    vertical,
     value,
     minValue,
     maxValue,
@@ -21,7 +22,7 @@ export function Slider(props: SliderProps) {
     // Own props
     className,
     color,
-    unit,
+    size,
     format,
     fillValue,
     ranges,
@@ -30,6 +31,7 @@ export function Slider(props: SliderProps) {
 
   const draggableRef = useRef<HTMLDivElement>(null);
   const { percentage, displayValue, dragging, editing, setEditing } = useDraggable(draggableRef, {
+    vertical,
     value,
     minValue,
     maxValue,
@@ -55,6 +57,7 @@ export function Slider(props: SliderProps) {
         ref={draggableRef}
         className={clsx(
           'slider',
+          vertical && 'slider-vertical',
           `bg-${effectiveColor || 'primary'}`,
           dragging && 'dragging',
           disabled && 'disabled',
@@ -67,6 +70,8 @@ export function Slider(props: SliderProps) {
             // so we don't have weird "jumps".
             '--ext-percentage': tickWhileDragging ? percentage.internal : percentage.external,
             '--fill-value': fillValue && `${fillValue}%`,
+            width: !vertical && unit(size),
+            height: vertical && unit(size),
           },
           ...rest,
         })}
@@ -86,7 +91,7 @@ export function Slider(props: SliderProps) {
         </div>
         <span className={clsx('slider-value', dragging && 'dragging')}>
           <AnimatedNumber value={value} format={format} />
-          {unit}
+          {props.unit}
         </span>
       </div>
     </DraggableControl>

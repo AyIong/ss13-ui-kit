@@ -5,6 +5,13 @@ export type SliderProps = Partial<{
   /** Color of the slider. */
   color: string;
   /**
+   * Size of the slider. Uses width by default, and height if vertical.
+   * Accept same values as width/height props.
+   */
+  size: string | number;
+  /** Makes slider vertical. */
+  vertical: boolean;
+  /**
    * If set, this value will be used to set the fill percentage of the
    * progress bar filler independently of the main value.
    */
