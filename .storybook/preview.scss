@@ -4,3 +4,7 @@ body {
   background-color: oklch(from var(--background-color) calc(l - 0.05) c h);
   color: var(--text-color);
 }
+
+#storybook-root {
+  height: 100%;
+}

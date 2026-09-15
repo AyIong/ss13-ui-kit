@@ -16,6 +16,7 @@
         "jotai": "^2.20.2",
         "overlayscrollbars-react": "^0.5.6",
         "react-transitioning": "^1.0.9",
+        "virtua": "^0.51.3",
       },
       "devDependencies": {
         "@biomejs/biome": "2.5.5",
@@ -1073,6 +1074,8 @@
     "util-deprecate": ["util-deprecate@1.0.2", "", {}, "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="],
 
     "varint": ["varint@6.0.0", "", {}, "sha512-cXEIW6cfr15lFv563k4GuVuW/fiwjknytD37jIOLSdSWuOI6WnO/oKwmP2FQTU2l01LP8/M5TSAJpzUaGe3uWg=="],
+
+    "virtua": ["virtua@0.51.3", "", { "peerDependencies": { "@angular/common": ">=20.0.0", "@angular/core": ">=20.0.0", "react": ">=16.14.0", "react-dom": ">=16.14.0", "solid-js": ">=1.0", "svelte": ">=5.0", "vue": ">=3.2" }, "optionalPeers": ["@angular/common", "@angular/core", "react", "react-dom", "solid-js", "svelte", "vue"] }, "sha512-UQ9+GzgMO+0jP0X6QpOICTHjxQddoUESOuzRGeXGY8F6fMqNbeVdTwI4Vj8ZhO0fzPUQWi3gzYJ7Mwfm1uD7eQ=="],
 
     "watchpack": ["watchpack@2.5.1", "", { "dependencies": { "glob-to-regexp": "^0.4.1", "graceful-fs": "^4.1.2" } }, "sha512-Zn5uXdcFNIA1+1Ei5McRd+iRzfhENPCe7LeABkJtNulSxjma+l7ltNx55BWZkRlwRnpOgHqxnjyaDgJnNXnqzg=="],
 
