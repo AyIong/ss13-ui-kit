@@ -1,6 +1,6 @@
 import { computeBoxClassName, computeBoxProps, computeTwClass } from '@common/ui';
+import clsx from 'clsx';
 import { createElement } from 'react';
-
 import type { BoxProps, DangerDoNotUse } from './types';
 
 /**
@@ -54,7 +54,7 @@ export function Box<TElement = HTMLDivElement>(props: BoxProps<TElement> & Dange
   const { as = 'div', className, children, tw, ref, ...rest } = props;
 
   const computedClassName = className
-    ? `${className} ${computeBoxClassName<TElement>(rest)}`
+    ? clsx(className, computeBoxClassName<TElement>(rest))
     : computeBoxClassName<TElement>(rest);
 
   const computedProps = computeBoxProps({

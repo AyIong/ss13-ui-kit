@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useRef, useState } from 'react';
 import { CSSTransition } from 'react-transitioning';
+import { colorClassName } from 'tgui-core/common/color';
 import { useButton } from 'tgui-core/hooks/useButton';
 import { Icon } from '../Icon';
 import type { IconProps } from '../Icon/types';
@@ -28,7 +29,7 @@ export function Collapsible(props: CollapsibleProps) {
   const endIconProps = typeof endIcon === 'string' ? { name: endIcon } : endIcon;
 
   return (
-    <div className={clsx('collapsible', `bg-${color || 'primary'}`, isOpen && 'is-open')}>
+    <div className={clsx('collapsible', isOpen && 'is-open', colorClassName(color))}>
       <div className="collapsible-controls">
         <div className="collapsible-button" {...interactions}>
           {startIcon ? <Icon {...(startIconProps as IconProps)} /> : <CollapsibleIcon />}

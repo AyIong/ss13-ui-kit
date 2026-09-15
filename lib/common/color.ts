@@ -98,3 +98,11 @@ export class Color {
     return Color.lerp(colors[index], colors[index + 1], ratio);
   }
 }
+
+/**
+ * Accepts color key, returns className
+ * which contains bg & fg CSS variables for passed color.
+ */
+export function colorClassName(color?: string): string {
+  return `pal-${color || 'primary'}`;
+}

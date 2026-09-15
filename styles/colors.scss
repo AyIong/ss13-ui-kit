@@ -21,7 +21,7 @@
 
 :root {
   /* Accent colors: Base colors used by default almost everywhere */
-  --primary-l: 0.55;
+  --primary-l: 0.575;
   --primary-c: 0.12;
   --primary-h: 265;
   --primary-color: oklch(var(--primary-l) var(--primary-c) var(--primary-h));
@@ -70,12 +70,14 @@
   --color-olive: oklch(0.77 0.15 120);
   --color-green: oklch(0.62 0.16 150);
   --color-teal: oklch(0.62 0.1 185);
-  --color-blue: oklch(0.52 0.225 265);
+  --color-light-blue: oklch(0.625 0.15 255);
+  --color-blue: oklch(0.525 0.2 265);
   --color-violet: oklch(0.57 0.225 290);
   --color-purple: oklch(0.595 0.25 305);
   --color-pink: oklch(0.745 0.15 10);
   --color-brown: oklch(0.62 0.1 55);
   --color-gold: oklch(0.845 0.1675 90);
+  --color-camel: oklch(0.733 0.1 80);
 
   /* Neutral colors: Almost without saturacy */
   --color-neutral: oklch(0.5 0 0);
@@ -109,16 +111,19 @@ $base-colors: (
   "green": var(--color-green),
   "teal": var(--color-teal),
   "blue": var(--color-blue),
+  "light-blue": var(--color-light-blue),
   "violet": var(--color-violet),
   "purple": var(--color-purple),
   "pink": var(--color-pink),
   "brown": var(--color-brown),
   "gold": var(--color-gold),
+  "camel": var(--color-camel),
 );
 
 $grayscale-colors: (
   "black": black,
   "white": white,
+  "text": var(--text-color),
   "grey": var(--color-neutral),
   "gray": var(--color-neutral),
   "light-grey": var(--color-neutral-lighter),

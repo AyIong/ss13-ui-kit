@@ -1,0 +1,56 @@
+@use "../../../styles/functions" as fn;
+
+.noticebox {
+  --stripes: oklch(0 0 0 / 0.1);
+
+  display: flex;
+  font-weight: bold;
+  font-style: italic;
+  gap: var(--space-m);
+  padding: var(--space-sm) var(--space-m);
+  background-color: fn.oklch-from(bg-color, $c: -0.033);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 fn.rem(10px),
+    var(--stripes) fn.rem(10px) fn.rem(20px)
+  );
+  color: contrast-color(fn.oklch-from(bg-color, $l: -0.1));
+  box-shadow: var(--shadow-small) var(--shadow-color);
+
+  &-icon {
+    font-size: fn.rem(16px);
+  }
+
+  // Stack uses gap, so removing internal margin
+  // Also remove it if used inside Window but outside Window.Content
+  .stack & {
+    margin: 0;
+  }
+
+  // I didn't apply those styles by default, cause
+  // noticebox outside Window.Content look's odd
+  // with round borders and border
+  .window-content & {
+    margin-bottom: var(--space-m);
+    border-radius: var(--border-radius-2);
+    border-top: var(--border-width-1) solid fn.oklch-from(bg-color, $l: 0.0666); // Devil, help me
+  }
+
+  &.type {
+    &-info {
+      --bg-color: #{fn.bg(var(--color-light-blue))};
+    }
+
+    &-success {
+      --bg-color: #{fn.bg(var(--color-good))};
+    }
+
+    &-warning {
+      --bg-color: #{fn.bg(var(--color-average))};
+    }
+
+    &-danger {
+      --bg-color: #{fn.bg(var(--color-bad))};
+    }
+  }
+}

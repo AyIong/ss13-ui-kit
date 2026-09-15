@@ -1,7 +1,7 @@
 @use "../../../styles/functions" as fn;
 
 .blockquote {
-  --blockquote-color: #{fn.oklch-from(fg-color, $l: var(--adjust-color))};
+  --blockquote-color: var(--fg-color);
 
   display: block;
   padding-left: var(--space-m);

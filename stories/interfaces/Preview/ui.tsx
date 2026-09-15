@@ -10,6 +10,7 @@ import {
   Icon,
   Input,
   Modal,
+  NoticeBox,
   Section,
   Stack,
 } from 'tgui-core/components/index';
@@ -17,7 +18,9 @@ import {
 export function Preview() {
   return (
     <Window>
+      <NoticeBox info>Some things can be done, if you do them</NoticeBox>
       <Window.Content>
+        <NoticeBox>I think... thinking is a mistake</NoticeBox>
         <Content />
       </Window.Content>
     </Window>

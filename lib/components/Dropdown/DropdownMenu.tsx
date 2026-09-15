@@ -16,6 +16,7 @@ import {
   useRef,
   useState,
 } from 'react';
+import { colorClassName } from 'tgui-core/common/color';
 import {
   entryClassName,
   getMaxHeight,
@@ -119,7 +120,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
   }, [highlightedIndex]);
 
   return (
-    <div className={clsx('dropdown-menu', `bg-${color ? color : 'primary'}`)}>
+    <div className={clsx('dropdown-menu', colorClassName(color))}>
       {options.length > (maxItems || maxItemsDefault) && (
         <div className="dropdown-menu-input">
           <Input

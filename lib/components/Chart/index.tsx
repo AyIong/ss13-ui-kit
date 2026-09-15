@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
+import { colorClassName } from 'tgui-core/common/color';
 import { computeBoxProps } from 'tgui-core/common/ui';
 import { dataToPolylinePoints, normalizeData } from './helpers';
 import type { ChartLineProps, ChartProps, ViewBox } from './types';
@@ -56,7 +57,7 @@ export function ChartLine(props: ChartLineProps) {
   return (
     <div
       ref={innerRef}
-      className={clsx('chart-line', `bg-${color ? color : 'primary'}`)}
+      className={clsx('chart-line', colorClassName(color))}
       {...computeBoxProps(rest)}
     >
       <svg preserveAspectRatio="none" viewBox={`0 0 ${viewBox[0]} ${viewBox[1]}`}>

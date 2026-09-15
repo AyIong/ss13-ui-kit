@@ -2,6 +2,7 @@ import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { type BoxProps, Icon, type IconProps, Tooltip } from '@components';
 import { useButton } from '@hooks';
 import clsx from 'clsx';
+import { colorClassName } from 'tgui-core/common/color';
 import type { ButtonBaseProps, ButtonContentProps, ButtonIconProps, ButtonProps } from './types';
 
 /**
@@ -67,7 +68,7 @@ export function ButtonContainer(props: ButtonBaseProps) {
         fluid && 'fluid',
         disabled && 'disabled',
         selected && 'selected',
-        `bg-${color ? color : 'primary'}`,
+        colorClassName(color),
         computeBoxClassName(rest),
       ])}
       {...computeBoxProps(rest)}

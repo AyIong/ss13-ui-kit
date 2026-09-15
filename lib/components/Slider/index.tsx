@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useRef } from 'react';
+import { colorClassName } from 'tgui-core/common/color';
 import { keyOfMatchingRange } from 'tgui-core/common/math';
 import { computeBoxProps, unit } from 'tgui-core/common/ui';
 import { DraggableControl, useDraggable } from '../../hooks';
@@ -58,10 +59,10 @@ export function Slider(props: SliderProps) {
         className={clsx(
           'slider',
           vertical && 'slider-vertical',
-          `bg-${effectiveColor || 'primary'}`,
           dragging && 'dragging',
           disabled && 'disabled',
           className,
+          colorClassName(effectiveColor),
         )}
         {...computeBoxProps({
           style: {

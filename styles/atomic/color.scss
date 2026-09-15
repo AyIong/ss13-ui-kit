@@ -20,17 +20,11 @@ $map-keys: colors.$color-map !default;
   }
 }
 
-// Foreground colors but css variable. Used for component styling
-// Created for standartization and less repeated code
+// Same as previous but for both and CSS variables
+// "pal" means palette
 @each $color-name, $color-value in colors.$color-map {
-  .fg-#{$color-name} {
-    --fg-color: #{fn.fg($color-value)} !important; // Prevent missing color
-  }
-}
-
-// Same as previous but for background
-@each $color-name, $color-value in colors.$color-map {
-  .bg-#{$color-name} {
-    --bg-color: #{fn.bg($color-value)} !important; // Prevent missing color
+  .pal-#{$color-name} {
+    --fg-color: #{fn.fg($color-value)};
+    --bg-color: #{fn.bg($color-value)};
   }
 }

@@ -96,7 +96,7 @@ export type StringStyleMap = Partial<{
   /** Sets background color. */
   backgroundColor: string | BooleanLike;
   /** Applies an atomic `color-<name>` class to the element. */
-  color: string | BooleanLike;
+  color: string;
   /** Opacity, from 0 to 1. */
   opacity: string | BooleanLike;
   /** Sets text color. */
@@ -312,10 +312,10 @@ export function computeBoxClassName<TElement = HTMLDivElement>(props: BoxProps<T
   const color = props.textColor || props.color;
   const { backgroundColor } = props;
 
-  return clsx([
+  return clsx(
     isColorClass(color) && `color-${color}`,
     isColorClass(backgroundColor) && `color-bg-${backgroundColor}`,
-  ]);
+  );
 }
 
 type StyleMap = StringStyleMap & BooleanStyleMap;

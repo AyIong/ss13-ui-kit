@@ -22,6 +22,7 @@ export { Input } from './Input';
 export { Knob } from './Knob';
 export { Layout } from './Layout';
 export { Modal } from './Modal';
+export { NoticeBox } from './NoticeBox';
 export { NumberInput } from './NumberInput';
 export { RestrictedInput } from './RestrictedInput';
 export { Section } from './Section';

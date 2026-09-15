@@ -66,7 +66,7 @@
     opacity: var(--opacity-disabled);
   }
 
-  &.bg-primary:not(.selected) {
+  &.pal-primary:not(.selected) {
     --bg-color: var(--text-color-translucent);
   }
 

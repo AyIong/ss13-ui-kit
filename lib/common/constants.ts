@@ -379,6 +379,7 @@ export const COMPONENT_COLORS = {
     'olive',
     'green',
     'teal',
+    'light-blue',
     'blue',
     'violet',
     'purple',
@@ -386,6 +387,7 @@ export const COMPONENT_COLORS = {
     'brown',
     'grey',
     'gold',
+    'camel',
   ],
   states: [
     'primary',

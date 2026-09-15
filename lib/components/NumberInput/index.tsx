@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useRef } from 'react';
+import { colorClassName } from 'tgui-core/common/color';
 import { computeBoxProps } from 'tgui-core/common/ui';
 import { DraggableControl, useDraggable } from 'tgui-core/hooks/index';
 import { AnimatedNumber } from '../AnimatedNumber';
@@ -50,12 +51,7 @@ export function NumberInput(props: NumberInputProps) {
     >
       <div
         ref={draggableRef}
-        className={clsx(
-          'numberinput',
-          `bg-${color || 'primary'}`,
-          disabled && 'disabled',
-          className,
-        )}
+        className={clsx('numberinput', disabled && 'disabled', className, colorClassName(color))}
         {...computeBoxProps({
           style: {
             '--width': width && `${width}ch`,

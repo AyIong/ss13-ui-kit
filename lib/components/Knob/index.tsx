@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useRef } from 'react';
+import { colorClassName } from 'tgui-core/common/color';
 import { keyOfMatchingRange, scale } from 'tgui-core/common/math';
 import { computeBoxProps } from 'tgui-core/common/ui';
 import { DraggableControl, useDraggable } from '../../hooks';
@@ -59,9 +60,9 @@ export function Knob(props: KnobProps) {
           'knob',
           bipolar && 'bipolar',
           dragging && 'dragging',
-          `bg-${effectiveColor || 'primary'}`,
           disabled && 'disabled',
           className,
+          colorClassName(effectiveColor),
         )}
         {...computeBoxProps({
           style: {
