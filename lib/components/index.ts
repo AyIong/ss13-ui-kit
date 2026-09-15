@@ -20,6 +20,7 @@ export { Icon } from './Icon';
 export type { IconProps } from './Icon/types';
 export { Image } from './Image';
 export { Input } from './Input';
+export { KeyListener } from './KeyListener';
 export { Knob } from './Knob';
 export { Layout } from './Layout';
 export { Modal } from './Modal';
