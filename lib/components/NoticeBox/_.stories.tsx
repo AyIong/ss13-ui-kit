@@ -1,5 +1,5 @@
 import { COMPONENT_COLORS } from '@common/constants';
-import { NoticeBox } from '@components';
+import { NoticeBox, Stack } from '@components';
 import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 
@@ -31,24 +31,24 @@ export const Playground: Story = {
 
 export const BaseTypes: Story = {
   render: () => (
-    <>
+    <Stack vertical>
       <NoticeBox>Default notice</NoticeBox>
       <NoticeBox info>Info notice</NoticeBox>
       <NoticeBox success>Success notice</NoticeBox>
       <NoticeBox warning>Warning notice</NoticeBox>
       <NoticeBox danger>Danger notice</NoticeBox>
-    </>
+    </Stack>
   ),
 };
 
 export const Colors: Story = {
   render: () => (
-    <>
+    <Stack vertical>
       {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map((color) => (
         <NoticeBox color={color} key={color}>
           {color || 'default'}
         </NoticeBox>
       ))}
-    </>
+    </Stack>
   ),
 };
