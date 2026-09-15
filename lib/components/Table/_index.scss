@@ -1,3 +1,33 @@
 .table {
-  // Placeholder
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+
+  &.collapsing {
+    width: auto;
+  }
+
+  &-cell {
+    padding: 0 var(--space-s);
+
+    &.collapsing {
+      width: 1%;
+      white-space: nowrap;
+    }
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+.table-row.header .table-cell,
+.table-cell.header {
+  font-weight: bold;
+  padding-bottom: var(--space-m);
 }

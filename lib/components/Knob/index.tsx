@@ -27,6 +27,7 @@ export function Knob(props: KnobProps) {
     format,
     fillValue,
     ranges,
+    style,
     ...rest
   } = props;
 
@@ -68,6 +69,7 @@ export function Knob(props: KnobProps) {
           style: {
             '--size': size || 1,
             '--scaled-value': scaledDisplayValue,
+            ...style,
           },
           ...rest,
         })}

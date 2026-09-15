@@ -23,6 +23,7 @@ export function NumberInput(props: NumberInputProps) {
     unit,
     width,
     format,
+    style,
     ...rest
   } = props;
 
@@ -56,6 +57,7 @@ export function NumberInput(props: NumberInputProps) {
           style: {
             '--width': width && `${width}ch`,
             '--percentage': percentage.internal,
+            ...style,
           },
           ...rest,
         })}

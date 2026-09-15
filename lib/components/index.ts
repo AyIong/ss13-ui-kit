@@ -30,6 +30,7 @@ export { RestrictedInput } from './RestrictedInput';
 export { Section } from './Section';
 export { Slider } from './Slider';
 export { Stack } from './Stack';
+export { Table } from './Table';
 export { TextArea } from './TextArea';
 export { TimeDisplay } from './TimeDisplay';
 export { TitleBar } from './TitleBar';

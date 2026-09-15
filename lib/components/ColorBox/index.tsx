@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import type { CSSProperties } from 'react';
 import { computeBoxClassName, computeBoxProps } from 'tgui-core/common/ui';
 import type { ColorBoxProps } from './types';
 
@@ -16,14 +15,16 @@ import type { ColorBoxProps } from './types';
  * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
  */
 export function ColorBox(props: ColorBoxProps) {
-  const { className, color, content, ...rest } = props;
+  const { className, style, color, content, ...rest } = props;
   const trimmedContent = content?.at(0);
 
   return (
     <div
-      {...computeBoxProps(rest)}
       className={clsx('colorbox', className, computeBoxClassName(rest))}
-      style={{ '--colorbox-bg': color } as CSSProperties}
+      {...computeBoxProps({
+        style: { '--colorbox-bg': color, ...style },
+        ...rest,
+      })}
     >
       {trimmedContent}
     </div>

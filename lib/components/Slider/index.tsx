@@ -27,6 +27,7 @@ export function Slider(props: SliderProps) {
     format,
     fillValue,
     ranges,
+    style,
     ...rest
   } = props;
 
@@ -73,6 +74,7 @@ export function Slider(props: SliderProps) {
             '--fill-value': fillValue && `${fillValue}%`,
             width: !vertical && unit(size),
             height: vertical && unit(size),
+            ...style,
           },
           ...rest,
         })}

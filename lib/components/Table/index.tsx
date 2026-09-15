@@ -1,19 +1,12 @@
-import { classes } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import clsx from 'clsx';
 import type { CellProps, RowProps, TableProps } from './types';
 
 export function Table(props: TableProps) {
   const { className, collapsing, children, ...rest } = props;
-
   return (
     <table
-      className={clsx(
-        'Table',
-        collapsing && 'Table--collapsing',
-        className,
-        computeBoxClassName<HTMLTableElement>(rest),
-      )}
+      className={clsx('table', collapsing && 'collapsing', className, computeBoxClassName(rest))}
       {...computeBoxProps(rest)}
     >
       <tbody>{children}</tbody>
@@ -23,12 +16,11 @@ export function Table(props: TableProps) {
 
 function TableRow(props: RowProps) {
   const { className, header, ...rest } = props;
-
   return (
     <tr
       className={clsx(
-        'Table__row',
-        header && 'Table__row--header',
+        'table-row',
+        header && 'header',
         className,
         computeBoxClassName<HTMLTableRowElement>(props),
       )}
@@ -39,16 +31,15 @@ function TableRow(props: RowProps) {
 
 function TableCell(props: CellProps) {
   const { className, collapsing, colSpan, header, ...rest } = props;
-
   return (
     <td
-      className={classes([
-        'Table__cell',
-        collapsing && 'Table__cell--collapsing',
-        header && 'Table__cell--header',
+      className={clsx(
+        'table-cell',
+        collapsing && 'collapsing',
+        header && 'header',
         className,
-        computeBoxClassName<HTMLTableCellElement>(props),
-      ])}
+        computeBoxClassName(props),
+      )}
       colSpan={colSpan}
       {...computeBoxProps(rest)}
     />
