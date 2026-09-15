@@ -1,5 +1,5 @@
 .divider {
-  --divider-border: var(--border-width-1) solid var(--border-color);
+  --divider-border: calc(var(--border-width-1) * var(--size, 1)) solid var(--border-color);
 
   margin: var(--space-m) 0;
   border-top: var(--divider-border);

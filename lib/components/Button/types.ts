@@ -1,14 +1,7 @@
 import type { BoxProps, IconProps } from '@components';
-import type { Placement } from '@floating-ui/react';
 import type { CSSProperties, ReactNode } from 'react';
 import type { IconNamesUnion } from '../Icon/types';
-
-type ButtonTooltip = {
-  /** Content of the tooltip. Can be a string or a node */
-  content: ReactNode;
-  /** Position of the tooltip. Does not guarantee the position is respected. */
-  position?: Placement;
-};
+import type { TooltipContentProps } from '../Tooltip/types';
 
 export type ButtonInteractionProps = Partial<{
   /** Captures keyboard events */
@@ -29,7 +22,7 @@ export type ButtonBaseProps = Partial<{
   /** Changes button style */
   variant: 'filled' | 'transparent';
   /** A fancy, boxy tooltip, which appears when hovering over the button */
-  tooltip: ButtonTooltip;
+  tooltip: TooltipContentProps;
 }> &
   ButtonInteractionProps &
   ButtonContentProps &

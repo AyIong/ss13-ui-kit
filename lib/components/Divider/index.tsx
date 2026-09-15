@@ -1,11 +1,9 @@
 import clsx from 'clsx';
+import type { CSSProperties } from 'react';
 
 type Props = Partial<{
-  /**
-   * Divider can divide content without creating a dividing line.
-   * @deprecated Use flex gap (<Stack g={} />) or margins.
-   */
-  hidden: boolean;
+  /** Divider thickness. */
+  size: number;
   /** Divide content vertically. */
   vertical: boolean;
 }>;
@@ -20,9 +18,11 @@ type Props = Partial<{
  * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-divider--docs)
  */
 export function Divider(props: Props) {
-  const { hidden, vertical } = props;
-
+  const { size, vertical } = props;
   return (
-    <div className={clsx('divider', hidden && 'divider-hidden', vertical && 'divider-vertical')} />
+    <div
+      className={clsx('divider', vertical && 'divider-vertical')}
+      style={{ '--size': size } as CSSProperties}
+    />
   );
 }

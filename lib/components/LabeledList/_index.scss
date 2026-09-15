@@ -1,0 +1,49 @@
+@use "../../../styles/functions" as fn;
+
+.labeledlist {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+
+  &-row {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+  }
+
+  &-cell {
+    padding: var(--space-xs) 0;
+    color: var(--fg-color);
+
+    &.nowrap {
+      white-space: nowrap;
+    }
+
+    &.label {
+      margin-right: var(--space-ml);
+      color: var(--fg-color);
+
+      &.tooltiped > span {
+        --dot-size: var(--border-width-1);
+        background: radial-gradient(
+            circle,
+            fn.fg(var(--fg-color)) var(--dot-size),
+            transparent var(--dot-size)
+          )
+          bottom;
+        background-repeat: space no-repeat;
+        background-size: var(--space-m) calc(var(--dot-size) * 2);
+        padding-bottom: var(--space-xs);
+      }
+    }
+  }
+
+  &-buttons {
+    white-space: nowrap;
+    margin-left: var(--space-ml);
+  }
+
+  // Let element take all columns, if it's not row
+  & > :not(.labeledlist-row) {
+    grid-column: 1 / 4;
+  }
+}

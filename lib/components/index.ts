@@ -22,6 +22,7 @@ export { Image } from './Image';
 export { Input } from './Input';
 export { KeyListener } from './KeyListener';
 export { Knob } from './Knob';
+export { LabeledList } from './LabeledList';
 export { Layout } from './Layout';
 export { Modal } from './Modal';
 export { NoticeBox } from './NoticeBox';
