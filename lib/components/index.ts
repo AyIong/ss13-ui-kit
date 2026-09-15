@@ -30,6 +30,7 @@ export { Section } from './Section';
 export { Slider } from './Slider';
 export { Stack } from './Stack';
 export { TextArea } from './TextArea';
+export { TimeDisplay } from './TimeDisplay';
 export { TitleBar } from './TitleBar';
 export { Tooltip } from './Tooltip';
 export { VirtualList } from './VirtualList';
