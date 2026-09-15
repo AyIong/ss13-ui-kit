@@ -6,6 +6,7 @@ export { BlockQuote } from './BlockQuote';
 export { Box } from './Box';
 export type { BoxProps } from './Box/types';
 export { Button } from './Button';
+export { ByondUi } from './ByondUi';
 export { Checkbox } from './Checkbox';
 export { Collapsible } from './Collapsible';
 export { ColorBox } from './ColorBox';
