@@ -103,6 +103,6 @@ export class Color {
  * Accepts color key, returns className
  * which contains bg & fg CSS variables for passed color.
  */
-export function colorClassName(color?: string): string {
+export function colorClassName(color?: string | false): string {
   return `pal-${color || 'primary'}`;
 }

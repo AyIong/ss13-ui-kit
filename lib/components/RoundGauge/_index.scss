@@ -1,3 +1,92 @@
+@keyframes roundgauge-alert {
+  0%,
+  100% {
+    opacity: var(--opacity);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes roundgauge-alert--needle {
+  0% {
+    transform: rotate(var(--needle-alert-rotation));
+  }
+  50% {
+    transform: rotate(calc(-1 * var(--needle-alert-rotation)));
+  }
+}
+
 .roundgauge {
-  // Placeholder
+  --radius: 45;
+  --circumference: calc(2 * var(--radius) * var(--pi));
+  --needle-alert-rotation: 2.5deg;
+
+  position: relative;
+  width: calc(2.6rem * var(--size, 1));
+  margin: 0 auto;
+
+  &-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    text-align: center;
+  }
+
+  &-rings {
+    position: relative;
+
+    &--ring {
+      --gap: 50;
+      r: var(--radius);
+      cx: 50;
+      cy: 50;
+      fill: transparent;
+      stroke: var(--bg-color);
+      stroke-width: var(--space-ml);
+      stroke-dasharray: var(--circumference);
+      stroke-dashoffset: calc(var(--circumference) - var(--range) * 360);
+      transform: rotate(var(--rotation));
+      transform-origin: bottom;
+    }
+  }
+
+  &-icon {
+    --opacity: 0.33;
+
+    opacity: var(--opacity);
+    color: var(--bg-color);
+    transform: scale(0.5) translateY(55%);
+    transform-origin: top;
+
+    &.alert {
+      animation: roundgauge-alert var(--transition-time-slowest) cubic-bezier(0.34, 1.56, 0.64, 1)
+        infinite;
+    }
+  }
+
+  &-needle {
+    transform: rotate(var(--needle-rotation));
+    transform-origin: bottom;
+    transition: transform var(--transition-time-medium);
+
+    &--wrapper {
+      position: absolute;
+      inset: 0;
+      overflow: visible;
+    }
+
+    &--line,
+    &--circle {
+      fill: var(--color-red);
+    }
+
+    &--line {
+      transform-origin: bottom;
+
+      &.alert {
+        animation: roundgauge-alert--needle var(--transition-time-fast) infinite;
+      }
+    }
+  }
 }
