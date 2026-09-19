@@ -87,7 +87,7 @@ export function RoundGauge(props: RoundGaugeProps) {
     return (
       <circle
         key={color}
-        className={clsx(`roundgauge-rings--ring`, colorClassName(color))}
+        className={colorClassName(color)}
         style={
           {
             '--range': col_ranges[1] - col_ranges[0],
@@ -105,6 +105,7 @@ export function RoundGauge(props: RoundGaugeProps) {
         {...computeBoxProps({
           style: {
             '--size': size,
+            '--fill-percentage': `${clampedValue * 50}%`,
             '--needle-rotation': `${clampedValue * 180 - 90}deg`,
             ...style,
           },
@@ -123,6 +124,7 @@ export function RoundGauge(props: RoundGaugeProps) {
             />
           )}
           <g>{rings}</g>
+          <g className="roundgauge-rings--fill">{rings}</g>
         </svg>
         {/**
          * The needle is in a separate SVG because `overflow: visible`
@@ -132,7 +134,7 @@ export function RoundGauge(props: RoundGaugeProps) {
           <g className="roundgauge-needle">
             <polygon
               className={clsx('roundgauge-needle--line', alertActive && 'alert')}
-              points="46,50 50,0 54,50"
+              points="47,50 50,15 53,50"
             />
             <circle className="roundgauge-needle--circle" cx="50" cy="50" r="8" />
           </g>
