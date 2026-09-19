@@ -1,6 +1,7 @@
-import { Button, LabeledList, RoundGauge, Section, Stack } from '@components';
+import { Button, RoundGauge, Section, Stack } from '@components';
 import { type ComponentProps, type PropsWithChildren, useState } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { LabeledControls } from '../LabeledControls';
 
 type StoryProps = ComponentProps<typeof RoundGauge>;
 export default {
@@ -30,23 +31,23 @@ function RoundGaugePreview(props: PreviewProps) {
   return (
     <Stack.Item>
       <Section>
-        <LabeledList>
-          <LabeledList.Item label="Min">
+        <LabeledControls>
+          <LabeledControls.Item label="Min">
             <Button
               variant="transparent"
               fontSize={1.5}
               startIcon="angles-left"
               onClick={() => setValue(0)}
             />
-          </LabeledList.Item>
-          <LabeledList.Item label="-10">
+          </LabeledControls.Item>
+          <LabeledControls.Item label="-10">
             <Button
               variant="transparent"
               fontSize={1.5}
               startIcon="angle-left"
               onClick={() => setValue(value - 10)}
             />
-          </LabeledList.Item>
+          </LabeledControls.Item>
           <RoundGauge
             alertAfter={75}
             maxValue={100}
@@ -54,26 +55,26 @@ function RoundGaugePreview(props: PreviewProps) {
             ranges={
               ranges || { primary: [0, 25], good: [25, 50], average: [50, 75], bad: [75, 100] }
             }
-            size={2.5}
+            size={10}
             value={value}
           />
-          <LabeledList.Item label="+10">
+          <LabeledControls.Item label="+10">
             <Button
               variant="transparent"
               fontSize={1.5}
               startIcon="angle-right"
               onClick={() => setValue(value + 10)}
             />
-          </LabeledList.Item>
-          <LabeledList.Item label="Max">
+          </LabeledControls.Item>
+          <LabeledControls.Item label="Max">
             <Button
               variant="transparent"
               fontSize={1.5}
               startIcon="angles-right"
               onClick={() => setValue(100)}
             />
-          </LabeledList.Item>
-        </LabeledList>
+          </LabeledControls.Item>
+        </LabeledControls>
       </Section>
     </Stack.Item>
   );

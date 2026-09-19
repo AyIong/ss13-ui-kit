@@ -57,38 +57,32 @@ import type { StackDividerProps, StackItemProps, StackProps } from './types';
 export function Stack(props: StackProps) {
   const { className, fill, vertical, reverse, inlineFlex, zebra, direction, ...rest } = props;
 
-  const directionPrefix = vertical ? 'column' : 'row';
-  const directionSuffix = reverse ? '-reverse' : '';
-
   return (
     <div
       className={clsx(
         className,
         'stack',
         fill && 'fill',
-        vertical ? 'vertical' : 'horizontal',
-        reverse && `reverse${vertical ? '-vertical' : ''}`,
+        vertical && 'vertical',
+        reverse && 'reverse',
         inlineFlex && 'inline',
         zebra && 'zebra',
         computeBoxClassName(props),
       )}
-      {...computeStackProps({
-        direction: `${directionPrefix}${directionSuffix}`,
-        ...rest,
-      })}
+      {...computeStackProps(rest)}
     />
   );
 }
 
 function computeStackProps(props: StackProps) {
-  const { direction, wrap, align, justify, ...rest } = props;
+  const { direction, wrap, align, justify, style, ...rest } = props;
   return computeBoxProps({
     style: {
-      ...rest.style,
       alignItems: align,
       flexDirection: direction,
       flexWrap: wrap === true ? 'wrap' : wrap,
       justifyContent: justify,
+      ...style,
     },
     ...rest,
   });
@@ -98,12 +92,12 @@ function computeStackItemProps(props: StackItemProps) {
   const { style, grow, order, shrink, basis, align, ...rest } = props;
   return computeBoxProps({
     style: {
-      ...style,
       alignSelf: align,
       flexBasis: basis,
       flexGrow: grow !== undefined && Number(grow),
       flexShrink: shrink !== undefined && Number(shrink),
       order: order,
+      ...style,
     },
     ...rest,
   });

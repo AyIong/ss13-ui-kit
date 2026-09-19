@@ -10,6 +10,18 @@
     height: 100%;
   }
 
+  &.vertical {
+    flex-direction: column;
+  }
+
+  &.reverse {
+    flex-direction: row-reverse;
+
+    &.vertical {
+      flex-direction: column-reverse;
+    }
+  }
+
   &.zebra > .stack-item:nth-child(odd) {
     background-color: var(--candystripe-odd);
   }

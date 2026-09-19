@@ -32,6 +32,7 @@ export { RoundGauge } from './RoundGauge';
 export { Section } from './Section';
 export { Slider } from './Slider';
 export { Stack } from './Stack';
+export type { StackProps } from './Stack/types';
 export { Table } from './Table';
 export { TextArea } from './TextArea';
 export { TimeDisplay } from './TimeDisplay';

@@ -1,0 +1,10 @@
+.labeledcontrols {
+  &-item {
+    justify-content: end;
+
+    &--label {
+      align-self: center;
+      color: var(--fg-color);
+    }
+  }
+}

@@ -82,8 +82,7 @@ const mapColorPropTo: StyleCourier = (attrName: string) => (style, value) => {
 };
 
 export type StringStyleMap = Partial<{
-  // Alignment
-
+  // MARK: Alignment
   /** Align text inside the box. */
   align: string | BooleanLike;
   /** A direct mapping to `position` CSS property. */
@@ -91,8 +90,7 @@ export type StringStyleMap = Partial<{
   /** Vertical align property. */
   verticalAlign: string | BooleanLike;
 
-  // Color props
-
+  // MARK: Color props
   /** Sets background color. */
   backgroundColor: string | BooleanLike;
   /** Applies an atomic `color-<name>` class to the element. */
@@ -102,8 +100,7 @@ export type StringStyleMap = Partial<{
   /** Sets text color. */
   textColor: string | BooleanLike;
 
-  // Margin
-
+  // MARK: Margin
   /** Margin on all sides. */
   m: string | BooleanLike;
   /** Bottom margin. */
@@ -128,8 +125,7 @@ export type StringStyleMap = Partial<{
   /** Top margin. */
   top: string | BooleanLike;
 
-  // Gap
-
+  // MARK: Gap
   /** Gap on all sides. */
   g: string | BooleanLike;
   /** Row gap. */
@@ -137,8 +133,7 @@ export type StringStyleMap = Partial<{
   /** Column gap. */
   gc: string | BooleanLike;
 
-  // Overflow
-
+  // MARK: Overflow
   /** Overflow property. */
   overflow: string | BooleanLike;
   /** Overflow-X property. */
@@ -146,8 +141,7 @@ export type StringStyleMap = Partial<{
   /** Overflow-Y property. */
   overflowY: string | BooleanLike;
 
-  // Padding
-
+  // MARK: Padding
   /** Padding on all sides. */
   p: string | BooleanLike;
   /** Bottom padding. */
@@ -163,8 +157,7 @@ export type StringStyleMap = Partial<{
   /** Vertical padding. */
   py: string | BooleanLike;
 
-  // Size
-
+  // MARK: Size
   /** Box height. */
   height: string | BooleanLike;
   /** Box maximum height. */
@@ -178,8 +171,7 @@ export type StringStyleMap = Partial<{
   /** Box width. */
   width: string | BooleanLike;
 
-  // Text
-
+  // MARK: Text
   /** Font family. */
   fontFamily: string | BooleanLike;
   /** Font size. */
