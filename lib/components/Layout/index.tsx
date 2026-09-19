@@ -42,7 +42,7 @@ export function Layout(props: LayoutProps) {
   return (
     <div
       id="tgui-layout"
-      className={clsx(['layout', className, computeBoxClassName(rest)])}
+      className={clsx('layout', className, computeBoxClassName(rest))}
       {...computeBoxProps(rest)}
     >
       {children}
@@ -57,7 +57,7 @@ function LayoutContent(props: BoxProps) {
     <div id="layout-root" className="layout-content-wrapper">
       <OverlayScrollbarsComponent
         defer
-        className={clsx(['layout-content', className, computeBoxClassName(rest)])}
+        className={clsx('layout-content', className, computeBoxClassName(rest))}
         {...osOptions}
         {...computeBoxProps(rest)}
       >

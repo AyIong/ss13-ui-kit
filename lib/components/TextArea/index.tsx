@@ -57,7 +57,7 @@ export function TextArea(props: TextAreaProps) {
   });
 
   const boxProps = computeBoxProps(rest);
-  const classNames = clsx([
+  const classNames = clsx(
     'input',
     'input-textarea',
     fluid && 'fluid',
@@ -65,7 +65,7 @@ export function TextArea(props: TextAreaProps) {
     disabled && 'disabled',
     computeBoxClassName<HTMLTextAreaElement>(rest),
     className,
-  ]);
+  );
 
   return (
     <textarea

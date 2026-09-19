@@ -55,14 +55,14 @@ export function Input(props: TextInputProps) {
   });
 
   const boxProps = computeBoxProps(rest);
-  const classNames = clsx([
+  const classNames = clsx(
     'input',
     disabled && 'disabled',
     fluid && 'fluid',
     monospace && 'monospace',
     computeBoxClassName<HTMLInputElement>(rest),
     className,
-  ]);
+  );
 
   return (
     <input

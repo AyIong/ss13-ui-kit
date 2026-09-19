@@ -155,7 +155,7 @@ export function Floating(props: FloatingProps) {
   const floatingContent = (
     <div
       ref={refs.setFloating}
-      className={clsx(['floating', !animationDuration && 'animated', contentClasses])}
+      className={clsx('floating', !animationDuration && 'animated', contentClasses)}
       data-position={context.placement}
       data-transition={status}
       style={{ ...floatingStyles, ...contentStyles }}

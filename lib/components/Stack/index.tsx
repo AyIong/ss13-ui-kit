@@ -62,7 +62,7 @@ export function Stack(props: StackProps) {
 
   return (
     <div
-      className={clsx([
+      className={clsx(
         className,
         'stack',
         fill && 'fill',
@@ -71,7 +71,7 @@ export function Stack(props: StackProps) {
         inlineFlex && 'inline',
         zebra && 'zebra',
         computeBoxClassName(props),
-      ])}
+      )}
       {...computeStackProps({
         direction: `${directionPrefix}${directionSuffix}`,
         ...rest,
@@ -115,7 +115,7 @@ function StackItem(props: StackItemProps) {
   return (
     <div
       ref={ref}
-      className={clsx([className, 'stack-item', computeBoxClassName(rest)])}
+      className={clsx(className, 'stack-item', computeBoxClassName(rest))}
       {...computeStackItemProps(rest)}
     />
   );
@@ -126,7 +126,7 @@ function StackDivider(props: StackDividerProps) {
   const { className, hidden, ...rest } = props;
   return (
     <div
-      className={clsx(['stack-divider', hidden && 'hidden', className, computeBoxClassName(rest)])}
+      className={clsx('stack-divider', hidden && 'hidden', className, computeBoxClassName(rest))}
       {...computeStackItemProps(rest)}
     />
   );

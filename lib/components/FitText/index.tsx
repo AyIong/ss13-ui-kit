@@ -59,7 +59,7 @@ export function FitText(props: FitTextProps) {
         } as CSSProperties
       }
     >
-      <span ref={textRef} className={clsx(['fittext-content', className])}>
+      <span ref={textRef} className={clsx('fittext-content', className)}>
         {children}
       </span>
     </div>

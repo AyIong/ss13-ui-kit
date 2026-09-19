@@ -22,7 +22,7 @@ export function ${componentName}(props: ${componentName}Props) {
   const { children, className } = props;
 
   return (
-    <div className={clsx(['${componentName.toLowerCase()}', className])}>
+    <div className={clsx('${componentName.toLowerCase()}', className)}>
       {children}
     </div>
   );

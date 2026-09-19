@@ -110,13 +110,13 @@ export function Section(props: SectionProps) {
   return (
     <section
       id={containerId}
-      className={clsx([
+      className={clsx(
         'section',
         fill && 'fill',
         scrollable && 'scrollable',
         className,
         computeBoxClassName(rest),
-      ])}
+      )}
       {...computeBoxProps(rest)}
     >
       {hasTitle && (
@@ -125,16 +125,12 @@ export function Section(props: SectionProps) {
           {buttons && <div className="right-side">{buttons}</div>}
         </div>
       )}
-      <div className={clsx(['section-content-wrapper'])}>
+      <div className={clsx('section-content-wrapper')}>
         <div
           // That is not really scrollable ref, it'll be used only if section
           // not scrallable, otherwise it will be replaced with OS viewport ref
           ref={ourRef}
-          className={clsx([
-            'section-content',
-            fitted && 'fitted',
-            noTopPadding && 'no-top-padding',
-          ])}
+          className={clsx('section-content', fitted && 'fitted', noTopPadding && 'no-top-padding')}
           onScroll={onScroll}
         >
           {scrollable ? (

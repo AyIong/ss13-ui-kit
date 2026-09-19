@@ -34,7 +34,7 @@ export function Button(props: ButtonProps) {
 
   return (
     <ButtonContainer
-      className={clsx([circular && 'circular', className])}
+      className={clsx(circular && 'circular', className)}
       {...rest}
       {...interactions}
     >
@@ -61,7 +61,7 @@ export function ButtonContainer(props: ButtonBaseProps) {
   let finalButtonContainer = (
     <div
       tabIndex={-1}
-      className={clsx([
+      className={clsx(
         className,
         'button',
         variant,
@@ -70,7 +70,7 @@ export function ButtonContainer(props: ButtonBaseProps) {
         selected && 'selected',
         colorClassName(color),
         computeBoxClassName(rest),
-      ])}
+      )}
       {...computeBoxProps(rest)}
     >
       {children}

@@ -69,7 +69,7 @@ export function RestrictedInput(props: RestrictedInputProps) {
   }, [innerValue]);
 
   const boxProps = computeBoxProps(rest);
-  const classNames = clsx([
+  const classNames = clsx(
     'input',
     'input-restricted',
     fluid && 'fluid',
@@ -78,7 +78,7 @@ export function RestrictedInput(props: RestrictedInputProps) {
     computeBoxClassName<HTMLInputElement>(rest),
     className,
     !isValid && 'input-restricted--invalid',
-  ]);
+  );
 
   return (
     <input
