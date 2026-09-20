@@ -1,4 +1,4 @@
-@use "../../../styles/functions" as fn;
+@use "@styles/functions" as fn;
 
 .icon {
   --icon-width: #{fn.em(16px)};

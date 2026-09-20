@@ -2,7 +2,7 @@
  * File contains sass function that creates classes for each available color
  */
 @use "../colors.scss";
-@use "../functions.scss" as fn;
+@use "../functions" as fn;
 
 $map-keys: colors.$color-map !default;
 

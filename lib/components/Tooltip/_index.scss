@@ -1,4 +1,4 @@
-@use "../../../styles/functions" as fn;
+@use "@styles/functions" as fn;
 
 .tooltip {
   --tooltip-background-color: #{fn.oklch-from(background-color, $a: 0.85)};

@@ -16,6 +16,7 @@
       "@common/*": ["./lib/common/*.ts"],
       "@components": ["./lib/components/index.ts"],
       "@hooks": ["./lib/hooks/index.ts"],
+      "@styles/*": ["./styles/*.scss"],
       "@stories/*": ["./lib/components/*.stories.tsx", "./stories/*.tsx", "./stories/*.ts"]
     },
     "resolveJsonModule": true,

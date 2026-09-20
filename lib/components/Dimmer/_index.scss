@@ -1,4 +1,4 @@
-@use "../../../styles/functions.scss" as fn;
+@use "@styles/functions" as fn;
 
 .dimmer {
   --dimmer-background: #{fn.oklch-from(background-color, $a: 0.75)};
