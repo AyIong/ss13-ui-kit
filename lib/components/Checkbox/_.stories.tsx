@@ -1,4 +1,4 @@
-import { COMPONENT_COLORS } from '@common/constants';
+import { CSS_COLORS } from '@common/constants';
 import { type ComponentProps, useState } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { Checkbox } from '.';
@@ -30,7 +30,7 @@ export const Colors: Story = {
     const [checked, setChecked] = useState(false);
     return (
       <div>
-        {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map((color) => (
+        {CSS_COLORS.map((color) => (
           <Checkbox
             key={color}
             color={color}

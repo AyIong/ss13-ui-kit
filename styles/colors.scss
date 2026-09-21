@@ -102,6 +102,8 @@
 }
 
 // Mappings of color names
+// Don't forget to add new color to
+// constants.ts CSS_COLORS const
 $color-map: ();
 $base-colors: (
   "red": var(--color-red),

@@ -28,6 +28,7 @@ export { Layout } from './Layout';
 export { Modal } from './Modal';
 export { NoticeBox } from './NoticeBox';
 export { NumberInput } from './NumberInput';
+export { ProgressBar } from './ProgressBar';
 export { RestrictedInput } from './RestrictedInput';
 export { RoundGauge } from './RoundGauge';
 export { Section } from './Section';

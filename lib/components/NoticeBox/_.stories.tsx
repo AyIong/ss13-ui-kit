@@ -1,4 +1,4 @@
-import { COMPONENT_COLORS } from '@common/constants';
+import { CSS_COLORS } from '@common/constants';
 import { NoticeBox, Stack } from '@components';
 import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
@@ -12,7 +12,7 @@ export default {
     children: { control: 'text' },
     color: {
       control: 'select',
-      options: [undefined, ...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum],
+      options: [undefined, CSS_COLORS],
     },
     info: { control: 'boolean' },
     success: { control: 'boolean' },
@@ -44,7 +44,7 @@ export const BaseTypes: Story = {
 export const Colors: Story = {
   render: () => (
     <Stack vertical>
-      {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map((color) => (
+      {CSS_COLORS.map((color) => (
         <NoticeBox color={color} key={color}>
           {color || 'default'}
         </NoticeBox>

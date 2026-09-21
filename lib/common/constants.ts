@@ -63,31 +63,6 @@ export const COLORS = {
   },
 } as const;
 
-// Colors defined in CSS
-export const CSS_COLORS = [
-  'average',
-  'bad',
-  'black',
-  'blue',
-  'brown',
-  'good',
-  'green',
-  'grey',
-  'label',
-  'olive',
-  'orange',
-  'pink',
-  'purple',
-  'red',
-  'teal',
-  'transparent',
-  'violet',
-  'white',
-  'yellow',
-] as const;
-
-export type CssColor = (typeof CSS_COLORS)[number];
-
 /* IF YOU CHANGE THIS KEEP IT IN SYNC WITH CHAT CSS */
 export const RADIO_CHANNELS = [
   {
@@ -371,33 +346,35 @@ export function getGasFromPath(gasPath: string): Gas | undefined {
   }
 }
 
-export const COMPONENT_COLORS = {
-  spectrum: [
-    'red',
-    'orange',
-    'yellow',
-    'olive',
-    'green',
-    'teal',
-    'light-blue',
-    'blue',
-    'violet',
-    'purple',
-    'pink',
-    'brown',
-    'grey',
-    'gold',
-    'camel',
-  ],
-  states: [
-    'primary',
-    'secondary',
-    'surface',
-    'background',
-    'good',
-    'average',
-    'bad',
-    'black',
-    'white',
-  ],
-} as const;
+// MARK: Colors defined in CSS
+export type CssColors = (typeof CSS_COLORS)[number];
+
+export const CSS_COLORS = [
+  'primary',
+  'secondary',
+  'surface',
+  'background',
+  'good',
+  'average',
+  'bad',
+  'label',
+  'black',
+  'white',
+  'text',
+  'gray',
+  'light-gray',
+  'red',
+  'orange',
+  'yellow',
+  'olive',
+  'green',
+  'teal',
+  'blue',
+  'light-blue',
+  'violet',
+  'purple',
+  'pink',
+  'brown',
+  'gold',
+  'camel',
+] as const;

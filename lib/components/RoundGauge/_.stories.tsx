@@ -55,7 +55,7 @@ function RoundGaugePreview(props: PreviewProps) {
             ranges={
               ranges || { primary: [0, 25], good: [25, 50], average: [50, 75], bad: [75, 100] }
             }
-            size={10}
+            size={2.5}
             value={value}
           />
           <LabeledControls.Item label="+10">

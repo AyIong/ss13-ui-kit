@@ -1,4 +1,4 @@
-import { COMPONENT_COLORS } from '@common/constants';
+import { CSS_COLORS } from '@common/constants';
 import { Button, Knob, Section, Stack } from '@components';
 import { type ComponentProps, type PropsWithChildren, useState } from 'react';
 import type { Meta } from 'storybook-react-rsbuild';
@@ -57,7 +57,7 @@ export const Colors = {
   render: () => {
     return (
       <Stack fill g={1} justify="center" wrap>
-        {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map((color) => (
+        {CSS_COLORS.map((color) => (
           <KnobPreview color={color} key={color} />
         ))}
       </Stack>

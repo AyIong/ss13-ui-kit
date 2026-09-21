@@ -1,7 +1,7 @@
 import { Button, Collapsible, Stack } from '@components';
 import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
-import { COMPONENT_COLORS } from 'tgui-core/common/constants';
+import { CSS_COLORS } from 'tgui-core/common/constants';
 
 type StoryProps = ComponentProps<typeof Collapsible>;
 
@@ -25,7 +25,7 @@ export const Colors: Story = {
   args: collapsibleArgs,
   render: (args) => (
     <Stack vertical>
-      {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map((color) => (
+      {CSS_COLORS.map((color) => (
         <Collapsible key={color} color={color} {...args}>
           {color}
         </Collapsible>

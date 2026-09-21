@@ -1,4 +1,4 @@
-import { COMPONENT_COLORS } from '@common/constants';
+import { CSS_COLORS } from '@common/constants';
 import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { Stack } from '../Stack';
@@ -35,7 +35,7 @@ export const Colors: Story = {
   args: buttonArgs,
   render: (args) => (
     <Stack vertical>
-      {[...COMPONENT_COLORS.states, ...COMPONENT_COLORS.spectrum].map((color) => (
+      {CSS_COLORS.map((color) => (
         <Button key={color} color={color} {...args}>
           {color}
         </Button>
