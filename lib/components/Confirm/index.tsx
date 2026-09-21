@@ -81,8 +81,15 @@ export function Confirm(props: ConfirmProps) {
       {...handlePress}
       {...rest}
     >
-      {(startIcon || (confirmedIcon && confirmed)) && renderIcon(startIcon || confirmedIcon)}
-      <ButtonContent>{confirmed && confirmedContent ? confirmedContent : children}</ButtonContent>
+      {/* Render both, so button size will be static */}
+      <div className={clsx('button-confirm-content', !confirmed && 'visible')}>
+        {startIcon && renderIcon(startIcon)}
+        <ButtonContent>{children}</ButtonContent>
+      </div>
+      <div className={clsx('button-confirm-content', confirmed && 'visible')}>
+        {confirmedIcon && renderIcon(confirmedIcon)}
+        {confirmedContent && <ButtonContent>{confirmedContent}</ButtonContent>}
+      </div>
       <div
         className={clsx(
           'button-confirm--fill',

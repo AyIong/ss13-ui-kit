@@ -15,8 +15,8 @@ type Story = StoryObj<StoryProps>;
 export const Default: Story = {
   args: {
     children: 'Hold me',
-    confirmedIcon: 'check',
-    confirmedContent: 'Nice',
+    confirmedIcon: 'square-check',
+    confirmedContent: 'Confirmed',
     fluid: false,
     disabled: false,
   },
