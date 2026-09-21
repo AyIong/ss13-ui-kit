@@ -78,4 +78,8 @@
       animation: 1s ease-in-out 1 confirm-canceled;
     }
   }
+
+  &.confirmed {
+    --bg-color: var(--color-good);
+  }
 }

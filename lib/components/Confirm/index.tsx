@@ -24,6 +24,7 @@ export function Confirm(props: ConfirmProps) {
     ...rest
   } = props;
 
+  const hasConfirmedContent = confirmedContent || confirmedIcon;
   const [holding, setHolding] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
   const [canceled, setCanceled] = useState(false);
@@ -71,7 +72,7 @@ export function Confirm(props: ConfirmProps) {
 
   return (
     <ButtonContainer
-      className="button-confirm"
+      className={clsx('button-confirm', confirmed && 'confirmed')}
       style={
         {
           '--confirm-delay': `${confirmDelay || defaultConfirmDelay}ms`,
@@ -82,14 +83,21 @@ export function Confirm(props: ConfirmProps) {
       {...rest}
     >
       {/* Render both, so button size will be static */}
-      <div className={clsx('button-confirm-content', !confirmed && 'visible')}>
+      <div
+        className={clsx(
+          'button-confirm-content',
+          (!confirmed || !hasConfirmedContent) && 'visible',
+        )}
+      >
         {startIcon && renderIcon(startIcon)}
         <ButtonContent>{children}</ButtonContent>
       </div>
-      <div className={clsx('button-confirm-content', confirmed && 'visible')}>
-        {confirmedIcon && renderIcon(confirmedIcon)}
-        {confirmedContent && <ButtonContent>{confirmedContent}</ButtonContent>}
-      </div>
+      {hasConfirmedContent && (
+        <div className={clsx('button-confirm-content', confirmed && 'visible')}>
+          {confirmedIcon && renderIcon(confirmedIcon)}
+          <ButtonContent>{confirmedContent || children}</ButtonContent>
+        </div>
+      )}
       <div
         className={clsx(
           'button-confirm--fill',
