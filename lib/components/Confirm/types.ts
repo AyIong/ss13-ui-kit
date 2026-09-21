@@ -1,12 +1,14 @@
 import type { ReactNode } from 'react';
-import type { ButtonProps } from '../Button/types';
-import type { IconProps } from '../Icon/types';
+import type { ButtonIconProps, ButtonProps } from '../Button/types';
 
 export type ConfirmProps = {
-  /** Content that will be visible until confirmation */
-  confirmContent: ReactNode;
-  /** Color that will be applied until confirmation */
-  confirmColor: string;
-  /** Icon that will be showed until confirmation */
-  confirmIcon: IconProps;
+  /**
+   * Time in ms for which button must be held before the action occurs.
+   * Default is 1000 (1 second)
+   */
+  confirmDelay: number;
+  /** Icon that will be showed after confirmation */
+  confirmedIcon: ButtonIconProps;
+  /** Content which will be displayed after confirmation */
+  confirmedContent: ReactNode;
 } & Omit<ButtonProps, 'selected' | 'endIcon'>;

@@ -1,6 +1,12 @@
-import { type MouseEvent, useState } from 'react';
+import { useLongPress } from '@uidotdev/usehooks';
+import clsx from 'clsx';
+import { type CSSProperties, useEffect, useState } from 'react';
 import { ButtonContainer, ButtonContent, renderIcon } from '../Button';
 import type { ConfirmProps } from './types';
+
+const defaultConfirmDelay = 1000;
+const resetConfirmedDelay = 3000;
+const resetCanceledDelay = 500;
 
 /**
  * ## Confirm
@@ -9,41 +15,82 @@ import type { ConfirmProps } from './types';
 export function Confirm(props: ConfirmProps) {
   const {
     children,
-    confirmContent = 'Confirm?',
     color,
-    confirmColor = 'bad',
     startIcon,
-    confirmIcon,
-    onBlur,
+    confirmDelay,
+    confirmedContent,
+    confirmedIcon,
     onClick,
     ...rest
   } = props;
-  const [clickedOnce, setClickedOnce] = useState(false);
 
-  function handleBlur(event: FocusEvent): void {
-    setClickedOnce(false);
-    onBlur?.(event);
-  }
+  const [holding, setHolding] = useState(false);
+  const [confirmed, setConfirmed] = useState(false);
+  const [canceled, setCanceled] = useState(false);
+  const handlePress = useLongPress(
+    (event) => {
+      setHolding(false);
+      setConfirmed(true);
+      onClick?.(event);
+    },
+    {
+      threshold: confirmDelay || defaultConfirmDelay,
+      onStart: () => {
+        setConfirmed(false);
+        setCanceled(false);
+        setHolding(true);
+      },
+      onCancel: () => {
+        setHolding(false);
+        setCanceled(true);
+      },
+    },
+  );
 
-  function handleClick(event: MouseEvent<HTMLButtonElement>): void {
-    if (!clickedOnce) {
-      setClickedOnce(true);
+  useEffect(() => {
+    if (!confirmed) {
       return;
     }
 
-    onClick?.(event);
-    setClickedOnce(false);
-  }
+    const timer = setTimeout(() => setConfirmed(false), resetConfirmedDelay);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [confirmed]);
+
+  useEffect(() => {
+    if (!canceled) {
+      return;
+    }
+
+    const timer = setTimeout(() => setCanceled(false), resetCanceledDelay);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [canceled]);
 
   return (
     <ButtonContainer
-      color={clickedOnce ? confirmColor : color}
-      onBlur={handleBlur}
-      onClick={handleClick}
+      className="button-confirm"
+      style={
+        {
+          '--confirm-delay': `${confirmDelay || defaultConfirmDelay}ms`,
+        } as CSSProperties
+      }
+      color={color}
+      {...handlePress}
       {...rest}
     >
-      {(startIcon || (confirmIcon && clickedOnce)) && renderIcon(startIcon || confirmIcon)}
-      <ButtonContent>{clickedOnce ? confirmContent : children}</ButtonContent>
+      {(startIcon || (confirmedIcon && confirmed)) && renderIcon(startIcon || confirmedIcon)}
+      <ButtonContent>{confirmed && confirmedContent ? confirmedContent : children}</ButtonContent>
+      <div
+        className={clsx(
+          'button-confirm--fill',
+          holding && 'holding',
+          confirmed && 'confirmed',
+          canceled && 'canceled',
+        )}
+      />
     </ButtonContainer>
   );
 }

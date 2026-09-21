@@ -1,6 +1,7 @@
 import type { ReactNode, RefObject } from 'react';
 import type { BoxProps } from '../Box/types';
 import type { IconProps } from '../Icon/types';
+import { CssColors } from 'tgui-core/common/constants';
 
 export type DropdownOption = string | DropdownEntry;
 
@@ -22,8 +23,8 @@ type DropdownIconProps =
 export type DropdownProps = Partial<{
   /** Whether to display previous / next buttons */
   buttons: boolean;
-  /** Color of dropdown button */
-  color: string;
+  /** Chages component color */
+  color: CssColors;
   /** Disables the dropdown */
   disabled: boolean;
   /** Overwrites selection text with this. Good for objects etc. */

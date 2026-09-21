@@ -1,3 +1,4 @@
+import type { CssColors } from 'tgui-core/common/constants';
 import type { BoxProps } from '../Box/types';
 
 export type RoundGaugeProps = {
@@ -17,7 +18,7 @@ export type RoundGaugeProps = {
   /** The lower bound of the gauge. */
   minValue: number;
   /** Provide regions of the gauge to color between two specified values of the metric. */
-  ranges: Record<string, [number, number]>;
+  ranges: Partial<Record<CssColors, [number, number]>>;
   /** When provided scales the gauge. */
   size: number;
 }> &

@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { CssColors } from 'tgui-core/common/constants';
 import type { TooltipContentProps } from '../Tooltip/types';
 
 export type LabeledListItemProps = Partial<{
@@ -9,9 +10,7 @@ export type LabeledListItemProps = Partial<{
   /** Applies a CSS class to the element. */
   className: string;
   /** Sets the color of the content text. */
-  color: string;
-  /** @deprecated */
-  content: any;
+  color: CssColors;
   /**
    * Sometimes this does not properly register in TS.
    * See [react key docs](https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key) for more info.
@@ -20,7 +19,7 @@ export type LabeledListItemProps = Partial<{
   /** Item label. Appends a colon at the end. */
   label: ReactNode;
   /** Sets the color of the label. */
-  labelColor: string;
+  labelColor: CssColors;
   /** Lets the label wrap and makes it not take the minimum width. */
   labelWrap: boolean;
   /**

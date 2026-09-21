@@ -1,11 +1,12 @@
+import type { CssColors } from 'tgui-core/common/constants';
 import type { DraggableControlProps } from 'tgui-core/hooks/useDraggable/types';
 import type { BoxProps } from '../Box/types';
 
 export type KnobProps = Partial<{
   /** Knob can be bipolar or unipolar. */
   bipolar: boolean;
-  /** Color of the knob. */
-  color: string;
+  /** Chages component color palette */
+  color: CssColors;
   /**
    * Relative size of the knob. `1` is normal size, `2` is two times bigger.
    * Fractional numbers are supported.

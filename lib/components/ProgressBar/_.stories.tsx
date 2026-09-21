@@ -1,4 +1,4 @@
-import { COMPONENT_COLORS, CSS_COLORS } from '@common/constants';
+import { CSS_COLORS, type CssColors } from '@common/constants';
 import { Button, ProgressBar, Stack } from '@components';
 import { type ComponentProps, type PropsWithChildren, useState } from 'react';
 import type { Meta } from 'storybook-react-rsbuild';
@@ -10,21 +10,20 @@ export default {
 } satisfies Meta<StoryProps>;
 
 type PreviewProps = {
-  color?: string;
+  color?: CssColors;
   vertical?: boolean;
   ranges?: Record<string, [number, number]>;
 } & PropsWithChildren;
 
 function ProgressBarPreview(props: PreviewProps) {
   const [value, setValue] = useState(50);
-  const { color, ranges, vertical } = props;
+  const { color, ranges } = props;
 
   return (
     <Stack.Item key={color} mt={2}>
       <Stack fill g={0.5}>
         <Button color={color} startIcon="angles-left" onClick={() => setValue(0)} />
         <ProgressBar
-          vertical={vertical}
           color={color}
           value={value}
           minValue={0}

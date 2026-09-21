@@ -1,9 +1,12 @@
 import type { PropsWithChildren, ReactNode } from 'react';
+import type { CssColors } from 'tgui-core/common/constants';
 import type { BoxProps } from '../Box/types';
 import type { IconNamesUnion, IconProps } from '../Icon/types';
 
 type CollapsibleIconProps = IconProps | IconNamesUnion;
 export type CollapsibleProps = Partial<{
+  /** Chages component color palette */
+  color: CssColors;
   /** Buttons or other content to render inline with the button */
   buttons: ReactNode;
   /** Icon to display with the collapsible */

@@ -1,3 +1,4 @@
+import type { CssColors } from '@common/constants';
 import type { BoxProps, IconProps } from '@components';
 import type { CSSProperties, ReactNode } from 'react';
 import type { IconNamesUnion } from '../Icon/types';
@@ -8,11 +9,15 @@ export type ButtonInteractionProps = Partial<{
   captureKeys: boolean;
   /** Called when element is clicked */
   onClick: (event: any) => void;
+  /** Called when element is clicked but with RMB */
+  onRightClick: (event: any) => void;
   /** Called when the button is missing focus */
   onBlur: (event: FocusEvent) => void;
 }>;
 
 export type ButtonBaseProps = Partial<{
+  /** Chages component color palette */
+  color: CssColors;
   /** Fill all available horizontal space */
   fluid: boolean;
   /** Disables button and makes it semi-transparent */

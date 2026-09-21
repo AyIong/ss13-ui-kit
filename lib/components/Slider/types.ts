@@ -1,9 +1,10 @@
+import type { CssColors } from 'tgui-core/common/constants';
 import type { DraggableControlProps } from 'tgui-core/hooks/useDraggable/types';
 import type { BoxProps } from '../Box/types';
 
 export type SliderProps = Partial<{
   /** Color of the slider. */
-  color: string;
+  color: CssColors;
   /**
    * Size of the slider. Uses width by default, and height if vertical.
    * Accept same values as width/height props.

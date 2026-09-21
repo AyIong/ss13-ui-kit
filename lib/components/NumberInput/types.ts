@@ -1,9 +1,10 @@
+import type { CssColors } from 'tgui-core/common/constants';
 import type { DraggableControlProps } from 'tgui-core/hooks/useDraggable/types';
 import type { BoxProps } from '../Box/types';
 
 export type NumberInputProps = Partial<{
   /** Color of the input. */
-  color: string;
+  color: CssColors;
   /** Unit to display to the right of value. */
   unit: string;
   /**

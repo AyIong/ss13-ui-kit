@@ -1,0 +1,61 @@
+@use "@styles/functions" as fn;
+
+@property --confirm-progress {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+
+@keyframes confirm-progress {
+  to {
+    --confirm-progress: 100%;
+  }
+}
+
+@keyframes confirmed {
+  0%,
+  50% {
+    background-color: var(--color-good);
+  }
+  25% {
+    background-color: fn.fg(var(--color-good));
+  }
+}
+
+@keyframes confirm-canceled {
+  0%,
+  50% {
+    background-color: transparent;
+  }
+  25%,
+  100% {
+    background-color: var(--color-bad);
+  }
+}
+
+.button-confirm {
+  overflow: hidden;
+  position: relative;
+
+  &--fill {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    width: var(--confirm-progress);
+    background-color: var(--color-good);
+
+    &.holding {
+      animation: var(--confirm-delay) ease-in 1 confirm-progress;
+    }
+
+    &.confirmed {
+      width: 100%;
+      animation: 1s 1 forwards confirmed;
+    }
+
+    &.canceled {
+      width: 100%;
+      animation: 1s ease-in-out infinite confirm-canceled;
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import type { CssColors } from 'tgui-core/common/constants';
 import type { BoxProps } from '../Box/types';
 
 export type ChartProps = Partial<{
@@ -9,10 +10,10 @@ export type ChartProps = Partial<{
 export type ChartLineProps = {
   data: number[][];
 } & Partial<{
-  fillColor: string;
+  /** Chages component color palette */
+  color: CssColors;
   rangeX: [number, number];
   rangeY: [number, number];
-  strokeColor: string;
   strokeWidth: number;
 }> &
   BoxProps;

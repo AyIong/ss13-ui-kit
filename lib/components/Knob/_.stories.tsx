@@ -1,4 +1,4 @@
-import { CSS_COLORS } from '@common/constants';
+import { CSS_COLORS, CssColors } from '@common/constants';
 import { Button, Knob, Section, Stack } from '@components';
 import { type ComponentProps, type PropsWithChildren, useState } from 'react';
 import type { Meta } from 'storybook-react-rsbuild';
@@ -10,7 +10,7 @@ export default {
 } satisfies Meta<StoryProps>;
 
 type PreviewProps = {
-  color?: string;
+  color?: CssColors;
 } & PropsWithChildren;
 
 function KnobPreview(props: PreviewProps) {

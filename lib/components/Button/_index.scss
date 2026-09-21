@@ -86,7 +86,7 @@
 .button {
   &.disabled {
     // Allow downstreams to override disabled color
-    --bg-color: var(--bg-color-disabled, var(--bg-color));
+    --bg-color-final: var(--bg-color-disabled, var(--bg-color));
 
     pointer-events: none;
     opacity: var(--button-disabled-opacity);

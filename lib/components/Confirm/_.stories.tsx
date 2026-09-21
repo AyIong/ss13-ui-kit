@@ -14,18 +14,17 @@ type Story = StoryObj<StoryProps>;
 
 export const Default: Story = {
   args: {
-    children: 'Click me',
+    children: 'Hold me',
+    confirmedIcon: 'check',
+    confirmedContent: 'Nice',
     fluid: false,
     disabled: false,
-    confirmContent: 'Confirm?',
-    confirmColor: 'bad',
-    confirmIcon: { name: 'question' },
   },
   render: (args) => {
     const [confirmed, setConfirmed] = useState(false);
     return (
       <Stack>
-        <Stack.Item>
+        <Stack.Item grow>
           <Confirm onClick={() => setConfirmed(!confirmed)} {...args} />
         </Stack.Item>
         <Stack.Item>{confirmed ? 'Confirmed' : 'Confirm'}</Stack.Item>

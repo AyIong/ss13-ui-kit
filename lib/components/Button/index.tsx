@@ -24,12 +24,14 @@ export function Button(props: ButtonProps) {
     innerStyle,
     captureKeys,
     onClick,
+    onRightClick,
     ...rest
   } = props;
   const interactions = useButton({
     captureKeys,
     disabled,
     onClick,
+    onRightClick,
   });
 
   return (

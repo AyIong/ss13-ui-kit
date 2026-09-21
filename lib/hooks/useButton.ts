@@ -11,11 +11,18 @@ type useButtonProps = Partial<{
   ButtonInteractionProps;
 
 export function useButton(props: useButtonProps) {
-  const { disabled, captureKeys, onClick } = props;
+  const { disabled, captureKeys, onClick, onRightClick } = props;
 
   function handleClick(event) {
     if (!disabled) {
       onClick?.(event);
+    }
+  }
+
+  function handleRightClick(event) {
+    if (!disabled) {
+      event.preventDefault();
+      onRightClick?.(event);
     }
   }
 
@@ -36,6 +43,7 @@ export function useButton(props: useButtonProps) {
 
   return {
     onClick: handleClick,
+    onContextMenu: handleRightClick,
     onKeyDown: handleKeyDown,
   };
 }
