@@ -67,6 +67,7 @@ export function Section(props: SectionProps) {
   }
 
   useEffect(() => {
+    // Kill scrollbar, scrollable false now
     if (!scrollable) {
       if (isScrollbarInitialized()) {
         instance()?.destroy();
@@ -105,7 +106,7 @@ export function Section(props: SectionProps) {
         ref.current = ourRef.current;
       }
     };
-  }, [scrollable, ref]);
+  }, [children, scrollable, ref]);
 
   return (
     <section
