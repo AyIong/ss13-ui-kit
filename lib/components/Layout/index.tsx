@@ -5,11 +5,12 @@
  */
 
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
+import type { BoxProps } from '@components';
 import clsx from 'clsx';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useEffect } from 'react';
 import { osOptions } from 'tgui-core/common/constants';
-import type { BoxProps } from '../Box/types';
+import { Toaster } from '../Toast';
 import type { LayoutProps } from './types';
 
 export function Layout(props: LayoutProps) {
@@ -55,6 +56,7 @@ function LayoutContent(props: BoxProps) {
 
   return (
     <div id="layout-root" className="layout-content-wrapper">
+      <Toaster />
       <OverlayScrollbarsComponent
         defer
         className={clsx('layout-content', className, computeBoxClassName(rest))}

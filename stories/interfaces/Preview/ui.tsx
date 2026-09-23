@@ -1,11 +1,14 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: <Don't care, story> */
 import { Window } from '@stories/window';
 import { useState } from 'react';
+import { CSS_COLORS } from 'tgui-core/common/constants';
+import { round } from 'tgui-core/common/math';
 import { Chart } from 'tgui-core/components/Chart/index';
 import { FitText } from 'tgui-core/components/FitText/index';
 import {
   Button,
   Collapsible,
+  createToast,
   Dropdown,
   Icon,
   Input,
@@ -20,7 +23,6 @@ export function Preview() {
     <Window>
       <NoticeBox info>Some things can be done, if you do them</NoticeBox>
       <Window.Content>
-        <NoticeBox>I think... thinking is a mistake</NoticeBox>
         <Content />
       </Window.Content>
     </Window>
@@ -134,7 +136,19 @@ function Content() {
           title="Collapsible"
           buttons={
             <>
-              <Button>Do nothing</Button>
+              <Button
+                onClick={() => {
+                  const randomColor = CSS_COLORS[Math.floor(Math.random() * CSS_COLORS.length)];
+                  createToast({
+                    title: 'Congratulations!',
+                    content: `I said "This button do nothing", but you didnt trust me. Take that random number: I said "This button do nothing", but you didnt trust me. Take that random number: ${round(Math.random() * 100, 3)}`,
+                    icon: { name: 'check' },
+                    color: randomColor,
+                  });
+                }}
+              >
+                Do nothing
+              </Button>
               <Button
                 startIcon={{ name: 'times' }}
                 tooltip={{ content: 'This button do nothing.' }}

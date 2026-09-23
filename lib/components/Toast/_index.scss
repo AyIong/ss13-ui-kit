@@ -1,0 +1,129 @@
+@use "@styles/functions" as fn;
+
+@keyframes toast-countdown {
+  from {
+    transform: scaleX(100%);
+  }
+  to {
+    transform: scaleX(0%);
+  }
+}
+
+.toaster {
+  --indent: var(--space-m);
+
+  position: absolute;
+  top: var(--indent);
+  right: var(--indent);
+  display: grid;
+  width: min(100%, fn.rem(200px));
+  z-index: 999;
+
+  &:hover .toast {
+    transform: translateY(var(--offset));
+
+    &:not(.off-limit) {
+      opacity: 1;
+
+      @starting-style {
+        opacity: 0;
+      }
+    }
+
+    &-progress {
+      animation-play-state: paused;
+    }
+  }
+}
+
+.toast {
+  --toast-indent: var(--space-m);
+
+  grid-area: 1 / 1;
+  transition-property: transform, opacity, display;
+  transition-duration: var(--transition-time-medium);
+  // Yes, we can animate display
+  transition-behavior: allow-discrete;
+  z-index: calc(-1 * var(--index));
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--toast-indent);
+    padding: var(--toast-indent);
+    background-color: fn.oklch-from(background-color, $a: 0.85);
+    border: var(--border-width-1) solid var(--border-color);
+    border-top: var(--border-width-2) solid var(--fg-color);
+    border-radius: var(--border-radius-3);
+    box-shadow: var(--shadow-large) var(--shadow-color);
+    backdrop-filter: var(--blur-medium);
+  }
+
+  &-icon {
+    align-content: center;
+    height: var(--base-height);
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+
+    &--wrapper {
+      flex: 1;
+      display: flex;
+      gap: var(--toast-indent);
+      padding-left: var(--space-s);
+
+      &.has-icon {
+        padding: 0;
+      }
+    }
+
+    &--title {
+      grid-area: Title;
+      display: flex;
+      gap: var(--toast-indent);
+
+      > .title {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &-progress {
+    width: 100%;
+    height: var(--border-width-2);
+    background-color: fn.fg(var(--bg-color));
+    border-radius: var(--border-radius-c);
+    transform-origin: right;
+    animation: toast-countdown var(--duration) linear forwards 1;
+  }
+
+  &.off-limit {
+    opacity: 0;
+    display: none;
+  }
+
+  // MARK: Animations
+  display: block;
+  opacity: calc(1 - var(--index) * 0.35);
+  transform: translateY(calc(var(--space-l) * var(--index))) scale(calc(1 - var(--index) * 0.05));
+  transform-origin: bottom;
+
+  // Toast appears
+  @starting-style {
+    opacity: 0;
+    transform-origin: right;
+    transform: translateX(50%);
+  }
+
+  // Toast goes away
+  &.hidden {
+    opacity: 0 !important;
+    transform: translate(50%, var(--offset)) !important;
+  }
+}

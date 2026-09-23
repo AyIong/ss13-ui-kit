@@ -1,0 +1,20 @@
+import type { ReactNode } from 'react';
+import type { CssColors } from 'tgui-core/common/constants';
+import type { IconProps } from '../Icon/types';
+
+export type ToastProps = Partial<{
+  /** Toast class for CSS customization */
+  className: string;
+  /** Toast accent color */
+  color: CssColors;
+  /** Applies accent color to more elements */
+  colorized: boolean;
+  /** Bold text on top */
+  title: ReactNode;
+  /** Content under title */
+  content: ReactNode;
+  /** Any FontAwesome icon */
+  icon: IconProps;
+  /** Determies how long toast will be visible, until auto-dismiss */
+  duration: number;
+}>;
