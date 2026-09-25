@@ -39,7 +39,7 @@ export { Table } from './Table';
 export { TextArea } from './TextArea';
 export { TimeDisplay } from './TimeDisplay';
 export { TitleBar } from './TitleBar';
-export { createToast } from './Toast';
+export { toast } from './Toast';
 export { Tooltip } from './Tooltip';
 export { TrackOutsideClicks } from './TrackOutsideClicks';
 export { VirtualList } from './VirtualList';

@@ -13,17 +13,19 @@
   --indent: var(--space-m);
 
   position: absolute;
-  top: var(--indent);
-  right: var(--indent);
+  inset: var(--indent) var(--indent) auto auto;
   display: grid;
+  align-items: end;
   width: min(100%, fn.rem(200px));
   z-index: 999;
 
-  &:hover .toast {
-    transform: translateY(var(--offset));
+  &.paused .toast {
+    --toast-offset: 100%;
+    --toast-scale: 1;
+    transform: translateY(calc(100% * var(--index)));
 
     &:not(.off-limit) {
-      opacity: 1;
+      --toast-opacity: 1;
 
       @starting-style {
         opacity: 0;
@@ -38,25 +40,43 @@
 
 .toast {
   --toast-indent: var(--space-m);
+  --toast-offset: var(--space-l);
+  --toast-scale: calc(1 - var(--index) * 0.05);
+  --toast-opacity: calc(1 - var(--index) * 0.35);
 
   grid-area: 1 / 1;
+  display: flex;
+  height: 100%;
+  opacity: var(--toast-opacity);
+  transform: translateY(calc(var(--toast-offset) * var(--index))) scale(var(--toast-scale));
+  transform-origin: bottom;
   transition-property: transform, opacity, display;
   transition-duration: var(--transition-time-medium);
   // Yes, we can animate display
   transition-behavior: allow-discrete;
   z-index: calc(-1 * var(--index));
 
+  &:not(:first-of-type) {
+    padding-top: var(--space-m);
+  }
+
   &-inner {
+    --bg-color-final: #{fn.oklch-from(background-color, $a: 0.85)};
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: var(--toast-indent);
     padding: var(--toast-indent);
-    background-color: fn.oklch-from(background-color, $a: 0.85);
-    border: var(--border-width-1) solid var(--border-color);
+    background-color: var(--bg-color-final);
     border-top: var(--border-width-2) solid var(--fg-color);
+    border-bottom: var(--border-width-1) solid var(--border-color);
     border-radius: var(--border-radius-3);
     box-shadow: var(--shadow-large) var(--shadow-color);
     backdrop-filter: var(--blur-medium);
+
+    &.colorized {
+      background-color: color-mix(var(--bg-color-final) 85%, var(--bg-color) 15%);
+    }
   }
 
   &-icon {
@@ -65,6 +85,7 @@
   }
 
   &-content {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: var(--space-s);
@@ -81,7 +102,6 @@
     }
 
     &--title {
-      grid-area: Title;
       display: flex;
       gap: var(--toast-indent);
 
@@ -108,12 +128,6 @@
     display: none;
   }
 
-  // MARK: Animations
-  display: block;
-  opacity: calc(1 - var(--index) * 0.35);
-  transform: translateY(calc(var(--space-l) * var(--index))) scale(calc(1 - var(--index) * 0.05));
-  transform-origin: bottom;
-
   // Toast appears
   @starting-style {
     opacity: 0;
@@ -124,6 +138,6 @@
   // Toast goes away
   &.hidden {
     opacity: 0 !important;
-    transform: translate(50%, var(--offset)) !important;
+    transform: translate(50%, calc(var(--toast-offset) * var(--index))) !important;
   }
 }

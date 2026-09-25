@@ -2,13 +2,11 @@
 import { Window } from '@stories/window';
 import { useState } from 'react';
 import { CSS_COLORS } from 'tgui-core/common/constants';
-import { round } from 'tgui-core/common/math';
 import { Chart } from 'tgui-core/components/Chart/index';
 import { FitText } from 'tgui-core/components/FitText/index';
 import {
   Button,
   Collapsible,
-  createToast,
   Dropdown,
   Icon,
   Input,
@@ -16,6 +14,7 @@ import {
   NoticeBox,
   Section,
   Stack,
+  toast,
 } from 'tgui-core/components/index';
 
 export function Preview() {
@@ -139,11 +138,18 @@ function Content() {
               <Button
                 onClick={() => {
                   const randomColor = CSS_COLORS[Math.floor(Math.random() * CSS_COLORS.length)];
-                  createToast({
+                  const texts = [
+                    'Hi',
+                    'There is some pretty random text',
+                    'There is some pretty random text but little longer.... yes... just a little',
+                  ];
+                  const randomText = texts[Math.floor(Math.random() * texts.length)];
+                  toast({
                     title: 'Congratulations!',
-                    content: `I said "This button do nothing", but you didnt trust me. Take that random number: I said "This button do nothing", but you didnt trust me. Take that random number: ${round(Math.random() * 100, 3)}`,
+                    content: `${randomText}`,
                     icon: { name: 'check' },
                     color: randomColor,
+                    colorized: true,
                   });
                 }}
               >

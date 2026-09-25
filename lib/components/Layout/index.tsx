@@ -9,7 +9,7 @@ import type { BoxProps } from '@components';
 import clsx from 'clsx';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useEffect } from 'react';
-import { osOptions } from 'tgui-core/common/constants';
+import { osOptions, uiRootId } from 'tgui-core/common/constants';
 import { Toaster } from '../Toast';
 import type { LayoutProps } from './types';
 
@@ -53,9 +53,8 @@ export function Layout(props: LayoutProps) {
 
 function LayoutContent(props: BoxProps) {
   const { className, children, ...rest } = props;
-
   return (
-    <div id="layout-root" className="layout-content-wrapper">
+    <div id={uiRootId} className="layout-content-wrapper">
       <Toaster />
       <OverlayScrollbarsComponent
         defer
