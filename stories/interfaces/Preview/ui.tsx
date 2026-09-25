@@ -139,8 +139,7 @@ function Content() {
                   toast({
                     title: 'Unexpected',
                     content: 'Well, actually, this button creates a toast.',
-                    icon: { name: 'check' },
-                    colorized: true,
+                    icon: { name: 'question' },
                   })
                 }
               >

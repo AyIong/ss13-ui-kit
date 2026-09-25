@@ -7,8 +7,6 @@ export type ToastProps = Partial<{
   className: string;
   /** Toast accent color */
   color: CssColors;
-  /** Applies accent color to more elements */
-  colorized: boolean;
   /** Bold text on top */
   title: ReactNode;
   /** Content under title */

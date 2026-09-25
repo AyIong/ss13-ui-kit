@@ -7,7 +7,7 @@ import { Icon } from '../Icon';
 import type { ToastProps } from './types';
 
 // How long toast will be visible in milliseconds
-const defaultDuration = 5000;
+const defaultDuration = 500000;
 // Maximum visible toasts
 const toastsLimit = 3;
 // How long pause will continue after mouse leaves toasts in ms.
@@ -80,22 +80,20 @@ export function Toaster() {
 }
 
 export function toast(props: ToastProps) {
-  const { className, title, content, buttons, icon, color, colorized, duration } = props;
+  const { className, title, content, buttons, icon, color, duration } = props;
   const ourToast = (toastInstance: Toast) => (
-    <div
-      className={clsx('toast-inner', className, colorized && 'colorized', colorClassName(color))}
-    >
+    <div className={clsx('toast-inner', className, colorClassName(color))}>
       <div className={clsx('toast-content--wrapper', icon && 'has-icon')}>
         {icon && (
           <div className="toast-icon">
-            <Icon color={icon.color || color} {...icon} />
+            <Icon color={icon.color || color || 'primary'} {...icon} />
           </div>
         )}
         <div className="toast-content">
           <div className="toast-content--title">
             <div className="title">{title}</div>
             <Button
-              color={color}
+              color={color || 'primary'}
               variant="transparent"
               startIcon="times"
               onClick={() => {

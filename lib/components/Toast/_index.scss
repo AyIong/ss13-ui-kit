@@ -56,23 +56,16 @@
   z-index: calc(-1 * var(--index));
 
   &-inner {
-    --toast-bg-color: #{fn.oklch-from(background-color, $a: 0.85)};
-    --bg-color-final: var(--toast-bg-color);
-
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: var(--toast-indent);
     padding: var(--toast-indent);
-    background-color: var(--bg-color-final);
-    border-top: var(--border-width-2) solid var(--fg-color);
+    background-color: color-mix(fn.oklch-from(background-color, $a: 0.85) 85%, var(--bg-color) 15%);
+    border: var(--border-width-1) solid fn.oklch-from(bg-color, $a: 0.33);
     border-radius: var(--border-radius-3);
     box-shadow: var(--shadow-medium) var(--shadow-color);
     backdrop-filter: var(--blur-medium);
-
-    &.colorized {
-      --bg-color-final: color-mix(var(--toast-bg-color) 85%, var(--bg-color) 15%);
-    }
   }
 
   &-icon {
@@ -106,6 +99,7 @@
         display: flex;
         align-items: center;
         font-weight: bold;
+        color: var(--fg-color);
       }
     }
   }
