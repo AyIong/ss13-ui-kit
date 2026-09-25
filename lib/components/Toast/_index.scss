@@ -79,7 +79,8 @@
     backdrop-filter: var(--blur-medium);
     transition:
       transform var(--toast-transition) ease var(--toast-scale-delay),
-      opacity var(--toast-transition);
+      opacity var(--toast-transition),
+      visibility var(--toast-transition);
 
     // Toast appears
     @starting-style {
