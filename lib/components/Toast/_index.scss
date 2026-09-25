@@ -25,16 +25,16 @@
     --toast-offset: calc(100% + var(--space-m));
     --toast-scale: 1;
 
+    &-progress {
+      animation-play-state: paused;
+    }
+
     &:not(.off-limit) {
       --toast-opacity: 1;
 
       @starting-style {
         opacity: 0;
       }
-    }
-
-    &-progress {
-      animation-play-state: paused;
     }
   }
 }
