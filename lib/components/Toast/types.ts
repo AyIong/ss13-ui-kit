@@ -13,8 +13,10 @@ export type ToastProps = Partial<{
   title: ReactNode;
   /** Content under title */
   content: ReactNode;
+  /** Additional buttons inside toast */
+  buttons: ReactNode;
   /** Any FontAwesome icon */
   icon: IconProps;
-  /** Determies how long toast will be visible, until auto-dismiss */
+  /** Determies how long toast will be visible, until auto-dismiss in ms. */
   duration: number;
 }>;

@@ -11,18 +11,19 @@
 
 .toaster {
   --indent: var(--space-m);
+  --padding: calc(var(--indent) * 2);
 
   position: absolute;
   inset: var(--indent) var(--indent) auto auto;
   display: grid;
   align-items: end;
+  padding: 0 0 var(--padding) var(--padding);
   width: min(100%, fn.rem(200px));
   z-index: 999;
 
   &.paused .toast {
-    --toast-offset: 100%;
+    --toast-offset: calc(100% + var(--space-m));
     --toast-scale: 1;
-    transform: translateY(calc(100% * var(--index)));
 
     &:not(.off-limit) {
       --toast-opacity: 1;
@@ -54,12 +55,10 @@
   transition-duration: var(--transition-time-medium);
   z-index: calc(-1 * var(--index));
 
-  &:not(:first-of-type) {
-    padding-top: var(--space-m);
-  }
-
   &-inner {
-    --bg-color-final: #{fn.oklch-from(background-color, $a: 0.85)};
+    --toast-bg-color: #{fn.oklch-from(background-color, $a: 0.85)};
+    --bg-color-final: var(--toast-bg-color);
+
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -67,13 +66,12 @@
     padding: var(--toast-indent);
     background-color: var(--bg-color-final);
     border-top: var(--border-width-2) solid var(--fg-color);
-    border-bottom: var(--border-width-1) solid var(--border-color);
     border-radius: var(--border-radius-3);
-    box-shadow: var(--shadow-large) var(--shadow-color);
+    box-shadow: var(--shadow-medium) var(--shadow-color);
     backdrop-filter: var(--blur-medium);
 
     &.colorized {
-      background-color: color-mix(var(--bg-color-final) 85%, var(--bg-color) 15%);
+      --bg-color-final: color-mix(var(--toast-bg-color) 85%, var(--bg-color) 15%);
     }
   }
 
@@ -86,7 +84,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: var(--space-s);
+    gap: var(--space-xs);
 
     &--wrapper {
       flex: 1;
@@ -110,6 +108,11 @@
         font-weight: bold;
       }
     }
+  }
+
+  &-buttons {
+    display: flex;
+    gap: var(--toast-indent);
   }
 
   &-progress {

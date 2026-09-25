@@ -80,7 +80,7 @@ export function Toaster() {
 }
 
 export function toast(props: ToastProps) {
-  const { className, title, content, icon, color, colorized, duration } = props;
+  const { className, title, content, buttons, icon, color, colorized, duration } = props;
   const ourToast = (toastInstance: Toast) => (
     <div
       className={clsx('toast-inner', className, colorized && 'colorized', colorClassName(color))}
@@ -106,6 +106,7 @@ export function toast(props: ToastProps) {
           <div className="toast-content--description">{content}</div>
         </div>
       </div>
+      {buttons && <div className="toast-buttons">{buttons}</div>}
       <div className="toast-progress" />
     </div>
   );

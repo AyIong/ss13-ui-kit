@@ -1,7 +1,6 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: <Don't care, story> */
 import { Window } from '@stories/window';
 import { useState } from 'react';
-import { CSS_COLORS } from 'tgui-core/common/constants';
 import { Chart } from 'tgui-core/components/Chart/index';
 import { FitText } from 'tgui-core/components/FitText/index';
 import {
@@ -136,22 +135,14 @@ function Content() {
           buttons={
             <>
               <Button
-                onClick={() => {
-                  const randomColor = CSS_COLORS[Math.floor(Math.random() * CSS_COLORS.length)];
-                  const texts = [
-                    'Hi',
-                    'There is some pretty random text',
-                    'There is some pretty random text but little longer.... yes... just a little',
-                  ];
-                  const randomText = texts[Math.floor(Math.random() * texts.length)];
+                onClick={() =>
                   toast({
-                    title: 'Congratulations!',
-                    content: `${randomText}`,
+                    title: 'Unexpected',
+                    content: 'Well, actually, this button creates a toast.',
                     icon: { name: 'check' },
-                    color: randomColor,
                     colorized: true,
-                  });
-                }}
+                  })
+                }
               >
                 Do nothing
               </Button>
