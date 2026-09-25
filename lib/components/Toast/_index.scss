@@ -50,10 +50,8 @@
   opacity: var(--toast-opacity);
   transform: translateY(calc(var(--toast-offset) * var(--index))) scale(var(--toast-scale));
   transform-origin: bottom;
-  transition-property: transform, opacity, display;
+  transition-property: transform, opacity;
   transition-duration: var(--transition-time-medium);
-  // Yes, we can animate display
-  transition-behavior: allow-discrete;
   z-index: calc(-1 * var(--index));
 
   &:not(:first-of-type) {
@@ -125,7 +123,8 @@
 
   &.off-limit {
     opacity: 0;
-    display: none;
+    visibility: hidden;
+    content-visibility: hidden;
   }
 
   // Toast appears

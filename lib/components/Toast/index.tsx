@@ -24,15 +24,15 @@ export function Toaster() {
     if (mouseLeaveTimeout.current) {
       clearTimeout(mouseLeaveTimeout.current);
       mouseLeaveTimeout.current = null;
-      console.log('Timer cleared');
     }
   }
 
   function handleMouseEnter() {
     clearTimer();
-    startPause();
-    setPaused(true);
-    console.log('Mouse entered');
+    if (!paused) {
+      startPause();
+      setPaused(true);
+    }
   }
 
   function handleMouseLeave() {
@@ -41,16 +41,14 @@ export function Toaster() {
       endPause();
       setPaused(false);
     }, mouseLeaveCooldown);
-    console.log('Mouse leaved');
   }
 
   // Remove pause if user closed every toast manually
   useEffect(() => {
-    if (toasts.length === 0 && paused) {
+    if (toasts.length === 1 && paused) {
       endPause();
       setPaused(false);
       clearTimer();
-      console.log('No toasts, resets pause');
     }
   }, [toasts.length]);
 
@@ -62,7 +60,6 @@ export function Toaster() {
     >
       {toasts.map((toastElement, toastIndex) => {
         const isOffLimit = toastIndex >= toastsLimit;
-
         return (
           <div
             key={toastElement.id}
