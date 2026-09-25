@@ -21,6 +21,10 @@
   width: min(100%, fn.rem(200px));
   z-index: 999;
 
+  &.empty {
+    padding: 0;
+  }
+
   &.paused .toast {
     --toast-offset: calc(100% + var(--space-m));
     --toast-scale: 1;

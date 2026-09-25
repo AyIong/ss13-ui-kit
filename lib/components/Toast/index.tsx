@@ -17,6 +17,7 @@ export function Toaster() {
   const { toasts, handlers } = useToaster();
   const { startPause, endPause } = handlers;
 
+  const toastsLength = toasts.length;
   const mouseLeaveTimeout = useRef<NodeJS.Timeout>(null);
   const [paused, setPaused] = useState<boolean>(false);
 
@@ -45,16 +46,16 @@ export function Toaster() {
 
   // Remove pause if user closed every toast manually
   useEffect(() => {
-    if (toasts.length === 1 && paused) {
+    if (toastsLength === 1 && paused) {
       endPause();
       setPaused(false);
       clearTimer();
     }
-  }, [toasts.length]);
+  }, [toastsLength]);
 
   return (
     <div
-      className={clsx('toaster', paused && 'paused')}
+      className={clsx('toaster', paused && 'paused', toastsLength === 0 && 'empty')}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
