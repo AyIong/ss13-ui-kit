@@ -7,7 +7,7 @@ import { Icon } from '../Icon';
 import type { ToastProps } from './types';
 
 // How long toast will be visible in milliseconds
-const defaultDuration = 500000;
+const defaultDuration = 5000;
 // Maximum visible toasts
 const toastsLimit = 3;
 // How long pause will continue after mouse leaves toasts in ms.
