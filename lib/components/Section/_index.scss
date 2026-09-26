@@ -74,6 +74,14 @@
 
     & .section-content {
       position: absolute;
+      padding: 0;
+
+      // Force scrollbar to respect padding
+      // Prevents last element to be "sticked" to bottom
+      // When scrolled down
+      [data-overlayscrollbars-content] {
+        padding: var(--section-padding);
+      }
 
       > .os-scrollbar {
         // Allow to change it only for section
