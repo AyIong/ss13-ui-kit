@@ -1,7 +1,7 @@
 import type { ReactNode, RefObject } from 'react';
+import type { CssColors } from 'tgui-core/common/constants';
 import type { BoxProps } from '../Box/types';
 import type { IconProps } from '../Icon/types';
-import { CssColors } from 'tgui-core/common/constants';
 
 export type DropdownOption = string | DropdownEntry;
 

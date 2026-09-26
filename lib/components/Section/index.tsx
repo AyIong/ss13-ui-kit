@@ -54,6 +54,7 @@ export function Section(props: SectionProps) {
     ref,
     scrollable,
     title,
+    styleable,
     ...rest
   } = props;
 
@@ -115,6 +116,7 @@ export function Section(props: SectionProps) {
         'section',
         fill && 'fill',
         scrollable && 'scrollable',
+        styleable && 'styleable',
         className,
         computeBoxClassName(rest),
       )}

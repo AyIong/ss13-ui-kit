@@ -96,3 +96,25 @@
     }
   }
 }
+
+// Reset styles if section styleable
+@mixin reset {
+  font-weight: unset;
+  font-size: unset;
+  background-color: unset;
+  color: unset;
+  border: unset;
+  border-radius: unset;
+  box-shadow: unset;
+}
+
+.styleable {
+  @include reset();
+
+  .left-side,
+  .section-title,
+  .section-content,
+  .section-content-wrapper {
+    @include reset();
+  }
+}
