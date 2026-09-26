@@ -27,6 +27,7 @@ export const draggingClassName = 'dragging';
 // OverlayScrollbars options
 export const osOptions: OverlayScrollbarsComponentProps = {
   options: {
+    paddingAbsolute: true,
     scrollbars: {
       autoHide: 'leave',
       autoHideSuspend: true,
