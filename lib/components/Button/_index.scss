@@ -54,31 +54,22 @@
 
 // MARK: Variants: Transparent
 .button.transparent {
-  --button-fg-opacity: 1;
-  --bg-color-final: transparent;
-  --button-fg: #{fn.oklch-from(bg-color, $l: 0.1, $a: var(--button-fg-opacity))};
+  --button-disabled-opacity: 0.75;
+
+  background-color: transparent;
+  color: var(--fg-color);
 
   &:hover {
-    --bg-color-final: #{fn.oklch-from(bg-color, $a: 0.125)};
+    background-color: fn.oklch-from(bg-color, $a: 0.33);
   }
 
   &:active {
-    opacity: var(--opacity-disabled);
-  }
-
-  &.pal-primary:not(.selected) {
-    --bg-color: var(--text-color-translucent);
-  }
-
-  &.selected {
-    --bg-color: #{fn.oklch-from(color-good, $l: 0.1, $c: 0.1)};
+    color: fn.oklch-from(fg-color, $l: 0.1);
   }
 
   &.disabled {
-    --bg-color-final: #{fn.oklch-from(color-bad, $c: 0.1, $a: 0.125)};
-    --button-fg: #{fn.oklch-from(color-bad, $l: 0.075)};
-
-    opacity: 1;
+    background-color: fn.oklch-from(bg-color, $a: 0.2);
+    color: fn.oklch-from(fg-color, $c: 0.033);
   }
 }
 
@@ -90,10 +81,6 @@
 
     pointer-events: none;
     opacity: var(--button-disabled-opacity);
-  }
-
-  &.selected {
-    --bg-color: var(--color-good);
   }
 
   &.circular {

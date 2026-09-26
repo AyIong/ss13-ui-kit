@@ -69,8 +69,7 @@ export function ButtonContainer(props: ButtonBaseProps) {
         variant,
         fluid && 'fluid',
         disabled && 'disabled',
-        selected && 'selected',
-        colorClassName(color),
+        colorClassName(selected ? 'good' : disabled ? 'bad' : color),
         computeBoxClassName(rest),
       )}
       {...computeBoxProps(rest)}
