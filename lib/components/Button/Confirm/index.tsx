@@ -1,7 +1,7 @@
 import { useLongPress } from '@uidotdev/usehooks';
 import clsx from 'clsx';
 import { type CSSProperties, useEffect, useState } from 'react';
-import { ButtonContainer, ButtonContent, renderIcon } from '../Button';
+import { ButtonContainer, ButtonContent, renderIcon } from '..';
 import type { ConfirmProps } from './types';
 
 const defaultConfirmDelay = 1000;

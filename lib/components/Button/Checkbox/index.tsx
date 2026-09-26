@@ -1,4 +1,4 @@
-import { ButtonContainer, ButtonContent, ButtonIcon } from '../Button';
+import { ButtonContainer, ButtonContent, ButtonIcon } from '..';
 import type { CheckboxProps } from './types';
 
 /**

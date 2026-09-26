@@ -1,4 +1,4 @@
-import type { ButtonBaseProps } from '../Button/types';
+import type { ButtonBaseProps } from '../types';
 
 export type CheckboxProps = Partial<{
   checked: boolean;

@@ -1,6 +1,6 @@
 import { type ComponentProps, useState } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
-import { Stack } from '../Stack';
+import { Stack } from '../../Stack';
 import { Confirm } from '.';
 
 type StoryProps = ComponentProps<typeof Confirm>;
