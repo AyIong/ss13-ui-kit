@@ -72,7 +72,7 @@
   &.scrollable {
     flex-shrink: 1;
 
-    & .section-content {
+    > .section-content-wrapper > .section-content {
       position: absolute;
       padding: 0;
 

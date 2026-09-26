@@ -114,6 +114,7 @@ function Content() {
             </Chart>
           </Stack.Item>
         </Stack>
+        <Section title="Second section">See? No additional padding</Section>
       </Section>
       <Section
         scrollable={isScrollable}
