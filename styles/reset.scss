@@ -6,6 +6,11 @@
   interpolate-size: allow-keywords;
 }
 
+::selection {
+  background-color: var(--secondary-color);
+  color: contrast-color(var(--secondary-color));
+}
+
 html,
 body {
   box-sizing: border-box;
