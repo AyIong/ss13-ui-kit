@@ -1,7 +1,7 @@
-import clsx from 'clsx';
 import { useRef } from 'react';
 import { colorClassName } from 'tgui-core/common/color';
 import { keyOfMatchingRange, scale } from 'tgui-core/common/math';
+import { classes } from 'tgui-core/common/react';
 import { computeBoxProps } from 'tgui-core/common/ui';
 import { DraggableControl, useDraggable } from '../../hooks';
 import { AnimatedNumber } from '../AnimatedNumber';
@@ -57,7 +57,7 @@ export function Knob(props: KnobProps) {
     >
       <div
         ref={draggableRef}
-        className={clsx(
+        className={classes(
           'knob',
           bipolar && 'bipolar',
           dragging && 'dragging',

@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { classes } from 'tgui-core/common/react';
 import { computeBoxClassName, computeBoxProps } from 'tgui-core/common/ui';
 import type { ColorBoxProps } from './types';
 
@@ -20,7 +20,7 @@ export function ColorBox(props: ColorBoxProps) {
 
   return (
     <div
-      className={clsx('colorbox', className, computeBoxClassName(rest))}
+      className={classes('colorbox', className, computeBoxClassName(rest))}
       {...computeBoxProps({
         style: { '--colorbox-bg': color, ...style },
         ...rest,

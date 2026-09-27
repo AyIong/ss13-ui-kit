@@ -1,7 +1,7 @@
-import clsx from 'clsx';
 import { useRef, useState } from 'react';
 import { CSSTransition } from 'react-transitioning';
 import { colorClassName } from 'tgui-core/common/color';
+import { classes } from 'tgui-core/common/react';
 import { useButton } from 'tgui-core/hooks/useButton';
 import { Icon } from '../Icon';
 import type { IconProps } from '../Icon/types';
@@ -29,7 +29,7 @@ export function Collapsible(props: CollapsibleProps) {
   const endIconProps = typeof endIcon === 'string' ? { name: endIcon } : endIcon;
 
   return (
-    <div className={clsx('collapsible', isOpen && 'is-open', colorClassName(color))}>
+    <div className={classes('collapsible', isOpen && 'is-open', colorClassName(color))}>
       <div className="collapsible-controls">
         <div className="collapsible-button" {...interactions}>
           {startIcon ? <Icon {...(startIconProps as IconProps)} /> : <CollapsibleIcon />}
@@ -63,9 +63,9 @@ function CollapsibleIcon() {
 
   return (
     <div className={iconClassName}>
-      <div className={clsx(iconClassName, `${iconClassName}-1`)} />
-      <div className={clsx(iconClassName, `${iconClassName}-2`)} />
-      <div className={clsx(iconClassName, `${iconClassName}-3`)} />
+      <div className={classes(iconClassName, `${iconClassName}-1`)} />
+      <div className={classes(iconClassName, `${iconClassName}-2`)} />
+      <div className={classes(iconClassName, `${iconClassName}-3`)} />
     </div>
   );
 }

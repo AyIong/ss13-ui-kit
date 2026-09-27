@@ -1,12 +1,12 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import clsx from 'clsx';
+import { classes } from 'tgui-core/common/react';
 import type { CellProps, RowProps, TableProps } from './types';
 
 export function Table(props: TableProps) {
   const { className, collapsing, children, ...rest } = props;
   return (
     <table
-      className={clsx('table', collapsing && 'collapsing', className, computeBoxClassName(rest))}
+      className={classes('table', collapsing && 'collapsing', className, computeBoxClassName(rest))}
       {...computeBoxProps(rest)}
     >
       <tbody>{children}</tbody>
@@ -18,7 +18,7 @@ function TableRow(props: RowProps) {
   const { className, header, ...rest } = props;
   return (
     <tr
-      className={clsx(
+      className={classes(
         'table-row',
         header && 'header',
         className,
@@ -33,7 +33,7 @@ function TableCell(props: CellProps) {
   const { className, collapsing, colSpan, header, ...rest } = props;
   return (
     <td
-      className={clsx(
+      className={classes(
         'table-cell',
         collapsing && 'collapsing',
         header && 'header',

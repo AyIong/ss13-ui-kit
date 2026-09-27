@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { classes } from 'tgui-core/common/react';
 import { Box } from '../Box';
 import type { BoxProps } from '../Box/types';
 
@@ -15,7 +15,7 @@ export function Dimmer(props: BoxProps) {
   const { className, children, ...rest } = props;
 
   return (
-    <Box className={clsx('dimmer', className)} {...rest}>
+    <Box className={classes('dimmer', className)} {...rest}>
       {children}
     </Box>
   );

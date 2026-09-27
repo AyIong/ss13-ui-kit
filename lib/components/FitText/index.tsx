@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import { type CSSProperties, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { getCssVariableValue } from 'tgui-core/common/css';
+import { classes } from 'tgui-core/common/react';
 import { unit } from 'tgui-core/common/ui';
 import type { FitTextProps } from './types';
 
@@ -50,7 +50,7 @@ export function FitText(props: FitTextProps) {
   return (
     <div
       ref={containerRef}
-      className={clsx('fittext', ellipsis && 'ellipsis')}
+      className={classes('fittext', ellipsis && 'ellipsis')}
       style={
         {
           '--font-size-min': unit(minFontSize || '8px'),
@@ -59,7 +59,7 @@ export function FitText(props: FitTextProps) {
         } as CSSProperties
       }
     >
-      <span ref={textRef} className={clsx('fittext-content', className)}>
+      <span ref={textRef} className={classes('fittext-content', className)}>
         {children}
       </span>
     </div>

@@ -1,8 +1,8 @@
 import { UI_DISABLED, UI_INTERACTIVE, UI_UPDATE } from '@common/constants';
 import { toTitleCase } from '@common/string';
 import { Button, Icon } from '@components';
-import clsx from 'clsx';
 import { type PrimitiveAtom, useSetAtom } from 'jotai';
+import { classes } from 'tgui-core/common/react';
 import type { TitleBarProps } from './types';
 
 function statusToColor(status: number): string {
@@ -36,7 +36,7 @@ export function TitleBar(props: TitleBarProps) {
     (typeof title === 'string' && title === title.toLowerCase() && toTitleCase(title)) || title;
 
   return (
-    <div className={clsx('titlebar', canClose && 'closeable', className)} style={styles}>
+    <div className={classes('titlebar', canClose && 'closeable', className)} style={styles}>
       <div className="dragzone" onMouseDown={(event) => onDragStart?.(event)} />
       {status === undefined ? (
         <Icon className="status-icon" name="tools" opacity={0.5} />

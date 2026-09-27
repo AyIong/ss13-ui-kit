@@ -3,7 +3,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
+import { classes } from 'tgui-core/common/react';
 import { tgIcons } from './icons';
 import type { IconNamesUnion, IconProps, IconStackProps } from './types';
 
@@ -44,7 +44,7 @@ export function Icon(props: IconProps) {
     <FontAwesomeIcon
       // @ts-expect-error: Allow to use custom icons
       icon={[regular ? 'far' : 'fas', name as IconNamesUnion]}
-      className={clsx(className, 'icon', computeBoxClassName(rest))}
+      className={classes(className, 'icon', computeBoxClassName(rest))}
       style={customStyle}
       {...rest}
       {...boxProps}
@@ -76,7 +76,7 @@ export function IconStack(props: IconStackProps) {
 
   return (
     <span
-      className={clsx('icon-stack', className, computeBoxClassName<HTMLSpanElement>(rest))}
+      className={classes('icon-stack', className, computeBoxClassName<HTMLSpanElement>(rest))}
       {...computeBoxProps(rest)}
     >
       {children}

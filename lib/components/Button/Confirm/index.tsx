@@ -1,6 +1,6 @@
 import { useLongPress } from '@uidotdev/usehooks';
-import clsx from 'clsx';
 import { type CSSProperties, useEffect, useState } from 'react';
+import { classes } from 'tgui-core/common/react';
 import { ButtonContainer, ButtonContent, renderIcon } from '..';
 import type { ConfirmProps } from './types';
 
@@ -72,7 +72,7 @@ export function Confirm(props: ConfirmProps) {
 
   return (
     <ButtonContainer
-      className={clsx('button-confirm', confirmed && 'confirmed')}
+      className={classes('button-confirm', confirmed && 'confirmed')}
       style={
         {
           '--confirm-delay': `${confirmDelay || defaultConfirmDelay}ms`,
@@ -84,7 +84,7 @@ export function Confirm(props: ConfirmProps) {
     >
       {/* Render both, so button size will be static */}
       <div
-        className={clsx(
+        className={classes(
           'button-confirm-content',
           (!confirmed || !hasConfirmedContent) && 'visible',
         )}
@@ -93,13 +93,13 @@ export function Confirm(props: ConfirmProps) {
         <ButtonContent>{children}</ButtonContent>
       </div>
       {hasConfirmedContent && (
-        <div className={clsx('button-confirm-content', confirmed && 'visible')}>
+        <div className={classes('button-confirm-content', confirmed && 'visible')}>
           {confirmedIcon && renderIcon(confirmedIcon)}
           <ButtonContent>{confirmedContent || children}</ButtonContent>
         </div>
       )}
       <div
-        className={clsx(
+        className={classes(
           'button-confirm--fill',
           holding && 'holding',
           confirmed && 'confirmed',

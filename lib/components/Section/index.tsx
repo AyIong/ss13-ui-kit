@@ -1,6 +1,5 @@
-import { canRender } from '@common/react';
+import { canRender, classes } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import clsx from 'clsx';
 import { useOverlayScrollbars } from 'overlayscrollbars-react';
 import { useEffect, useRef } from 'react';
 import { osOptions } from 'tgui-core/common/constants';
@@ -112,7 +111,7 @@ export function Section(props: SectionProps) {
   return (
     <section
       id={containerId}
-      className={clsx(
+      className={classes(
         'section',
         fill && 'fill',
         scrollable && 'scrollable',
@@ -128,12 +127,16 @@ export function Section(props: SectionProps) {
           {buttons && <div className="right-side">{buttons}</div>}
         </div>
       )}
-      <div className={clsx('section-content-wrapper')}>
+      <div className={classes('section-content-wrapper')}>
         <div
           // That is not really scrollable ref, it'll be used only if section
           // not scrallable, otherwise it will be replaced with OS viewport ref
           ref={ourRef}
-          className={clsx('section-content', fitted && 'fitted', noTopPadding && 'no-top-padding')}
+          className={classes(
+            'section-content',
+            fitted && 'fitted',
+            noTopPadding && 'no-top-padding',
+          )}
           onScroll={onScroll}
         >
           {scrollable ? (

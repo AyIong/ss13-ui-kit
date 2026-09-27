@@ -1,7 +1,7 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { useAutofocus, useInput } from '@hooks';
-import clsx from 'clsx';
 import { type RefObject, useRef } from 'react';
+import { classes } from 'tgui-core/common/react';
 import type { TextAreaProps } from './types';
 
 /**
@@ -57,7 +57,7 @@ export function TextArea(props: TextAreaProps) {
   });
 
   const boxProps = computeBoxProps(rest);
-  const classNames = clsx(
+  const classNames = classes(
     'input',
     'input-textarea',
     fluid && 'fluid',

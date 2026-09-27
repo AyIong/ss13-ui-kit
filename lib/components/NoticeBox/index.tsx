@@ -1,6 +1,6 @@
 import { Box, Icon } from '@components';
-import clsx from 'clsx';
 import { colorClassName } from 'tgui-core/common/color';
+import { classes } from 'tgui-core/common/react';
 import type { IconNamesUnion } from '../Icon/types';
 import type { NoticeBoxProps, NoticeType } from './types';
 
@@ -25,7 +25,7 @@ export function NoticeBox(props: NoticeBoxProps) {
 
   return (
     <Box
-      className={clsx(
+      className={classes(
         'noticebox',
         info && 'type-info',
         success && 'type-success',

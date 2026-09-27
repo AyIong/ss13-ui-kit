@@ -1,7 +1,7 @@
-import clsx from 'clsx';
 import { useRef } from 'react';
 import { colorClassName } from 'tgui-core/common/color';
 import { keyOfMatchingRange } from 'tgui-core/common/math';
+import { classes } from 'tgui-core/common/react';
 import { computeBoxProps, unit } from 'tgui-core/common/ui';
 import { DraggableControl, useDraggable } from '../../hooks';
 import { AnimatedNumber } from '../AnimatedNumber';
@@ -57,7 +57,7 @@ export function Slider(props: SliderProps) {
     >
       <div
         ref={draggableRef}
-        className={clsx(
+        className={classes(
           'slider',
           vertical && 'slider-vertical',
           dragging && 'dragging',
@@ -88,11 +88,11 @@ export function Slider(props: SliderProps) {
               content={`${format ? formattedValue : displayValue}`}
               position="top"
             >
-              <div className={clsx('slider-cursor', fillValue && 'always-visible')} />
+              <div className={classes('slider-cursor', fillValue && 'always-visible')} />
             </Tooltip>
           </div>
         </div>
-        <span className={clsx('slider-value', dragging && 'dragging')}>
+        <span className={classes('slider-value', dragging && 'dragging')}>
           <AnimatedNumber value={value} format={format} />
           {props.unit}
         </span>

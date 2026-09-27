@@ -1,9 +1,9 @@
 import { clamp01, keyOfMatchingRange, scale } from '@common/math';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { AnimatedNumber, Icon } from '@components';
-import clsx from 'clsx';
 import type { CSSProperties } from 'react';
 import { colorClassName } from 'tgui-core/common/color';
+import { classes } from 'tgui-core/common/react';
 import type { RoundGaugeProps } from './types';
 
 /**
@@ -101,7 +101,7 @@ export function RoundGauge(props: RoundGaugeProps) {
   return (
     <div className="roundgauge-wrapper">
       <div
-        className={clsx('roundgauge', className, computeBoxClassName(rest))}
+        className={classes('roundgauge', className, computeBoxClassName(rest))}
         {...computeBoxProps({
           style: {
             '--size': size,
@@ -115,7 +115,7 @@ export function RoundGauge(props: RoundGaugeProps) {
         <svg className="roundgauge-rings" viewBox="0 0 100 50">
           {(alertAfter || alertBefore) && (
             <Icon
-              className={clsx(
+              className={classes(
                 'roundgauge-icon',
                 alertActive && 'alert',
                 colorClassName(alertColor),
@@ -133,7 +133,7 @@ export function RoundGauge(props: RoundGaugeProps) {
         <svg className="roundgauge-needle--wrapper" viewBox="0 0 100 50">
           <g className="roundgauge-needle">
             <polygon
-              className={clsx('roundgauge-needle--line', alertActive && 'alert')}
+              className={classes('roundgauge-needle--line', alertActive && 'alert')}
               points="47,50 50,15 53,50"
             />
             <circle className="roundgauge-needle--circle" cx="50" cy="50" r="8" />

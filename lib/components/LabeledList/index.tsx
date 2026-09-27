@@ -1,7 +1,7 @@
 import { Box, Tooltip } from '@components';
-import clsx from 'clsx';
 import type { PropsWithChildren, ReactNode } from 'react';
 import { colorClassName } from 'tgui-core/common/color';
+import { classes } from 'tgui-core/common/react';
 import type { LabeledListItemProps } from './types';
 
 export function LabeledList(props: PropsWithChildren) {
@@ -40,7 +40,7 @@ function LabeledListItem(props: LabeledListItemProps) {
 
   const labelChild = (
     <Box
-      className={clsx(
+      className={classes(
         'labeledlist-cell label',
         tooltip && 'tooltiped',
         // Kinda flipped because we want nowrap as default. Cleaner CSS this way though.
@@ -55,10 +55,10 @@ function LabeledListItem(props: LabeledListItemProps) {
   );
 
   return (
-    <div className={clsx('labeledlist-row', className)}>
+    <div className={classes('labeledlist-row', className)}>
       {labelChild}
       <Box
-        className={clsx('labeledlist-cell', colorClassName(color || 'text'))}
+        className={classes('labeledlist-cell', colorClassName(color || 'text'))}
         textAlign={textAlign}
         verticalAlign={verticalAlign}
       >

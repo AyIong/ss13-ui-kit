@@ -1,6 +1,6 @@
 import { Stack, type StackProps } from '@components';
-import clsx from 'clsx';
 import { colorClassName } from 'tgui-core/common/color';
+import { classes } from 'tgui-core/common/react';
 import type { LabeledControlsItemProps } from './types';
 
 /**
@@ -39,7 +39,7 @@ function LabeledControlsItem(props: LabeledControlsItemProps) {
   return (
     <Stack vertical className="labeledcontrols-item" {...rest}>
       <Stack.Item>{children}</Stack.Item>
-      <Stack.Item className={clsx('labeledcontrols-item--label', colorClassName('label'))}>
+      <Stack.Item className={classes('labeledcontrols-item--label', colorClassName('label'))}>
         {label}
       </Stack.Item>
     </Stack>

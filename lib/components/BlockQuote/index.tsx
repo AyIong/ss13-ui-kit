@@ -1,6 +1,6 @@
 import { Box, type BoxProps } from '@components';
-import clsx from 'clsx';
 import { colorClassName } from 'tgui-core/common/color';
+import { classes } from 'tgui-core/common/react';
 
 /**
  * ## BlockQuote
@@ -17,7 +17,7 @@ export function BlockQuote(props: BoxProps) {
   return (
     <Box
       as="blockquote"
-      className={clsx('blockquote', className, colorClassName(color || 'label'))}
+      className={classes('blockquote', className, colorClassName(color || 'label'))}
       {...rest}
     />
   );

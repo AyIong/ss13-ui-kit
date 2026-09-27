@@ -1,8 +1,8 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { type BoxProps, Icon, type IconProps, Tooltip } from '@components';
 import { useButton } from '@hooks';
-import clsx from 'clsx';
 import { colorClassName } from 'tgui-core/common/color';
+import { classes } from 'tgui-core/common/react';
 import type { ButtonBaseProps, ButtonContentProps, ButtonIconProps, ButtonProps } from './types';
 
 /**
@@ -36,7 +36,7 @@ export function Button(props: ButtonProps) {
 
   return (
     <ButtonContainer
-      className={clsx(circular && 'circular', className)}
+      className={classes(circular && 'circular', className)}
       {...rest}
       {...interactions}
     >
@@ -63,7 +63,7 @@ export function ButtonContainer(props: ButtonBaseProps) {
   let finalButtonContainer = (
     <div
       tabIndex={-1}
-      className={clsx(
+      className={classes(
         className,
         'button',
         variant,
@@ -91,7 +91,7 @@ export function ButtonContainer(props: ButtonBaseProps) {
 
 export function ButtonIcon(props: ButtonIconProps & BoxProps) {
   const iconProps = typeof props === 'string' ? { name: props } : props;
-  return <Icon className={clsx(props.className, 'button-icon')} {...(iconProps as IconProps)} />;
+  return <Icon className={classes(props.className, 'button-icon')} {...(iconProps as IconProps)} />;
 }
 
 export function renderIcon(icon: ButtonIconProps) {
@@ -101,7 +101,7 @@ export function renderIcon(icon: ButtonIconProps) {
 export function ButtonContent(props: ButtonContentProps) {
   const { children, innerStyle, className } = props;
   return (
-    <div className={clsx(className, 'button-content')} style={innerStyle}>
+    <div className={classes(className, 'button-content')} style={innerStyle}>
       {children}
     </div>
   );

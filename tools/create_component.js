@@ -15,14 +15,14 @@ const files = {
   // Placeholder
 }
 `,
-  'index.tsx': `import clsx from 'clsx';
+  'index.tsx': `import { classes } from 'tgui-core/common/react';
 import type { ${componentName}Props } from './types';
 
 export function ${componentName}(props: ${componentName}Props) {
   const { children, className } = props;
 
   return (
-    <div className={clsx('${componentName.toLowerCase()}', className)}>
+    <div className={classes('${componentName.toLowerCase()}', className)}>
       {children}
     </div>
   );

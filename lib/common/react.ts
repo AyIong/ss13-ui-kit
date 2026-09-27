@@ -1,16 +1,10 @@
+import clsx, { type ClassValue } from 'clsx';
+
 /**
  * Helper for conditionally adding/removing classes in React
- * @deprecated Use the `clsx` package instead
  */
-export function classes(classNames: (string | BooleanLike)[]): string {
-  let className = '';
-  for (let i = 0; i < classNames.length; i++) {
-    const part = classNames[i];
-    if (typeof part === 'string') {
-      className += `${part} `;
-    }
-  }
-  return className;
+export function classes(...classNames: ClassValue[]): string {
+  return clsx(...classNames);
 }
 
 /**

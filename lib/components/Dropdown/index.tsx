@@ -1,6 +1,6 @@
 import { unit } from '@common/ui';
-import clsx from 'clsx';
 import { useRef, useState } from 'react';
+import { classes } from 'tgui-core/common/react';
 import { useButton } from 'tgui-core/hooks/useButton';
 import { Button, ButtonContainer, ButtonContent, ButtonIcon } from '../Button';
 import { Floating } from '../Floating';
@@ -80,7 +80,7 @@ export function Dropdown(props: DropdownProps) {
   return (
     <div
       style={{ width: unit(width) }}
-      className={clsx('dropdown', isOpen && 'dropdown-open', iconOnly && 'icon-only', className)}
+      className={classes('dropdown', isOpen && 'dropdown-open', iconOnly && 'icon-only', className)}
     >
       <Floating
         handleOpen={isOpen}

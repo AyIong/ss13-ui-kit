@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import type { CSSProperties } from 'react';
+import { classes } from 'tgui-core/common/react';
 
 type Props = Partial<{
   /** Divider thickness. */
@@ -21,7 +21,7 @@ export function Divider(props: Props) {
   const { size, vertical } = props;
   return (
     <div
-      className={clsx('divider', vertical && 'divider-vertical')}
+      className={classes('divider', vertical && 'divider-vertical')}
       style={{ '--size': size } as CSSProperties}
     />
   );

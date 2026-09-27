@@ -3,7 +3,6 @@ import { isEnter, KEY } from '@common/keys';
 import { unit } from '@common/ui';
 import { Input } from '@components';
 import { useButton, useFuzzySearch } from '@hooks';
-import clsx from 'clsx';
 import {
   OverlayScrollbarsComponent,
   type OverlayScrollbarsComponentRef,
@@ -17,6 +16,7 @@ import {
   useState,
 } from 'react';
 import { colorClassName } from 'tgui-core/common/color';
+import { classes } from 'tgui-core/common/react';
 import {
   entryClassName,
   getMaxHeight,
@@ -120,7 +120,7 @@ export function DropdownMenu(props: DropdownMenuProps) {
   }, [highlightedIndex]);
 
   return (
-    <div className={clsx('dropdown-menu', colorClassName(color))}>
+    <div className={classes('dropdown-menu', colorClassName(color))}>
       {options.length > (maxItems || maxItemsDefault) && (
         <div className="dropdown-menu-input">
           <Input
@@ -176,7 +176,7 @@ function DropdownMenuEntry(props: DropdownMenuEntryProps & { highlighted?: boole
 
   return (
     <div
-      className={clsx(
+      className={classes(
         'dropdown-menu-entry',
         selected === value && 'selected',
         highlighted && 'highlighted',

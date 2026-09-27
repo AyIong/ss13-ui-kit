@@ -1,7 +1,6 @@
-import clsx from 'clsx';
+import { classes } from '@common/react';
+import { Layout, TitleBar } from '@components';
 import { type ReactNode, type RefObject, useRef } from 'react';
-import { TitleBar } from 'tgui-core/components/index';
-import { Layout } from 'tgui-core/components/Layout/index';
 
 type Props = Partial<{
   children: ReactNode;
@@ -30,7 +29,7 @@ export function Window(props: Props) {
       <TitleBar title={title} canClose={canClose}>
         {buttons}
       </TitleBar>
-      <Layout.Content className={clsx(showDimmer && 'dimmed')}>{children}</Layout.Content>
+      <Layout.Content className={classes(showDimmer && 'dimmed')}>{children}</Layout.Content>
       {/* Resize handlers */}
       <ResizeHandler targetRef={ref} axis="x" />
       <ResizeHandler targetRef={ref} axis="y" />
@@ -48,7 +47,7 @@ type WindowContentProps = Partial<{
 export function WindowContent(props: WindowContentProps) {
   const { children, className, fitted, ...rest } = props;
   return (
-    <div className={clsx('window-content', className)} {...rest}>
+    <div className={classes('window-content', className)} {...rest}>
       {fitted ? children : <div className="window-padding">{children}</div>}
     </div>
   );

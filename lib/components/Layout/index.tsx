@@ -6,10 +6,10 @@
 
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import type { BoxProps } from '@components';
-import clsx from 'clsx';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useEffect } from 'react';
 import { osOptions, uiRootId } from 'tgui-core/common/constants';
+import { classes } from 'tgui-core/common/react';
 import { Toaster } from '../Toast';
 import type { LayoutProps } from './types';
 
@@ -43,7 +43,7 @@ export function Layout(props: LayoutProps) {
   return (
     <div
       id="tgui-layout"
-      className={clsx('layout', className, computeBoxClassName(rest))}
+      className={classes('layout', className, computeBoxClassName(rest))}
       {...computeBoxProps(rest)}
     >
       {children}
@@ -58,7 +58,7 @@ function LayoutContent(props: BoxProps) {
       <Toaster />
       <OverlayScrollbarsComponent
         defer
-        className={clsx('layout-content', className, computeBoxClassName(rest))}
+        className={classes('layout-content', className, computeBoxClassName(rest))}
         {...osOptions}
         {...computeBoxProps(rest)}
       >

@@ -1,7 +1,7 @@
-import clsx from 'clsx';
 import { type CSSProperties, useEffect, useRef, useState } from 'react';
 import { toast as hotToast, resolveValue, type Toast, useToaster } from 'react-hot-toast/headless';
 import { colorClassName } from 'tgui-core/common/color';
+import { classes } from 'tgui-core/common/react';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 import type { ToastProps } from './types';
@@ -55,7 +55,7 @@ export function Toaster() {
 
   return (
     <div
-      className={clsx('toaster', paused && 'paused', toastsLength === 0 && 'empty')}
+      className={classes('toaster', paused && 'paused', toastsLength === 0 && 'empty')}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -64,7 +64,11 @@ export function Toaster() {
         return (
           <div
             key={toastElement.id}
-            className={clsx('toast', !toastElement.visible && 'hidden', isOffLimit && 'off-limit')}
+            className={classes(
+              'toast',
+              !toastElement.visible && 'hidden',
+              isOffLimit && 'off-limit',
+            )}
             style={
               {
                 '--index': toastIndex,
@@ -83,8 +87,8 @@ export function Toaster() {
 export function toast(props: ToastProps) {
   const { className, title, content, buttons, icon, color, duration } = props;
   const ourToast = (toastInstance: Toast) => (
-    <div className={clsx('toast-inner', className, colorClassName(color))}>
-      <div className={clsx('toast-content--wrapper', icon && 'has-icon')}>
+    <div className={classes('toast-inner', className, colorClassName(color))}>
+      <div className={classes('toast-content--wrapper', icon && 'has-icon')}>
         {icon && (
           <div className="toast-icon">
             <Icon color={icon.color || color || 'primary'} {...icon} />

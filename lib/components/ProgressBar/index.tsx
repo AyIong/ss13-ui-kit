@@ -1,8 +1,8 @@
 import { CSS_COLORS } from '@common/constants';
 import { clamp01, keyOfMatchingRange, scale } from '@common/math';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import clsx from 'clsx';
 import type { CSSProperties } from 'react';
+import { classes } from 'tgui-core/common/react';
 import type { ProgressBarProps } from './types';
 
 /**
@@ -49,7 +49,7 @@ export function ProgressBar(props: ProgressBarProps) {
   }
 
   return (
-    <div className={clsx(outerClasses)} {...outerProps}>
+    <div className={classes(outerClasses)} {...outerProps}>
       <div className="ProgressBar__fill ProgressBar__fill--animated" style={fillStyles} />
       <div className="ProgressBar__content">
         {hasContent ? children : !empty && `${(scaledValue * 100).toFixed(fractionDigits)}%`}
