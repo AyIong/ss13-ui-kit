@@ -1,6 +1,9 @@
-import { Button, Divider, LabeledList, Section } from '@components';
 import { type ComponentProps, useState } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { Button } from '../Button';
+import { Divider } from '../Divider';
+import { Section } from '../Section';
+import { LabeledList } from '.';
 
 type StoryProps = ComponentProps<typeof LabeledList>;
 

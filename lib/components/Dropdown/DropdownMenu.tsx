@@ -1,8 +1,6 @@
 import { osOptions } from '@common/constants';
 import { isEnter, KEY } from '@common/keys';
 import { unit } from '@common/ui';
-import { Input } from '@components';
-import { useButton, useFuzzySearch } from '@hooks';
 import {
   OverlayScrollbarsComponent,
   type OverlayScrollbarsComponentRef,
@@ -17,6 +15,9 @@ import {
 } from 'react';
 import { colorClassName } from 'tgui-core/common/color';
 import { classes } from 'tgui-core/common/react';
+import { useButton } from 'tgui-core/hooks/useButton';
+import { useFuzzySearch } from 'tgui-core/hooks/useFuzzySearch';
+import { Input } from '../Input';
 import {
   entryClassName,
   getMaxHeight,

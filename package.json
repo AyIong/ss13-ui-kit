@@ -1,11 +1,13 @@
 {
-  "name": "tgui-core",
+  "name": "tgui-modern",
   "description": "SS13 React Component Kit",
-  "author": "/tg/station",
-  "homepage": "https://github.com/tgstation/tgui-core",
-  "license": "MIT",
+  "version": "0.0.0",
   "type": "module",
+  "license": "MIT",
+  "author": "aylong, jlsnow301, stylesmistake",
+  "homepage": "https://github.com/tgstation/tgui-core",
   "packageManager": "bun@1.3.5",
+  "sideEffects": false,
   "scripts": {
     "create-component": "bun tools/create_component.js",
     "build-rslib": "rslib build",

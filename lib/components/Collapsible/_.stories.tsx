@@ -1,7 +1,9 @@
-import { Button, Collapsible, Stack } from '@components';
 import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { CSS_COLORS } from 'tgui-core/common/constants';
+import { Button } from '../Button';
+import { Stack } from '../Stack';
+import { Collapsible } from '.';
 
 type StoryProps = ComponentProps<typeof Collapsible>;
 

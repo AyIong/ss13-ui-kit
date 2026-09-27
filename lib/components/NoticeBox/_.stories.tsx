@@ -1,7 +1,8 @@
 import { CSS_COLORS } from '@common/constants';
-import { NoticeBox, Stack } from '@components';
 import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { NoticeBox } from '.';
+import { Stack } from '../Stack';
 
 type StoryProps = ComponentProps<typeof NoticeBox>;
 

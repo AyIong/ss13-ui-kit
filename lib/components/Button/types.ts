@@ -1,7 +1,7 @@
 import type { CssColors } from '@common/constants';
-import type { BoxProps, IconProps } from '@components';
 import type { CSSProperties, ReactNode } from 'react';
-import type { IconNamesUnion } from '../Icon/types';
+import type { BoxProps } from '../Box/types';
+import type { IconNamesUnion, IconProps } from '../Icon/types';
 import type { TooltipContentProps } from '../Tooltip/types';
 
 export type ButtonInteractionProps = Partial<{

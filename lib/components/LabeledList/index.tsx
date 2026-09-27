@@ -1,7 +1,8 @@
-import { Box, Tooltip } from '@components';
 import type { PropsWithChildren, ReactNode } from 'react';
 import { colorClassName } from 'tgui-core/common/color';
 import { classes } from 'tgui-core/common/react';
+import { Box } from '../Box';
+import { Tooltip } from '../Tooltip';
 import type { LabeledListItemProps } from './types';
 
 export function LabeledList(props: PropsWithChildren) {

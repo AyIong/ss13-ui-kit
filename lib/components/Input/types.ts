@@ -1,4 +1,4 @@
-import type { BoxProps } from '@components';
+import type { BoxProps } from '../Box/types';
 
 /** Takes two optional params: The dom element type & the input type */
 export type BaseInputProps<

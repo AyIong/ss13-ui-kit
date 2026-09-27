@@ -3,7 +3,8 @@ import { colorClassName } from 'tgui-core/common/color';
 import { keyOfMatchingRange, scale } from 'tgui-core/common/math';
 import { classes } from 'tgui-core/common/react';
 import { computeBoxProps } from 'tgui-core/common/ui';
-import { DraggableControl, useDraggable } from '../../hooks';
+import { DraggableControl } from 'tgui-core/hooks/useDraggable/DraggableControl';
+import { useDraggable } from 'tgui-core/hooks/useDraggable/index';
 import { AnimatedNumber } from '../AnimatedNumber';
 import type { KnobProps } from './types';
 

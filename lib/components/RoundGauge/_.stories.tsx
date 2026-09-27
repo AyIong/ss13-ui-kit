@@ -1,7 +1,10 @@
-import { Button, RoundGauge, Section, Stack } from '@components';
 import { type ComponentProps, type PropsWithChildren, useState } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { Button } from '../Button';
 import { LabeledControls } from '../LabeledControls';
+import { Section } from '../Section';
+import { Stack } from '../Stack';
+import { RoundGauge } from '.';
 
 type StoryProps = ComponentProps<typeof RoundGauge>;
 export default {

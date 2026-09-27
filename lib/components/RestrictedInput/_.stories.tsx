@@ -1,7 +1,9 @@
-import { Button, RestrictedInput, Stack } from '@components';
 import { type ComponentProps, useEffect, useState } from 'react';
 import { fn } from 'storybook/test';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { Button } from '../Button';
+import { Stack } from '../Stack';
+import { RestrictedInput } from '.';
 
 type StoryProps = ComponentProps<typeof RestrictedInput>;
 

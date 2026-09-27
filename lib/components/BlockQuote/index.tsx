@@ -1,6 +1,7 @@
-import { Box, type BoxProps } from '@components';
 import { colorClassName } from 'tgui-core/common/color';
 import { classes } from 'tgui-core/common/react';
+import { Box } from '../Box';
+import type { BoxProps } from '../Box/types';
 
 /**
  * ## BlockQuote

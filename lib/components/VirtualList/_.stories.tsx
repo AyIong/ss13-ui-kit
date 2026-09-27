@@ -1,7 +1,8 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: <Don't care> */
-import { Stack, VirtualList } from '@components';
 import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { VirtualList } from '.';
+import { Stack } from '../Stack';
 
 type StoryProps = ComponentProps<typeof VirtualList>;
 

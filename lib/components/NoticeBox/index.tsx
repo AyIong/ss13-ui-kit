@@ -1,6 +1,7 @@
-import { Box, Icon } from '@components';
 import { colorClassName } from 'tgui-core/common/color';
 import { classes } from 'tgui-core/common/react';
+import { Box } from '../Box';
+import { Icon } from '../Icon';
 import type { IconNamesUnion } from '../Icon/types';
 import type { NoticeBoxProps, NoticeType } from './types';
 

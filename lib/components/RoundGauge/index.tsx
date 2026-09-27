@@ -1,9 +1,10 @@
 import { clamp01, keyOfMatchingRange, scale } from '@common/math';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import { AnimatedNumber, Icon } from '@components';
 import type { CSSProperties } from 'react';
 import { colorClassName } from 'tgui-core/common/color';
 import { classes } from 'tgui-core/common/react';
+import { AnimatedNumber } from '../AnimatedNumber';
+import { Icon } from '../Icon';
 import type { RoundGaugeProps } from './types';
 
 /**

@@ -1,7 +1,9 @@
 import { CSS_COLORS, type CssColors } from '@common/constants';
-import { Button, ProgressBar, Stack } from '@components';
 import { type ComponentProps, type PropsWithChildren, useState } from 'react';
 import type { Meta } from 'storybook-react-rsbuild';
+import { Button } from '../Button';
+import { Stack } from '../Stack';
+import { ProgressBar } from '.';
 
 type StoryProps = ComponentProps<typeof ProgressBar>;
 export default {

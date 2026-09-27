@@ -1,6 +1,7 @@
-import { Stack, type StackProps } from '@components';
 import { colorClassName } from 'tgui-core/common/color';
 import { classes } from 'tgui-core/common/react';
+import { Stack } from '../Stack';
+import type { StackProps } from '../Stack/types';
 import type { LabeledControlsItemProps } from './types';
 
 /**

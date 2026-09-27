@@ -1,8 +1,9 @@
 import { UI_DISABLED, UI_INTERACTIVE, UI_UPDATE } from '@common/constants';
 import { toTitleCase } from '@common/string';
-import { Button, Icon } from '@components';
 import { type PrimitiveAtom, useSetAtom } from 'jotai';
 import { classes } from 'tgui-core/common/react';
+import { Button } from '../Button';
+import { Icon } from '../Icon';
 import type { TitleBarProps } from './types';
 
 function statusToColor(status: number): string {

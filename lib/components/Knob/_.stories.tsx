@@ -1,7 +1,10 @@
-import { CSS_COLORS, CssColors } from '@common/constants';
-import { Button, Knob, Section, Stack } from '@components';
+import { CSS_COLORS, type CssColors } from '@common/constants';
 import { type ComponentProps, type PropsWithChildren, useState } from 'react';
 import type { Meta } from 'storybook-react-rsbuild';
+import { Button } from '../Button';
+import { Section } from '../Section';
+import { Stack } from '../Stack';
+import { Knob } from '.';
 
 type StoryProps = ComponentProps<typeof Knob>;
 export default {

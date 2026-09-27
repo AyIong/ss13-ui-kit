@@ -2,7 +2,8 @@ import { useRef } from 'react';
 import { colorClassName } from 'tgui-core/common/color';
 import { classes } from 'tgui-core/common/react';
 import { computeBoxProps } from 'tgui-core/common/ui';
-import { DraggableControl, useDraggable } from 'tgui-core/hooks/index';
+import { DraggableControl } from 'tgui-core/hooks/useDraggable/DraggableControl';
+import { useDraggable } from 'tgui-core/hooks/useDraggable/index';
 import { AnimatedNumber } from '../AnimatedNumber';
 import type { NumberInputProps } from './types';
 

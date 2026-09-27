@@ -1,5 +1,5 @@
-import type { BoxProps } from '@components';
 import type { RefObject } from 'react';
+import type { BoxProps } from '../Box/types';
 
 export type StackProps = Partial<{
   /**

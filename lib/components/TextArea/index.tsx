@@ -1,7 +1,8 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import { useAutofocus, useInput } from '@hooks';
 import { type RefObject, useRef } from 'react';
 import { classes } from 'tgui-core/common/react';
+import { useAutofocus } from 'tgui-core/hooks/useAutofocus';
+import { useInput } from 'tgui-core/hooks/useInput';
 import type { TextAreaProps } from './types';
 
 /**

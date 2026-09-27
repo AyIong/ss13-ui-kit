@@ -1,4 +1,4 @@
-import { Floating } from '@components';
+import { Floating } from '../Floating';
 import type { TooltipProps } from './types';
 
 /**

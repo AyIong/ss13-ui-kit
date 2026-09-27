@@ -1,7 +1,9 @@
-import { Button, Input, Stack } from '@components';
 import type { ComponentProps } from 'react';
 import { useState } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { Button } from '../Button';
+import { Stack } from '../Stack';
+import { Input } from '.';
 
 type StoryProps = ComponentProps<typeof Input>;
 

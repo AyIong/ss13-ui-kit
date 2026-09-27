@@ -1,6 +1,9 @@
-import { Divider, FitText, Input, Section } from '@components';
 import { type ComponentProps, useState } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { Divider } from '../Divider';
+import { Input } from '../Input';
+import { Section } from '../Section';
+import { FitText } from '.';
 
 type StoryProps = ComponentProps<typeof FitText>;
 

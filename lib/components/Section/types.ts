@@ -1,5 +1,5 @@
-import type { BoxProps } from '@components';
 import type { ReactNode } from 'react';
+import type { BoxProps } from '../Box/types';
 
 export type SectionProps = Partial<{
   /** If true, fills all available vertical space. */

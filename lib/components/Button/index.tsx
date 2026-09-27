@@ -1,8 +1,11 @@
-import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import { type BoxProps, Icon, type IconProps, Tooltip } from '@components';
-import { useButton } from '@hooks';
 import { colorClassName } from 'tgui-core/common/color';
 import { classes } from 'tgui-core/common/react';
+import { computeBoxProps } from 'tgui-core/common/ui';
+import { useButton } from 'tgui-core/hooks/useButton';
+import type { BoxProps } from '../Box/types';
+import { Icon } from '../Icon';
+import type { IconProps } from '../Icon/types';
+import { Tooltip } from '../Tooltip';
 import type { ButtonBaseProps, ButtonContentProps, ButtonIconProps, ButtonProps } from './types';
 
 /**
@@ -70,7 +73,7 @@ export function ButtonContainer(props: ButtonBaseProps) {
         fluid && 'fluid',
         disabled && 'disabled',
         colorClassName(selected ? 'good' : disabled ? 'bad' : color),
-        computeBoxClassName(rest),
+        computeBoxProps(rest),
       )}
       {...computeBoxProps(rest)}
     >
