@@ -54,7 +54,7 @@ function Content() {
               Poor Content
             </Modal>
             <Button
-              startIcon={{ animation: { fade: true }, name: 'gamepad' }}
+              startIcon={{ animation: 'fade', name: 'gamepad' }}
               tooltip={{ content: 'This is a tooltip' }}
               onClick={() => setModalOpen(true)}
             >
@@ -72,7 +72,7 @@ function Content() {
             {selected &&
               Array.from({ length: 10 }, (_, i) => <div key={i}>Section content 1234567890</div>)}
             <Icon.Stack>
-              <Icon regular name="circle" size={2} />
+              <Icon name="circle-o" size={2} />
               <Icon name="book" />
             </Icon.Stack>
           </Stack.Item>

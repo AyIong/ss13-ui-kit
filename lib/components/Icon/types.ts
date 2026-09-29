@@ -1,25 +1,17 @@
-import type { IconName } from '@fortawesome/fontawesome-svg-core';
-import type { AnimationProps, CSSVariables } from '@fortawesome/react-fontawesome';
-import type { CSSProperties } from 'react';
 import type { BoxProps } from '../Box/types';
-import type { CustomIconName } from './icons';
+import type { AnimationName, CustomIconName, RegularIconName, SolidIconName } from './icons';
 
-export type IconNamesUnion = IconName | CustomIconName;
-
+export type IconNamesUnion = SolidIconName | RegularIconName | CustomIconName;
 export type IconProps = {
   /** Icon name. @see https://fontawesome.com/v7/search?o=r&m=free */
   name: IconNamesUnion;
 } & Partial<{
-  /** Whether to use regular (outline) style. Less icons available. */
-  regular: boolean;
   /** Icon size. `1` is normal size, `2` is two times bigger. Fractional numbers are supported. */
   size: number;
   /** Icon rotation, in degrees. */
   rotation: number;
   /** FontAwesome animations */
-  animation: AnimationProps;
-  /** CSS styles and FontAwesome variables */
-  style: CSSProperties & CSSVariables;
+  animation: AnimationName;
 }> &
   Omit<BoxProps, 'children'>;
 

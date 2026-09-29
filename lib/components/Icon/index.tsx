@@ -1,14 +1,6 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { classes } from 'tgui-core/common/react';
-import { tgIcons } from './icons';
-import type { IconNamesUnion, IconProps, IconStackProps } from './types';
-
-// "Activate" imported FontAwesome icons
-library.add(fas, far, tgIcons);
+import type { IconProps, IconStackProps } from './types';
 
 /**
  * ## Icon
@@ -27,7 +19,7 @@ library.add(fas, far, tgIcons);
  * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
  */
 export function Icon(props: IconProps) {
-  const { name, regular, size, className, rotation, animation, ...rest } = props;
+  const { name, size, className, rotation, animation, ...rest } = props;
 
   const customStyle = rest.style || {};
   if (size) {
@@ -37,16 +29,19 @@ export function Icon(props: IconProps) {
     customStyle.transform = `rotate(${rotation}deg)`;
   }
   rest.style = customStyle;
-
   const boxProps = computeBoxProps(rest);
+  const animationClass = animation && `fa-anim-${animation}`;
 
   return (
-    <FontAwesomeIcon
-      // @ts-expect-error: Allow to use custom icons
-      icon={[regular ? 'far' : 'fas', name as IconNamesUnion]}
-      className={classes(className, 'icon', computeBoxClassName(rest))}
-      style={customStyle}
-      {...rest}
+    <i
+      className={classes(
+        'icon',
+        'fa',
+        `fa-${name}`,
+        animationClass,
+        className,
+        computeBoxClassName(rest),
+      )}
       {...boxProps}
     />
   );

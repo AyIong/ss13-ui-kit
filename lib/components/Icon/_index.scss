@@ -1,4 +1,6 @@
+@use "sass:meta";
 @use "@styles/functions" as fn;
+@include meta.load-css("./animations.scss");
 
 .icon {
   --icon-width: #{fn.em(16px)};

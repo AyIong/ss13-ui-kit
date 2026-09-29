@@ -10,7 +10,7 @@ export function Checkbox(props: CheckboxProps) {
 
   return (
     <ButtonContainer variant="transparent" selected={checked} {...rest}>
-      <ButtonIcon regular name={checked ? 'square-check' : 'square'} />
+      <ButtonIcon name={checked ? 'square-check' : 'square-o'} />
       <ButtonContent>{children}</ButtonContent>
     </ButtonContainer>
   );

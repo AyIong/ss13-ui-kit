@@ -2,8 +2,11 @@ import type { Preview } from '@storybook/react';
 import { themes } from '../stories/themes';
 import previewTheme from './previewTheme.ts';
 
-import '../static/fonts.scss';
+// Main styles
 import '../styles/main.scss';
+// Components styles
+import '../lib/components/main.scss';
+// Storybook specific
 import '../styles/storybook.scss';
 
 import { Controls, Description, Primary, Subtitle } from '@storybook/addon-docs/blocks';
@@ -42,11 +45,7 @@ const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: [
-          'Interfaces',
-          'Components',
-          'Hooks'
-        ],
+        order: ['Interfaces', 'Components', 'Hooks'],
       },
     },
     actions: { argTypesRegex: '^on[A-Z].*' },
