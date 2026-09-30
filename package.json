@@ -68,6 +68,9 @@
     "./styles": {
       "default": "./styles/main.scss"
     },
+    "./styles/components": {
+      "default": "./dist/components/main.css"
+    },
     "./styles/*": {
       "default": "./styles/*"
     }
