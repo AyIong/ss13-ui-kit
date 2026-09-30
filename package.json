@@ -13,7 +13,7 @@
     "build-rslib": "rslib build",
     "build-storybook": "storybook build",
     "lint": "biome check lib",
-    "lint:fix": "prettier . --write && biome check . --fix",
+    "lint:fix": "prettier . --write && bun run biome check . --fix",
     "icons": "bun tools/build_icons.js",
     "storybook": "storybook dev -p 6006",
     "test": "bun test"

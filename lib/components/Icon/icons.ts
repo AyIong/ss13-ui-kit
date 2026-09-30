@@ -1,5 +1,5 @@
 // Auto-generated file. Do not change manually!
-export type AnimationName =  (typeof ANIMATION_NAMES)[number];
+export type AnimationName = (typeof ANIMATION_NAMES)[number];
 export const ANIMATION_NAMES = [
   'beat',
   'beat-fade',

@@ -16,7 +16,13 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!**/node_modules", "!**/dist", "!**/static"]
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/dist",
+      "!**/static",
+      "!styles/fonts/fontawesome/FontAwesome.css"
+    ]
   },
   "formatter": {
     "enabled": true,

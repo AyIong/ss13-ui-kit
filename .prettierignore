@@ -6,4 +6,6 @@ node_modules
 *.css
 *.jsx
 *.json
+*.svg
+*.hbs
 .github/PULL_REQUEST_TEMPLATE.md
