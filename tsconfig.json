@@ -25,7 +25,8 @@
     "strict": false,
     "strictNullChecks": true,
     "target": "ESNext",
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "types": ["bun", "node"]
   },
   "include": ["lib", "global.d.ts", "stories", ".storybook"]
 }
