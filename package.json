@@ -6,7 +6,7 @@
   "license": "MIT",
   "author": "aylong, jlsnow301, stylesmistake",
   "homepage": "https://github.com/tgstation/tgui-modern",
-  "packageManager": "bun@1.3.5",
+  "packageManager": "bun@1.4.2",
   "sideEffects": false,
   "scripts": {
     "create-component": "bun tools/create_component.js",
