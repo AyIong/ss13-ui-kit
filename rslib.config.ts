@@ -1,4 +1,5 @@
 import { pluginReact } from '@rsbuild/plugin-react';
+import { pluginSass } from '@rsbuild/plugin-sass';
 import { defineConfig } from '@rslib/core';
 
 export default defineConfig({
@@ -11,13 +12,19 @@ export default defineConfig({
     },
   ],
   output: {
+    target: 'web',
     legalComments: 'none',
     minify: true,
   },
-  plugins: [pluginReact()],
+  plugins: [pluginReact({ reactCompiler: false }), pluginSass()],
   source: {
     entry: {
-      index: ['./lib/**/*.{ts,tsx}', '!./lib/**/*.test.{ts,tsx}', '!./lib/**/*.stories.{ts,tsx}'],
+      index: [
+        './lib/**/*.{ts,tsx}',
+        './lib/components/main.scss',
+        '!./lib/**/*.test.{ts,tsx}',
+        '!./lib/**/*.stories.{ts,tsx}',
+      ],
     },
     tsconfigPath: './tsconfig.build.json',
   },
