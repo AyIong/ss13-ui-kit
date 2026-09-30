@@ -6,6 +6,16 @@
   "files.trimTrailingWhitespace": true,
   "editor.tabCompletion": "on",
   "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit"
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/static/**/*.svg": true
+  },
   // MARK: Biome
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
@@ -43,9 +53,5 @@
   },
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.biome": "explicit"
   }
 }
