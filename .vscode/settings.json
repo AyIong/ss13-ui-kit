@@ -5,7 +5,7 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "editor.tabCompletion": "on",
-  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.tsdk.path": "./node_modules/typescript/lib",
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit"
