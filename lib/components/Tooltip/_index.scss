@@ -14,4 +14,8 @@
   border-radius: var(--border-radius-2);
   box-shadow: var(--shadow-large) var(--shadow-color);
   backdrop-filter: var(--blur-medium);
+
+  &.floating {
+    z-index: 999999; // I HOPE THAT's ENOUGH!?
+  }
 }

@@ -21,7 +21,7 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { floatingRoot } from 'tgui-core/common/constants';
+import { uiRootId } from 'tgui-core/common/constants';
 import { classes } from 'tgui-core/common/react';
 import type { FloatingProps } from './types';
 
@@ -173,7 +173,7 @@ export function Floating(props: FloatingProps) {
         (preventPortal ? (
           floatingContent
         ) : (
-          <FloatingPortal id={floatingRoot}>{floatingContent}</FloatingPortal>
+          <FloatingPortal id={uiRootId}>{floatingContent}</FloatingPortal>
         ))}
     </>
   );
