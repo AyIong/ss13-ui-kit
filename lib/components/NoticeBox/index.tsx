@@ -1,5 +1,5 @@
-import { colorClassName } from 'tgui-core/common/color';
-import { classes } from 'tgui-core/common/react';
+import { colorClassName } from 'tgui-modern/common/color';
+import { classes } from 'tgui-modern/common/react';
 import { Box } from '../Box';
 import { Icon } from '../Icon';
 import type { IconNamesUnion } from '../Icon/types';
@@ -10,8 +10,8 @@ import type { NoticeBoxProps, NoticeType } from './types';
  *
  * A notice box which warns you about something very important.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-noticebox--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-noticebox--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function NoticeBox(props: NoticeBoxProps) {
   const { children, className, color, info, success, warning, danger, ...rest } = props;

@@ -1,6 +1,6 @@
 import { useLongPress } from '@uidotdev/usehooks';
 import { type CSSProperties, useEffect, useState } from 'react';
-import { classes } from 'tgui-core/common/react';
+import { classes } from 'tgui-modern/common/react';
 import { ButtonContainer, ButtonContent, renderIcon } from '..';
 import type { ConfirmProps } from './types';
 

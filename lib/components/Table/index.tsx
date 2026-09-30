@@ -1,5 +1,5 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import { classes } from 'tgui-core/common/react';
+import { classes } from 'tgui-modern/common/react';
 import type { CellProps, RowProps, TableProps } from './types';
 
 export function Table(props: TableProps) {
@@ -66,8 +66,8 @@ function TableCell(props: CellProps) {
  * </Table>
  * ```
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-table--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-table--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export namespace Table {
   /**

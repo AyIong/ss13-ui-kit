@@ -2,7 +2,7 @@ import { canRender, classes } from '@common/react';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { useOverlayScrollbars } from 'overlayscrollbars-react';
 import { useEffect, useRef } from 'react';
-import { osOptions } from 'tgui-core/common/constants';
+import { osOptions } from 'tgui-modern/common/constants';
 import type { SectionProps } from './types';
 
 /**
@@ -37,8 +37,8 @@ import type { SectionProps } from './types';
  * </Section>
  * ```
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-section--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-section--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function Section(props: SectionProps) {
   const {

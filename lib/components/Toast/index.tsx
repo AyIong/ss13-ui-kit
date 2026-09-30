@@ -1,7 +1,7 @@
 import { type CSSProperties, useEffect, useRef, useState } from 'react';
 import { toast as hotToast, resolveValue, type Toast, useToaster } from 'react-hot-toast/headless';
-import { colorClassName } from 'tgui-core/common/color';
-import { classes } from 'tgui-core/common/react';
+import { colorClassName } from 'tgui-modern/common/color';
+import { classes } from 'tgui-modern/common/react';
 import { Button } from '../Button';
 import { Icon } from '../Icon';
 import type { ToastProps } from './types';

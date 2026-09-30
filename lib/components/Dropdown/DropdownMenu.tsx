@@ -13,10 +13,10 @@ import {
   useRef,
   useState,
 } from 'react';
-import { colorClassName } from 'tgui-core/common/color';
-import { classes } from 'tgui-core/common/react';
-import { useButton } from 'tgui-core/hooks/useButton';
-import { useFuzzySearch } from 'tgui-core/hooks/useFuzzySearch';
+import { colorClassName } from 'tgui-modern/common/color';
+import { classes } from 'tgui-modern/common/react';
+import { useButton } from 'tgui-modern/hooks/useButton';
+import { useFuzzySearch } from 'tgui-modern/hooks/useFuzzySearch';
 import { Input } from '../Input';
 import {
   entryClassName,

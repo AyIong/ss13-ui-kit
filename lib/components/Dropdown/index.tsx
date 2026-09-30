@@ -1,7 +1,7 @@
 import { unit } from '@common/ui';
 import { useRef, useState } from 'react';
-import { classes } from 'tgui-core/common/react';
-import { useButton } from 'tgui-core/hooks/useButton';
+import { classes } from 'tgui-modern/common/react';
+import { useButton } from 'tgui-modern/hooks/useButton';
 import { Button, ButtonContainer, ButtonContent, ButtonIcon } from '../Button';
 import { Floating } from '../Floating';
 import { Icon } from '../Icon';
@@ -15,8 +15,8 @@ import type { DropdownMenuHandle, DropdownProps } from './types';
  * A simple dropdown box component. Lets the user select from a list of options
  * and displays selected entry.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-dropdown--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-dropdown--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function Dropdown(props: DropdownProps) {
   const {

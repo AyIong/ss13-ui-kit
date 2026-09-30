@@ -8,7 +8,7 @@ import type { TimeDisplayProps } from './types';
  *
  * A simple component to format and display time values.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-timedisplay--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-timedisplay--docs)
  */
 export function TimeDisplay(props: TimeDisplayProps) {
   const { value: initialValue, auto, format = undefined } = props;

@@ -15,7 +15,7 @@ import type { TooltipProps } from './types';
  * </Tooltip>
  * ```
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-tooltip--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-tooltip--docs)
  */
 export function Tooltip(props: TooltipProps) {
   const { content, children, position, isOpen } = props;

@@ -1,6 +1,6 @@
 import { type ComponentProps, useEffect, useState } from 'react';
 import type { Meta, StoryObj } from 'storybook-react-rsbuild';
-import { CSS_COLORS } from 'tgui-core/common/constants';
+import { CSS_COLORS } from 'tgui-modern/common/constants';
 import { Stack } from '../Stack';
 import { Chart } from '.';
 

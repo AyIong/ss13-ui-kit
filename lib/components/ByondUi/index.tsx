@@ -1,7 +1,7 @@
 import { debounce } from '@common/timer';
 import { computeBoxProps } from '@common/ui';
 import { useEffect, useLayoutEffect, useRef } from 'react';
-import { globalEvents } from 'tgui-core/common/events';
+import { globalEvents } from 'tgui-modern/common/events';
 import { resizeInterval } from './constants';
 import { createByondUiElement, getBoundingBox, unmountByondUiElements } from './helpers';
 import type { ByondUiProps } from './types';
@@ -41,7 +41,7 @@ import type { ByondUiProps } from './types';
  *
  * It supports a full set of `Box` properties for layout purposes.
  *
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function ByondUi(props: ByondUiProps) {
   const { params, phonehome, ...rest } = props;

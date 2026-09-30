@@ -1,6 +1,6 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { useRef } from 'react';
-import { classes } from 'tgui-core/common/react';
+import { classes } from 'tgui-modern/common/react';
 import type { StackDividerProps, StackItemProps, StackProps } from './types';
 
 /**
@@ -51,8 +51,8 @@ import type { StackDividerProps, StackItemProps, StackProps } from './types';
  * </Window>
  * ```
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-stack--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-stack--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function Stack(props: StackProps) {
   const { className, fill, vertical, reverse, inlineFlex, zebra, direction, ...rest } = props;

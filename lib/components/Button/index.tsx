@@ -1,7 +1,7 @@
-import { colorClassName } from 'tgui-core/common/color';
-import { classes } from 'tgui-core/common/react';
-import { computeBoxProps } from 'tgui-core/common/ui';
-import { useButton } from 'tgui-core/hooks/useButton';
+import { colorClassName } from 'tgui-modern/common/color';
+import { classes } from 'tgui-modern/common/react';
+import { computeBoxProps } from 'tgui-modern/common/ui';
+import { useButton } from 'tgui-modern/hooks/useButton';
 import type { BoxProps } from '../Box/types';
 import { Icon } from '../Icon';
 import type { IconProps } from '../Icon/types';
@@ -13,8 +13,8 @@ import type { ButtonBaseProps, ButtonContentProps, ButtonIconProps, ButtonProps 
  *
  * Buttons allow users to take actions, and make choices, with a single click.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-button--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-button--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function Button(props: ButtonProps) {
   const {

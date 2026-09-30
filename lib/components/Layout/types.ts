@@ -7,7 +7,7 @@ export type LayoutProps = Partial<{
    * to be real functional
    */
   colorScheme: 'day' | 'night';
-  // Components thematic style. List available on [tgui-core](https://github.com/tgstation/tgui-core/tree/main/styles/themes) repo
+  // Components thematic style. List available on [tgui-modern](https://github.com/tgstation/tgui-modern/tree/main/styles/themes) repo
   theme: string;
 }> &
   BoxProps &

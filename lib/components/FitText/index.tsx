@@ -1,7 +1,7 @@
 import { type CSSProperties, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { getCssVariableValue } from 'tgui-core/common/css';
-import { classes } from 'tgui-core/common/react';
-import { unit } from 'tgui-core/common/ui';
+import { getCssVariableValue } from 'tgui-modern/common/css';
+import { classes } from 'tgui-modern/common/react';
+import { unit } from 'tgui-modern/common/ui';
 import type { FitTextProps } from './types';
 
 export function FitText(props: FitTextProps) {

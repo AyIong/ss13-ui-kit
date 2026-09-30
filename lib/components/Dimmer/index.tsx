@@ -1,4 +1,4 @@
-import { classes } from 'tgui-core/common/react';
+import { classes } from 'tgui-modern/common/react';
 import { Box } from '../Box';
 import type { BoxProps } from '../Box/types';
 
@@ -9,7 +9,7 @@ import type { BoxProps } from '../Box/types';
  *
  * Content is automatically centered inside the dimmer.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-dimmer--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-dimmer--docs)
  */
 export function Dimmer(props: BoxProps) {
   const { className, children, ...rest } = props;

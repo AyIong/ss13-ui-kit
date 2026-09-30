@@ -8,7 +8,7 @@ import type { KeyListenerProps } from './types';
  * A component that listens for keyboard events and calls the provided
  * callbacks.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-keylistener--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-keylistener--docs)
  */
 export function KeyListener(props: KeyListenerProps) {
   const { onKey, onKeyDown, onKeyUp } = props;

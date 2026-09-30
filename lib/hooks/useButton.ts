@@ -1,5 +1,5 @@
-import { KEY } from 'tgui-core/common/keys';
-import type { ButtonInteractionProps } from 'tgui-core/components/Button/types';
+import { KEY } from 'tgui-modern/common/keys';
+import type { ButtonInteractionProps } from 'tgui-modern/components/Button/types';
 
 /**
  * Returns input handlers for

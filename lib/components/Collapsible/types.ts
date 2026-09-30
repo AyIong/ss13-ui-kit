@@ -1,5 +1,5 @@
 import type { PropsWithChildren, ReactNode } from 'react';
-import type { CssColors } from 'tgui-core/common/constants';
+import type { CssColors } from 'tgui-modern/common/constants';
 import type { BoxProps } from '../Box/types';
 import type { IconNamesUnion, IconProps } from '../Icon/types';
 

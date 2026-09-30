@@ -20,7 +20,7 @@ interface UseFuzzySearchProps<T> {
  * A simple hook providing fuzzy searching - uses approximate rather
  * than exact pattern matching.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/hooks-usefuzzysearch--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/hooks-usefuzzysearch--docs)
  */
 export function useFuzzySearch<T>(options: UseFuzzySearchProps<T>) {
   const { getSearchString, matchStrategy = 'smart', searchArray } = options;

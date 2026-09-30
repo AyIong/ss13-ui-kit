@@ -1,8 +1,8 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { type RefObject, useRef } from 'react';
-import { classes } from 'tgui-core/common/react';
-import { useAutofocus } from 'tgui-core/hooks/useAutofocus';
-import { useInput } from 'tgui-core/hooks/useInput';
+import { classes } from 'tgui-modern/common/react';
+import { useAutofocus } from 'tgui-modern/hooks/useAutofocus';
+import { useInput } from 'tgui-modern/hooks/useInput';
 import type { TextInputProps } from './types';
 
 /**
@@ -10,8 +10,8 @@ import type { TextInputProps } from './types';
  *
  * A basic text input which allow users to enter text into a UI.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-input--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-input--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function Input(props: TextInputProps) {
   const {

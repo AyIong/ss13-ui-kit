@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { colorClassName } from 'tgui-core/common/color';
-import { classes } from 'tgui-core/common/react';
-import { computeBoxProps } from 'tgui-core/common/ui';
+import { colorClassName } from 'tgui-modern/common/color';
+import { classes } from 'tgui-modern/common/react';
+import { computeBoxProps } from 'tgui-modern/common/ui';
 import { dataToPolylinePoints, normalizeData } from './helpers';
 import type { ChartLineProps, ChartProps, ViewBox } from './types';
 
@@ -12,8 +12,8 @@ import type { ChartLineProps, ChartProps, ViewBox } from './types';
  *
  * It normalizes the data to fit within the viewBox dimensions.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-chart--docs)
- * - [View inherited Box Props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-chart--docs)
+ * - [View inherited Box Props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function ChartLine(props: ChartLineProps) {
   const { data = [], rangeX, rangeY, color, strokeWidth, ...rest } = props;
@@ -74,7 +74,7 @@ Chart.Line = ChartLine;
  *
  * Simple styled container for Chart lines
  *
- * - [View inherited Box Props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View inherited Box Props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function Chart(props: ChartProps) {
   const { children, fluid, ...rest } = props;

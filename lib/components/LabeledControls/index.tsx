@@ -1,5 +1,5 @@
-import { colorClassName } from 'tgui-core/common/color';
-import { classes } from 'tgui-core/common/react';
+import { colorClassName } from 'tgui-modern/common/color';
+import { classes } from 'tgui-modern/common/react';
 import { Stack } from '../Stack';
 import type { StackProps } from '../Stack/types';
 import type { LabeledControlsItemProps } from './types';
@@ -8,8 +8,8 @@ import type { LabeledControlsItemProps } from './types';
  * ## LabeledControls
  *
  * LabeledControls is a horizontal grid that is designed to hold various
- * controls, like [Knobs](https://github.com/tgstation/tgui-core/tree/main/lib/components/Knob.tsx)
- * or small [Buttons](https://github.com/tgstation/tgui-core/tree/main/lib/components/Button.tsx).
+ * controls, like [Knobs](https://github.com/tgstation/tgui-modern/tree/main/lib/components/Knob.tsx)
+ * or small [Buttons](https://github.com/tgstation/tgui-modern/tree/main/lib/components/Button.tsx).
  *
  * Every item in this grid is labeled at the bottom.
  *
@@ -22,8 +22,8 @@ import type { LabeledControlsItemProps } from './types';
  * </LabeledControls>
  * ```
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-labeledcontrols--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-labeledcontrols--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function LabeledControls(props: StackProps) {
   const { children, ...rest } = props;

@@ -1,7 +1,7 @@
 import { classes } from '@common/react';
 import { type ReactNode, type RefObject, useRef } from 'react';
-import { Layout } from 'tgui-core/components/Layout/index';
-import { TitleBar } from 'tgui-core/components/TitleBar/index';
+import { Layout } from 'tgui-modern/components/Layout/index';
+import { TitleBar } from 'tgui-modern/components/TitleBar/index';
 
 type Props = Partial<{
   children: ReactNode;

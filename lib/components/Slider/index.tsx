@@ -1,10 +1,10 @@
 import { useRef } from 'react';
-import { colorClassName } from 'tgui-core/common/color';
-import { keyOfMatchingRange } from 'tgui-core/common/math';
-import { classes } from 'tgui-core/common/react';
-import { computeBoxProps, unit } from 'tgui-core/common/ui';
-import { DraggableControl } from 'tgui-core/hooks/useDraggable/DraggableControl';
-import { useDraggable } from 'tgui-core/hooks/useDraggable/index';
+import { colorClassName } from 'tgui-modern/common/color';
+import { keyOfMatchingRange } from 'tgui-modern/common/math';
+import { classes } from 'tgui-modern/common/react';
+import { computeBoxProps, unit } from 'tgui-modern/common/ui';
+import { DraggableControl } from 'tgui-modern/hooks/useDraggable/DraggableControl';
+import { useDraggable } from 'tgui-modern/hooks/useDraggable/index';
 import { AnimatedNumber } from '../AnimatedNumber';
 import { Tooltip } from '../Tooltip';
 import type { SliderProps } from './types';

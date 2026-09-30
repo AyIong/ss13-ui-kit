@@ -1,5 +1,5 @@
-import { classes } from 'tgui-core/common/react';
-import { computeBoxClassName, computeBoxProps } from 'tgui-core/common/ui';
+import { classes } from 'tgui-modern/common/react';
+import { computeBoxClassName, computeBoxProps } from 'tgui-modern/common/ui';
 import type { ColorBoxProps } from './types';
 
 /**
@@ -9,10 +9,10 @@ import type { ColorBoxProps } from './types';
  * or for visually representing a color.
  *
  * If you want to set a background color on an element, use a plain
- * [Box](https://github.com/tgstation/tgui-core/tree/main/lib/components/Box.tsx) instead.
+ * [Box](https://github.com/tgstation/tgui-modern/tree/main/lib/components/Box.tsx) instead.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-colorbox--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-colorbox--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function ColorBox(props: ColorBoxProps) {
   const { className, style, color, content, ...rest } = props;

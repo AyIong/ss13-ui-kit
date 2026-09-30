@@ -15,7 +15,7 @@ const files = {
   // Placeholder
 }
 `,
-  'index.tsx': `import { classes } from 'tgui-core/common/react';
+  'index.tsx': `import { classes } from 'tgui-modern/common/react';
 import type { ${componentName}Props } from './types';
 
 export function ${componentName}(props: ${componentName}Props) {

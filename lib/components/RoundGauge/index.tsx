@@ -1,8 +1,8 @@
 import { clamp01, keyOfMatchingRange, scale } from '@common/math';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import type { CSSProperties } from 'react';
-import { colorClassName } from 'tgui-core/common/color';
-import { classes } from 'tgui-core/common/react';
+import { colorClassName } from 'tgui-modern/common/color';
+import { classes } from 'tgui-modern/common/react';
 import { AnimatedNumber } from '../AnimatedNumber';
 import { Icon } from '../Icon';
 import type { RoundGaugeProps } from './types';
@@ -34,8 +34,8 @@ import type { RoundGaugeProps } from './types';
  * The alert on the gauge is optional, and will only be shown if the `alertAfter` prop is defined. When defined, the alert
  * will begin to flash the respective color upon which the needle currently rests, as defined in the `ranges` prop.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-roundgauge--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-roundgauge--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function RoundGauge(props: RoundGaugeProps) {
   const {

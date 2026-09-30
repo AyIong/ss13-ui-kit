@@ -1,4 +1,4 @@
-import type { CssColors } from 'tgui-core/common/constants';
+import type { CssColors } from 'tgui-modern/common/constants';
 import type { BoxProps } from '../Box/types';
 
 export type NoticeBoxProps = Partial<{ color: CssColors }> & ExclusiveProps & BoxProps;

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { CssColors } from 'tgui-core/common/constants';
+import type { CssColors } from 'tgui-modern/common/constants';
 import type { TooltipContentProps } from '../Tooltip/types';
 
 export type LabeledListItemProps = Partial<{

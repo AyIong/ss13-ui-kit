@@ -1,18 +1,18 @@
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: <Don't care, story> */
 import { Window } from '@stories/window';
 import { useState } from 'react';
-import { Button } from 'tgui-core/components/Button/index';
-import { Chart } from 'tgui-core/components/Chart/index';
-import { Collapsible } from 'tgui-core/components/Collapsible/index';
-import { Dropdown } from 'tgui-core/components/Dropdown/index';
-import { FitText } from 'tgui-core/components/FitText/index';
-import { Icon } from 'tgui-core/components/Icon/index';
-import { Input } from 'tgui-core/components/Input/index';
-import { Modal } from 'tgui-core/components/Modal/index';
-import { NoticeBox } from 'tgui-core/components/NoticeBox/index';
-import { Section } from 'tgui-core/components/Section/index';
-import { Stack } from 'tgui-core/components/Stack/index';
-import { toast } from 'tgui-core/components/Toast/index';
+import { Button } from 'tgui-modern/components/Button/index';
+import { Chart } from 'tgui-modern/components/Chart/index';
+import { Collapsible } from 'tgui-modern/components/Collapsible/index';
+import { Dropdown } from 'tgui-modern/components/Dropdown/index';
+import { FitText } from 'tgui-modern/components/FitText/index';
+import { Icon } from 'tgui-modern/components/Icon/index';
+import { Input } from 'tgui-modern/components/Input/index';
+import { Modal } from 'tgui-modern/components/Modal/index';
+import { NoticeBox } from 'tgui-modern/components/NoticeBox/index';
+import { Section } from 'tgui-modern/components/Section/index';
+import { Stack } from 'tgui-modern/components/Stack/index';
+import { toast } from 'tgui-modern/components/Toast/index';
 
 export function Preview() {
   return (

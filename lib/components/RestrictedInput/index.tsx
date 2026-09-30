@@ -1,8 +1,8 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { type RefObject, useEffect, useRef, useState } from 'react';
-import { classes } from 'tgui-core/common/react';
-import { useAutofocus } from 'tgui-core/hooks/useAutofocus';
-import { useInput } from 'tgui-core/hooks/useInput';
+import { classes } from 'tgui-modern/common/react';
+import { useAutofocus } from 'tgui-modern/hooks/useAutofocus';
+import { useInput } from 'tgui-modern/hooks/useInput';
 import type { RestrictedInputProps } from './types';
 
 /**
@@ -12,8 +12,8 @@ import type { RestrictedInputProps } from './types';
  *
  * Has a special event for changes in validation states - `onValidationChange`.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-restrictedinput--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-restrictedinput--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function RestrictedInput(props: RestrictedInputProps) {
   const {

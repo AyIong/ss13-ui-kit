@@ -9,7 +9,7 @@ const DEFAULT_BLINKING_TIME = 1000;
  *
  * A component that blinks its children at a specified interval.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-blink--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-blink--docs)
  */
 export function Blink(props: BlinkProps) {
   const { children, interval = DEFAULT_BLINKING_INTERVAL, time = DEFAULT_BLINKING_TIME } = props;

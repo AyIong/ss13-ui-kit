@@ -1,6 +1,6 @@
 import type { PropsWithChildren, ReactNode } from 'react';
-import { colorClassName } from 'tgui-core/common/color';
-import { classes } from 'tgui-core/common/react';
+import { colorClassName } from 'tgui-modern/common/color';
+import { classes } from 'tgui-modern/common/react';
 import { Box } from '../Box';
 import { Tooltip } from '../Tooltip';
 import type { LabeledListItemProps } from './types';
@@ -100,8 +100,8 @@ function LabeledListItem(props: LabeledListItemProps) {
  * </LabeledList>
  * ```
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-labeledlist--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-labeledlist--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export namespace LabeledList {
   export const Item = LabeledListItem;

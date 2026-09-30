@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { classes } from 'tgui-core/common/react';
+import { classes } from 'tgui-modern/common/react';
 
 type Props = Partial<{
   /** Divider thickness. */
@@ -15,7 +15,7 @@ type Props = Partial<{
  * Draws a horizontal or vertical line, dividing a section into groups.
  * Works like the good old `<hr>` element, but it's fancier.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-divider--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-divider--docs)
  */
 export function Divider(props: Props) {
   const { size, vertical } = props;

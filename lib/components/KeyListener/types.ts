@@ -1,4 +1,4 @@
-import type { KeyEvent } from 'tgui-core/common/events';
+import type { KeyEvent } from 'tgui-modern/common/events';
 
 export type KeyListenerProps = Partial<{
   onKey: (key: KeyEvent) => void;

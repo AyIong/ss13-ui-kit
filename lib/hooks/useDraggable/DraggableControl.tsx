@@ -1,11 +1,11 @@
 import { type Dispatch, type ReactNode, type SetStateAction, useState } from 'react';
-import { clamp } from 'tgui-core/common/math';
-import { TrackOutsideClicks } from 'tgui-core/components/TrackOutsideClicks/index';
+import { clamp } from 'tgui-modern/common/math';
+import { Button } from 'tgui-modern/components/Button/index';
+import { RestrictedInput } from 'tgui-modern/components/RestrictedInput/index';
+import { Stack } from 'tgui-modern/components/Stack/index';
+import { Tooltip } from 'tgui-modern/components/Tooltip/index';
+import { TrackOutsideClicks } from 'tgui-modern/components/TrackOutsideClicks/index';
 import type { DraggableControlProps } from './types';
-import { Stack } from 'tgui-core/components/Stack/index';
-import { RestrictedInput } from 'tgui-core/components/RestrictedInput/index';
-import { Button } from 'tgui-core/components/Button/index';
-import { Tooltip } from 'tgui-core/components/Tooltip/index';
 
 type Props = {
   editing: boolean;

@@ -2,7 +2,7 @@ import { CSS_COLORS } from '@common/constants';
 import { clamp01, keyOfMatchingRange, scale } from '@common/math';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import type { CSSProperties } from 'react';
-import { classes } from 'tgui-core/common/react';
+import { classes } from 'tgui-modern/common/react';
 import type { ProgressBarProps } from './types';
 
 /**
@@ -10,8 +10,8 @@ import type { ProgressBarProps } from './types';
  *
  * Progress indicators inform users about the status of ongoing processes.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-progressbar--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-progressbar--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function ProgressBar(props: ProgressBarProps) {
   const {

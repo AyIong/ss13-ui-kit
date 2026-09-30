@@ -1,5 +1,5 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
-import { classes } from 'tgui-core/common/react';
+import { classes } from 'tgui-modern/common/react';
 import type { IconProps, IconStackProps } from './types';
 
 /**
@@ -15,8 +15,8 @@ import type { IconProps, IconStackProps } from './types';
  *
  * Icons: https://fontawesome.com/search?ic=free-collection
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-icon--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-icon--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function Icon(props: IconProps) {
   const { name, size, className, rotation, animation, ...rest } = props;

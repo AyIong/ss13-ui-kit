@@ -7,8 +7,8 @@
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { useEffect } from 'react';
-import { osOptions, uiRootId } from 'tgui-core/common/constants';
-import { classes } from 'tgui-core/common/react';
+import { osOptions, uiRootId } from 'tgui-modern/common/constants';
+import { classes } from 'tgui-modern/common/react';
 import type { BoxProps } from '../Box/types';
 import { Toaster } from '../Toast';
 import type { LayoutProps } from './types';

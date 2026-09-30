@@ -1,6 +1,6 @@
 import { computeBoxClassName, computeBoxProps, computeTwClass } from '@common/ui';
 import { createElement } from 'react';
-import { classes } from 'tgui-core/common/react';
+import { classes } from 'tgui-modern/common/react';
 import type { BoxProps, DangerDoNotUse } from './types';
 
 /**
@@ -48,7 +48,7 @@ import type { BoxProps, DangerDoNotUse } from './types';
  *
  * Default font size (`1rem`) is equal to `12px`.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function Box<TElement = HTMLDivElement>(props: BoxProps<TElement> & DangerDoNotUse) {
   const { as = 'div', className, children, tw, ref, ...rest } = props;

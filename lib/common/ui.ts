@@ -1,5 +1,5 @@
 import type { CSSProperties, DOMAttributes } from 'react';
-import type { BoxProps } from 'tgui-core/components/Box/types';
+import type { BoxProps } from 'tgui-modern/components/Box/types';
 import { CSS_COLORS } from './constants.ts';
 import { getCssVariableValue } from './css.ts';
 import { type BooleanLike, classes } from './react.ts';

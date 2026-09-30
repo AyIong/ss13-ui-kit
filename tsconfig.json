@@ -13,7 +13,7 @@
     "noUnusedParameters": false,
     "paths": {
       // Do not use barrels there!
-      "tgui-core/*": ["./lib/*.ts", "./lib/*.tsx"],
+      "tgui-modern/*": ["./lib/*.ts", "./lib/*.tsx"],
       "@assets/*": ["./assets/*"],
       "@common/*": ["./lib/common/*.ts"],
       "@styles/*": ["./styles/*.scss"],

@@ -15,7 +15,7 @@ type Props = {
  * Example:
  *
  * ```tsx
- * import { TrackOutsideClicks } from 'tgui-core/components';
+ * import { TrackOutsideClicks } from 'tgui-modern/components';
  *
  * function MyComponent() {
  *  const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +30,7 @@ type Props = {
  * }
  * ```
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-trackoutsideclicks--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-trackoutsideclicks--docs)
  */
 export function TrackOutsideClicks(props: Props) {
   const { children, onOutsideClick } = props;

@@ -7,10 +7,10 @@ import {
   useId,
   useState,
 } from 'react';
-import { isEscape, KEY } from 'tgui-core/common/keys';
-import { inputDebounce } from 'tgui-core/common/timer';
-import type { BaseInputProps } from 'tgui-core/components/Input/types';
-import type { BaseTextAreaProps } from 'tgui-core/components/TextArea/types';
+import { isEscape, KEY } from 'tgui-modern/common/keys';
+import { inputDebounce } from 'tgui-modern/common/timer';
+import type { BaseInputProps } from 'tgui-modern/components/Input/types';
+import type { BaseTextAreaProps } from 'tgui-modern/components/TextArea/types';
 
 /**
  * Returns input handlers for text inputs.

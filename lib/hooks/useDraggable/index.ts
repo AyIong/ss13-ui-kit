@@ -1,8 +1,8 @@
 import { useThrottle } from '@uidotdev/usehooks';
 import { type RefObject, useEffect, useRef, useState } from 'react';
-import { draggingClassName } from 'tgui-core/common/constants';
-import { KEY } from 'tgui-core/common/keys';
-import { clamp01, scale } from 'tgui-core/common/math';
+import { draggingClassName } from 'tgui-modern/common/constants';
+import { KEY } from 'tgui-modern/common/keys';
+import { clamp01, scale } from 'tgui-modern/common/math';
 import type { ContainerSize, CursorPosition, UseDraggable, UseDraggableProps } from './types';
 
 function clampToStep(rawValue: number, minValue: number, maxValue: number, step: number) {

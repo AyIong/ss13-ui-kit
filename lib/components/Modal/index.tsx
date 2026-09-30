@@ -1,8 +1,8 @@
 import { FloatingPortal } from '@floating-ui/react';
 import { useEffect } from 'react';
 import { CSSTransition } from 'react-transitioning';
-import { uiRootId } from 'tgui-core/common/constants';
-import { isEnter, isEscape } from 'tgui-core/common/keys';
+import { uiRootId } from 'tgui-modern/common/constants';
+import { isEnter, isEscape } from 'tgui-modern/common/keys';
 import { Box } from '../Box';
 import { Button } from '../Button';
 import { Dimmer } from '../Dimmer';
@@ -16,7 +16,7 @@ import type { ModalProps } from './types';
  * teleported to layout-root, over all content.
  *
  * Uses a
- * [Dimmer](https://tgstation.github.io/tgui-core/?path=/docs/components-dimmer--docs)
+ * [Dimmer](https://tgstation.github.io/tgui-modern/?path=/docs/components-dimmer--docs)
  * under the hood, and dynamically adjusts its own size to fit the content
  * you're trying to display.
  *
@@ -25,7 +25,7 @@ import type { ModalProps } from './types';
  * in that case modal will be open always, and cannot be closed if onClose,
  * function not passed.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-modal--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-modal--docs)
  */
 export function Modal(props: ModalProps) {
   const { children, title, isOpen, width, height, onEnter, onClose } = props;

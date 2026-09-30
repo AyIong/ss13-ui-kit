@@ -21,8 +21,8 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { uiRootId } from 'tgui-core/common/constants';
-import { classes } from 'tgui-core/common/react';
+import { uiRootId } from 'tgui-modern/common/constants';
+import { classes } from 'tgui-modern/common/react';
 import type { FloatingProps } from './types';
 
 /**

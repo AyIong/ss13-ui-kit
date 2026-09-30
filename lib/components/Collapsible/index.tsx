@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 import { CSSTransition } from 'react-transitioning';
-import { colorClassName } from 'tgui-core/common/color';
-import { classes } from 'tgui-core/common/react';
-import { useButton } from 'tgui-core/hooks/useButton';
+import { colorClassName } from 'tgui-modern/common/color';
+import { classes } from 'tgui-modern/common/react';
+import { useButton } from 'tgui-modern/hooks/useButton';
 import { Icon } from '../Icon';
 import type { IconProps } from '../Icon/types';
 import type { CollapsibleContentProps, CollapsibleProps } from './types';
@@ -14,8 +14,8 @@ import type { CollapsibleContentProps, CollapsibleProps } from './types';
  *
  * Click to toggle, closed by default.
  *
- * - [View documentation on tgui core](https://tgstation.github.io/tgui-core/?path=/docs/components-collapsible--docs)
- * - [View inherited Box props](https://tgstation.github.io/tgui-core/?path=/docs/components-box--docs)
+ * - [View documentation on tgui core](https://tgstation.github.io/tgui-modern/?path=/docs/components-collapsible--docs)
+ * - [View inherited Box props](https://tgstation.github.io/tgui-modern/?path=/docs/components-box--docs)
  */
 export function Collapsible(props: CollapsibleProps) {
   const { children, color, title, buttons, startIcon, endIcon, open } = props;
