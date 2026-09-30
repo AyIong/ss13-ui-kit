@@ -20,9 +20,9 @@ export function useButton(props: useButtonProps) {
   }
 
   function handleRightClick(event) {
-    if (!disabled) {
+    if (!disabled && onRightClick) {
       event.preventDefault();
-      onRightClick?.(event);
+      onRightClick(event);
     }
   }
 
@@ -42,6 +42,7 @@ export function useButton(props: useButtonProps) {
   }
 
   return {
+    disabled: disabled,
     onClick: handleClick,
     onContextMenu: handleRightClick,
     onKeyDown: handleKeyDown,

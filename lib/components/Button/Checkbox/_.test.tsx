@@ -6,9 +6,9 @@ describe('Checkbox Component', () => {
   it('renders checked and unchecked states', () => {
     const { rerender, container } = render(<Checkbox checked />);
 
-    expect(container.querySelector('.selected')).toBeTruthy();
+    expect(container.querySelector('.pal-good')).toBeTruthy();
 
     rerender(<Checkbox checked={false} />);
-    expect(container.querySelector('.selected')).toBeFalsy();
+    expect(container.querySelector('.pal-good')).toBeFalsy();
   });
 });

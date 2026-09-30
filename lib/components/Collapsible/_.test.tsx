@@ -55,6 +55,6 @@ describe('Collapsible Component', () => {
   it('renders endIcon if provided', () => {
     const { container } = render(<Collapsible title="Title" endIcon="cog" />);
 
-    expect(container.querySelector('.fa-gear')).toBeTruthy();
+    expect(container.querySelector('.fa-cog')).toBeTruthy();
   });
 });

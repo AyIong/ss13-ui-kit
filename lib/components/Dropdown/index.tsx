@@ -105,7 +105,6 @@ export function Dropdown(props: DropdownProps) {
       >
         <ButtonContainer
           color={color}
-          disabled={disabled}
           className="dropdown-handler"
           {...interactions}
         >

@@ -1,6 +1,6 @@
 import { colorClassName } from 'tgui-modern/common/color';
 import { classes } from 'tgui-modern/common/react';
-import { computeBoxProps } from 'tgui-modern/common/ui';
+import { computeBoxClassName, computeBoxProps } from 'tgui-modern/common/ui';
 import { useButton } from 'tgui-modern/hooks/useButton';
 import type { BoxProps } from '../Box/types';
 import { Icon } from '../Icon';
@@ -51,17 +51,8 @@ export function Button(props: ButtonProps) {
 }
 
 export function ButtonContainer(props: ButtonBaseProps) {
-  const {
-    children,
-    fluid,
-    color,
-    variant = 'filled',
-    className,
-    disabled,
-    selected,
-    tooltip,
-    ...rest
-  } = props;
+  const { children, fluid, color, variant, className, disabled, selected, tooltip, ...rest } =
+    props;
 
   let finalButtonContainer = (
     <div
@@ -69,11 +60,11 @@ export function ButtonContainer(props: ButtonBaseProps) {
       className={classes(
         className,
         'button',
-        variant,
+        variant || 'filled',
         fluid && 'fluid',
         disabled && 'disabled',
-        colorClassName(selected ? 'good' : disabled ? 'bad' : color),
-        computeBoxProps(rest),
+        colorClassName(selected ? 'good' : color),
+        computeBoxClassName(rest),
       )}
       {...computeBoxProps(rest)}
     >

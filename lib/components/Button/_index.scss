@@ -68,8 +68,8 @@
   }
 
   &.disabled {
-    background-color: fn.oklch-from(bg-color, $a: 0.2);
-    color: fn.oklch-from(fg-color, $c: 0.033);
+    background-color: fn.oklch-from(color-bad, $a: 0.2, $c: 0.05);
+    color: fn.oklch-from(color-bad, $l: 0.125, $c: 0.033);
   }
 }
 
