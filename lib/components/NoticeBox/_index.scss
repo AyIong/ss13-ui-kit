@@ -18,6 +18,7 @@
   box-shadow: var(--shadow-small) var(--shadow-color);
 
   &-icon {
+    display: inline-flex;
     font-size: fn.rem(16px);
   }
 
