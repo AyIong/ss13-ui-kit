@@ -1,13 +1,17 @@
 @use "@styles/functions" as fn;
 
+@function scale($value) {
+  @return calc($value * var(--size));
+}
+
 // NOTE: Math done by AI, may be some inaccuracies, but my math even worse...
 .knob {
   --radius: 46;
   --gap: 90;
   --sweep: calc(360 - var(--gap));
   --circumference: calc(2 * var(--radius) * var(--pi));
-  --cursor-size: calc(var(--space-sm) * var(--size));
-  --circle-indent: calc(var(--space-sm) * var(--size));
+  --cursor-size: #{scale(var(--border-width-1))};
+  --circle-indent: #{scale(var(--space-sm))};
   --transition-duration: var(--transition-time-medium);
 
   aspect-ratio: 1;
@@ -24,26 +28,30 @@
     position: relative;
     display: flex;
     justify-content: center;
-    padding: calc(var(--circle-indent) * 2);
     margin: var(--circle-indent);
-    border: var(--cursor-size) solid var(--surface-color);
+    padding: calc(var(--circle-indent) * 2 + var(--cursor-size));
+    background:
+      repeating-conic-gradient(
+        transparent 0deg,
+        fn.oklch-from(bg-color, $l: 0.15, $a: 0.15),
+        transparent 75deg 180deg
+      ),
+      repeating-radial-gradient(
+        oklch(0.235 0 0) 0px fn.rem(0.75px),
+        oklch(0.265 0 0) fn.rem(0.75px) fn.rem(1.5px)
+      );
+    border: scale(var(--border-width-1)) solid color-mix(oklch(0.3 0 0), var(--bg-color) 5%);
     box-shadow:
       var(--shadow-medium) var(--shadow-color),
-      inset var(--shadow-small) var(--shadow-color);
+      inset 0 scale(fn.rem(0.75px)) scale(fn.rem(0.5px)) var(--shadow-color);
     z-index: 1;
   }
 
-  &-value {
-    position: absolute;
-    font-size: calc(0.65rem * var(--size));
-    font-weight: bold;
-  }
-
   &-cursor {
-    aspect-ratio: 1;
+    height: 50%;
     width: var(--cursor-size);
-    background-color: fn.fg(var(--bg-color));
-    transform: translateY(-100%);
+    background-color: fn.oklch-from(bg-color, $l: 0.1);
+    transform: translateY(var(--border-width-1));
 
     &--wrapper {
       position: absolute;

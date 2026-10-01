@@ -5,7 +5,7 @@ import { classes } from 'tgui-modern/common/react';
 import { computeBoxProps } from 'tgui-modern/common/ui';
 import { DraggableControl } from 'tgui-modern/hooks/useDraggable/DraggableControl';
 import { useDraggable } from 'tgui-modern/hooks/useDraggable/index';
-import { AnimatedNumber } from '../AnimatedNumber';
+import { Tooltip } from '../Tooltip';
 import type { KnobProps } from './types';
 
 export function Knob(props: KnobProps) {
@@ -75,14 +75,17 @@ export function Knob(props: KnobProps) {
           ...rest,
         })}
       >
-        <div className="knob-circle">
-          <div className="knob-cursor--wrapper">
-            <div className="knob-cursor" />
+        <Tooltip
+          isOpen={dragging}
+          content={`${format ? formattedValue : displayValue}`}
+          position="bottom"
+        >
+          <div className="knob-circle">
+            <div className="knob-cursor--wrapper">
+              <div className="knob-cursor" />
+            </div>
           </div>
-          <div className="knob-value">
-            {dragging ? formattedValue : <AnimatedNumber value={displayValue} format={format} />}
-          </div>
-        </div>
+        </Tooltip>
         <svg className="knob-ring" viewBox="0 0 100 100">
           <circle className="knob-ring--placeholder" />
           <circle className="knob-ring--fill" />
