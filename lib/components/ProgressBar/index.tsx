@@ -2,7 +2,9 @@ import { CSS_COLORS } from '@common/constants';
 import { clamp01, keyOfMatchingRange, scale } from '@common/math';
 import { computeBoxClassName, computeBoxProps } from '@common/ui';
 import type { CSSProperties } from 'react';
+import { colorClassName } from 'tgui-modern/common/color';
 import { classes } from 'tgui-modern/common/react';
+import { AnimatedNumber } from '../AnimatedNumber';
 import type { ProgressBarProps } from './types';
 
 /**
@@ -17,43 +19,54 @@ export function ProgressBar(props: ProgressBarProps) {
   const {
     className,
     value,
-    minValue = 0,
-    maxValue = 1,
+    minValue,
+    maxValue,
     color,
-    ranges = {},
+    ranges,
     empty,
     children,
-    fractionDigits = 0,
+    fractionDigits,
+    vertical,
+    compact,
     ...rest
   } = props;
-  const scaledValue = scale(value, minValue, maxValue);
-  const hasContent = children !== undefined;
-
-  const effectiveColor = color || keyOfMatchingRange(value, ranges) || 'default';
+  const scaledValue = scale(value, minValue || 0, maxValue || 1);
+  const effectiveColor = color || (ranges && keyOfMatchingRange(value, ranges)) || 'primary';
 
   // We permit colors to be in hex format, rgb()/rgba() format,
   // a name for a color-<name> class, or a base CSS class.
   const outerProps = computeBoxProps(rest);
+  const outerClasses = [
+    'progressbar',
+    vertical && 'vertical',
+    compact && 'compact',
+    className,
+    computeBoxClassName(rest),
+  ];
+  const fillStyles = {
+    '--percentage': `${clamp01(scaledValue) * 100}%`,
+  } as CSSProperties;
 
-  const outerClasses = ['ProgressBar', className, computeBoxClassName(rest)];
-  const fillStyles: CSSProperties = {
-    width: `${clamp01(scaledValue) * 100}%`,
-  };
-  if (CSS_COLORS.includes(effectiveColor as any) || effectiveColor === 'default') {
+  if (CSS_COLORS.includes(effectiveColor as any) || effectiveColor === 'primary') {
     // If the color is a color-<name> class, just use that.
-    outerClasses.push(`ProgressBar--color--${effectiveColor}`);
+    outerClasses.push(colorClassName(effectiveColor));
   } else {
-    // Otherwise, set styles directly.
-    outerProps.style = { ...outerProps.style, borderColor: effectiveColor };
-    fillStyles.backgroundColor = effectiveColor;
+    // Otherwise, pass our color into variable
+    outerProps.style = { ...outerProps.style, '--bg-color': effectiveColor };
   }
 
   return (
     <div className={classes(outerClasses)} {...outerProps}>
-      <div className="ProgressBar__fill ProgressBar__fill--animated" style={fillStyles} />
-      <div className="ProgressBar__content">
-        {hasContent ? children : !empty && `${(scaledValue * 100).toFixed(fractionDigits)}%`}
-      </div>
+      <div className="progressbar-fill" style={fillStyles} />
+      {!compact && (children || !empty) && (
+        <div className="progressbar-content">
+          {children || (
+            <>
+              <AnimatedNumber value={Number((scaledValue * 100).toFixed(fractionDigits || 0))} />%
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

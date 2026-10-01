@@ -1,3 +1,4 @@
+import type { CssColors } from 'tgui-modern/common/constants';
 import type { BoxProps } from '../Box/types';
 
 export type ProgressBarProps = {
@@ -14,7 +15,7 @@ export type ProgressBarProps = {
    * - `<name>` - the name of a `color-<name>` CSS class. See `CSS_COLORS` in `constants.js`.
    * - `<name>` - the name of a base CSS color, if not overridden by the definitions above.
    */
-  color: string;
+  color: CssColors | string;
   /** Highest possible value. */
   maxValue: number;
   /** Lowest possible value. */
@@ -44,5 +45,9 @@ export type ProgressBarProps = {
   empty: boolean;
   /** The number of digits to appear after the percent's decimal point. */
   fractionDigits: number;
+  /** Makes ProgressBar vertical */
+  vertical: boolean;
+  /** Makes ProgressBar really compact */
+  compact: boolean;
 }> &
   BoxProps;

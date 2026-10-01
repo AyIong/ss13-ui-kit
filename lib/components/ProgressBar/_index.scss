@@ -1,3 +1,63 @@
+@use "@styles/functions" as fn;
+
 .progressbar {
-  // Placeholder
+  --pb-transition-duration: var(--transition-time-slow);
+
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: max(100%, fn.rem(100px));
+  min-height: var(--base-height);
+  padding: 0 var(--space-sm);
+  background-color: fn.oklch-from(bg-color, $a: 0.25);
+  border: var(--border-width-1) solid fn.oklch-from(bg-color, $a: 0.5);
+  border-radius: var(--border-radius-2);
+  transition: border-color var(--pb-transition-duration);
+
+  &-fill {
+    --transition-properties: width;
+
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--percentage);
+    background-color: var(--bg-color);
+    border-right: var(--border-width-2) solid fn.fg(var(--bg-color));
+    transition: var(--transition-properties) var(--pb-transition-duration) ease-in-out;
+    z-index: 0;
+  }
+
+  &-content {
+    text-shadow: fn.rem(1px) fn.rem(1px) black;
+    z-index: 1;
+  }
+
+  &.compact {
+    min-height: unset;
+    height: var(--border-width-5);
+
+    &.vertical {
+      min-width: unset;
+      width: var(--border-width-5);
+    }
+  }
+
+  &.vertical {
+    align-items: end;
+    min-height: 100%;
+    min-width: var(--base-height);
+    padding: var(--space-sm) 0;
+    writing-mode: vertical-rl;
+
+    .progressbar-fill {
+      --transition-properties: height;
+
+      inset: auto 0 0 0;
+      width: unset;
+      height: var(--percentage);
+      border-right: none;
+      border-top: var(--border-width-2) solid fn.fg(var(--bg-color));
+    }
+  }
 }

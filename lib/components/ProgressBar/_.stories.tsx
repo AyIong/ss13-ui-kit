@@ -14,23 +14,26 @@ export default {
 type PreviewProps = {
   color?: CssColors;
   vertical?: boolean;
+  compact?: boolean;
   ranges?: Record<string, [number, number]>;
 } & PropsWithChildren;
 
 function ProgressBarPreview(props: PreviewProps) {
   const [value, setValue] = useState(50);
-  const { color, ranges } = props;
+  const { color, ranges, vertical, compact } = props;
 
   return (
-    <Stack.Item key={color} mt={2}>
+    <Stack.Item key={color} width={!vertical && 15} height={vertical && 15}>
       <Stack fill g={0.5}>
         <Button color={color} startIcon="angles-left" onClick={() => setValue(0)} />
         <ProgressBar
+          vertical={vertical}
+          compact={compact}
           color={color}
           value={value}
           minValue={0}
           maxValue={100}
-          ranges={ranges || { primary: [0, 50], secondary: [51, 100] }}
+          ranges={ranges}
         />
         <Button color={color} startIcon="angles-right" onClick={() => setValue(100)} />
       </Stack>
@@ -43,6 +46,16 @@ export const Default = {
     return (
       <Stack justify="center">
         <ProgressBarPreview />
+      </Stack>
+    );
+  },
+};
+
+export const Compact = {
+  render: () => {
+    return (
+      <Stack justify="center">
+        <ProgressBarPreview compact />
       </Stack>
     );
   },
