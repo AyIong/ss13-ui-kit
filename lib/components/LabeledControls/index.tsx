@@ -34,11 +34,12 @@ export function LabeledControls(props: StackProps) {
   );
 }
 
-function LabeledControlsItem(props: LabeledControlsItemProps) {
+export function LabeledControlsItem(props: LabeledControlsItemProps) {
   const { label, children, ...rest } = props;
 
   return (
-    <Stack vertical className="labeledcontrols-item" {...rest}>
+    <Stack g={0} vertical className="labeledcontrols-item" {...rest}>
+      <Stack.Item />
       <Stack.Item>{children}</Stack.Item>
       <Stack.Item className={classes('labeledcontrols-item--label', colorClassName('label'))}>
         {label}

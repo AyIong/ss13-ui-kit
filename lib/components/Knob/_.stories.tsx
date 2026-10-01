@@ -2,6 +2,7 @@ import { CSS_COLORS, type CssColors } from '@common/constants';
 import { type ComponentProps, type PropsWithChildren, useState } from 'react';
 import type { Meta } from 'storybook-react-rsbuild';
 import { Button } from '../Button';
+import { LabeledControls } from '../LabeledControls';
 import { Section } from '../Section';
 import { Stack } from '../Stack';
 import { Knob } from '.';
@@ -23,24 +24,34 @@ function KnobPreview(props: PreviewProps) {
   return (
     <Stack.Item key={color}>
       <Section>
-        <Stack>
-          <Stack.Item>
-            <Button variant="transparent" startIcon="angles-left" onClick={() => setValue(0)} />
-          </Stack.Item>
-          <Stack.Item>
+        <LabeledControls>
+          <LabeledControls.Item label="Min">
+            <Button
+              fontSize={2.5}
+              variant="transparent"
+              startIcon="angles-left"
+              onClick={() => setValue(0)}
+            />
+          </LabeledControls.Item>
+          <LabeledControls.Item label={color || ''}>
             <Knob
-              size={2}
+              size={2.5}
               color={color}
               minValue={0}
               maxValue={100}
               onChange={(value) => setValue(value)}
               value={value}
             />
-          </Stack.Item>
-          <Stack.Item>
-            <Button variant="transparent" startIcon="angles-right" onClick={() => setValue(100)} />
-          </Stack.Item>
-        </Stack>
+          </LabeledControls.Item>
+          <LabeledControls.Item label="Max">
+            <Button
+              fontSize={2.5}
+              variant="transparent"
+              startIcon="angles-right"
+              onClick={() => setValue(100)}
+            />
+          </LabeledControls.Item>
+        </LabeledControls>
       </Section>
     </Stack.Item>
   );
