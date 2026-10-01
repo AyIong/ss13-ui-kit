@@ -15,39 +15,38 @@ type Props = {
 export function DraggableControl(props: Props) {
   const { children, editing, value, minValue, maxValue, setEditing, onChange } = props;
 
-  function Controls() {
-    const [newValue, setNewValue] = useState<number>(value);
+  const [newValue, setNewValue] = useState<number>(value);
 
-    function changeValue(changedValue: number) {
-      const clampedNewValue = clamp(changedValue, minValue, maxValue);
-      if (clampedNewValue !== value) {
-        onChange(clampedNewValue);
-      }
-      setEditing(false);
+  function changeValue(changedValue: number) {
+    const clampedNewValue = clamp(changedValue, minValue, maxValue);
+    if (clampedNewValue !== value) {
+      onChange(clampedNewValue);
     }
-
-    return (
-      <TrackOutsideClicks onOutsideClick={() => changeValue(newValue)}>
-        <Stack style={{ pointerEvents: 'all' }}>
-          <Button startIcon="angles-left" onClick={() => changeValue(minValue)} />
-          <RestrictedInput
-            autoSelect
-            value={newValue}
-            minValue={minValue}
-            maxValue={maxValue}
-            width={3}
-            onChange={(value) => setNewValue(value)}
-            onEnter={() => changeValue(newValue)}
-          />
-
-          <Button startIcon="angles-right" onClick={() => changeValue(maxValue)} />
-        </Stack>
-      </TrackOutsideClicks>
-    );
+    setEditing(false);
   }
 
   return (
-    <Tooltip isOpen={editing} content={<Controls />}>
+    <Tooltip
+      isOpen={editing}
+      content={
+        <TrackOutsideClicks onOutsideClick={() => changeValue(newValue)}>
+          <Stack style={{ pointerEvents: 'all' }}>
+            <Button startIcon="angles-left" onClick={() => changeValue(minValue)} />
+            <RestrictedInput
+              autoSelect
+              value={newValue}
+              minValue={minValue}
+              maxValue={maxValue}
+              width={3}
+              onChange={(value) => setNewValue(value)}
+              onEnter={() => changeValue(newValue)}
+            />
+
+            <Button startIcon="angles-right" onClick={() => changeValue(maxValue)} />
+          </Stack>
+        </TrackOutsideClicks>
+      }
+    >
       {children}
     </Tooltip>
   );
