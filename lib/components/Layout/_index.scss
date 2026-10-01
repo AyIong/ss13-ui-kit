@@ -43,13 +43,13 @@
     z-index: 1;
 
     &.x {
-      cursor: var(--cursor-e-resize);
+      cursor: var(--cursor-resize-horizontal);
       width: var(--space-s);
       height: 100%;
     }
 
     &.y {
-      cursor: var(--cursor-n-resize);
+      cursor: var(--cursor-resize-vertical);
       width: 100%;
       height: var(--space-m);
     }
@@ -57,7 +57,7 @@
     &.both {
       --size: calc(var(--space-m) * 2);
 
-      cursor: var(--cursor-se-resize);
+      cursor: var(--cursor-resize-diagonal);
       width: var(--size);
       height: var(--size);
       transform: translate(25%, 25%);

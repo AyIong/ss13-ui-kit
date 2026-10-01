@@ -9,15 +9,15 @@
 }
 
 .resizing-x {
-  cursor: var(--cursor-e-resize);
+  cursor: var(--cursor-resize-horizontal);
 }
 
 .resizing-y {
-  cursor: var(--cursor-n-resize);
+  cursor: var(--cursor-resize-verical);
 }
 
 .resizing-both {
-  cursor: var(--cursor-se-resize);
+  cursor: var(--cursor-resize-diagonal);
 }
 
 .fluid {

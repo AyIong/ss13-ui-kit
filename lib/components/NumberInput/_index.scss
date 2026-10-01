@@ -3,7 +3,7 @@
 .numberinput {
   --indent: var(--space-xs);
 
-  cursor: var(--cursor-grab);
+  cursor: var(--cursor-resize-vertical);
   display: inline-flex;
   gap: var(--indent);
   padding: var(--indent);
